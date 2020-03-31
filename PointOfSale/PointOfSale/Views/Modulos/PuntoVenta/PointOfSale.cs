@@ -361,7 +361,9 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
                             new FrmTicketFactura(venta.NoRef).Show();
                     }
                 }
-                Ambiente.SaveAndPrintTicket2(venta, reporteTickets, reporteController);
+
+
+                Ambiente.SaveAndPrintTicket(venta);
                 ResetPDV();
             }
             else

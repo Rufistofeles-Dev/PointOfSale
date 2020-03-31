@@ -135,8 +135,8 @@ namespace PointOfSale.Views.ReportDesigner
                     informe = form.Informe;
                     //Add data to datastore
                     stiReport = new StiReport();
-                    stiReport.LoadEncryptedReportFromString(informe.Codigo, informe.Guid);
-
+                    //stiReport.LoadEncryptedReportFromString(informe.Codigo, informe.Guid);
+                   stiReport.LoadPackedReportFromString(informe.Codigo);
                     stiReport.Dictionary.Databases.Clear();
                     stiReport.Dictionary.Databases.Add(new StiSqlDatabase("Dym", @"Data Source=.\SQLEXPRESS;Initial Catalog=Dym;Integrated Security=True;"));
 
@@ -158,10 +158,12 @@ namespace PointOfSale.Views.ReportDesigner
                 {
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        informe.Codigo = designer.Report.SaveEncryptedReportToString(informe.Guid);
+                        //informe.Codigo = designer.Report.SaveEncryptedReportToString(informe.Guid);
+                        informe.Codigo = designer.Report.SavePackedReportToString();
                         informe.Descripcion = form.Descrip;
                         informe.InformeCateforiaId = form.CategoriaId;
                         informe.Sistema = form.Sistema;
+                        informe.InformeId = form.ReporteId;
                         if (informeController.InsertOne(informe))
                             Ambiente.Mensaje("Cambios guardados");
 
@@ -172,11 +174,12 @@ namespace PointOfSale.Views.ReportDesigner
             {
                 if (!informe.Sistema)
                 {
-                    using (var form = new FrmNuevoInforme(informe.InformeCateforiaId, informe.Descripcion, informe.Sistema))
+                    using (var form = new FrmNuevoInforme(informe.InformeCateforiaId, informe.Descripcion, informe.Sistema, informe.InformeId))
                     {
                         if (form.ShowDialog() == DialogResult.OK)
                         {
-                            informe.Codigo = designer.Report.SaveEncryptedReportToString(informe.Guid);
+                            // informe.Codigo = designer.Report.SaveEncryptedReportToString(informe.Guid);
+                            informe.Codigo = designer.Report.SavePackedReportToString();
                             informe.Descripcion = form.Descrip;
                             informe.InformeCateforiaId = form.CategoriaId;
                             informe.Sistema = form.Sistema;
@@ -207,7 +210,7 @@ namespace PointOfSale.Views.ReportDesigner
         {
             if (Malla.RowCount == 0) return;
 
-            informe = informeController.SelectOne(int.Parse(Malla.Rows[Malla.CurrentRow.Index].Cells[0].Value.ToString()));
+            informe = informeController.SelectOne(Malla.Rows[Malla.CurrentRow.Index].Cells[0].Value.ToString());
             if (informe != null)
             {
                 stiReport = new StiReport();

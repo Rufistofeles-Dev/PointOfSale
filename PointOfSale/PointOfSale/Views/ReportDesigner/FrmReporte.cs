@@ -182,5 +182,14 @@ namespace PointOfSale.Views.ReportDesigner
         {
             Salir();
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            reporte = reporteController.SelectOne(3);
+            StiReport = new StiReport();
+            stiReport.LoadEncryptedReportFromString(reporte.Codigo, reporte.SecuenciaCifrado);
+            
+            
+        }
     }
 }

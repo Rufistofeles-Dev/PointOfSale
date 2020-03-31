@@ -77,6 +77,7 @@
             this.txtUser.Size = new System.Drawing.Size(211, 24);
             this.txtUser.TabIndex = 0;
             this.txtUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtUser_KeyDown);
+            this.txtUser.Leave += new System.EventHandler(this.TxtUser_Leave);
             // 
             // label6
             // 

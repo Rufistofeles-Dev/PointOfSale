@@ -9,7 +9,7 @@ namespace PointOfSale.Controllers
 {
     class InformeController
     {
-        public Informe SelectOne(int Id)
+        public Informe SelectOne(string Id)
         {
             try
             {

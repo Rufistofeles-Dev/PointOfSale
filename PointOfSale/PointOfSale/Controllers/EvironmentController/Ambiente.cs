@@ -31,8 +31,13 @@ namespace PointOfSale.Controllers
         public static Empresa Empresa { get; set; }
         public static string RutaImgs { get; set; }
         public static string PrefijoRutaImg { get; set; }
-        public static string FormatoTicket { get; set; }
+
+        public static Informe InformeTicket { get; set; }
+        public static Informe InformeFactura { get; set; }
+
+
         public static ReporteController reporteController { get; set; }
+
 
         public static ImageList ImageList;
 
@@ -50,7 +55,8 @@ namespace PointOfSale.Controllers
             ClavesSat, Presentaciones, UnidadesMedida,
             Usuarios, ProductoImpuesto, ProductoSustancia,
             ProductosCompleto, MetodoPago, FormaPago, UsoCDFI,
-            Tickets, Empresas, RegimenFiscal, Sucursal, Lotes, Reportes
+            Tickets, Empresas, RegimenFiscal, Sucursal, Lotes, Reportes,
+            Informes
 
         };
 
@@ -1016,50 +1022,9 @@ namespace PointOfSale.Controllers
                 Process.Start(file);
             report.Print(false, printerSettings);
         }
-        public static void SaveAndPrintTicket(Venta venta)
-        {
-            if (venta != null)
-            {
-                var empresa = new EmpresaController().SelectTopOne();
-                var estacion = new EstacionController().SelectOne(venta.EstacionId);
-                if (estacion != null && empresa != null)
-                {
-                    if (empresa.DirectorioTickets.Trim().Length == 0 || empresa.RutaFormatoTicket.Trim().Length == 0 || estacion.ImpresoraT.Trim().Length == 0)
-                    {
-                        Mensaje("DirectorioTickets|| RutaFormatoTicket || ImpresoraT, No configurado.");
-                        return;
-                    }
-
-                    var report = new StiReport();
-                    var ds = new DataSet("DS");
-                    var settings = new PrinterSettings();
-                    var file = empresa.DirectorioTickets + "TICKET " + venta.NoRef.ToString() + "_" + venta.CreatedBy + "_" + Ambiente.TimeText((DateTime)venta.CreatedAt) + ".PDF"; ;
-
-                    report.Load(empresa.RutaFormatoTicket);
-                    settings.PrinterName = estacion.ImpresoraT;
-                    settings.Copies = (short)estacion.TantosT;
-
-                    ds.Tables.Add(DT("select * from venta where ventaid=" + venta.VentaId, "Q1"));
-                    ds.Tables.Add(DT("select * from ventap where ventaid = " + venta.VentaId, "Q2"));
-                    ds.Tables.Add(DT("select * from cliente where clienteid='" + venta.ClienteId + "'", "Q3"));
-
-                    report.RegData(ds);
-                    report.Render(false);
-                    report.Design();
-                    report.ExportDocument(StiExportFormat.Pdf, file);
-                    report.Print(false, settings);
-                    report.Save(@"C:\Dympos\Formatos\Ticket.mrt");
-
-                }
-                else
-                    Mensaje("Imposible imprimir, la empresa o estación carece de información.");
-            }
-            else
-                Mensaje("Imposible imprimir, el documento llegó null");
-        }
 
         //Actualizacion del metodo SaveAndPrintTicket
-        public static void SaveAndPrintTicket2(Venta venta, Reporte reporte, ReporteController reporteController)
+        public static void SaveAndPrintTicket(Venta venta)
         {
             if (venta != null)
             {
@@ -1073,34 +1038,22 @@ namespace PointOfSale.Controllers
                         return;
                     }
 
-                    var report = new StiReport();
-
 
                     var settings = new PrinterSettings();
-
-
                     var file = empresa.DirectorioTickets + "TICKET " + venta.NoRef.ToString() + "_" + venta.CreatedBy + "_" + Ambiente.TimeText((DateTime)venta.CreatedAt) + ".PDF"; ;
 
-                    var parametros = new List<Parametro>();
-                    var p = new Parametro();
-                    p.Clave = "[ventaId]";
-                    p.Valor = venta.VentaId.ToString();
-                    parametros.Add(p);
-                    var s = reporteController.Serializar(reporte.Sql, parametros);
-                    var ds = reporteController.GetDataSet(s);
 
-                    //Add data to datastore
-                    report.LoadEncryptedReportFromString(reporte.Codigo, reporte.SecuenciaCifrado);
-                    report.RegData("DS", "DS", ds);
-                    //Fill dictionary
-                    report.Dictionary.Synchronize();
+                    stiReport = new StiReport();
+                    //stiReport.sapa
 
+                    stiReport.LoadPackedReportFromString(InformeTicket.Codigo);
+                    stiReport.Dictionary.Variables["ventaId"].ValueObject = venta.VentaId;
 
                     settings.PrinterName = estacion.ImpresoraT;
                     settings.Copies = (short)estacion.TantosT;
-                    report.Render(false);
-                    report.ExportDocument(StiExportFormat.Pdf, file);
-                    report.Print(false, settings);
+                    stiReport.Render(false);
+                    stiReport.ExportDocument(StiExportFormat.Pdf, file);
+                    stiReport.Print(false, settings);
                 }
                 else
                     Mensaje("Imposible imprimir, la empresa o estación carece de información.");
@@ -1108,6 +1061,8 @@ namespace PointOfSale.Controllers
             else
                 Mensaje("Imposible imprimir, el documento llegó null");
         }
+
+
         public static void SaveAndPrintFactura(Venta venta, bool OpenDoc = false, bool PrintDoc = false)
         {
             if (venta != null)
@@ -1122,51 +1077,6 @@ namespace PointOfSale.Controllers
                         return;
                     }
 
-                    var report = new StiReport();
-                    var ds = new DataSet("DS");
-                    var settings = new PrinterSettings();
-                    var file = empresa.DirectorioComprobantes + "FACTURA " + venta.NoRef.ToString() + "_" + venta.CreatedBy + "_" + Ambiente.TimeText((DateTime)venta.CreatedAt) + ".PDF"; ;
-
-                    report.Load(empresa.RutaFormatoFactura);
-                    settings.PrinterName = estacion.ImpresoraF;
-                    settings.Copies = (short)estacion.TantosF;
-
-                    ds.Tables.Add(DT("select * from venta where ventaid=" + venta.VentaId, "v"));
-                    ds.Tables.Add(DT("select * from ventap where ventaid = " + venta.VentaId, "vp"));
-                    ds.Tables.Add(DT("select * from cliente where clienteid='" + venta.ClienteId + "'", "c"));
-                    ds.Tables.Add(DT("select top 1 * from Empresa", "e"));
-
-                    report.RegData(ds);
-                    report.Render(false);
-                    report.ExportDocument(StiExportFormat.Pdf, file);
-                    if (OpenDoc)
-                        Process.Start(file);
-
-                    if (PrintDoc)
-                        report.Print(false, settings);
-                }
-                else
-                    Mensaje("Imposible imprimir, la empresa o estación carece de información.");
-            }
-            else
-                Mensaje("Imposible imprimir, el documento llegó null");
-        }
-
-        public static void SaveAndPrintFactura(Venta venta, Reporte reporte, ReporteController reporteController, bool OpenDoc = false, bool PrintDoc = false)
-        {
-            if (venta != null)
-            {
-                var empresa = new EmpresaController().SelectTopOne();
-                var estacion = new EstacionController().SelectOne(venta.EstacionId);
-                if (estacion != null && empresa != null)
-                {
-                    if (empresa.DirectorioComprobantes.Trim().Length == 0 || empresa.RutaFormatoFactura.Trim().Length == 0 || estacion.ImpresoraF.Trim().Length == 0)
-                    {
-                        Mensaje("DirectorioComprobantes|| RutaFormatoFactura || ImpresoraF, No configurado.");
-                        return;
-                    }
-
-                    var report = new StiReport();
                     var settings = new PrinterSettings();
                     var file = empresa.DirectorioComprobantes + "FACTURA " + venta.NoRef.ToString() + "_" + venta.CreatedBy + "_" + Ambiente.TimeText((DateTime)venta.CreatedAt) + ".PDF"; ;
 
@@ -1175,28 +1085,22 @@ namespace PointOfSale.Controllers
                     settings.Copies = (short)estacion.TantosF;
 
 
-
-                    var parametros = new List<Parametro>();
-                    var p = new Parametro();
-                    p.Clave = "[ventaId]";
-                    p.Valor = venta.VentaId.ToString();
-                    parametros.Add(p);
-                    var s = reporteController.Serializar(reporte.Sql, parametros);
-                    var ds = reporteController.GetDataSet(s);
 
                     //Add data to datastore
-                    report.LoadEncryptedReportFromString(reporte.Codigo, reporte.SecuenciaCifrado);
-                    report.RegData("DS", "DS", ds);
+                    stiReport = new StiReport();
+                    stiReport.LoadPackedReportFromString(InformeFactura.Codigo);
+                    stiReport.Dictionary.Variables["ventaId"].ValueObject = venta.VentaId;
+
                     //Fill dictionary
-                    report.Dictionary.Synchronize();
-                    report.Render(true);
-                    report.ExportDocument(StiExportFormat.Pdf, file);
+
+                    stiReport.Render(true);
+                    stiReport.ExportDocument(StiExportFormat.Pdf, file);
 
                     if (OpenDoc)
                         Process.Start(file);
 
                     if (PrintDoc)
-                        report.Print(false, settings);
+                        stiReport.Print(false, settings);
                 }
                 else
                     Mensaje("Imposible imprimir, la empresa o estación carece de información.");

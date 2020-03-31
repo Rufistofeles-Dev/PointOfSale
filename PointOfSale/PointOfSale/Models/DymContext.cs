@@ -58,6 +58,7 @@ namespace PointOfSale.Models
         public virtual DbSet<Impuesto> Impuesto { get; set; }
         public virtual DbSet<Informe> Informe { get; set; }
         public virtual DbSet<InformeCategoria> InformeCategoria { get; set; }
+        public virtual DbSet<InformeConfiguracion> InformeConfiguracion { get; set; }
         public virtual DbSet<InformeParametro> InformeParametro { get; set; }
         public virtual DbSet<Laboratorio> Laboratorio { get; set; }
         public virtual DbSet<Lote> Lote { get; set; }
@@ -1227,6 +1228,10 @@ namespace PointOfSale.Models
 
             modelBuilder.Entity<Informe>(entity =>
             {
+                entity.Property(e => e.InformeId)
+                    .HasMaxLength(50)
+                    .ValueGeneratedNever();
+
                 entity.Property(e => e.Codigo).IsRequired();
 
                 entity.Property(e => e.Descripcion)
@@ -1251,11 +1256,44 @@ namespace PointOfSale.Models
                     .HasMaxLength(50);
             });
 
+            modelBuilder.Entity<InformeConfiguracion>(entity =>
+            {
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime");
+
+                entity.Property(e => e.CreatedBy)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.InformeId)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Regla)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.UpdatedAt).HasColumnType("datetime");
+
+                entity.Property(e => e.UpdatedBy)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.HasOne(d => d.Informe)
+                    .WithMany(p => p.InformeConfiguracion)
+                    .HasForeignKey(d => d.InformeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_InformeConfiguracion_Informe");
+            });
+
             modelBuilder.Entity<InformeParametro>(entity =>
             {
                 entity.HasKey(e => e.ParametroId);
 
                 entity.Property(e => e.Estandar).HasMaxLength(50);
+
+                entity.Property(e => e.InformeId)
+                    .IsRequired()
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Nombre)
                     .IsRequired()

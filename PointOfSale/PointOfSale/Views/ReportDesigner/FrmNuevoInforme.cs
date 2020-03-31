@@ -19,22 +19,25 @@ namespace PointOfSale.Views.ReportDesigner
 
 
         public string Descrip { get; set; }
+        public string ReporteId { get; set; }
         public int CategoriaId { get; set; }
         public bool Sistema { get; set; }
+
         public FrmNuevoInforme()
         {
             InitializeComponent();
             CargarCategorias();
         }
 
-        public FrmNuevoInforme(int informeCateforiaId, string descripcion, bool sistema)
+        public FrmNuevoInforme(int informeCateforiaId, string descripcion, bool sistema, string Id)
         {
             InitializeComponent();
             //CategoriaId = informeCateforiaId;
 
             Descrip = descripcion;
             TxtDescripcion.Text = descripcion;
-            CargarCategorias(informeCateforiaId, sistema);
+            ReporteId = Id;
+            CargarCategorias(informeCateforiaId, sistema, Id);
         }
 
         private void CargarCategorias()
@@ -44,7 +47,7 @@ namespace PointOfSale.Views.ReportDesigner
             CboCategorias.ValueMember = "InformeCategoriaId";
             CboCategorias.DisplayMember = "Nombre";
         }
-        private void CargarCategorias(int categoriaId, bool sis)
+        private void CargarCategorias(int categoriaId, bool sis, string id)
         {
             informeCategoriaController = new InformeCategoriaController();
 
@@ -53,12 +56,15 @@ namespace PointOfSale.Views.ReportDesigner
             CboCategorias.DisplayMember = "Nombre";
             CboCategorias.SelectedValue = categoriaId;
             ChkSistema.Checked = sis;
+            TxtReporteId.Text = id;
+            TxtReporteId.Enabled = false;
             if (sis)
             {
                 TxtDescripcion.Enabled = false;
                 CboCategorias.Enabled = false;
                 ChkSistema.Enabled = false;
             }
+
         }
 
         private void BtnAceptar_Click(object sender, EventArgs e)
@@ -73,9 +79,15 @@ namespace PointOfSale.Views.ReportDesigner
                 Ambiente.Mensaje("Informe todos los campos");
                 return;
             }
+            if (TxtReporteId.Text.Equals(""))
+            {
+                Ambiente.Mensaje("Informe todos los campos");
+                return;
+            }
 
             CategoriaId = int.Parse(CboCategorias.SelectedValue.ToString());
             Descrip = TxtDescripcion.Text.Trim();
+            ReporteId = TxtReporteId.Text.Trim();
             Sistema = ChkSistema.Checked;
             DialogResult = DialogResult.OK;
         }

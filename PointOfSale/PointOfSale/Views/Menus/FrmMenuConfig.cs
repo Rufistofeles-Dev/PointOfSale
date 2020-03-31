@@ -39,5 +39,12 @@ namespace PointOfSale.Views.Menus
             o.MdiParent = MdiParent;
             o.Show();
         }
+
+        private void BtnInformes_Click(object sender, EventArgs e)
+        {
+            var o = new FrmInformeConfiguracion();
+            o.MdiParent = MdiParent;
+            o.Show();
+        }
     }
 }

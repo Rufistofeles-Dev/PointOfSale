@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 
 namespace PointOfSale.Controllers
 {
-    public class InformeCategoriaController
+    public class InformeConfiguracionController
     {
-        public bool Delete(InformeCategoria o)
+        public bool Delete(InformeConfiguracion o)
         {
             try
             {
                 using (var db = new DymContext())
                 {
+
                     db.Remove(o);
                     db.SaveChanges();
                     return true;
@@ -27,12 +28,29 @@ namespace PointOfSale.Controllers
             return false;
         }
 
-        public bool Delete(string Id)
+        public bool Delete(int Id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var db = new DymContext())
+                {
+                    var temp = db.InformeConfiguracion.FirstOrDefault(x => x.InformeConfiguracionId == Id);
+                    if (temp != null)
+                    {
+                        db.Remove(temp);
+                        db.SaveChanges();
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Ambiente.Mensaje(Ambiente.CatalgoMensajes[-1] + "@" + GetType().Name + "\n" + ex.ToString());
+            }
+            return false;
         }
 
-        public bool InsertOne(InformeCategoria o)
+        public bool InsertOne(InformeConfiguracion o)
         {
             try
             {
@@ -50,7 +68,7 @@ namespace PointOfSale.Controllers
             return false;
         }
 
-        public bool InsertRange(List<InformeCategoria> lista)
+        public bool InsertRange(List<InformeConfiguracion> lista)
         {
             try
             {
@@ -68,13 +86,13 @@ namespace PointOfSale.Controllers
             return false;
         }
 
-        public List<InformeCategoria> SelectAll()
+        public List<InformeConfiguracion> SelectAll()
         {
             try
             {
                 using (var db = new DymContext())
                 {
-                    return db.InformeCategoria.ToList();
+                    return db.InformeConfiguracion.ToList();
                 }
             }
             catch (Exception ex)
@@ -84,13 +102,13 @@ namespace PointOfSale.Controllers
             return null;
         }
 
-        public List<InformeCategoria> SelectByDescrip(string search)
+        public List<InformeConfiguracion> SelectMany(int cantidad)
         {
             try
             {
                 using (var db = new DymContext())
                 {
-                    return db.InformeCategoria.Where(x => x.Nombre.Contains(search)).ToList();
+                    return db.InformeConfiguracion.Take(cantidad).ToList();
                 }
             }
             catch (Exception ex)
@@ -100,7 +118,39 @@ namespace PointOfSale.Controllers
             return null;
         }
 
-        public bool Update(InformeCategoria o)
+        public InformeConfiguracion SelectOne(int Id)
+        {
+            try
+            {
+                using (var db = new DymContext())
+                {
+                    return db.InformeConfiguracion.FirstOrDefault(x => x.InformeConfiguracionId == Id);
+                }
+            }
+            catch (Exception ex)
+            {
+                Ambiente.Mensaje(Ambiente.CatalgoMensajes[-1] + "@" + GetType().Name + "\n" + ex.ToString());
+            }
+            return null;
+        }
+
+        public List<InformeConfiguracion> SelectOneOverList(int Id)
+        {
+            try
+            {
+                using (var db = new DymContext())
+                {
+                    return db.InformeConfiguracion.Where(x => x.InformeConfiguracionId == Id).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Ambiente.Mensaje(Ambiente.CatalgoMensajes[-1] + "@" + GetType().Name + "\n" + ex.ToString());
+            }
+            return null;
+        }
+
+        public bool Update(InformeConfiguracion o)
         {
             try
             {

@@ -48,7 +48,7 @@ namespace PointOfSale.Views.ReportDesigner
             {
                 if (Malla.CurrentRow.Index >= 0)
                 {
-                    Informe = informeController.SelectOne(int.Parse(Malla.Rows[Malla.CurrentRow.Index].Cells[0].Value.ToString()));
+                    Informe = informeController.SelectOne(Malla.Rows[Malla.CurrentRow.Index].Cells[0].Value.ToString());
                     DialogResult = DialogResult.OK;
                     Close();
                 }

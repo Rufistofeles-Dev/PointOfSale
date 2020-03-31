@@ -68,6 +68,7 @@ namespace PointOfSale.Controllers
             Ambiente.ImageList.Images.Add("folder16", Properties.Resources.Folder);
             Ambiente.ImageList.Images.Add("openfolder16", Properties.Resources.FolderOpen);
 
+
         }
 
         public static void InicializaDatabaseDefaultsValues()
@@ -317,6 +318,21 @@ namespace PointOfSale.Controllers
                         db.Add(prodSys);
                     }
 
+
+                    Ambiente.InformeTicket = db.Informe.FirstOrDefault(x => x.InformeId.Equals(
+                                             db.InformeConfiguracion.Where(y => y.Ticket == true)
+                                             .FirstOrDefault().InformeId));
+
+                    Ambiente.InformeFactura = db.Informe.FirstOrDefault(x => x.InformeId.Equals(
+                                             db.InformeConfiguracion.Where(y => y.Factura == true)
+                                             .FirstOrDefault().InformeId));
+
+
+                    if (Ambiente.InformeTicket == null)
+                        Ambiente.Mensaje("!Advertencia! El formato de ticket no existe, esto causará problemas");
+
+                    if (Ambiente.InformeFactura == null)
+                        Ambiente.Mensaje("!Advertencia! El formato de factura no existe, esto causará problemas");
 
                     db.SaveChanges();
                 }

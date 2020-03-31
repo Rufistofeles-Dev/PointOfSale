@@ -407,6 +407,7 @@
     <Compile Include="Controllers\EvironmentController\IController.cs" />
     <Compile Include="Controllers\ImpuestoController.cs" />
     <Compile Include="Controllers\InformeCategoriaController.cs" />
+    <Compile Include="Controllers\InformeConfiguracionController.cs" />
     <Compile Include="Controllers\InformeController.cs" />
     <Compile Include="Controllers\InformeParametroController.cs" />
     <Compile Include="Controllers\InventarioController.cs" />
@@ -480,6 +481,7 @@
     <Compile Include="Models\Impuesto.cs" />
     <Compile Include="Models\Informe.cs" />
     <Compile Include="Models\InformeCategoria.cs" />
+    <Compile Include="Models\InformeConfiguracion.cs" />
     <Compile Include="Models\InformeParametro.cs" />
     <Compile Include="Models\Laboratorio.cs" />
     <Compile Include="Models\Lote.cs" />
@@ -672,6 +674,18 @@
     </Compile>
     <Compile Include="Views\Modulos\Config\FrmEmpresa.Designer.cs">
       <DependentUpon>FrmEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modulos\Config\FrmInformeConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Modulos\Config\FrmInformeConfig.Designer.cs">
+      <DependentUpon>FrmInformeConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modulos\Config\FrmInformeConfiguracion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Modulos\Config\FrmInformeConfiguracion.Designer.cs">
+      <DependentUpon>FrmInformeConfiguracion.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Modulos\Config\FrmPuntosConfig.cs">
       <SubType>Form</SubType>
@@ -927,6 +941,12 @@
     <EmbeddedResource Include="Views\Modulos\Config\FrmEmpresa.resx">
       <DependentUpon>FrmEmpresa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Modulos\Config\FrmInformeConfig.resx">
+      <DependentUpon>FrmInformeConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Modulos\Config\FrmInformeConfiguracion.resx">
+      <DependentUpon>FrmInformeConfiguracion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Modulos\Config\FrmPuntosConfig.resx">
       <DependentUpon>FrmPuntosConfig.cs</DependentUpon>
     </EmbeddedResource>
@@ -1130,6 +1150,9 @@
     <Content Include="Localization\sv.xml" />
     <Content Include="Localization\tr.xml" />
     <Content Include="Localization\zh-CHT.xml" />
+    <None Include="Resources\tasy3.png" />
+    <None Include="Resources\tasy2.png" />
+    <None Include="Resources\tasy.png" />
     <None Include="Resources\reports.png" />
     <None Include="Resources\FolderOpen.png" />
     <None Include="Resources\Folder.png" />

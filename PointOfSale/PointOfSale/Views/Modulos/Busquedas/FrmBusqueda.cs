@@ -35,7 +35,7 @@ namespace PointOfSale.Views.Modulos.Busquedas
         public Empresa Empresa;
         public CRegimenfiscal Regimenfiscal;
         public Sucursal Sucursal;
-        public Reporte Reporte;
+        public Informe Informe;
 
 
         public FrmBusqueda()
@@ -264,8 +264,8 @@ namespace PointOfSale.Views.Modulos.Busquedas
                 case (int)Ambiente.TipoBusqueda.Reportes:
                     using (var db = new DymContext())
                     {
-                        Grid1.DataSource = db.Reporte.AsNoTracking().Where(x => x.Nombre.Contains(SearchText)).
-                           Select(x => new { ID = x.ReporteId, x.Nombre }).ToList();
+                        Grid1.DataSource = db.Informe.AsNoTracking().Where(x => x.Descripcion.Contains(SearchText)).
+                           Select(x => new { ID = x.InformeId, x.Descripcion }).ToList();
 
                     }
                     break;
@@ -467,7 +467,7 @@ namespace PointOfSale.Views.Modulos.Busquedas
                 case (int)Ambiente.TipoBusqueda.Reportes:
                     using (var db = new DymContext())
                     {
-                        Reporte = db.Reporte.Where(x => x.ReporteId == (int)Grid1.Rows[Grid1.CurrentCell.RowIndex].Cells[0].Value).FirstOrDefault();
+                        Informe = db.Informe.Where(x => x.InformeId.Equals(Grid1.Rows[Grid1.CurrentCell.RowIndex].Cells[0].Value.ToString())).FirstOrDefault();
                     }
                     break;
                 default:

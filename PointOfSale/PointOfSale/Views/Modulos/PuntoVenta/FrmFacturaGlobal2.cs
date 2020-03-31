@@ -203,7 +203,7 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
             oCFDI.Venta = venta;
             if (oCFDI.Facturar())
             {
-                Ambiente.SaveAndPrintFactura(venta, true);
+                Ambiente.SaveAndPrintFactura(venta);
                 Ambiente.UpdateSiguiente("FAC");
                 Close();
             }

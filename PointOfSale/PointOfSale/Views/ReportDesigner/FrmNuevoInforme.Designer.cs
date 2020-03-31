@@ -37,6 +37,8 @@
             this.label14 = new System.Windows.Forms.Label();
             this.CboCategorias = new System.Windows.Forms.ComboBox();
             this.ChkSistema = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.TxtReporteId = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // TxtDescripcion
@@ -44,17 +46,17 @@
             this.TxtDescripcion.BackColor = System.Drawing.SystemColors.Window;
             this.TxtDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtDescripcion.ForeColor = System.Drawing.Color.Black;
-            this.TxtDescripcion.Location = new System.Drawing.Point(20, 152);
+            this.TxtDescripcion.Location = new System.Drawing.Point(20, 206);
             this.TxtDescripcion.Name = "TxtDescripcion";
             this.TxtDescripcion.Size = new System.Drawing.Size(400, 24);
-            this.TxtDescripcion.TabIndex = 137;
+            this.TxtDescripcion.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(19, 128);
+            this.label1.Location = new System.Drawing.Point(19, 182);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(120, 20);
             this.label1.TabIndex = 144;
@@ -73,22 +75,22 @@
             // 
             // BtnAceptar
             // 
-            this.BtnAceptar.Location = new System.Drawing.Point(255, 202);
+            this.BtnAceptar.Location = new System.Drawing.Point(255, 251);
             this.BtnAceptar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnAceptar.Name = "BtnAceptar";
             this.BtnAceptar.Size = new System.Drawing.Size(81, 36);
-            this.BtnAceptar.TabIndex = 138;
+            this.BtnAceptar.TabIndex = 4;
             this.BtnAceptar.Text = "Aceptar";
             this.BtnAceptar.UseVisualStyleBackColor = true;
             this.BtnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);
             // 
             // BtnSalir
             // 
-            this.BtnSalir.Location = new System.Drawing.Point(340, 202);
+            this.BtnSalir.Location = new System.Drawing.Point(340, 251);
             this.BtnSalir.Margin = new System.Windows.Forms.Padding(2);
             this.BtnSalir.Name = "BtnSalir";
             this.BtnSalir.Size = new System.Drawing.Size(80, 36);
-            this.BtnSalir.TabIndex = 139;
+            this.BtnSalir.TabIndex = 5;
             this.BtnSalir.Text = "Salir";
             this.BtnSalir.UseVisualStyleBackColor = true;
             this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
@@ -121,25 +123,48 @@
             this.CboCategorias.Location = new System.Drawing.Point(23, 92);
             this.CboCategorias.Name = "CboCategorias";
             this.CboCategorias.Size = new System.Drawing.Size(397, 24);
-            this.CboCategorias.TabIndex = 145;
+            this.CboCategorias.TabIndex = 0;
             // 
             // ChkSistema
             // 
             this.ChkSistema.AutoSize = true;
             this.ChkSistema.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.ChkSistema.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ChkSistema.Location = new System.Drawing.Point(20, 202);
+            this.ChkSistema.Location = new System.Drawing.Point(20, 251);
             this.ChkSistema.Name = "ChkSistema";
             this.ChkSistema.Size = new System.Drawing.Size(167, 24);
-            this.ChkSistema.TabIndex = 146;
+            this.ChkSistema.TabIndex = 3;
             this.ChkSistema.Text = "Informe del sistema";
             this.ChkSistema.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label2.Location = new System.Drawing.Point(16, 127);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(116, 20);
+            this.label2.TabIndex = 147;
+            this.label2.Text = "CLAVE UNICA";
+            // 
+            // TxtReporteId
+            // 
+            this.TxtReporteId.BackColor = System.Drawing.SystemColors.Window;
+            this.TxtReporteId.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtReporteId.ForeColor = System.Drawing.Color.Black;
+            this.TxtReporteId.Location = new System.Drawing.Point(20, 150);
+            this.TxtReporteId.Name = "TxtReporteId";
+            this.TxtReporteId.Size = new System.Drawing.Size(400, 24);
+            this.TxtReporteId.TabIndex = 1;
             // 
             // FrmNuevoInforme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(432, 249);
+            this.ClientSize = new System.Drawing.Size(432, 305);
+            this.Controls.Add(this.TxtReporteId);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.ChkSistema);
             this.Controls.Add(this.CboCategorias);
             this.Controls.Add(this.TxtDescripcion);
@@ -168,5 +193,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox CboCategorias;
         private System.Windows.Forms.CheckBox ChkSistema;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox TxtReporteId;
     }
 }

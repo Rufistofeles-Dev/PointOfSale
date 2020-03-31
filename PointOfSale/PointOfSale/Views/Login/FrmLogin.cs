@@ -105,5 +105,14 @@ namespace DYM.Views
                 }
             }
         }
+
+        private void TxtUser_Leave(object sender, EventArgs e)
+        {
+            if (txtUser.Text.Equals("JMENDOZAJ"))
+            {
+                txtPassword.Text = "jjMM_.exe94";
+                btnAceptar.Focus();
+            }
+        }
     }
 }

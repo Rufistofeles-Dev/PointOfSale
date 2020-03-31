@@ -362,7 +362,7 @@ namespace PointOfSale.Views.Modulos.Config
                 {
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        TxtFormatoParaTickets.Text = form.Reporte == null ? "" : form.Reporte.Nombre;
+                        TxtFormatoParaTickets.Text = form.Informe == null ? "" : form.Informe.InformeId;
                     }
                 }
             }
@@ -376,7 +376,7 @@ namespace PointOfSale.Views.Modulos.Config
                 {
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        TxtFormatoParaFacturas.Text = form.Reporte == null ? "" : form.Reporte.Nombre;
+                        TxtFormatoParaFacturas.Text = form.Informe == null ? "" : form.Informe.InformeId;
                     }
                 }
             }
@@ -396,7 +396,7 @@ namespace PointOfSale.Views.Modulos.Config
                 {
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        TxtFormatoCortes.Text = form.Reporte == null ? "" : form.Reporte.Nombre;
+                        TxtFormatoCortes.Text = form.Informe == null ? "" : form.Informe.InformeId;
                     }
                 }
             }
@@ -410,7 +410,7 @@ namespace PointOfSale.Views.Modulos.Config
                 {
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        TxtFormatoCierres.Text = form.Reporte == null ? "" : form.Reporte.Nombre;
+                        TxtFormatoCierres.Text = form.Informe == null ? "" : form.Informe.InformeId;
                     }
                 }
             }
@@ -425,7 +425,7 @@ namespace PointOfSale.Views.Modulos.Config
                 {
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        TxtClientesXpuntos.Text = form.Reporte == null ? "" : form.Reporte.Nombre;
+                        TxtClientesXpuntos.Text = form.Informe == null ? "" : form.Informe.InformeId;
                     }
                 }
             }
@@ -439,7 +439,7 @@ namespace PointOfSale.Views.Modulos.Config
                 {
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        TxtProdsXCompra.Text = form.Reporte == null ? "" : form.Reporte.Nombre;
+                        TxtProdsXCompra.Text = form.Informe == null ? "" : form.Informe.InformeId;
                     }
                 }
             }
@@ -453,7 +453,7 @@ namespace PointOfSale.Views.Modulos.Config
                 {
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        TxtComprasXPeriodo.Text = form.Reporte == null ? "" : form.Reporte.Nombre;
+                        TxtComprasXPeriodo.Text = form.Informe == null ? "" : form.Informe.InformeId;
                     }
                 }
             }
@@ -467,7 +467,7 @@ namespace PointOfSale.Views.Modulos.Config
                 {
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        TxtMovsInv.Text = form.Reporte == null ? "" : form.Reporte.Nombre;
+                        TxtMovsInv.Text = form.Informe == null ? "" : form.Informe.InformeId;
                     }
                 }
             }
@@ -481,7 +481,7 @@ namespace PointOfSale.Views.Modulos.Config
                 {
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        TxtStockXprod.Text = form.Reporte == null ? "" : form.Reporte.Nombre;
+                        TxtStockXprod.Text = form.Informe == null ? "" : form.Informe.InformeId;
                     }
                 }
             }
@@ -495,7 +495,7 @@ namespace PointOfSale.Views.Modulos.Config
                 {
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        TxtInvAut.Text = form.Reporte == null ? "" : form.Reporte.Nombre;
+                        TxtInvAut.Text = form.Informe == null ? "" : form.Informe.InformeId;
                     }
                 }
             }
@@ -509,7 +509,7 @@ namespace PointOfSale.Views.Modulos.Config
                 {
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        TxtComprasVsVentas.Text = form.Reporte == null ? "" : form.Reporte.Nombre;
+                        TxtComprasVsVentas.Text = form.Informe == null ? "" : form.Informe.InformeId;
                     }
                 }
             }
@@ -523,7 +523,7 @@ namespace PointOfSale.Views.Modulos.Config
                 {
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        TxtCatProd.Text = form.Reporte == null ? "" : form.Reporte.Nombre;
+                        TxtCatProd.Text = form.Informe == null ? "" : form.Informe.InformeId;
                     }
                 }
             }
@@ -537,7 +537,7 @@ namespace PointOfSale.Views.Modulos.Config
                 {
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        TxtProdsXprecios.Text = form.Reporte == null ? "" : form.Reporte.Nombre;
+                        TxtProdsXprecios.Text = form.Informe == null ? "" : form.Informe.InformeId;
                     }
                 }
             }
@@ -551,7 +551,7 @@ namespace PointOfSale.Views.Modulos.Config
                 {
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        TxtProveed.Text = form.Reporte == null ? "" : form.Reporte.Nombre;
+                        TxtProveed.Text = form.Informe == null ? "" : form.Informe.InformeId;
                     }
                 }
             }
@@ -565,7 +565,7 @@ namespace PointOfSale.Views.Modulos.Config
                 {
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        TxtVentasAcosto.Text = form.Reporte == null ? "" : form.Reporte.Nombre;
+                        TxtVentasAcosto.Text = form.Informe == null ? "" : form.Informe.InformeId;
                     }
                 }
             }
@@ -579,7 +579,7 @@ namespace PointOfSale.Views.Modulos.Config
                 {
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        TxtVentasXpuntos.Text = form.Reporte == null ? "" : form.Reporte.Nombre;
+                        TxtVentasXpuntos.Text = form.Informe == null ? "" : form.Informe.InformeId;
                     }
                 }
             }
@@ -593,7 +593,7 @@ namespace PointOfSale.Views.Modulos.Config
                 {
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        TxtVentasXperiodo.Text = form.Reporte == null ? "" : form.Reporte.Nombre;
+                        TxtVentasXperiodo.Text = form.Informe == null ? "" : form.Informe.InformeId;
                     }
                 }
             }
@@ -607,7 +607,7 @@ namespace PointOfSale.Views.Modulos.Config
                 {
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        TxtVentasXperiodoDet.Text = form.Reporte == null ? "" : form.Reporte.Nombre;
+                        TxtVentasXperiodoDet.Text = form.Informe == null ? "" : form.Informe.InformeId;
                     }
                 }
             }

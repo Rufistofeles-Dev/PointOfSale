@@ -266,7 +266,8 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
                     if (oCFDI.Facturar())
                     {
                         //  Ambiente.SaveAndPrintFactura(venta, true, false);
-                        Ambiente.SaveAndPrintFactura(venta, reporte, reporteController, true, false);
+                        Ambiente.SaveAndPrintFactura(venta, true, false);
+
 
                         Close();
                     }
