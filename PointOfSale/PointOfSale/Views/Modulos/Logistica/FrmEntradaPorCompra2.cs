@@ -447,7 +447,6 @@ namespace PointOfSale.Views.Modulos.Logistica
             {
                 if (impuesto > 1) 
                 {
-                    //
                     partidas[rowIndex].Impuesto2 = impuesto / 100;
                     Malla.Rows[rowIndex].Cells[9].Value = impuesto / 100;
                 }
