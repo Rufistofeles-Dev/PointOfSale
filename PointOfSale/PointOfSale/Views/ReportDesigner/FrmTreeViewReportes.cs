@@ -166,7 +166,6 @@ namespace PointOfSale.Views.ReportDesigner
                         informe.InformeId = form.ReporteId;
                         if (informeController.InsertOne(informe))
                             Ambiente.Mensaje("Cambios guardados");
-
                     }
                 }
             }
@@ -185,7 +184,6 @@ namespace PointOfSale.Views.ReportDesigner
                             informe.Sistema = form.Sistema;
                             if (informeController.Update(informe))
                                 Ambiente.Mensaje("Cambios guardados");
-
                         }
                     }
                 }
@@ -204,6 +202,7 @@ namespace PointOfSale.Views.ReportDesigner
                 designer = new StiDesigner();
 
             designer.ShowDesigner();
+
         }
 
         private void BtnProbar_Click(object sender, EventArgs e)

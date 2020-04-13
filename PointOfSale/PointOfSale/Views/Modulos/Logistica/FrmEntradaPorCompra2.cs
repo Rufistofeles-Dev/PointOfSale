@@ -5,6 +5,7 @@ using PointOfSale.Views.Modulos.Busquedas;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace PointOfSale.Views.Modulos.Logistica
@@ -51,6 +52,7 @@ namespace PointOfSale.Views.Modulos.Logistica
         {
             InitializeComponent();
             ResetPDC();
+            // productoController.SelectMany(1);
         }
 
         #region Metodos
@@ -108,9 +110,9 @@ namespace PointOfSale.Views.Modulos.Logistica
             TxtDatosProveedor.Text = "";
             TxtProductoId.Text = "";
             NCantidad.Value = 1;
-            TxtPrecioCompra.Text = "";
-            TxtPrecioCaja.Text = "";
-            NDesc.Value = 0;
+            NCostoU.Value = 0;
+            NPrecioCaja.Value = 0;
+            NDesc1.Value = 66.66M;
             TxtDescripcion.Text = "";
             TxtU1.Text = "";
             TxtU2.Text = "";
@@ -160,8 +162,7 @@ namespace PointOfSale.Views.Modulos.Logistica
         {
 
             TxtProductoId.Text = producto.ProductoId;
-            TxtPrecioCompra.Text = producto.PrecioCompra.ToString();
-            TxtPrecioCaja.Text = producto.PrecioCaja.ToString();
+
             TxtDescripcion.Text = producto.Descripcion;
             TxtU1.Text = producto.Utilidad1.ToString();
             TxtU2.Text = producto.Utilidad2.ToString();
@@ -178,6 +179,16 @@ namespace PointOfSale.Views.Modulos.Logistica
             TxtPrecioS3.Text = Ambiente.GetPrecioSalida(TxtPrecio3.Text, impuestos);
             TxtPrecioS4.Text = Ambiente.GetPrecioSalida(TxtPrecio4.Text, impuestos);
             PbxImagen.Image = GetImg(producto.RutaImg);
+
+            //costos compra
+            NCantidad.Value = 1;
+            NPrecioCaja.Value = producto.PrecioCaja;
+            NDesc1.Value = 66.66m;
+            NDesc2.Value = 0;
+            NCostoU.Value = producto.PrecioCompra;
+            NprecioLista.Value = descueto(NPrecioCaja.Value, NDesc1.Value);
+            NImporte.Value = NCantidad.Value * NCostoU.Value;
+
         }
         private void CargaGridImpuestos()
         {
@@ -210,8 +221,11 @@ namespace PointOfSale.Views.Modulos.Logistica
         {
             try
             {
-                if (ruta == null)
-                    return null;
+
+
+                if (!Ambiente.ServerImgAccesible) return null;
+
+                if (!File.Exists(ruta)) return null;
 
                 Image img = Image.FromFile(ruta);
                 return img;
@@ -268,9 +282,9 @@ namespace PointOfSale.Views.Modulos.Logistica
             partida.LaboratorioName = laboratorioController.SelectOne(producto.LaboratorioId).Nombre.Trim();
             partida.Stock = producto.Stock;
             partida.Cantidad = NCantidad.Value;
-            partida.PrecioCompra = Ambiente.ToDecimal(TxtPrecioCompra.Text);
-            partida.PrecioCaja = Ambiente.ToDecimal(TxtPrecioCaja.Text);
-            partida.Descuento = NDesc.Value / 100;
+            partida.PrecioCompra = NCostoU.Value;
+            partida.PrecioCaja = NPrecioCaja.Value;
+            partida.Descuento = NDesc1.Value / 100;
             partida.NImpuestos = impuestos.Count;
 
             //control lotes
@@ -294,8 +308,8 @@ namespace PointOfSale.Views.Modulos.Logistica
             //cambios de precio
             if (partida.PrecioCompra != producto.PrecioCompra)
             {
-                producto.PrecioCompra = Ambiente.ToDecimal(TxtPrecioCompra.Text);
-                producto.PrecioCaja = Ambiente.ToDecimal(TxtPrecioCaja.Text);
+                producto.PrecioCompra = NCostoU.Value;
+                producto.PrecioCaja = NPrecioCaja.Value;
                 producto.Precio1 = Ambiente.ToDecimal(TxtPrecio1.Text);
                 producto.Precio2 = Ambiente.ToDecimal(TxtPrecio2.Text);
                 producto.Precio3 = Ambiente.ToDecimal(TxtPrecio3.Text);
@@ -411,6 +425,38 @@ namespace PointOfSale.Views.Modulos.Logistica
                 }
             }
         }
+        private void ActualizaImpuesto1(decimal impuesto, int rowIndex)
+        {
+            if ((rowIndex < partidas.Count))
+            {
+                if (impuesto > 1)
+                {
+                    partidas[rowIndex].Impuesto1 = impuesto / 100;
+                    Malla.Rows[rowIndex].Cells[8].Value = impuesto / 100;
+                }
+                else
+                {
+                    partidas[rowIndex].Impuesto1 = impuesto;
+                    Malla.Rows[rowIndex].Cells[8].Value = impuesto;
+                }
+            }
+        }
+        private void ActualizaImpuesto2(decimal impuesto, int rowIndex)
+        {
+            if ((rowIndex < partidas.Count))
+            {
+                if (impuesto > 1)
+                {
+                    partidas[rowIndex].Impuesto2 = impuesto / 100;
+                    Malla.Rows[rowIndex].Cells[9].Value = impuesto / 100;
+                }
+                else
+                {
+                    partidas[rowIndex].Impuesto2 = impuesto;
+                    Malla.Rows[rowIndex].Cells[9].Value = impuesto;
+                }
+            }
+        }
         private void ActualizaPrecioCompra(decimal pcompra, int rowIndex)
         {
             if ((rowIndex < partidas.Count))
@@ -453,13 +499,15 @@ namespace PointOfSale.Views.Modulos.Logistica
                 }
             }
         }
+
+
         private void ResetPartida()
         {
             producto = null;
             TxtProductoId.Text = "";
             NCantidad.Value = 1;
-            TxtPrecioCompra.Text = "";
-            TxtPrecioCaja.Text = "";
+            NCostoU.Value = 0;
+            NPrecioCaja.Value = 0;
             TxtPrecio1.Text = "";
             TxtPrecio2.Text = "";
             TxtPrecio3.Text = "";
@@ -703,7 +751,6 @@ namespace PointOfSale.Views.Modulos.Logistica
         }
         #endregion
 
-
         #region Eventos
         private void TxtProvedorId_KeyDown(object sender, KeyEventArgs e)
         {
@@ -751,45 +798,45 @@ namespace PointOfSale.Views.Modulos.Logistica
         private void TxtU1_Leave(object sender, EventArgs e)
         {
             TxtU1.Text = Ambiente.FDinero(TxtU1.Text);
-            TxtPrecio1.Text = Ambiente.GetPrecio(TxtPrecioCompra.Text, TxtU1.Text);
+            TxtPrecio1.Text = Ambiente.GetPrecio(NCostoU.Value.ToString(), TxtU1.Text);
         }
         private void TxtPrecio1_Leave(object sender, EventArgs e)
         {
             TxtPrecio1.Text = Ambiente.FDinero(TxtPrecio1.Text);
-            TxtU1.Text = Ambiente.GetMargen(TxtPrecioCompra.Text, TxtPrecio1.Text);
+            TxtU1.Text = Ambiente.GetMargen(NCostoU.Value.ToString(), TxtPrecio1.Text);
             TxtPrecioS1.Text = Ambiente.GetPrecioSalida(TxtPrecio1.Text, impuestos);
         }
         private void TxtU2_Leave(object sender, EventArgs e)
         {
             TxtU2.Text = Ambiente.FDinero(TxtU2.Text);
-            TxtPrecio2.Text = Ambiente.GetPrecio(TxtPrecioCompra.Text, TxtU2.Text);
+            TxtPrecio2.Text = Ambiente.GetPrecio(NCostoU.Value.ToString(), TxtU2.Text);
         }
         private void TxtPrecio2_Leave(object sender, EventArgs e)
         {
             TxtPrecio2.Text = Ambiente.FDinero(TxtPrecio2.Text);
-            TxtU2.Text = Ambiente.GetMargen(TxtPrecioCompra.Text, TxtPrecio2.Text);
+            TxtU2.Text = Ambiente.GetMargen(NCostoU.Value.ToString(), TxtPrecio2.Text);
             TxtPrecioS2.Text = Ambiente.GetPrecioSalida(TxtPrecio2.Text, impuestos);
         }
         private void TxtU3_Leave(object sender, EventArgs e)
         {
             TxtU3.Text = Ambiente.FDinero(TxtU3.Text);
-            TxtPrecio3.Text = Ambiente.GetPrecio(TxtPrecioCompra.Text, TxtU3.Text);
+            TxtPrecio3.Text = Ambiente.GetPrecio(NCostoU.Value.ToString(), TxtU3.Text);
         }
         private void TxtPrecio3_Leave(object sender, EventArgs e)
         {
             TxtPrecio3.Text = Ambiente.FDinero(TxtPrecio3.Text);
-            TxtU3.Text = Ambiente.GetMargen(TxtPrecioCompra.Text, TxtPrecio3.Text);
+            TxtU3.Text = Ambiente.GetMargen(NCostoU.Value.ToString(), TxtPrecio3.Text);
             TxtPrecioS3.Text = Ambiente.GetPrecioSalida(TxtPrecio3.Text, impuestos);
         }
         private void TxtU4_Leave(object sender, EventArgs e)
         {
             TxtU4.Text = Ambiente.FDinero(TxtU4.Text);
-            TxtPrecio4.Text = Ambiente.GetPrecio(TxtPrecioCompra.Text, TxtU4.Text);
+            TxtPrecio4.Text = Ambiente.GetPrecio(NCostoU.Value.ToString(), TxtU4.Text);
         }
         private void TxtPrecio4_Leave(object sender, EventArgs e)
         {
             TxtPrecio4.Text = Ambiente.FDinero(TxtPrecio4.Text);
-            TxtU4.Text = Ambiente.GetMargen(TxtPrecioCompra.Text, TxtPrecio4.Text);
+            TxtU4.Text = Ambiente.GetMargen(NCostoU.Value.ToString(), TxtPrecio4.Text);
             TxtPrecioS4.Text = Ambiente.GetPrecioSalida(TxtPrecio4.Text, impuestos);
             BtnAgregar.Focus();
         }
@@ -842,7 +889,7 @@ namespace PointOfSale.Views.Modulos.Logistica
 
             if (Malla.CurrentCell.ColumnIndex == 6)
             {
-                //Precio de compra
+                //Precio de costo
                 ActualizaPrecioCompra(decimal.Parse(Malla.CurrentCell.Value.ToString()), e.RowIndex);
                 CalculaTotales();
                 ReCargaGrid();
@@ -851,8 +898,26 @@ namespace PointOfSale.Views.Modulos.Logistica
             }
             if (Malla.CurrentCell.ColumnIndex == 7)
             {
-                //Precio de compra
+                //desc
                 ActualizaDescuento(decimal.Parse(Malla.CurrentCell.Value.ToString()), e.RowIndex);
+                CalculaTotales();
+                ReCargaGrid();
+                TxtProductoId.Focus();
+
+            }
+            if (Malla.CurrentCell.ColumnIndex == 8)
+            {
+                //Impuesto1
+                ActualizaImpuesto1(decimal.Parse(Malla.CurrentCell.Value.ToString()), e.RowIndex);
+                CalculaTotales();
+                ReCargaGrid();
+                TxtProductoId.Focus();
+
+            }
+            if (Malla.CurrentCell.ColumnIndex == 9)
+            {
+                //Impuesto2
+                ActualizaImpuesto2(decimal.Parse(Malla.CurrentCell.Value.ToString()), e.RowIndex);
                 CalculaTotales();
                 ReCargaGrid();
                 TxtProductoId.Focus();
@@ -862,7 +927,9 @@ namespace PointOfSale.Views.Modulos.Logistica
         private void Malla_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             e.Control.KeyPress -= new KeyPressEventHandler(ColumnCant_KeyPress);
-            if (Malla.CurrentCell.ColumnIndex == 4 || Malla.CurrentCell.ColumnIndex == 5 || Malla.CurrentCell.ColumnIndex == 6 || Malla.CurrentCell.ColumnIndex == 7) //Desired Column
+            if (Malla.CurrentCell.ColumnIndex == 4 || Malla.CurrentCell.ColumnIndex == 5
+                || Malla.CurrentCell.ColumnIndex == 6 || Malla.CurrentCell.ColumnIndex == 7
+                || Malla.CurrentCell.ColumnIndex == 8 || Malla.CurrentCell.ColumnIndex == 9) //Desired Column
             {
                 TextBox tb = e.Control as TextBox;
                 if (tb != null)
@@ -897,15 +964,7 @@ namespace PointOfSale.Views.Modulos.Logistica
                     EliminaPartida(Malla.CurrentCell.RowIndex, Malla.Rows[Malla.CurrentCell.RowIndex].Cells[1].Value.ToString());
             }
         }
-        private void TxtPrecioCompra_Leave(object sender, EventArgs e)
-        {
-            TxtPrecioCompra.Text = Ambiente.FDinero(TxtPrecioCompra.Text);
 
-        }
-        private void TxtPrecioCaja_Leave(object sender, EventArgs e)
-        {
-            TxtPrecioCaja.Text = Ambiente.FDinero(TxtPrecioCaja.Text);
-        }
         private void Malla_MouseEnter(object sender, EventArgs e)
         {
             sobreGrid = true;
@@ -918,8 +977,159 @@ namespace PointOfSale.Views.Modulos.Logistica
         {
             sobreGrid = true;
         }
+
+
+        private void FrmEntradaPorCompra2_Load(object sender, EventArgs e)
+        {
+            NDesc1.Controls[0].Hide();
+            NDesc1.Refresh();
+            NDesc2.Controls[0].Hide();
+            NDesc2.Refresh();
+            NPrecioCaja.Controls[0].Hide();
+            NPrecioCaja.Refresh();
+            NCostoU.Controls[0].Hide();
+            NCostoU.Refresh();
+            NCostoUlt.Controls[0].Hide();
+            NCostoUlt.Refresh();
+            NCantidad.Controls[0].Hide();
+            NCantidad.Refresh();
+            NprecioLista.Controls[0].Hide();
+            NprecioLista.Refresh();
+            NImporte.Controls[0].Hide();
+            NImporte.Refresh();
+        }
+
+
+        private void NCantidad_Leave(object sender, EventArgs e)
+        {
+            NprecioLista.Value = descueto(NPrecioCaja.Value, NDesc1.Value);
+            NImporte.Value = NCantidad.Value * NCostoU.Value;
+        }
+        private void NPrecioCaja_Leave(object sender, EventArgs e)
+        {
+            NprecioLista.Value = descueto(NPrecioCaja.Value, NDesc1.Value);
+        }
+        private void NDesc1_Leave(object sender, EventArgs e)
+        {
+            NprecioLista.Value = descueto(NPrecioCaja.Value, NDesc1.Value);
+            NDesc1.Value = pdescueto(NPrecioCaja.Value, NprecioLista.Value);
+        }
+
+
+
+        private void NprecioLista_Leave(object sender, EventArgs e)
+        {
+            NDesc1.Value = pdescueto(NPrecioCaja.Value, NprecioLista.Value);
+        }
+
+        private void NCostoU_Leave(object sender, EventArgs e)
+        {
+            NDesc2.Value = pdescueto(NprecioLista.Value, NCostoU.Value);
+            NImporte.Value = NCantidad.Value * NCostoU.Value;
+        }
+
+        private void NImporte_Leave(object sender, EventArgs e)
+        {
+            NCostoU.Value = NImporte.Value / NCantidad.Value;
+            NImporte.Value = NCantidad.Value * NCostoU.Value;
+            NDesc2.Value = pdescueto(NprecioLista.Value, NCostoU.Value);
+
+        }
+        private void NDesc2_Leave_1(object sender, EventArgs e)
+        {
+            NCostoU.Value = descueto(NprecioLista.Value, NDesc2.Value);
+        }
         #endregion
 
 
+        private decimal descueto(decimal vlBase, decimal vlDescuento)
+        {
+            return vlBase - (vlBase * (vlDescuento / 100));
+        }
+        private decimal pdescueto(decimal vlOriginal, decimal vlNuevo)
+        {
+            if (vlOriginal == 0) return 0;
+            if (vlOriginal == vlNuevo) return 0;
+
+            var x = 100 - ((vlNuevo * 100) / vlOriginal);
+
+            return x;
+        }
+
+        private void NCantidad_Enter(object sender, EventArgs e)
+        {
+            NCantidad.Select(0, NCantidad.Text.Length);
+        }
+
+        private void NCantidad_Click(object sender, EventArgs e)
+        {
+            NCantidad.Select(0, NCantidad.Text.Length);
+        }
+
+        private void NPrecioCaja_Enter(object sender, EventArgs e)
+        {
+            NPrecioCaja.Select(0, NPrecioCaja.Text.Length);
+        }
+
+        private void NDesc1_Enter(object sender, EventArgs e)
+        {
+            NDesc1.Select(0, NDesc1.Text.Length);
+        }
+
+        private void NprecioLista_Enter(object sender, EventArgs e)
+        {
+            NprecioLista.Select(0, NprecioLista.Text.Length);
+
+        }
+
+        private void NDesc2_Enter(object sender, EventArgs e)
+        {
+            NDesc2.Select(0, NDesc2.Text.Length);
+        }
+
+        private void NCostoU_Enter(object sender, EventArgs e)
+        {
+            NCostoU.Select(0, NCostoU.Text.Length);
+        }
+
+        private void NImporte_Enter(object sender, EventArgs e)
+        {
+            NImporte.Select(0, NImporte.Text.Length);
+        }
+
+        private void NPrecioCaja_Click(object sender, EventArgs e)
+        {
+            NPrecioCaja.Select(0, NPrecioCaja.Text.Length);
+        }
+
+        private void NDesc1_Click(object sender, EventArgs e)
+        {
+            NDesc1.Select(0, NDesc1.Text.Length);
+        }
+
+        private void NprecioLista_Click(object sender, EventArgs e)
+        {
+            NprecioLista.Select(0, NprecioLista.Text.Length);
+        }
+
+        private void NDesc2_Click(object sender, EventArgs e)
+        {
+            NDesc2.Select(0, NDesc2.Text.Length);
+        }
+
+        private void NCostoU_Click(object sender, EventArgs e)
+        {
+            NCostoU.Select(0, NCostoU.Text.Length);
+        }
+
+        private void NImporte_Click(object sender, EventArgs e)
+        {
+            NImporte.Select(0, NImporte.Text.Length);
+        }
+
+        private void NDesc1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

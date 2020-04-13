@@ -67,7 +67,7 @@ namespace PointOfSale.Controllers
             Ambiente.ImageList.Images.Add("reports16", Properties.Resources.reports);
             Ambiente.ImageList.Images.Add("folder16", Properties.Resources.Folder);
             Ambiente.ImageList.Images.Add("openfolder16", Properties.Resources.FolderOpen);
-
+            Ambiente.ServerImgAccesible = Ambiente.CheckServerRutas();
 
         }
 
@@ -342,6 +342,9 @@ namespace PointOfSale.Controllers
 
                 System.Windows.Forms.MessageBox.Show("Error al inicializar db defautls: " + ex.ToString());
             }
+
+            if (!Ambiente.ServerImgAccesible)
+                Ambiente.Mensaje("!Advertencia! Las rutas de red indicadas para llegar al servidor no  pasaron la prueba del 75%. Esto causará rendiento deficiente al acceder a recursos en el server.  valor real: "+ Ambiente.ServerImgAccesible);
         }
     }
 }

@@ -36,33 +36,24 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TxtDescripcion = new System.Windows.Forms.TextBox();
-            this.NDesc = new System.Windows.Forms.NumericUpDown();
+            this.NDesc1 = new System.Windows.Forms.NumericUpDown();
             this.NCantidad = new System.Windows.Forms.NumericUpDown();
             this.BtnAgregar = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.TxtPrecioCaja = new System.Windows.Forms.TextBox();
             this.Malla = new System.Windows.Forms.DataGridView();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label21 = new System.Windows.Forms.Label();
-            this.TxtPrecioCompra = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.NDesc2 = new System.Windows.Forms.NumericUpDown();
+            this.label28 = new System.Windows.Forms.Label();
+            this.NCostoUlt = new System.Windows.Forms.NumericUpDown();
+            this.NImporte = new System.Windows.Forms.NumericUpDown();
+            this.NCostoU = new System.Windows.Forms.NumericUpDown();
+            this.NprecioLista = new System.Windows.Forms.NumericUpDown();
+            this.NPrecioCaja = new System.Windows.Forms.NumericUpDown();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.TxtProductoId = new System.Windows.Forms.TextBox();
             this.TxtTotal = new System.Windows.Forms.TextBox();
@@ -124,10 +115,32 @@
             this.TxtProvedorId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.NDesc)).BeginInit();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.NDesc1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NCantidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Malla)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NDesc2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NCostoUlt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NImporte)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NCostoU)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NprecioLista)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NPrecioCaja)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbxImagen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridImpuestos)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -145,22 +158,37 @@
             this.TxtDescripcion.Location = new System.Drawing.Point(6, 74);
             this.TxtDescripcion.Name = "TxtDescripcion";
             this.TxtDescripcion.ReadOnly = true;
-            this.TxtDescripcion.Size = new System.Drawing.Size(557, 24);
+            this.TxtDescripcion.Size = new System.Drawing.Size(523, 24);
             this.TxtDescripcion.TabIndex = 235;
             this.TxtDescripcion.TabStop = false;
             this.toolTip1.SetToolTip(this.TxtDescripcion, "Almacen donde de agregarán las existencias");
             // 
-            // NDesc
+            // NDesc1
             // 
-            this.NDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.NDesc.Location = new System.Drawing.Point(463, 43);
-            this.NDesc.Name = "NDesc";
-            this.NDesc.Size = new System.Drawing.Size(100, 26);
-            this.NDesc.TabIndex = 10;
+            this.NDesc1.DecimalPlaces = 2;
+            this.NDesc1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NDesc1.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.NDesc1.Location = new System.Drawing.Point(301, 43);
+            this.NDesc1.Name = "NDesc1";
+            this.NDesc1.Size = new System.Drawing.Size(73, 26);
+            this.NDesc1.TabIndex = 9;
+            this.NDesc1.Value = new decimal(new int[] {
+            6666,
+            0,
+            0,
+            131072});
+            this.NDesc1.ValueChanged += new System.EventHandler(this.NDesc1_ValueChanged);
+            this.NDesc1.Click += new System.EventHandler(this.NDesc1_Click);
+            this.NDesc1.Enter += new System.EventHandler(this.NDesc1_Enter);
+            this.NDesc1.Leave += new System.EventHandler(this.NDesc1_Leave);
             // 
             // NCantidad
             // 
-            this.NCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NCantidad.Location = new System.Drawing.Point(122, 43);
             this.NCantidad.Maximum = new decimal(new int[] {
             5000,
@@ -180,14 +208,17 @@
             0,
             0,
             0});
+            this.NCantidad.Click += new System.EventHandler(this.NCantidad_Click);
+            this.NCantidad.Enter += new System.EventHandler(this.NCantidad_Enter);
+            this.NCantidad.Leave += new System.EventHandler(this.NCantidad_Leave);
             // 
             // BtnAgregar
             // 
-            this.BtnAgregar.Location = new System.Drawing.Point(569, 43);
+            this.BtnAgregar.Location = new System.Drawing.Point(613, 72);
             this.BtnAgregar.Name = "BtnAgregar";
-            this.BtnAgregar.Size = new System.Drawing.Size(62, 26);
-            this.BtnAgregar.TabIndex = 19;
-            this.BtnAgregar.Text = "- - -";
+            this.BtnAgregar.Size = new System.Drawing.Size(85, 26);
+            this.BtnAgregar.TabIndex = 14;
+            this.BtnAgregar.Text = "AGREGAR";
             this.BtnAgregar.UseVisualStyleBackColor = true;
             this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
             // 
@@ -196,23 +227,11 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label7.Location = new System.Drawing.Point(460, 25);
+            this.label7.Location = new System.Drawing.Point(307, 24);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(103, 18);
+            this.label7.Size = new System.Drawing.Size(58, 18);
             this.label7.TabIndex = 234;
-            this.label7.Text = "DESCUENTO";
-            // 
-            // TxtPrecioCaja
-            // 
-            this.TxtPrecioCaja.BackColor = System.Drawing.SystemColors.Window;
-            this.TxtPrecioCaja.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtPrecioCaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtPrecioCaja.ForeColor = System.Drawing.Color.Black;
-            this.TxtPrecioCaja.Location = new System.Drawing.Point(348, 45);
-            this.TxtPrecioCaja.Name = "TxtPrecioCaja";
-            this.TxtPrecioCaja.Size = new System.Drawing.Size(106, 24);
-            this.TxtPrecioCaja.TabIndex = 9;
-            this.TxtPrecioCaja.Leave += new System.EventHandler(this.TxtPrecioCaja_Leave);
+            this.label7.Text = "DESC1";
             // 
             // Malla
             // 
@@ -271,128 +290,16 @@
             this.Malla.MouseEnter += new System.EventHandler(this.Malla_MouseEnter);
             this.Malla.MouseLeave += new System.EventHandler(this.Malla_MouseLeave);
             // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "PRODUCTOID";
-            this.Column3.Name = "Column3";
-            this.Column3.Visible = false;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "PRODUCTO";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 150;
-            // 
-            // Column17
-            // 
-            this.Column17.HeaderText = "LABORATORIO";
-            this.Column17.Name = "Column17";
-            this.Column17.Width = 85;
-            // 
-            // Column18
-            // 
-            this.Column18.HeaderText = "STOCK";
-            this.Column18.Name = "Column18";
-            this.Column18.Width = 50;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "CANT.";
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 50;
-            // 
-            // Column19
-            // 
-            this.Column19.HeaderText = "PCAJA";
-            this.Column19.Name = "Column19";
-            this.Column19.Width = 80;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "PCOMPRA";
-            this.Column8.Name = "Column8";
-            this.Column8.Width = 80;
-            // 
-            // Column9
-            // 
-            this.Column9.FillWeight = 50F;
-            this.Column9.HeaderText = "DESC.";
-            this.Column9.Name = "Column9";
-            this.Column9.Width = 50;
-            // 
-            // Column11
-            // 
-            this.Column11.FillWeight = 50F;
-            this.Column11.HeaderText = "IMP.1";
-            this.Column11.Name = "Column11";
-            this.Column11.Width = 50;
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "IMP.2";
-            this.Column12.Name = "Column12";
-            this.Column12.Width = 50;
-            // 
-            // Column14
-            // 
-            this.Column14.HeaderText = "IMPORTE";
-            this.Column14.Name = "Column14";
-            this.Column14.Width = 80;
-            // 
-            // Column15
-            // 
-            this.Column15.HeaderText = "IMPUESTOS";
-            this.Column15.Name = "Column15";
-            this.Column15.Visible = false;
-            this.Column15.Width = 80;
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "IMPORTE NETO";
-            this.Column13.Name = "Column13";
-            this.Column13.Width = 115;
-            // 
-            // Column16
-            // 
-            this.Column16.HeaderText = "CANTIMP";
-            this.Column16.Name = "Column16";
-            this.Column16.Visible = false;
-            this.Column16.Width = 50;
-            // 
-            // Column20
-            // 
-            this.Column20.HeaderText = "LOTE";
-            this.Column20.Name = "Column20";
-            this.Column20.Width = 50;
-            // 
-            // Column21
-            // 
-            this.Column21.HeaderText = "CADUCIDAD";
-            this.Column21.Name = "Column21";
-            this.Column21.Width = 80;
-            // 
             // label21
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label21.Location = new System.Drawing.Point(348, 25);
+            this.label21.Location = new System.Drawing.Point(204, 24);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(106, 18);
+            this.label21.Size = new System.Drawing.Size(97, 18);
             this.label21.TabIndex = 232;
-            this.label21.Text = "PRECIO CAJA";
-            // 
-            // TxtPrecioCompra
-            // 
-            this.TxtPrecioCompra.BackColor = System.Drawing.SystemColors.Window;
-            this.TxtPrecioCompra.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtPrecioCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtPrecioCompra.ForeColor = System.Drawing.Color.Black;
-            this.TxtPrecioCompra.Location = new System.Drawing.Point(207, 45);
-            this.TxtPrecioCompra.Name = "TxtPrecioCompra";
-            this.TxtPrecioCompra.Size = new System.Drawing.Size(135, 24);
-            this.TxtPrecioCompra.TabIndex = 8;
-            this.TxtPrecioCompra.Leave += new System.EventHandler(this.TxtPrecioCompra_Leave);
+            this.label21.Text = "PRECIO CJA";
             // 
             // label5
             // 
@@ -418,14 +325,21 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.NDesc);
+            this.groupBox2.Controls.Add(this.NDesc2);
+            this.groupBox2.Controls.Add(this.label28);
+            this.groupBox2.Controls.Add(this.NCostoUlt);
+            this.groupBox2.Controls.Add(this.NImporte);
+            this.groupBox2.Controls.Add(this.NCostoU);
+            this.groupBox2.Controls.Add(this.NprecioLista);
+            this.groupBox2.Controls.Add(this.NPrecioCaja);
+            this.groupBox2.Controls.Add(this.label30);
+            this.groupBox2.Controls.Add(this.BtnAgregar);
+            this.groupBox2.Controls.Add(this.label29);
+            this.groupBox2.Controls.Add(this.NDesc1);
             this.groupBox2.Controls.Add(this.TxtDescripcion);
             this.groupBox2.Controls.Add(this.NCantidad);
-            this.groupBox2.Controls.Add(this.BtnAgregar);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.TxtPrecioCaja);
             this.groupBox2.Controls.Add(this.label21);
-            this.groupBox2.Controls.Add(this.TxtPrecioCompra);
             this.groupBox2.Controls.Add(this.label27);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.TxtProductoId);
@@ -438,16 +352,199 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "PARTIDAS DE LA COMPRA";
             // 
+            // NDesc2
+            // 
+            this.NDesc2.DecimalPlaces = 2;
+            this.NDesc2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NDesc2.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.NDesc2.Location = new System.Drawing.Point(466, 43);
+            this.NDesc2.Name = "NDesc2";
+            this.NDesc2.Size = new System.Drawing.Size(66, 26);
+            this.NDesc2.TabIndex = 11;
+            this.NDesc2.Click += new System.EventHandler(this.NDesc2_Click);
+            this.NDesc2.Enter += new System.EventHandler(this.NDesc2_Enter);
+            this.NDesc2.Leave += new System.EventHandler(this.NDesc2_Leave_1);
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label28.Location = new System.Drawing.Point(469, 25);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(58, 18);
+            this.label28.TabIndex = 248;
+            this.label28.Text = "DESC2";
+            // 
+            // NCostoUlt
+            // 
+            this.NCostoUlt.DecimalPlaces = 2;
+            this.NCostoUlt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NCostoUlt.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.NCostoUlt.Location = new System.Drawing.Point(535, 72);
+            this.NCostoUlt.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.NCostoUlt.Minimum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            -2147483648});
+            this.NCostoUlt.Name = "NCostoUlt";
+            this.NCostoUlt.Size = new System.Drawing.Size(74, 26);
+            this.NCostoUlt.TabIndex = 246;
+            this.NCostoUlt.TabStop = false;
+            // 
+            // NImporte
+            // 
+            this.NImporte.DecimalPlaces = 2;
+            this.NImporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NImporte.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.NImporte.Location = new System.Drawing.Point(612, 42);
+            this.NImporte.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.NImporte.Minimum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            -2147483648});
+            this.NImporte.Name = "NImporte";
+            this.NImporte.Size = new System.Drawing.Size(85, 26);
+            this.NImporte.TabIndex = 13;
+            this.NImporte.Click += new System.EventHandler(this.NImporte_Click);
+            this.NImporte.Enter += new System.EventHandler(this.NImporte_Enter);
+            this.NImporte.Leave += new System.EventHandler(this.NImporte_Leave);
+            // 
+            // NCostoU
+            // 
+            this.NCostoU.DecimalPlaces = 2;
+            this.NCostoU.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NCostoU.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.NCostoU.Location = new System.Drawing.Point(534, 41);
+            this.NCostoU.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.NCostoU.Minimum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            -2147483648});
+            this.NCostoU.Name = "NCostoU";
+            this.NCostoU.Size = new System.Drawing.Size(74, 26);
+            this.NCostoU.TabIndex = 12;
+            this.NCostoU.Click += new System.EventHandler(this.NCostoU_Click);
+            this.NCostoU.Enter += new System.EventHandler(this.NCostoU_Enter);
+            this.NCostoU.Leave += new System.EventHandler(this.NCostoU_Leave);
+            // 
+            // NprecioLista
+            // 
+            this.NprecioLista.DecimalPlaces = 2;
+            this.NprecioLista.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NprecioLista.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.NprecioLista.Location = new System.Drawing.Point(380, 43);
+            this.NprecioLista.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.NprecioLista.Minimum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            -2147483648});
+            this.NprecioLista.Name = "NprecioLista";
+            this.NprecioLista.Size = new System.Drawing.Size(84, 26);
+            this.NprecioLista.TabIndex = 10;
+            this.NprecioLista.Click += new System.EventHandler(this.NprecioLista_Click);
+            this.NprecioLista.Enter += new System.EventHandler(this.NprecioLista_Enter);
+            this.NprecioLista.Leave += new System.EventHandler(this.NprecioLista_Leave);
+            // 
+            // NPrecioCaja
+            // 
+            this.NPrecioCaja.DecimalPlaces = 2;
+            this.NPrecioCaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NPrecioCaja.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.NPrecioCaja.Location = new System.Drawing.Point(205, 43);
+            this.NPrecioCaja.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.NPrecioCaja.Minimum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            -2147483648});
+            this.NPrecioCaja.Name = "NPrecioCaja";
+            this.NPrecioCaja.Size = new System.Drawing.Size(92, 26);
+            this.NPrecioCaja.TabIndex = 8;
+            this.NPrecioCaja.Click += new System.EventHandler(this.NPrecioCaja_Click);
+            this.NPrecioCaja.Enter += new System.EventHandler(this.NPrecioCaja_Enter);
+            this.NPrecioCaja.Leave += new System.EventHandler(this.NPrecioCaja_Leave);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label30.Location = new System.Drawing.Point(611, 24);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(76, 18);
+            this.label30.TabIndex = 241;
+            this.label30.Text = "IMPORTE";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label29.Location = new System.Drawing.Point(378, 25);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(77, 18);
+            this.label29.TabIndex = 239;
+            this.label29.Text = "PRECIO L";
+            // 
             // label27
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label27.Location = new System.Drawing.Point(207, 25);
+            this.label27.Location = new System.Drawing.Point(528, 24);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(135, 18);
+            this.label27.Size = new System.Drawing.Size(77, 18);
             this.label27.TabIndex = 230;
-            this.label27.Text = "PRECIO COMPRA";
+            this.label27.Text = "COSTO U";
             // 
             // TxtProductoId
             // 
@@ -652,7 +749,7 @@
             this.TxtU4.Location = new System.Drawing.Point(6, 215);
             this.TxtU4.Name = "TxtU4";
             this.TxtU4.Size = new System.Drawing.Size(91, 24);
-            this.TxtU4.TabIndex = 17;
+            this.TxtU4.TabIndex = 21;
             this.TxtU4.Leave += new System.EventHandler(this.TxtU4_Leave);
             // 
             // label15
@@ -674,7 +771,7 @@
             this.TxtPrecio3.Location = new System.Drawing.Point(103, 157);
             this.TxtPrecio3.Name = "TxtPrecio3";
             this.TxtPrecio3.Size = new System.Drawing.Size(91, 24);
-            this.TxtPrecio3.TabIndex = 16;
+            this.TxtPrecio3.TabIndex = 20;
             this.TxtPrecio3.Leave += new System.EventHandler(this.TxtPrecio3_Leave);
             // 
             // label16
@@ -720,7 +817,7 @@
             this.TxtU3.Location = new System.Drawing.Point(6, 157);
             this.TxtU3.Name = "TxtU3";
             this.TxtU3.Size = new System.Drawing.Size(91, 24);
-            this.TxtU3.TabIndex = 15;
+            this.TxtU3.TabIndex = 19;
             this.TxtU3.Leave += new System.EventHandler(this.TxtU3_Leave);
             // 
             // label10
@@ -742,7 +839,7 @@
             this.TxtPrecio2.Location = new System.Drawing.Point(103, 102);
             this.TxtPrecio2.Name = "TxtPrecio2";
             this.TxtPrecio2.Size = new System.Drawing.Size(91, 24);
-            this.TxtPrecio2.TabIndex = 14;
+            this.TxtPrecio2.TabIndex = 18;
             this.TxtPrecio2.Leave += new System.EventHandler(this.TxtPrecio2_Leave);
             // 
             // BtnAceptar
@@ -785,7 +882,7 @@
             this.TxtPrecio4.Location = new System.Drawing.Point(103, 215);
             this.TxtPrecio4.Name = "TxtPrecio4";
             this.TxtPrecio4.Size = new System.Drawing.Size(91, 24);
-            this.TxtPrecio4.TabIndex = 18;
+            this.TxtPrecio4.TabIndex = 22;
             this.TxtPrecio4.Leave += new System.EventHandler(this.TxtPrecio4_Leave);
             // 
             // label19
@@ -922,7 +1019,7 @@
             this.TxtU2.Location = new System.Drawing.Point(6, 102);
             this.TxtU2.Name = "TxtU2";
             this.TxtU2.Size = new System.Drawing.Size(91, 24);
-            this.TxtU2.TabIndex = 13;
+            this.TxtU2.TabIndex = 17;
             this.TxtU2.Leave += new System.EventHandler(this.TxtU2_Leave);
             // 
             // label9
@@ -944,7 +1041,7 @@
             this.TxtPrecio1.Location = new System.Drawing.Point(103, 45);
             this.TxtPrecio1.Name = "TxtPrecio1";
             this.TxtPrecio1.Size = new System.Drawing.Size(91, 24);
-            this.TxtPrecio1.TabIndex = 12;
+            this.TxtPrecio1.TabIndex = 16;
             this.TxtPrecio1.Leave += new System.EventHandler(this.TxtPrecio1_Leave);
             // 
             // label24
@@ -990,7 +1087,7 @@
             this.TxtU1.Location = new System.Drawing.Point(6, 45);
             this.TxtU1.Name = "TxtU1";
             this.TxtU1.Size = new System.Drawing.Size(91, 24);
-            this.TxtU1.TabIndex = 11;
+            this.TxtU1.TabIndex = 15;
             this.TxtU1.Leave += new System.EventHandler(this.TxtU1_Leave);
             // 
             // label13
@@ -1036,7 +1133,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label4.Location = new System.Drawing.Point(528, 26);
+            this.label4.Location = new System.Drawing.Point(528, 25);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(164, 18);
             this.label4.TabIndex = 237;
@@ -1046,7 +1143,7 @@
             // 
             this.DpFechaVencimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.DpFechaVencimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DpFechaVencimiento.Location = new System.Drawing.Point(528, 45);
+            this.DpFechaVencimiento.Location = new System.Drawing.Point(528, 44);
             this.DpFechaVencimiento.Name = "DpFechaVencimiento";
             this.DpFechaVencimiento.Size = new System.Drawing.Size(164, 24);
             this.DpFechaVencimiento.TabIndex = 5;
@@ -1151,6 +1248,106 @@
             this.label6.TabIndex = 224;
             this.label6.Text = "♥ALMACEN";
             // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "PRODUCTOID";
+            this.Column3.Name = "Column3";
+            this.Column3.Visible = false;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "PRODUCTO";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 150;
+            // 
+            // Column17
+            // 
+            this.Column17.HeaderText = "LABORATORIO";
+            this.Column17.Name = "Column17";
+            this.Column17.Width = 85;
+            // 
+            // Column18
+            // 
+            this.Column18.HeaderText = "STOCK";
+            this.Column18.Name = "Column18";
+            this.Column18.Width = 50;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "CANT.";
+            this.Column7.Name = "Column7";
+            this.Column7.Width = 50;
+            // 
+            // Column19
+            // 
+            this.Column19.HeaderText = "PCAJA";
+            this.Column19.Name = "Column19";
+            this.Column19.Width = 80;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "PCOSTO";
+            this.Column8.Name = "Column8";
+            this.Column8.Width = 80;
+            // 
+            // Column9
+            // 
+            this.Column9.FillWeight = 50F;
+            this.Column9.HeaderText = "DESC.";
+            this.Column9.Name = "Column9";
+            this.Column9.Width = 50;
+            // 
+            // Column11
+            // 
+            this.Column11.FillWeight = 50F;
+            this.Column11.HeaderText = "IMP.1";
+            this.Column11.Name = "Column11";
+            this.Column11.Width = 50;
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "IMP.2";
+            this.Column12.Name = "Column12";
+            this.Column12.Width = 50;
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "IMPORTE";
+            this.Column14.Name = "Column14";
+            this.Column14.Width = 80;
+            // 
+            // Column15
+            // 
+            this.Column15.HeaderText = "IMPUESTOS";
+            this.Column15.Name = "Column15";
+            this.Column15.Visible = false;
+            this.Column15.Width = 80;
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "IMPORTE NETO";
+            this.Column13.Name = "Column13";
+            this.Column13.Width = 115;
+            // 
+            // Column16
+            // 
+            this.Column16.HeaderText = "CANTIMP";
+            this.Column16.Name = "Column16";
+            this.Column16.Visible = false;
+            this.Column16.Width = 50;
+            // 
+            // Column20
+            // 
+            this.Column20.HeaderText = "LOTE";
+            this.Column20.Name = "Column20";
+            this.Column20.Width = 50;
+            // 
+            // Column21
+            // 
+            this.Column21.HeaderText = "CADUCIDAD";
+            this.Column21.Name = "Column21";
+            this.Column21.Width = 80;
+            // 
             // FrmEntradaPorCompra2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1168,11 +1365,18 @@
             this.Name = "FrmEntradaPorCompra2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmEntradaPorCompra2";
-            ((System.ComponentModel.ISupportInitialize)(this.NDesc)).EndInit();
+            this.Load += new System.EventHandler(this.FrmEntradaPorCompra2_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.NDesc1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NCantidad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Malla)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NDesc2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NCostoUlt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NImporte)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NCostoU)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NprecioLista)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NPrecioCaja)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbxImagen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridImpuestos)).EndInit();
             this.groupBox3.ResumeLayout(false);
@@ -1189,14 +1393,12 @@
         #endregion
         private System.Windows.Forms.TextBox TxtDescripcion;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.NumericUpDown NDesc;
+        private System.Windows.Forms.NumericUpDown NDesc1;
         private System.Windows.Forms.NumericUpDown NCantidad;
         private System.Windows.Forms.Button BtnAgregar;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox TxtPrecioCaja;
         private System.Windows.Forms.DataGridView Malla;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox TxtPrecioCompra;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -1260,6 +1462,15 @@
         private System.Windows.Forms.TextBox TxtProvedorId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.NumericUpDown NImporte;
+        private System.Windows.Forms.NumericUpDown NCostoU;
+        private System.Windows.Forms.NumericUpDown NprecioLista;
+        private System.Windows.Forms.NumericUpDown NPrecioCaja;
+        private System.Windows.Forms.NumericUpDown NCostoUlt;
+        private System.Windows.Forms.NumericUpDown NDesc2;
+        private System.Windows.Forms.Label label28;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column17;

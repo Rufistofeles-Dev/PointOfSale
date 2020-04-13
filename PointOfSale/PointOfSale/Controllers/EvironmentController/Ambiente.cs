@@ -31,7 +31,7 @@ namespace PointOfSale.Controllers
         public static Empresa Empresa { get; set; }
         public static string RutaImgs { get; set; }
         public static string PrefijoRutaImg { get; set; }
-
+        public static bool ServerImgAccesible { get; set; }
         public static Informe InformeTicket { get; set; }
         public static Informe InformeFactura { get; set; }
 
@@ -119,7 +119,21 @@ namespace PointOfSale.Controllers
         }
 
 
+        public static bool CheckServerRutas()
+        {
+            var porcentaje = 0;
+            var index = 0;
 
+            var prods = new ProductoController().SelectMany(10);
+            foreach (var p in prods)
+            {
+                if (File.Exists(p.RutaImg))
+                    porcentaje++;
+                index++;
+            }
+
+            if (porcentaje >= 7) return true; else return false;
+        }
         public static Traspaso SerializaPH(string path)
         {
             Traspaso traspaso = new Traspaso();
