@@ -25,7 +25,7 @@ namespace PointOfSale.Models
         }
         public string StandardSecurityConnectionString()
         {
-            return "Server=" + Host + ";Database=" + DbName + ";User Id=" + User + ";Password=" + Password + ";";
+            return "Server=" + Host + @"\" + InstanceName + ";Database=" + DbName + ";User Id=" + User + ";Password=" + Password + ";";
         }
     }
 }

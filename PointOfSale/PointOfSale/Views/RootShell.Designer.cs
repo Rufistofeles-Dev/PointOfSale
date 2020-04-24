@@ -70,7 +70,7 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(154, 22);
             this.toolStripMenuItem1.Text = "Menú principal";
             // 
             // BtnLogin
@@ -88,7 +88,7 @@
             // menúPrincipalToolStripMenuItem
             // 
             this.menúPrincipalToolStripMenuItem.Name = "menúPrincipalToolStripMenuItem";
-            this.menúPrincipalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.menúPrincipalToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.menúPrincipalToolStripMenuItem.Text = "Menú principal";
             // 
             // RootShell
@@ -101,6 +101,7 @@
             this.Name = "RootShell";
             this.Text = "RootShell";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.ResumeLayout(false);

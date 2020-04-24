@@ -20,11 +20,9 @@ namespace PointOfSale.Views
         public RootShell()
         {
             InitializeComponent();
-            Inicializador.IniciliazaConexion();
+
+            
             Inicializador.InicializaListas();
-            Inicializador.InicializaProdiedades();
-            Inicializador.InicializaDatabaseDefaultsValues();
-            Ambiente.InsertaActualizacion();
             GetEmpresaEsta();
         }
 
@@ -61,6 +59,6 @@ namespace PointOfSale.Views
             }
         }
 
-
+       
     }
 }

@@ -51,10 +51,28 @@ namespace PointOfSale.Views.Login
 
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
-            Ambiente.Conexion = CboEmpresa.SelectedItem as Conexion;
-            GetLogin();
-            Close();
+            IniciaRootShell();
         }
+
+        private void IniciaRootShell()
+        {
+            try
+            {
+                Ambiente.Conexion = CboEmpresa.SelectedItem as Conexion;
+                Inicializador.InicializaProdiedades();
+                Inicializador.InicializaDatabaseDefaultsValues();
+                Ambiente.InsertaActualizacion();
+                GetLogin();
+                Close();
+            }
+            catch (Exception ex)
+            {
+                Ambiente.Mensaje(ex.ToString());
+                
+            }
+           
+        }
+
         private void GetLogin()
         {
             var form = new FrmLogin
