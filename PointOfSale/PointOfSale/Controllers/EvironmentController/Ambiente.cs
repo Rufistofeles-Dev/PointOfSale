@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Printing;
@@ -25,6 +26,12 @@ namespace PointOfSale.Controllers
 {
     public static class Ambiente
     {
+
+
+        public static string SqliteConnectionString { get; set; }
+        public static SQLiteConnection SqliteConnection { get; set; }
+        public static Conexion Conexion { get; set; }
+
         public static Dictionary<int, string> CatalgoMensajes { get; set; }
         public static Usuario LoggedUser { get; set; }
         public static Estacion Estacion { get; set; }

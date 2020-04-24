@@ -54,21 +54,29 @@ namespace PointOfSale.Controllers
 
         public static void InicializaProdiedades()
         {
-            Ambiente.RutaImgs = @"C:\Dympos\Compartido\Imgs";
-            Ambiente.PrefijoRutaImg = @"C:\Dympos\Compartido\";
-            Ambiente.Empresa = new EmpresaController().SelectTopOne();
-            Ambiente.reporteController = new ReporteController();
-            Ambiente.ImageList = new System.Windows.Forms.ImageList();
+            try
+            {
+                Ambiente.RutaImgs = @"C:\Dympos\Compartido\Imgs";
+                Ambiente.PrefijoRutaImg = @"C:\Dympos\Compartido\";
+                Ambiente.Empresa = new EmpresaController().SelectTopOne();
+                Ambiente.reporteController = new ReporteController();
+                Ambiente.ImageList = new System.Windows.Forms.ImageList();
 
-            Ambiente.ImageList.TransparentColor = Color.Blue;
-            Ambiente.ImageList.ColorDepth = ColorDepth.Depth24Bit;
-            Ambiente.ImageList.ImageSize = new Size(16, 16);
+                Ambiente.ImageList.TransparentColor = Color.Blue;
+                Ambiente.ImageList.ColorDepth = ColorDepth.Depth24Bit;
+                Ambiente.ImageList.ImageSize = new Size(16, 16);
 
-            Ambiente.ImageList.Images.Add("reports16", Properties.Resources.reports);
-            Ambiente.ImageList.Images.Add("folder16", Properties.Resources.Folder);
-            Ambiente.ImageList.Images.Add("openfolder16", Properties.Resources.FolderOpen);
-            Ambiente.ServerImgAccesible = Ambiente.CheckServerRutas();
+                Ambiente.ImageList.Images.Add("reports16", Properties.Resources.reports);
+                Ambiente.ImageList.Images.Add("folder16", Properties.Resources.Folder);
+                Ambiente.ImageList.Images.Add("openfolder16", Properties.Resources.FolderOpen);
+                Ambiente.ServerImgAccesible = Ambiente.CheckServerRutas();
 
+            }
+            catch (Exception e)
+            {
+
+                Ambiente.Mensaje(e.ToString());
+            }
         }
 
         public static void InicializaDatabaseDefaultsValues()
@@ -344,7 +352,7 @@ namespace PointOfSale.Controllers
             }
 
             if (!Ambiente.ServerImgAccesible)
-                Ambiente.Mensaje("!Advertencia! Las rutas de red indicadas para llegar al servidor no  pasaron la prueba del 75%. Esto causará rendiento deficiente al acceder a recursos en el server.  valor real: "+ Ambiente.ServerImgAccesible);
+                Ambiente.Mensaje("!Advertencia! Las rutas de red indicadas para llegar al servidor no  pasaron la prueba del 75%. Esto causará rendiento deficiente al acceder a recursos en el server.  valor real: " + Ambiente.ServerImgAccesible);
         }
     }
 }

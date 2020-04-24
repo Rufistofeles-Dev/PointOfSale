@@ -1,4 +1,5 @@
 ﻿using PointOfSale.Views;
+using PointOfSale.Views.Login;
 using System;
 using System.Collections.Generic;
 using System.Linq;

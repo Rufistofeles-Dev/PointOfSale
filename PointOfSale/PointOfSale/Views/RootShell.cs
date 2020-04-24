@@ -1,5 +1,6 @@
 ﻿using DYM.Views;
 using PointOfSale.Controllers;
+using PointOfSale.Views.Login;
 using PointOfSale.Views.ReportDesigner;
 using System;
 using System.Collections.Generic;
@@ -24,12 +25,20 @@ namespace PointOfSale.Views
             Inicializador.InicializaProdiedades();
             Inicializador.InicializaDatabaseDefaultsValues();
             Ambiente.InsertaActualizacion();
-            GetLogin();
+            GetEmpresaEsta();
         }
 
         private void GetLogin()
         {
             var form = new FrmLogin
+            {
+                MdiParent = this
+            };
+            form.Show();
+        }
+        private void GetEmpresaEsta()
+        {
+            var form = new FrmEmpresaEsta
             {
                 MdiParent = this
             };
@@ -52,6 +61,6 @@ namespace PointOfSale.Views
             }
         }
 
-       
+
     }
 }
