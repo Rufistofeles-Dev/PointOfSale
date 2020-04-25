@@ -629,6 +629,7 @@ namespace PointOfSale.Views.Modulos.Logistica
                         ActualizaPrecios();
                         AfectaMovsInv();
                         AfectaStock();
+                        Ambiente.InformeFactura
                         Reports.empresa = empresa;
                         Reports.EntradaXCompra(compra, partidas);
                         if (!pendiente)

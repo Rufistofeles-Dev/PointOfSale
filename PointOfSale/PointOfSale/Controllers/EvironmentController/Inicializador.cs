@@ -334,6 +334,7 @@ namespace PointOfSale.Controllers
                     Ambiente.InformeFactura = db.Informe.FirstOrDefault(x => x.InformeId.Equals(
                                              db.InformeConfiguracion.Where(y => y.Factura == true)
                                              .FirstOrDefault().InformeId));
+                    //Ambiente.InformeCompra
 
 
                     if (Ambiente.InformeTicket == null)

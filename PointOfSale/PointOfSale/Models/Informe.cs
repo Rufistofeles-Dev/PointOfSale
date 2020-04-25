@@ -7,7 +7,6 @@ namespace PointOfSale.Models
     {
         public Informe()
         {
-            InformeConfiguracion = new HashSet<InformeConfiguracion>();
             InformeParametro = new HashSet<InformeParametro>();
         }
 
@@ -19,7 +18,6 @@ namespace PointOfSale.Models
         public int InformeCateforiaId { get; set; }
 
         public virtual InformeCategoria InformeCateforia { get; set; }
-        public virtual ICollection<InformeConfiguracion> InformeConfiguracion { get; set; }
         public virtual ICollection<InformeParametro> InformeParametro { get; set; }
     }
 }

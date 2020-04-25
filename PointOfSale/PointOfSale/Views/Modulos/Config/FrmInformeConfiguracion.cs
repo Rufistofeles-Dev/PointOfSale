@@ -200,6 +200,7 @@ namespace PointOfSale.Views.Modulos.Config
                 informeConfiguracion.InformeId = TxtReporteId.Text.Trim();
                 informeConfiguracion.Ticket = ChkTicket.Checked;
                 informeConfiguracion.Factura = ChkFactura.Checked;
+                informeConfiguracion.Compra = ChkCompras.Checked;
                 informeConfiguracion.CreatedAt = DateTime.Now;
                 informeConfiguracion.UpdatedAt = DateTime.Now;
                 informeConfiguracion.CreatedBy = Ambiente.LoggedUser.UsuarioId;
@@ -226,6 +227,7 @@ namespace PointOfSale.Views.Modulos.Config
                 informeConfiguracion.InformeId = TxtReporteId.Text.Trim();
                 informeConfiguracion.Ticket = ChkTicket.Checked;
                 informeConfiguracion.Factura = ChkFactura.Checked;
+                informeConfiguracion.Compra = ChkCompras.Checked;
                 informeConfiguracion.UpdatedAt = DateTime.Now;
                 informeConfiguracion.CreatedBy = Ambiente.LoggedUser.UsuarioId;
                 if (informeConfiguracionController.Update(informeConfiguracion))

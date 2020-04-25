@@ -44,7 +44,7 @@ namespace PointOfSale.Controllers
 
 
         public static ReporteController reporteController { get; set; }
-
+        public static object InformeCompra { get; internal set; }
 
         public static ImageList ImageList;
 

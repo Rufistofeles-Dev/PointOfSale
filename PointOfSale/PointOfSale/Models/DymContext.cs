@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using PointOfSale.Controllers;
 
 namespace PointOfSale.Models
 {
@@ -95,8 +94,8 @@ namespace PointOfSale.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                //optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=Dym;Trusted_Connection=True;");
-                optionsBuilder.UseSqlServer(Ambiente.Conexion.StandardSecurityConnectionString());
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=Dym;Trusted_Connection=True;");
             }
         }
 
@@ -1278,12 +1277,6 @@ namespace PointOfSale.Models
                 entity.Property(e => e.UpdatedBy)
                     .IsRequired()
                     .HasMaxLength(50);
-
-                entity.HasOne(d => d.Informe)
-                    .WithMany(p => p.InformeConfiguracion)
-                    .HasForeignKey(d => d.InformeId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_InformeConfiguracion_Informe");
             });
 
             modelBuilder.Entity<InformeParametro>(entity =>

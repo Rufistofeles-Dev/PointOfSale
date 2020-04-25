@@ -7,6 +7,7 @@ namespace PointOfSale.Models
     {
         public int InformeConfiguracionId { get; set; }
         public string InformeId { get; set; }
+        public bool Compra { get; set; }
         public string Regla { get; set; }
         public bool Ticket { get; set; }
         public bool Factura { get; set; }
@@ -14,7 +15,5 @@ namespace PointOfSale.Models
         public string CreatedBy { get; set; }
         public string UpdatedBy { get; set; }
         public DateTime UpdatedAt { get; set; }
-
-        public virtual Informe Informe { get; set; }
     }
 }
