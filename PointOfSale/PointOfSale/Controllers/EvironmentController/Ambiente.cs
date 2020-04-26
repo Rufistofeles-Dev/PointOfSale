@@ -17,9 +17,7 @@ using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PointOfSale.Controllers
@@ -41,14 +39,13 @@ namespace PointOfSale.Controllers
         public static bool ServerImgAccesible { get; set; }
         public static Informe InformeTicket { get; set; }
         public static Informe InformeFactura { get; set; }
-
-
+        public static StiReport stiReport { get; set; }
         public static ReporteController reporteController { get; set; }
-        public static object InformeCompra { get; internal set; }
+        public static Informe InformeCompra { get; set; }
 
         public static ImageList ImageList;
 
-        private static StiReport stiReport;
+
         private static Reporte reporte;
         private static List<Parametro> ReportParams;
 
@@ -1064,9 +1061,9 @@ namespace PointOfSale.Controllers
                     var file = empresa.DirectorioTickets + "TICKET " + venta.NoRef.ToString() + "_" + venta.CreatedBy + "_" + Ambiente.TimeText((DateTime)venta.CreatedAt) + ".PDF"; ;
 
 
-                    stiReport = new StiReport();
-                    //stiReport.sapa
 
+                    //stiReport.sapa
+                    stiReport = new StiReport();
                     stiReport.LoadPackedReportFromString(InformeTicket.Codigo);
                     stiReport.Dictionary.Variables["ventaId"].ValueObject = venta.VentaId;
 

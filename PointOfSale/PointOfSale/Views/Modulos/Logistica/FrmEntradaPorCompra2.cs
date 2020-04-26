@@ -2,8 +2,10 @@
 using PointOfSale.Controllers.EvironmentController;
 using PointOfSale.Models;
 using PointOfSale.Views.Modulos.Busquedas;
+using Stimulsoft.Report;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -445,7 +447,7 @@ namespace PointOfSale.Views.Modulos.Logistica
         {
             if ((rowIndex < partidas.Count))
             {
-                if (impuesto > 1) 
+                if (impuesto > 1)
                 {
                     partidas[rowIndex].Impuesto2 = impuesto / 100;
                     Malla.Rows[rowIndex].Cells[9].Value = impuesto / 100;
@@ -629,9 +631,23 @@ namespace PointOfSale.Views.Modulos.Logistica
                         ActualizaPrecios();
                         AfectaMovsInv();
                         AfectaStock();
-                        Ambiente.InformeFactura
-                        Reports.empresa = empresa;
-                        Reports.EntradaXCompra(compra, partidas);
+                        if (Ambiente.InformeCompra != null)
+                        {
+                            Ambiente.stiReport = new Stimulsoft.Report.StiReport();
+                            Ambiente.stiReport.LoadPackedReportFromString(Ambiente.InformeCompra.Codigo);
+                            Ambiente.stiReport.Dictionary.Variables["CompraId"].ValueObject = compra.CompraId;
+
+
+                            //Fill dictionary
+                            var file = empresa.DirectorioReportes + "COMPRA " + compra.CompraId + ".PDF";
+
+
+                            Ambiente.stiReport.Render(false);
+                            Ambiente.stiReport.ExportDocument(StiExportFormat.Pdf, file);
+                            Process.Start(file);
+                        }
+
+
                         if (!pendiente)
                             ResetPDC();
                         //Ambiente.Mensaje("Proceso concluido con éxito");
