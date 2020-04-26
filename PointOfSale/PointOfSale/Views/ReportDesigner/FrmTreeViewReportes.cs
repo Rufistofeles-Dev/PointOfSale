@@ -136,9 +136,9 @@ namespace PointOfSale.Views.ReportDesigner
                     //Add data to datastore
                     stiReport = new StiReport();
                     //stiReport.LoadEncryptedReportFromString(informe.Codigo, informe.Guid);
-                   stiReport.LoadPackedReportFromString(informe.Codigo);
+                    stiReport.LoadPackedReportFromString(informe.Codigo);
                     stiReport.Dictionary.Databases.Clear();
-                    stiReport.Dictionary.Databases.Add(new StiSqlDatabase("Dym", @"Data Source=.\SQLEXPRESS;Initial Catalog=Dym;Integrated Security=True;"));
+                    stiReport.Dictionary.Databases.Add(new StiSqlDatabase("Dym", Ambiente.Conexion.StandardSecurityConnectionString()));
 
                     designer.Report = stiReport;
                 }
