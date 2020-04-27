@@ -102,6 +102,8 @@ namespace PointOfSale.Views.Modulos.Config
                 TxtDescrip.Text = informe.Descripcion;
                 ChkFactura.Checked = informeConfiguracion.Factura;
                 ChkTicket.Checked = informeConfiguracion.Ticket;
+                ChkCompras.Checked = informeConfiguracion.Compra;
+                ChkCorte.Checked = informeConfiguracion.Corte;
 
                 LblCreatedby.Text = informeConfiguracion.CreatedBy + " el " + informeConfiguracion.CreatedAt.ToString("dd-MM-yyyy");
                 LblUpdatedBy.Text = informeConfiguracion.UpdatedBy + " el " + informeConfiguracion.UpdatedAt.ToString("dd-MM-yyyy");
@@ -201,6 +203,7 @@ namespace PointOfSale.Views.Modulos.Config
                 informeConfiguracion.Ticket = ChkTicket.Checked;
                 informeConfiguracion.Factura = ChkFactura.Checked;
                 informeConfiguracion.Compra = ChkCompras.Checked;
+                informeConfiguracion.Corte = ChkCorte.Checked;
                 informeConfiguracion.CreatedAt = DateTime.Now;
                 informeConfiguracion.UpdatedAt = DateTime.Now;
                 informeConfiguracion.CreatedBy = Ambiente.LoggedUser.UsuarioId;
@@ -228,6 +231,7 @@ namespace PointOfSale.Views.Modulos.Config
                 informeConfiguracion.Ticket = ChkTicket.Checked;
                 informeConfiguracion.Factura = ChkFactura.Checked;
                 informeConfiguracion.Compra = ChkCompras.Checked;
+                informeConfiguracion.Corte = ChkCorte.Checked;
                 informeConfiguracion.UpdatedAt = DateTime.Now;
                 informeConfiguracion.CreatedBy = Ambiente.LoggedUser.UsuarioId;
                 if (informeConfiguracionController.Update(informeConfiguracion))

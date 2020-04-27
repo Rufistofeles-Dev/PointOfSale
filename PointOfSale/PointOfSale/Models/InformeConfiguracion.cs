@@ -8,6 +8,7 @@ namespace PointOfSale.Models
         public int InformeConfiguracionId { get; set; }
         public string InformeId { get; set; }
         public bool Compra { get; set; }
+        public bool Corte { get; set; }
         public string Regla { get; set; }
         public bool Ticket { get; set; }
         public bool Factura { get; set; }

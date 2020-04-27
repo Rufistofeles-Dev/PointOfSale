@@ -339,6 +339,10 @@ namespace PointOfSale.Controllers
                                              db.InformeConfiguracion.Where(y => y.Compra == true)
                                              .FirstOrDefault().InformeId));
 
+                    Ambiente.InformeCorte = db.Informe.FirstOrDefault(x => x.InformeId.Equals(
+                                           db.InformeConfiguracion.Where(y => y.Corte == true)
+                                           .FirstOrDefault().InformeId));
+
 
                     if (Ambiente.InformeTicket == null)
                         Ambiente.Mensaje("!Advertencia! El formato de ticket no existe, esto causará problemas");

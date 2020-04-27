@@ -4,6 +4,7 @@ using PointOfSale.Views.Modulos.PuntoVenta;
 using Stimulsoft.Report;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace PointOfSale.Views.Menus
@@ -34,24 +35,28 @@ namespace PointOfSale.Views.Menus
 
         private void BtnCerrarCaja_Click(object sender, EventArgs e)
         {
-           
+
 
 
             try
             {
-                if (Ambiente.Empresa.FormatoCortes.Equals("CORTEXESTACION"))
-                {
-                    Ambiente.AddReportParam("[EstacionId]", "'" + Ambiente.Estacion.EstacionId + "'", true);
-                    Ambiente.AddReportParam("[FechaSistema]", Ambiente.FechaSQL(DateTime.Now));
-                    Ambiente.ShowReport("CORTEXESTACION", Ambiente.GetReportParam());
-                }
-                else if (Ambiente.Empresa.FormatoCortes.Equals("CORTEXUSUARIO"))
-                {
-                    Ambiente.AddReportParam("[UsuarioId]", "'" + Ambiente.LoggedUser.UsuarioId + "'", true);
-                    Ambiente.AddReportParam("[FechaSistema]", Ambiente.FechaSQL(DateTime.Now));
-                    Ambiente.ShowReport("CORTEXUSUARIO", Ambiente.GetReportParam());
 
-                }
+
+
+
+                Ambiente.stiReport = new StiReport();
+                Ambiente.stiReport.LoadPackedReportFromString(Ambiente.InformeCorte.Codigo);
+
+                Ambiente.stiReport.Dictionary.Variables["FechaSistema"].ValueObject = DateTime.Now.Date;
+                Ambiente.stiReport.Dictionary.Variables["UsuarioId"].ValueObject = Ambiente.LoggedUser.UsuarioId;
+                Ambiente.stiReport.Dictionary.Variables["Creador"].ValueObject = Ambiente.LoggedUser.Nombre;
+                Ambiente.stiReport.Dictionary.Variables["Estacion"].ValueObject = Ambiente.Estacion.EstacionId;
+                Ambiente.S1 = Ambiente.Empresa.DirectorioCortes + "CORTE " + Ambiente.LoggedUser.Nombre + "_" + Ambiente.TimeText(DateTime.Now) + ".PDF"; ;
+
+                Ambiente.stiReport.Render(true);
+                Ambiente.stiReport.ExportDocument(StiExportFormat.Pdf, Ambiente.S1);
+
+                Process.Start(Ambiente.S1);
             }
             catch (Exception ex)
             {
