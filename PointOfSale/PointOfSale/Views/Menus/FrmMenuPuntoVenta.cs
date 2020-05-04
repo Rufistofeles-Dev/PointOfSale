@@ -41,9 +41,6 @@ namespace PointOfSale.Views.Menus
             try
             {
 
-
-
-
                 Ambiente.stiReport = new StiReport();
                 Ambiente.stiReport.LoadPackedReportFromString(Ambiente.InformeCorte.Codigo);
 
