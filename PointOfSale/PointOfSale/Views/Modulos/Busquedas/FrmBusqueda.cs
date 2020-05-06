@@ -45,16 +45,28 @@ namespace PointOfSale.Views.Modulos.Busquedas
         public FrmBusqueda(string searchText, int tipoBuscqueda, bool licencia = false)
         {
 
+            if (searchText.Length < 2)
+            {
+                Ambiente.Mensaje("Ingrese almenos 3 caracteres para filtrar");
+                Ambiente.CancelaProceso = true;
+            }
+
             InitializeComponent();
             SearchText = searchText;
             Catalogo = tipoBuscqueda;
             SoloConLicencia = licencia;
-            CargaGrid();
+            if (!Ambiente.CancelaProceso)
+                CargaGrid();
         }
 
         private void FrmBusqueda_Load(object sender, EventArgs e)
         {
-            // CargaGrid();
+            if (Ambiente.CancelaProceso)
+            {
+                Ambiente.CancelaProceso = false;
+                Close();
+            }
+
         }
 
         private void CargaGrid()
