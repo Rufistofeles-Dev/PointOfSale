@@ -69,12 +69,7 @@ namespace PointOfSale.Views.Modulos.Config
                 empresa.FormatoVentasXperiodo = TxtVentasXperiodo.Text.Trim();
                 empresa.FormatoVentasXperiodoDet = TxtVentasXperiodoDet.Text.Trim();
                 empresa.FormatoEntradaXcompra = TxtEntradaXcompra.Text.Trim();
-
-
-
-
-
-
+                empresa.DirectorioDevCom = TxtDirectorioDevCom.Text.Trim();
                 if (empresa.RegimenFiscalId.Trim().Length == 0)
                 {
                     Ambiente.Mensaje("Nada que guardar");
@@ -114,7 +109,6 @@ namespace PointOfSale.Views.Modulos.Config
                 empresa.FormatoParaFacturas = TxtFormatoParaFacturas.Text.Trim();
                 empresa.FormatoCortes = TxtFormatoCortes.Text.Trim();
                 empresa.FormatoCierres = TxtFormatoCierres.Text.Trim();
-
                 empresa.FormatoClientesXpuntos = TxtClientesXpuntos.Text.Trim();
                 empresa.FormatoProdsXcompra = TxtProdsXCompra.Text.Trim();
                 empresa.FormatoComprasXperido = TxtComprasXPeriodo.Text.Trim();
@@ -130,6 +124,7 @@ namespace PointOfSale.Views.Modulos.Config
                 empresa.FormatoVentasXperiodo = TxtVentasXperiodo.Text.Trim();
                 empresa.FormatoVentasXperiodoDet = TxtVentasXperiodoDet.Text.Trim();
                 empresa.FormatoEntradaXcompra = TxtEntradaXcompra.Text.Trim();
+                empresa.DirectorioDevCom = TxtDirectorioDevCom.Text.Trim();
 
                 if (empresa.RegimenFiscalId.Trim().Length == 0)
                 {
@@ -191,6 +186,7 @@ namespace PointOfSale.Views.Modulos.Config
             TxtVentasXperiodo.Text = empresa.FormatoVentasXperiodo;
             TxtVentasXperiodoDet.Text = empresa.FormatoVentasXperiodoDet;
             TxtEntradaXcompra.Text = empresa.FormatoEntradaXcompra;
+            TxtDirectorioDevCom.Text = empresa.DirectorioDevCom;
         }
 
         private void BtnAceptar_Click(object sender, EventArgs e)
@@ -321,14 +317,11 @@ namespace PointOfSale.Views.Modulos.Config
             TxtOpenSslBin.Text = Ambiente.GetFolderPath();
         }
 
-        private void BtnCrearPFX_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void BtnPFX_Click(object sender, EventArgs e)
         {
-            TxtRutaArchivoPfx.Text = TxtRutaArchivoPfx.Text = Ambiente.GetFilePath().Item1;
+            TxtRutaArchivoPfx.Text = Ambiente.GetFilePath().Item1;
         }
 
         private void TxtFormatoTickets_KeyDown(object sender, KeyEventArgs e)
@@ -588,6 +581,11 @@ namespace PointOfSale.Views.Modulos.Config
                     }
                 }
             }
+        }
+
+        private void BtnDevCom_Click(object sender, EventArgs e)
+        {
+            TxtDirectorioDevCom.Text = Ambiente.GetFolderPath();
         }
     }
 }

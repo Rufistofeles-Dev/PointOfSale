@@ -138,8 +138,8 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.BtnUpdateDb = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.BtnDevCom = new System.Windows.Forms.Button();
+            this.TxtDirectorioDevCom = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -622,8 +622,8 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.label15);
-            this.tabPage3.Controls.Add(this.button1);
-            this.tabPage3.Controls.Add(this.textBox1);
+            this.tabPage3.Controls.Add(this.BtnDevCom);
+            this.tabPage3.Controls.Add(this.TxtDirectorioDevCom);
             this.tabPage3.Controls.Add(this.label25);
             this.tabPage3.Controls.Add(this.BtnDirReportes);
             this.tabPage3.Controls.Add(this.TxtDirectorioReportes);
@@ -1492,27 +1492,28 @@
             this.label15.TabIndex = 393;
             this.label15.Text = "DIRECTORIO DEV. COMPRA";
             // 
-            // button1
+            // BtnDevCom
             // 
-            this.button1.Location = new System.Drawing.Point(651, 86);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(42, 26);
-            this.button1.TabIndex = 391;
-            this.button1.Text = "- - -";
-            this.button1.UseVisualStyleBackColor = true;
+            this.BtnDevCom.Location = new System.Drawing.Point(651, 86);
+            this.BtnDevCom.Name = "BtnDevCom";
+            this.BtnDevCom.Size = new System.Drawing.Size(42, 26);
+            this.BtnDevCom.TabIndex = 391;
+            this.BtnDevCom.Text = "- - -";
+            this.BtnDevCom.UseVisualStyleBackColor = true;
+            this.BtnDevCom.Click += new System.EventHandler(this.BtnDevCom_Click);
             // 
-            // textBox1
+            // TxtDirectorioDevCom
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.textBox1.ForeColor = System.Drawing.Color.Black;
-            this.textBox1.Location = new System.Drawing.Point(360, 88);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(284, 24);
-            this.textBox1.TabIndex = 392;
-            this.textBox1.TabStop = false;
+            this.TxtDirectorioDevCom.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtDirectorioDevCom.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtDirectorioDevCom.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.TxtDirectorioDevCom.ForeColor = System.Drawing.Color.Black;
+            this.TxtDirectorioDevCom.Location = new System.Drawing.Point(360, 88);
+            this.TxtDirectorioDevCom.Name = "TxtDirectorioDevCom";
+            this.TxtDirectorioDevCom.ReadOnly = true;
+            this.TxtDirectorioDevCom.Size = new System.Drawing.Size(284, 24);
+            this.TxtDirectorioDevCom.TabIndex = 392;
+            this.TxtDirectorioDevCom.TabStop = false;
             // 
             // FrmEmpresa
             // 
@@ -1654,7 +1655,7 @@
         private System.Windows.Forms.TextBox TxtMovsInv;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button BtnDevCom;
+        private System.Windows.Forms.TextBox TxtDirectorioDevCom;
     }
 }
