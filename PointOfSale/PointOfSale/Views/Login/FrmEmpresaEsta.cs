@@ -27,6 +27,7 @@ namespace PointOfSale.Views.Login
         {
             try
             {
+                //Inicializa conexion sqlite
                 Ambiente.SqliteConnectionString = Application.StartupPath + @"\config.s3db";
                 Ambiente.SqliteConnection = new SQLiteConnection(string.Format("Data Source={0};Version=3;", Ambiente.SqliteConnectionString));
                 Ambiente.SqliteConnection.Open();

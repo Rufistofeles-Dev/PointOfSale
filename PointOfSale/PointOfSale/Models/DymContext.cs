@@ -1060,6 +1060,8 @@ namespace PointOfSale.Models
 
                 entity.Property(e => e.DirectorioCortes).HasMaxLength(250);
 
+                entity.Property(e => e.DirectorioDevCom).HasMaxLength(250);
+
                 entity.Property(e => e.DirectorioImg).HasMaxLength(250);
 
                 entity.Property(e => e.DirectorioOpenSslBin).HasMaxLength(250);

@@ -11,7 +11,7 @@ namespace PointOfSale.Models
         public bool Corte { get; set; }
         public bool Ticket { get; set; }
         public bool Factura { get; set; }
-        public bool? DevCom { get; set; }
+        public bool DevCom { get; set; }
         public string Regla { get; set; }
         public DateTime CreatedAt { get; set; }
         public string CreatedBy { get; set; }

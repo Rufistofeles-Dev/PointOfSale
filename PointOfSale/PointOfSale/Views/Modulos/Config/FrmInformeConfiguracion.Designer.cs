@@ -43,6 +43,7 @@
             this.TxtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.ChkCorte = new System.Windows.Forms.CheckBox();
             this.ChkCompras = new System.Windows.Forms.CheckBox();
             this.BtnGuardar = new System.Windows.Forms.Button();
             this.BtnCancelar = new System.Windows.Forms.Button();
@@ -61,7 +62,7 @@
             this.BtnBorrar = new System.Windows.Forms.LinkLabel();
             this.BtnAnadir = new System.Windows.Forms.LinkLabel();
             this.TxtReporteId = new System.Windows.Forms.TextBox();
-            this.ChkCorte = new System.Windows.Forms.CheckBox();
+            this.ChkDevCom = new System.Windows.Forms.CheckBox();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -236,6 +237,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.ChkDevCom);
             this.panel2.Controls.Add(this.ChkCorte);
             this.panel2.Controls.Add(this.ChkCompras);
             this.panel2.Controls.Add(this.BtnGuardar);
@@ -257,6 +259,18 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(467, 418);
             this.panel2.TabIndex = 1;
+            // 
+            // ChkCorte
+            // 
+            this.ChkCorte.AutoSize = true;
+            this.ChkCorte.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.ChkCorte.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ChkCorte.Location = new System.Drawing.Point(244, 238);
+            this.ChkCorte.Name = "ChkCorte";
+            this.ChkCorte.Size = new System.Drawing.Size(194, 22);
+            this.ChkCorte.TabIndex = 270;
+            this.ChkCorte.Text = "Imprime formato de corte";
+            this.ChkCorte.UseVisualStyleBackColor = true;
             // 
             // ChkCompras
             // 
@@ -474,17 +488,17 @@
             this.TxtReporteId.Size = new System.Drawing.Size(104, 26);
             this.TxtReporteId.TabIndex = 251;
             // 
-            // ChkCorte
+            // ChkDevCom
             // 
-            this.ChkCorte.AutoSize = true;
-            this.ChkCorte.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.ChkCorte.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ChkCorte.Location = new System.Drawing.Point(244, 238);
-            this.ChkCorte.Name = "ChkCorte";
-            this.ChkCorte.Size = new System.Drawing.Size(194, 22);
-            this.ChkCorte.TabIndex = 270;
-            this.ChkCorte.Text = "Imprime formato de corte";
-            this.ChkCorte.UseVisualStyleBackColor = true;
+            this.ChkDevCom.AutoSize = true;
+            this.ChkDevCom.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.ChkDevCom.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ChkDevCom.Location = new System.Drawing.Point(20, 266);
+            this.ChkDevCom.Name = "ChkDevCom";
+            this.ChkDevCom.Size = new System.Drawing.Size(226, 22);
+            this.ChkDevCom.TabIndex = 271;
+            this.ChkDevCom.Text = "Imprime formato  devcompras";
+            this.ChkDevCom.UseVisualStyleBackColor = true;
             // 
             // FrmInformeConfiguracion
             // 
@@ -551,5 +565,6 @@
         private System.Windows.Forms.Button BtnCancelar;
         private System.Windows.Forms.CheckBox ChkCompras;
         private System.Windows.Forms.CheckBox ChkCorte;
+        private System.Windows.Forms.CheckBox ChkDevCom;
     }
 }
