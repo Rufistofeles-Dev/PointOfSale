@@ -184,6 +184,7 @@ namespace PointOfSale.Controllers
             {
                 Grid1.DataSource = db.ConceptoMovInv.Where(x => x.IsDeleted == false).Select(x => new
                 {
+                    //
                     Id = x.ConceptoMovInvId,
                     x.Descripcion,
                     Entrada_Salida = x.Es
