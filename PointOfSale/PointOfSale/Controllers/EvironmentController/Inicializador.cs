@@ -364,12 +364,25 @@ namespace PointOfSale.Controllers
                                            db.InformeConfiguracion.Where(y => y.Corte == true)
                                            .FirstOrDefault().InformeId));
 
+                    Ambiente.InformeDevCom = db.Informe.FirstOrDefault(x => x.InformeId.Equals(
+                                           db.InformeConfiguracion.Where(y => y.DevCom == true)
+                                           .FirstOrDefault().InformeId));
+
 
                     if (Ambiente.InformeTicket == null)
                         Ambiente.Mensaje("!Advertencia! El formato de ticket no existe, esto causará problemas");
 
                     if (Ambiente.InformeFactura == null)
                         Ambiente.Mensaje("!Advertencia! El formato de factura no existe, esto causará problemas");
+
+                    if (Ambiente.InformeCompra == null)
+                        Ambiente.Mensaje("!Advertencia! El formato de compra no existe, esto causará problemas");
+
+                    if (Ambiente.InformeDevCom == null)
+                        Ambiente.Mensaje("!Advertencia! El formato de devcom no existe, esto causará problemas");
+
+                    if (Ambiente.InformeCorte == null)
+                        Ambiente.Mensaje("!Advertencia! El formato de corte no existe, esto causará problemas");
 
                     db.SaveChanges();
                 }

@@ -54,6 +54,7 @@ namespace PointOfSale.Controllers
         public static string S2 { get; set; }
         public static string S3 { get; set; }
         public static StiSqlDatabase DbDym { get; internal set; }
+        public static Informe InformeDevCom { get; internal set; }
 
         private static Reporte reporte;
         private static List<Parametro> ReportParams;
