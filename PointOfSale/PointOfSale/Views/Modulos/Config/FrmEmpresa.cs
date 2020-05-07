@@ -37,10 +37,7 @@ namespace PointOfSale.Views.Modulos.Config
                 empresa.DirectorioComprobantes = TxtRutaComprobantes.Text;
                 empresa.RutaKey = TxtRutaKey.Text;
                 empresa.ClavePrivada = TxtClavePrivada.Text;
-                empresa.RutaFormatoTicket = TxtFormatoTicket.Text;
                 empresa.RutaCadenaOriginal = TxtRutaCO.Text;
-                empresa.RutaFormatoCorte = TxtFormatoCorte.Text;
-                empresa.RutaFormatoFactura = TxtFormatoFactura.Text;
                 empresa.DirectorioCortes = TxtRutaCortes.Text;
                 empresa.UserWstimbrado = TxtUserWS.Text.Trim();
                 empresa.PassWstimbrado = TxtPassWS.Text.Trim();
@@ -48,7 +45,6 @@ namespace PointOfSale.Views.Modulos.Config
                 empresa.DirectorioTraspasos = TxtDirectorioTraspasos.Text.Trim();
                 empresa.DirectorioTrabajo = TxtDirectorioTrabajo.Text.Trim();
                 empresa.DirectorioImg = TxtDirectorioImg.Text.Trim();
-                empresa.RutaPlantillaDetalleTraspaso = TxtRutaPlantillaDetalleTraspaso.Text.Trim();
                 empresa.DirectorioReportes = TxtDirectorioReportes.Text.Trim();
                 empresa.DirectorioOpenSslBin = TxtOpenSslBin.Text;
                 empresa.RutaArchivoPfx = TxtRutaArchivoPfx.Text;
@@ -102,10 +98,7 @@ namespace PointOfSale.Views.Modulos.Config
                 empresa.DirectorioComprobantes = TxtRutaComprobantes.Text;
                 empresa.RutaKey = TxtRutaKey.Text;
                 empresa.ClavePrivada = TxtClavePrivada.Text;
-                empresa.RutaFormatoTicket = TxtFormatoTicket.Text;
                 empresa.RutaCadenaOriginal = TxtRutaCO.Text;
-                empresa.RutaFormatoCorte = TxtFormatoCorte.Text;
-                empresa.RutaFormatoFactura = TxtFormatoFactura.Text;
                 empresa.DirectorioCortes = TxtRutaCortes.Text;
                 empresa.UserWstimbrado = TxtUserWS.Text.Trim();
                 empresa.PassWstimbrado = TxtPassWS.Text.Trim();
@@ -113,7 +106,6 @@ namespace PointOfSale.Views.Modulos.Config
                 empresa.DirectorioTraspasos = TxtDirectorioTraspasos.Text.Trim();
                 empresa.DirectorioTrabajo = TxtDirectorioTrabajo.Text.Trim();
                 empresa.DirectorioImg = TxtDirectorioImg.Text.Trim();
-                empresa.RutaPlantillaDetalleTraspaso = TxtRutaPlantillaDetalleTraspaso.Text.Trim();
                 empresa.DirectorioReportes = TxtDirectorioReportes.Text.Trim();
                 empresa.DirectorioOpenSslBin = TxtOpenSslBin.Text;
                 empresa.RutaArchivoPfx = TxtRutaArchivoPfx.Text;
@@ -166,10 +158,7 @@ namespace PointOfSale.Views.Modulos.Config
             TxtRutaComprobantes.Text = empresa.DirectorioComprobantes;
             TxtRutaKey.Text = empresa.RutaKey;
             TxtClavePrivada.Text = empresa.ClavePrivada;
-            TxtFormatoTicket.Text = empresa.RutaFormatoTicket;
             TxtRutaCO.Text = empresa.RutaCadenaOriginal;
-            TxtFormatoCorte.Text = empresa.RutaFormatoCorte;
-            TxtFormatoFactura.Text = empresa.RutaFormatoFactura;
             TxtRutaCortes.Text = empresa.DirectorioCortes;
             TxtPassWS.Text = empresa.PassWstimbrado;
             TxtUserWS.Text = empresa.UserWstimbrado;
@@ -177,7 +166,7 @@ namespace PointOfSale.Views.Modulos.Config
             TxtDirectorioTraspasos.Text = empresa.DirectorioTraspasos;
             TxtDirectorioTrabajo.Text = empresa.DirectorioTrabajo;
             TxtDirectorioImg.Text = empresa.DirectorioImg;
-            TxtRutaPlantillaDetalleTraspaso.Text = empresa.RutaPlantillaDetalleTraspaso;
+
             TxtDirectorioReportes.Text = empresa.DirectorioReportes;
             TxtOpenSslBin.Text = empresa.DirectorioOpenSslBin;
             TxtRutaArchivoPfx.Text = empresa.RutaArchivoPfx;
@@ -245,10 +234,7 @@ namespace PointOfSale.Views.Modulos.Config
             }
         }
 
-        private void BtnFormatoFactura_Click_1(object sender, EventArgs e)
-        {
-            TxtFormatoFactura.Text = Ambiente.GetFilePath().Item1;
-        }
+
 
         private void BtnCo_Click(object sender, EventArgs e)
         {
@@ -265,15 +251,9 @@ namespace PointOfSale.Views.Modulos.Config
             TxtRutaCortes.Text = Ambiente.GetFolderPath();
         }
 
-        private void BtnFormatoCorte_Click(object sender, EventArgs e)
-        {
-            TxtFormatoCorte.Text = Ambiente.GetFilePath().Item1;
-        }
 
-        private void BtnFormatoTicket_Click(object sender, EventArgs e)
-        {
-            TxtFormatoTicket.Text = Ambiente.GetFilePath().Item1;
-        }
+
+
 
         private void BtnKey_Click(object sender, EventArgs e)
         {
@@ -329,10 +309,7 @@ namespace PointOfSale.Views.Modulos.Config
             TxtDirectorioImg.Text = Ambiente.GetFolderPath();
         }
 
-        private void BtnPlanDetTraspaso_Click(object sender, EventArgs e)
-        {
-            TxtRutaPlantillaDetalleTraspaso.Text = Ambiente.GetFilePath().Item1;
-        }
+
 
         private void BtnDirReportes_Click(object sender, EventArgs e)
         {
@@ -351,7 +328,7 @@ namespace PointOfSale.Views.Modulos.Config
 
         private void BtnPFX_Click(object sender, EventArgs e)
         {
-            TxtRutaArchivoPfx.Text = TxtFormatoTicket.Text = Ambiente.GetFilePath().Item1;
+            TxtRutaArchivoPfx.Text = TxtRutaArchivoPfx.Text = Ambiente.GetFilePath().Item1;
         }
 
         private void TxtFormatoTickets_KeyDown(object sender, KeyEventArgs e)

@@ -71,9 +71,6 @@
             this.label25 = new System.Windows.Forms.Label();
             this.BtnDirReportes = new System.Windows.Forms.Button();
             this.TxtDirectorioReportes = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.BtnPlanDetTraspaso = new System.Windows.Forms.Button();
-            this.TxtRutaPlantillaDetalleTraspaso = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.BtnDirectorioImg = new System.Windows.Forms.Button();
             this.TxtDirectorioImg = new System.Windows.Forms.TextBox();
@@ -90,51 +87,12 @@
             this.BtnComprobantes = new System.Windows.Forms.Button();
             this.TxtRutaComprobantes = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.BtnCortes = new System.Windows.Forms.Button();
-            this.BtnFormatoCorte = new System.Windows.Forms.Button();
             this.TxtRutaCortes = new System.Windows.Forms.TextBox();
-            this.TxtFormatoCorte = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.BtnFormatoFactura = new System.Windows.Forms.Button();
-            this.TxtFormatoFactura = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.BtnFormatoTicket = new System.Windows.Forms.Button();
-            this.TxtFormatoTicket = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.BtnCo = new System.Windows.Forms.Button();
             this.TxtRutaCO = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.TxtFormatoCierres = new System.Windows.Forms.TextBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.TxtFormatoCortes = new System.Windows.Forms.TextBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.TxtFormatoParaFacturas = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.TxtFormatoParaTickets = new System.Windows.Forms.TextBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.BtnUpdateDb = new System.Windows.Forms.Button();
-            this.TxtComprasXPeriodo = new System.Windows.Forms.TextBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.TxtProdsXCompra = new System.Windows.Forms.TextBox();
-            this.label33 = new System.Windows.Forms.Label();
-            this.TxtClientesXpuntos = new System.Windows.Forms.TextBox();
-            this.label34 = new System.Windows.Forms.Label();
-            this.TxtProveed = new System.Windows.Forms.TextBox();
-            this.label35 = new System.Windows.Forms.Label();
-            this.TxtProdsXprecios = new System.Windows.Forms.TextBox();
-            this.label36 = new System.Windows.Forms.Label();
-            this.TxtCatProd = new System.Windows.Forms.TextBox();
-            this.label37 = new System.Windows.Forms.Label();
-            this.TxtComprasVsVentas = new System.Windows.Forms.TextBox();
-            this.label38 = new System.Windows.Forms.Label();
-            this.TxtInvAut = new System.Windows.Forms.TextBox();
-            this.label39 = new System.Windows.Forms.Label();
-            this.TxtStockXprod = new System.Windows.Forms.TextBox();
-            this.label40 = new System.Windows.Forms.Label();
-            this.TxtMovsInv = new System.Windows.Forms.TextBox();
-            this.label41 = new System.Windows.Forms.Label();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
             this.textBox12 = new System.Windows.Forms.TextBox();
@@ -149,6 +107,39 @@
             this.label47 = new System.Windows.Forms.Label();
             this.TxtVentasAcosto = new System.Windows.Forms.TextBox();
             this.label48 = new System.Windows.Forms.Label();
+            this.TxtProveed = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.TxtProdsXprecios = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.TxtCatProd = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.TxtComprasVsVentas = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.TxtInvAut = new System.Windows.Forms.TextBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.TxtStockXprod = new System.Windows.Forms.TextBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.TxtMovsInv = new System.Windows.Forms.TextBox();
+            this.label41 = new System.Windows.Forms.Label();
+            this.TxtComprasXPeriodo = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.TxtProdsXCompra = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.TxtClientesXpuntos = new System.Windows.Forms.TextBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.TxtFormatoCierres = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.TxtFormatoCortes = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.TxtFormatoParaFacturas = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.TxtFormatoParaTickets = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.BtnUpdateDb = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -630,12 +621,12 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label15);
+            this.tabPage3.Controls.Add(this.button1);
+            this.tabPage3.Controls.Add(this.textBox1);
             this.tabPage3.Controls.Add(this.label25);
             this.tabPage3.Controls.Add(this.BtnDirReportes);
             this.tabPage3.Controls.Add(this.TxtDirectorioReportes);
-            this.tabPage3.Controls.Add(this.label24);
-            this.tabPage3.Controls.Add(this.BtnPlanDetTraspaso);
-            this.tabPage3.Controls.Add(this.TxtRutaPlantillaDetalleTraspaso);
             this.tabPage3.Controls.Add(this.label23);
             this.tabPage3.Controls.Add(this.BtnDirectorioImg);
             this.tabPage3.Controls.Add(this.TxtDirectorioImg);
@@ -652,17 +643,8 @@
             this.tabPage3.Controls.Add(this.BtnComprobantes);
             this.tabPage3.Controls.Add(this.TxtRutaComprobantes);
             this.tabPage3.Controls.Add(this.label8);
-            this.tabPage3.Controls.Add(this.label17);
             this.tabPage3.Controls.Add(this.BtnCortes);
-            this.tabPage3.Controls.Add(this.BtnFormatoCorte);
             this.tabPage3.Controls.Add(this.TxtRutaCortes);
-            this.tabPage3.Controls.Add(this.TxtFormatoCorte);
-            this.tabPage3.Controls.Add(this.label16);
-            this.tabPage3.Controls.Add(this.BtnFormatoFactura);
-            this.tabPage3.Controls.Add(this.TxtFormatoFactura);
-            this.tabPage3.Controls.Add(this.label15);
-            this.tabPage3.Controls.Add(this.BtnFormatoTicket);
-            this.tabPage3.Controls.Add(this.TxtFormatoTicket);
             this.tabPage3.Controls.Add(this.label11);
             this.tabPage3.Controls.Add(this.BtnCo);
             this.tabPage3.Controls.Add(this.TxtRutaCO);
@@ -707,40 +689,6 @@
             this.TxtDirectorioReportes.Size = new System.Drawing.Size(284, 24);
             this.TxtDirectorioReportes.TabIndex = 389;
             this.TxtDirectorioReportes.TabStop = false;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label24.Location = new System.Drawing.Point(361, 67);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(225, 18);
-            this.label24.TabIndex = 387;
-            this.label24.Text = "PLATILLA DETALLE TRASPASO";
-            // 
-            // BtnPlanDetTraspaso
-            // 
-            this.BtnPlanDetTraspaso.Location = new System.Drawing.Point(651, 86);
-            this.BtnPlanDetTraspaso.Name = "BtnPlanDetTraspaso";
-            this.BtnPlanDetTraspaso.Size = new System.Drawing.Size(42, 26);
-            this.BtnPlanDetTraspaso.TabIndex = 385;
-            this.BtnPlanDetTraspaso.Text = "- - -";
-            this.BtnPlanDetTraspaso.UseVisualStyleBackColor = true;
-            this.BtnPlanDetTraspaso.Click += new System.EventHandler(this.BtnPlanDetTraspaso_Click);
-            // 
-            // TxtRutaPlantillaDetalleTraspaso
-            // 
-            this.TxtRutaPlantillaDetalleTraspaso.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtRutaPlantillaDetalleTraspaso.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtRutaPlantillaDetalleTraspaso.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.TxtRutaPlantillaDetalleTraspaso.ForeColor = System.Drawing.Color.Black;
-            this.TxtRutaPlantillaDetalleTraspaso.Location = new System.Drawing.Point(360, 88);
-            this.TxtRutaPlantillaDetalleTraspaso.Name = "TxtRutaPlantillaDetalleTraspaso";
-            this.TxtRutaPlantillaDetalleTraspaso.ReadOnly = true;
-            this.TxtRutaPlantillaDetalleTraspaso.Size = new System.Drawing.Size(284, 24);
-            this.TxtRutaPlantillaDetalleTraspaso.TabIndex = 386;
-            this.TxtRutaPlantillaDetalleTraspaso.TabStop = false;
             // 
             // label23
             // 
@@ -923,17 +871,6 @@
             this.label8.TabIndex = 357;
             this.label8.Text = "DIRECTORIO CORTES";
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label17.Location = new System.Drawing.Point(361, 246);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(140, 18);
-            this.label17.TabIndex = 369;
-            this.label17.Text = "FORMATO CORTE";
-            // 
             // BtnCortes
             // 
             this.BtnCortes.Location = new System.Drawing.Point(297, 27);
@@ -943,16 +880,6 @@
             this.BtnCortes.Text = "- - -";
             this.BtnCortes.UseVisualStyleBackColor = true;
             this.BtnCortes.Click += new System.EventHandler(this.BtnCortes_Click);
-            // 
-            // BtnFormatoCorte
-            // 
-            this.BtnFormatoCorte.Location = new System.Drawing.Point(650, 267);
-            this.BtnFormatoCorte.Name = "BtnFormatoCorte";
-            this.BtnFormatoCorte.Size = new System.Drawing.Size(42, 24);
-            this.BtnFormatoCorte.TabIndex = 360;
-            this.BtnFormatoCorte.Text = "- - -";
-            this.BtnFormatoCorte.UseVisualStyleBackColor = true;
-            this.BtnFormatoCorte.Click += new System.EventHandler(this.BtnFormatoCorte_Click);
             // 
             // TxtRutaCortes
             // 
@@ -967,93 +894,12 @@
             this.TxtRutaCortes.TabIndex = 356;
             this.TxtRutaCortes.TabStop = false;
             // 
-            // TxtFormatoCorte
-            // 
-            this.TxtFormatoCorte.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtFormatoCorte.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtFormatoCorte.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.TxtFormatoCorte.ForeColor = System.Drawing.Color.Black;
-            this.TxtFormatoCorte.Location = new System.Drawing.Point(360, 267);
-            this.TxtFormatoCorte.Name = "TxtFormatoCorte";
-            this.TxtFormatoCorte.ReadOnly = true;
-            this.TxtFormatoCorte.Size = new System.Drawing.Size(284, 24);
-            this.TxtFormatoCorte.TabIndex = 368;
-            this.TxtFormatoCorte.TabStop = false;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label16.Location = new System.Drawing.Point(361, 189);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(156, 18);
-            this.label16.TabIndex = 367;
-            this.label16.Text = "FORMATO FACTURA";
-            // 
-            // BtnFormatoFactura
-            // 
-            this.BtnFormatoFactura.Location = new System.Drawing.Point(650, 208);
-            this.BtnFormatoFactura.Name = "BtnFormatoFactura";
-            this.BtnFormatoFactura.Size = new System.Drawing.Size(42, 26);
-            this.BtnFormatoFactura.TabIndex = 361;
-            this.BtnFormatoFactura.Text = "- - -";
-            this.BtnFormatoFactura.UseVisualStyleBackColor = true;
-            this.BtnFormatoFactura.Click += new System.EventHandler(this.BtnFormatoFactura_Click_1);
-            // 
-            // TxtFormatoFactura
-            // 
-            this.TxtFormatoFactura.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtFormatoFactura.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtFormatoFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.TxtFormatoFactura.ForeColor = System.Drawing.Color.Black;
-            this.TxtFormatoFactura.Location = new System.Drawing.Point(360, 209);
-            this.TxtFormatoFactura.Name = "TxtFormatoFactura";
-            this.TxtFormatoFactura.ReadOnly = true;
-            this.TxtFormatoFactura.Size = new System.Drawing.Size(284, 24);
-            this.TxtFormatoFactura.TabIndex = 366;
-            this.TxtFormatoFactura.TabStop = false;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label15.Location = new System.Drawing.Point(357, 131);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(139, 18);
-            this.label15.TabIndex = 365;
-            this.label15.Text = "FORMATO TICKET";
-            // 
-            // BtnFormatoTicket
-            // 
-            this.BtnFormatoTicket.Location = new System.Drawing.Point(646, 150);
-            this.BtnFormatoTicket.Name = "BtnFormatoTicket";
-            this.BtnFormatoTicket.Size = new System.Drawing.Size(42, 26);
-            this.BtnFormatoTicket.TabIndex = 358;
-            this.BtnFormatoTicket.Text = "- - -";
-            this.BtnFormatoTicket.UseVisualStyleBackColor = true;
-            this.BtnFormatoTicket.Click += new System.EventHandler(this.BtnFormatoTicket_Click);
-            // 
-            // TxtFormatoTicket
-            // 
-            this.TxtFormatoTicket.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtFormatoTicket.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtFormatoTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.TxtFormatoTicket.ForeColor = System.Drawing.Color.Black;
-            this.TxtFormatoTicket.Location = new System.Drawing.Point(362, 150);
-            this.TxtFormatoTicket.Name = "TxtFormatoTicket";
-            this.TxtFormatoTicket.ReadOnly = true;
-            this.TxtFormatoTicket.Size = new System.Drawing.Size(284, 24);
-            this.TxtFormatoTicket.TabIndex = 364;
-            this.TxtFormatoTicket.TabStop = false;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label11.Location = new System.Drawing.Point(359, 312);
+            this.label11.Location = new System.Drawing.Point(359, 128);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(212, 18);
             this.label11.TabIndex = 363;
@@ -1061,7 +907,7 @@
             // 
             // BtnCo
             // 
-            this.BtnCo.Location = new System.Drawing.Point(648, 331);
+            this.BtnCo.Location = new System.Drawing.Point(648, 147);
             this.BtnCo.Name = "BtnCo";
             this.BtnCo.Size = new System.Drawing.Size(42, 26);
             this.BtnCo.TabIndex = 359;
@@ -1075,7 +921,7 @@
             this.TxtRutaCO.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtRutaCO.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.TxtRutaCO.ForeColor = System.Drawing.Color.Black;
-            this.TxtRutaCO.Location = new System.Drawing.Point(360, 330);
+            this.TxtRutaCO.Location = new System.Drawing.Point(360, 146);
             this.TxtRutaCO.Name = "TxtRutaCO";
             this.TxtRutaCO.ReadOnly = true;
             this.TxtRutaCO.Size = new System.Drawing.Size(284, 24);
@@ -1134,187 +980,163 @@
             this.tabPage4.Text = "Formatos de impresion";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // TxtFormatoCierres
+            // textBox11
             // 
-            this.TxtFormatoCierres.BackColor = System.Drawing.SystemColors.Window;
-            this.TxtFormatoCierres.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtFormatoCierres.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtFormatoCierres.ForeColor = System.Drawing.Color.Black;
-            this.TxtFormatoCierres.Location = new System.Drawing.Point(8, 179);
-            this.TxtFormatoCierres.Name = "TxtFormatoCierres";
-            this.TxtFormatoCierres.Size = new System.Drawing.Size(224, 24);
-            this.TxtFormatoCierres.TabIndex = 317;
-            this.TxtFormatoCierres.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtFormatoCierres_KeyDown);
+            this.textBox11.BackColor = System.Drawing.SystemColors.Window;
+            this.textBox11.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox11.ForeColor = System.Drawing.Color.Black;
+            this.textBox11.Location = new System.Drawing.Point(519, 331);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(224, 24);
+            this.textBox11.TabIndex = 351;
             // 
-            // label31
+            // label42
             // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label31.Location = new System.Drawing.Point(6, 158);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(187, 18);
-            this.label31.TabIndex = 318;
-            this.label31.Text = "【♥】FORMATO CIERRES";
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label42.Location = new System.Drawing.Point(517, 310);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(57, 18);
+            this.label42.TabIndex = 352;
+            this.label42.Text = "【♥】---";
             // 
-            // TxtFormatoCortes
+            // textBox12
             // 
-            this.TxtFormatoCortes.BackColor = System.Drawing.SystemColors.Window;
-            this.TxtFormatoCortes.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtFormatoCortes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtFormatoCortes.ForeColor = System.Drawing.Color.Black;
-            this.TxtFormatoCortes.Location = new System.Drawing.Point(8, 127);
-            this.TxtFormatoCortes.Name = "TxtFormatoCortes";
-            this.TxtFormatoCortes.Size = new System.Drawing.Size(224, 24);
-            this.TxtFormatoCortes.TabIndex = 315;
-            this.TxtFormatoCortes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtFormatoCortes_KeyDown);
+            this.textBox12.BackColor = System.Drawing.SystemColors.Window;
+            this.textBox12.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox12.ForeColor = System.Drawing.Color.Black;
+            this.textBox12.Location = new System.Drawing.Point(518, 280);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(225, 24);
+            this.textBox12.TabIndex = 349;
             // 
-            // label30
+            // label43
             // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label30.Location = new System.Drawing.Point(6, 106);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(184, 18);
-            this.label30.TabIndex = 316;
-            this.label30.Text = "【♥】FORMATO CORTES";
+            this.label43.AutoSize = true;
+            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label43.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label43.Location = new System.Drawing.Point(516, 259);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(57, 18);
+            this.label43.TabIndex = 350;
+            this.label43.Text = "【♥】---";
             // 
-            // TxtFormatoParaFacturas
+            // TxtEntradaXcompra
             // 
-            this.TxtFormatoParaFacturas.BackColor = System.Drawing.SystemColors.Window;
-            this.TxtFormatoParaFacturas.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtFormatoParaFacturas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtFormatoParaFacturas.ForeColor = System.Drawing.Color.Black;
-            this.TxtFormatoParaFacturas.Location = new System.Drawing.Point(7, 76);
-            this.TxtFormatoParaFacturas.Name = "TxtFormatoParaFacturas";
-            this.TxtFormatoParaFacturas.Size = new System.Drawing.Size(225, 24);
-            this.TxtFormatoParaFacturas.TabIndex = 313;
-            this.TxtFormatoParaFacturas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtFormatoParaFacturas_KeyDown);
+            this.TxtEntradaXcompra.BackColor = System.Drawing.SystemColors.Window;
+            this.TxtEntradaXcompra.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtEntradaXcompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtEntradaXcompra.ForeColor = System.Drawing.Color.Black;
+            this.TxtEntradaXcompra.Location = new System.Drawing.Point(517, 232);
+            this.TxtEntradaXcompra.Name = "TxtEntradaXcompra";
+            this.TxtEntradaXcompra.Size = new System.Drawing.Size(226, 24);
+            this.TxtEntradaXcompra.TabIndex = 347;
             // 
-            // label29
+            // label44
             // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label29.Location = new System.Drawing.Point(5, 55);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(200, 18);
-            this.label29.TabIndex = 314;
-            this.label29.Text = "【♥】FORMATO FACTURAS";
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label44.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label44.Location = new System.Drawing.Point(517, 211);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(200, 18);
+            this.label44.TabIndex = 348;
+            this.label44.Text = "【♥】 ENTRADA X COMPRA";
             // 
-            // TxtFormatoParaTickets
+            // TxtVentasXperiodoDet
             // 
-            this.TxtFormatoParaTickets.BackColor = System.Drawing.SystemColors.Window;
-            this.TxtFormatoParaTickets.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtFormatoParaTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtFormatoParaTickets.ForeColor = System.Drawing.Color.Black;
-            this.TxtFormatoParaTickets.Location = new System.Drawing.Point(6, 28);
-            this.TxtFormatoParaTickets.Name = "TxtFormatoParaTickets";
-            this.TxtFormatoParaTickets.Size = new System.Drawing.Size(226, 24);
-            this.TxtFormatoParaTickets.TabIndex = 311;
-            this.TxtFormatoParaTickets.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtFormatoTickets_KeyDown);
+            this.TxtVentasXperiodoDet.BackColor = System.Drawing.SystemColors.Window;
+            this.TxtVentasXperiodoDet.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtVentasXperiodoDet.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtVentasXperiodoDet.ForeColor = System.Drawing.Color.Black;
+            this.TxtVentasXperiodoDet.Location = new System.Drawing.Point(518, 179);
+            this.TxtVentasXperiodoDet.Name = "TxtVentasXperiodoDet";
+            this.TxtVentasXperiodoDet.Size = new System.Drawing.Size(224, 24);
+            this.TxtVentasXperiodoDet.TabIndex = 345;
+            this.TxtVentasXperiodoDet.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtVentasXperiodoDet_KeyDown);
             // 
-            // label28
+            // label45
             // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label28.Location = new System.Drawing.Point(6, 7);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(183, 18);
-            this.label28.TabIndex = 312;
-            this.label28.Text = "【♥】FORMATO TICKETS";
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label45.Location = new System.Drawing.Point(516, 158);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(221, 18);
+            this.label45.TabIndex = 346;
+            this.label45.Text = "【♥】VENTAS X PERIODO DET";
             // 
-            // tabPage5
+            // TxtVentasXperiodo
             // 
-            this.tabPage5.Controls.Add(this.BtnUpdateDb);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(772, 381);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Actulizaciones";
-            this.tabPage5.UseVisualStyleBackColor = true;
+            this.TxtVentasXperiodo.BackColor = System.Drawing.SystemColors.Window;
+            this.TxtVentasXperiodo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtVentasXperiodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtVentasXperiodo.ForeColor = System.Drawing.Color.Black;
+            this.TxtVentasXperiodo.Location = new System.Drawing.Point(518, 127);
+            this.TxtVentasXperiodo.Name = "TxtVentasXperiodo";
+            this.TxtVentasXperiodo.Size = new System.Drawing.Size(224, 24);
+            this.TxtVentasXperiodo.TabIndex = 343;
+            this.TxtVentasXperiodo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtVentasXperiodo_KeyDown);
             // 
-            // BtnUpdateDb
+            // label46
             // 
-            this.BtnUpdateDb.Location = new System.Drawing.Point(6, 20);
-            this.BtnUpdateDb.Name = "BtnUpdateDb";
-            this.BtnUpdateDb.Size = new System.Drawing.Size(124, 26);
-            this.BtnUpdateDb.TabIndex = 330;
-            this.BtnUpdateDb.Text = "Actualizar base datos";
-            this.BtnUpdateDb.UseVisualStyleBackColor = true;
-            this.BtnUpdateDb.Click += new System.EventHandler(this.BtnUpdateDb_Click);
+            this.label46.AutoSize = true;
+            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label46.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label46.Location = new System.Drawing.Point(516, 106);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(187, 18);
+            this.label46.TabIndex = 344;
+            this.label46.Text = "【♥】VENTAS X PERIODO";
             // 
-            // TxtComprasXPeriodo
+            // TxtVentasXpuntos
             // 
-            this.TxtComprasXPeriodo.BackColor = System.Drawing.SystemColors.Window;
-            this.TxtComprasXPeriodo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtComprasXPeriodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtComprasXPeriodo.ForeColor = System.Drawing.Color.Black;
-            this.TxtComprasXPeriodo.Location = new System.Drawing.Point(9, 331);
-            this.TxtComprasXPeriodo.Name = "TxtComprasXPeriodo";
-            this.TxtComprasXPeriodo.Size = new System.Drawing.Size(224, 24);
-            this.TxtComprasXPeriodo.TabIndex = 323;
-            this.TxtComprasXPeriodo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtComprasXPeriodo_KeyDown);
+            this.TxtVentasXpuntos.BackColor = System.Drawing.SystemColors.Window;
+            this.TxtVentasXpuntos.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtVentasXpuntos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtVentasXpuntos.ForeColor = System.Drawing.Color.Black;
+            this.TxtVentasXpuntos.Location = new System.Drawing.Point(517, 76);
+            this.TxtVentasXpuntos.Name = "TxtVentasXpuntos";
+            this.TxtVentasXpuntos.Size = new System.Drawing.Size(225, 24);
+            this.TxtVentasXpuntos.TabIndex = 341;
+            this.TxtVentasXpuntos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtVentasXpuntos_KeyDown);
             // 
-            // label32
+            // label47
             // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label32.Location = new System.Drawing.Point(7, 310);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(205, 18);
-            this.label32.TabIndex = 324;
-            this.label32.Text = "【♥】COMPRAS X PERIODO";
+            this.label47.AutoSize = true;
+            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label47.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label47.Location = new System.Drawing.Point(515, 55);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(181, 18);
+            this.label47.TabIndex = 342;
+            this.label47.Text = "【♥】VENTAS X PUNTOS";
             // 
-            // TxtProdsXCompra
+            // TxtVentasAcosto
             // 
-            this.TxtProdsXCompra.BackColor = System.Drawing.SystemColors.Window;
-            this.TxtProdsXCompra.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtProdsXCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtProdsXCompra.ForeColor = System.Drawing.Color.Black;
-            this.TxtProdsXCompra.Location = new System.Drawing.Point(8, 280);
-            this.TxtProdsXCompra.Name = "TxtProdsXCompra";
-            this.TxtProdsXCompra.Size = new System.Drawing.Size(225, 24);
-            this.TxtProdsXCompra.TabIndex = 321;
-            this.TxtProdsXCompra.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtProdsXCompra_KeyDown);
+            this.TxtVentasAcosto.BackColor = System.Drawing.SystemColors.Window;
+            this.TxtVentasAcosto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtVentasAcosto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtVentasAcosto.ForeColor = System.Drawing.Color.Black;
+            this.TxtVentasAcosto.Location = new System.Drawing.Point(516, 28);
+            this.TxtVentasAcosto.Name = "TxtVentasAcosto";
+            this.TxtVentasAcosto.Size = new System.Drawing.Size(226, 24);
+            this.TxtVentasAcosto.TabIndex = 339;
+            this.TxtVentasAcosto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtVentasAcosto_KeyDown);
             // 
-            // label33
+            // label48
             // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label33.Location = new System.Drawing.Point(6, 259);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(180, 18);
-            this.label33.TabIndex = 322;
-            this.label33.Text = "【♥】PRODS X COMPRA";
-            // 
-            // TxtClientesXpuntos
-            // 
-            this.TxtClientesXpuntos.BackColor = System.Drawing.SystemColors.Window;
-            this.TxtClientesXpuntos.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtClientesXpuntos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtClientesXpuntos.ForeColor = System.Drawing.Color.Black;
-            this.TxtClientesXpuntos.Location = new System.Drawing.Point(7, 232);
-            this.TxtClientesXpuntos.Name = "TxtClientesXpuntos";
-            this.TxtClientesXpuntos.Size = new System.Drawing.Size(226, 24);
-            this.TxtClientesXpuntos.TabIndex = 319;
-            this.TxtClientesXpuntos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtClientesXpuntos_KeyDown);
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label34.Location = new System.Drawing.Point(7, 211);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(199, 18);
-            this.label34.TabIndex = 320;
-            this.label34.Text = "【♥】 CLIENTES X PUNTOS";
+            this.label48.AutoSize = true;
+            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label48.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label48.Location = new System.Drawing.Point(516, 7);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(171, 18);
+            this.label48.TabIndex = 340;
+            this.label48.Text = "【♥】VENTAS A COSTO";
             // 
             // TxtProveed
             // 
@@ -1477,163 +1299,220 @@
             this.label41.TabIndex = 326;
             this.label41.Text = "【♥】MOVS INV X PROD";
             // 
-            // textBox11
+            // TxtComprasXPeriodo
             // 
-            this.textBox11.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox11.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.ForeColor = System.Drawing.Color.Black;
-            this.textBox11.Location = new System.Drawing.Point(519, 331);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(224, 24);
-            this.textBox11.TabIndex = 351;
+            this.TxtComprasXPeriodo.BackColor = System.Drawing.SystemColors.Window;
+            this.TxtComprasXPeriodo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtComprasXPeriodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtComprasXPeriodo.ForeColor = System.Drawing.Color.Black;
+            this.TxtComprasXPeriodo.Location = new System.Drawing.Point(9, 331);
+            this.TxtComprasXPeriodo.Name = "TxtComprasXPeriodo";
+            this.TxtComprasXPeriodo.Size = new System.Drawing.Size(224, 24);
+            this.TxtComprasXPeriodo.TabIndex = 323;
+            this.TxtComprasXPeriodo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtComprasXPeriodo_KeyDown);
             // 
-            // label42
+            // label32
             // 
-            this.label42.AutoSize = true;
-            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label42.Location = new System.Drawing.Point(517, 310);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(57, 18);
-            this.label42.TabIndex = 352;
-            this.label42.Text = "【♥】---";
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label32.Location = new System.Drawing.Point(7, 310);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(205, 18);
+            this.label32.TabIndex = 324;
+            this.label32.Text = "【♥】COMPRAS X PERIODO";
             // 
-            // textBox12
+            // TxtProdsXCompra
             // 
-            this.textBox12.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox12.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox12.ForeColor = System.Drawing.Color.Black;
-            this.textBox12.Location = new System.Drawing.Point(518, 280);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(225, 24);
-            this.textBox12.TabIndex = 349;
+            this.TxtProdsXCompra.BackColor = System.Drawing.SystemColors.Window;
+            this.TxtProdsXCompra.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtProdsXCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtProdsXCompra.ForeColor = System.Drawing.Color.Black;
+            this.TxtProdsXCompra.Location = new System.Drawing.Point(8, 280);
+            this.TxtProdsXCompra.Name = "TxtProdsXCompra";
+            this.TxtProdsXCompra.Size = new System.Drawing.Size(225, 24);
+            this.TxtProdsXCompra.TabIndex = 321;
+            this.TxtProdsXCompra.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtProdsXCompra_KeyDown);
             // 
-            // label43
+            // label33
             // 
-            this.label43.AutoSize = true;
-            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label43.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label43.Location = new System.Drawing.Point(516, 259);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(57, 18);
-            this.label43.TabIndex = 350;
-            this.label43.Text = "【♥】---";
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label33.Location = new System.Drawing.Point(6, 259);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(180, 18);
+            this.label33.TabIndex = 322;
+            this.label33.Text = "【♥】PRODS X COMPRA";
             // 
-            // TxtEntradaXcompra
+            // TxtClientesXpuntos
             // 
-            this.TxtEntradaXcompra.BackColor = System.Drawing.SystemColors.Window;
-            this.TxtEntradaXcompra.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtEntradaXcompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtEntradaXcompra.ForeColor = System.Drawing.Color.Black;
-            this.TxtEntradaXcompra.Location = new System.Drawing.Point(517, 232);
-            this.TxtEntradaXcompra.Name = "TxtEntradaXcompra";
-            this.TxtEntradaXcompra.Size = new System.Drawing.Size(226, 24);
-            this.TxtEntradaXcompra.TabIndex = 347;
+            this.TxtClientesXpuntos.BackColor = System.Drawing.SystemColors.Window;
+            this.TxtClientesXpuntos.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtClientesXpuntos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtClientesXpuntos.ForeColor = System.Drawing.Color.Black;
+            this.TxtClientesXpuntos.Location = new System.Drawing.Point(7, 232);
+            this.TxtClientesXpuntos.Name = "TxtClientesXpuntos";
+            this.TxtClientesXpuntos.Size = new System.Drawing.Size(226, 24);
+            this.TxtClientesXpuntos.TabIndex = 319;
+            this.TxtClientesXpuntos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtClientesXpuntos_KeyDown);
             // 
-            // label44
+            // label34
             // 
-            this.label44.AutoSize = true;
-            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label44.Location = new System.Drawing.Point(517, 211);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(200, 18);
-            this.label44.TabIndex = 348;
-            this.label44.Text = "【♥】 ENTRADA X COMPRA";
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label34.Location = new System.Drawing.Point(7, 211);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(199, 18);
+            this.label34.TabIndex = 320;
+            this.label34.Text = "【♥】 CLIENTES X PUNTOS";
             // 
-            // TxtVentasXperiodoDet
+            // TxtFormatoCierres
             // 
-            this.TxtVentasXperiodoDet.BackColor = System.Drawing.SystemColors.Window;
-            this.TxtVentasXperiodoDet.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtVentasXperiodoDet.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtVentasXperiodoDet.ForeColor = System.Drawing.Color.Black;
-            this.TxtVentasXperiodoDet.Location = new System.Drawing.Point(518, 179);
-            this.TxtVentasXperiodoDet.Name = "TxtVentasXperiodoDet";
-            this.TxtVentasXperiodoDet.Size = new System.Drawing.Size(224, 24);
-            this.TxtVentasXperiodoDet.TabIndex = 345;
-            this.TxtVentasXperiodoDet.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtVentasXperiodoDet_KeyDown);
+            this.TxtFormatoCierres.BackColor = System.Drawing.SystemColors.Window;
+            this.TxtFormatoCierres.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtFormatoCierres.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtFormatoCierres.ForeColor = System.Drawing.Color.Black;
+            this.TxtFormatoCierres.Location = new System.Drawing.Point(8, 179);
+            this.TxtFormatoCierres.Name = "TxtFormatoCierres";
+            this.TxtFormatoCierres.Size = new System.Drawing.Size(224, 24);
+            this.TxtFormatoCierres.TabIndex = 317;
+            this.TxtFormatoCierres.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtFormatoCierres_KeyDown);
             // 
-            // label45
+            // label31
             // 
-            this.label45.AutoSize = true;
-            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label45.Location = new System.Drawing.Point(516, 158);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(221, 18);
-            this.label45.TabIndex = 346;
-            this.label45.Text = "【♥】VENTAS X PERIODO DET";
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label31.Location = new System.Drawing.Point(6, 158);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(187, 18);
+            this.label31.TabIndex = 318;
+            this.label31.Text = "【♥】FORMATO CIERRES";
             // 
-            // TxtVentasXperiodo
+            // TxtFormatoCortes
             // 
-            this.TxtVentasXperiodo.BackColor = System.Drawing.SystemColors.Window;
-            this.TxtVentasXperiodo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtVentasXperiodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtVentasXperiodo.ForeColor = System.Drawing.Color.Black;
-            this.TxtVentasXperiodo.Location = new System.Drawing.Point(518, 127);
-            this.TxtVentasXperiodo.Name = "TxtVentasXperiodo";
-            this.TxtVentasXperiodo.Size = new System.Drawing.Size(224, 24);
-            this.TxtVentasXperiodo.TabIndex = 343;
-            this.TxtVentasXperiodo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtVentasXperiodo_KeyDown);
+            this.TxtFormatoCortes.BackColor = System.Drawing.SystemColors.Window;
+            this.TxtFormatoCortes.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtFormatoCortes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtFormatoCortes.ForeColor = System.Drawing.Color.Black;
+            this.TxtFormatoCortes.Location = new System.Drawing.Point(8, 127);
+            this.TxtFormatoCortes.Name = "TxtFormatoCortes";
+            this.TxtFormatoCortes.Size = new System.Drawing.Size(224, 24);
+            this.TxtFormatoCortes.TabIndex = 315;
+            this.TxtFormatoCortes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtFormatoCortes_KeyDown);
             // 
-            // label46
+            // label30
             // 
-            this.label46.AutoSize = true;
-            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label46.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label46.Location = new System.Drawing.Point(516, 106);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(187, 18);
-            this.label46.TabIndex = 344;
-            this.label46.Text = "【♥】VENTAS X PERIODO";
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label30.Location = new System.Drawing.Point(6, 106);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(184, 18);
+            this.label30.TabIndex = 316;
+            this.label30.Text = "【♥】FORMATO CORTES";
             // 
-            // TxtVentasXpuntos
+            // TxtFormatoParaFacturas
             // 
-            this.TxtVentasXpuntos.BackColor = System.Drawing.SystemColors.Window;
-            this.TxtVentasXpuntos.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtVentasXpuntos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtVentasXpuntos.ForeColor = System.Drawing.Color.Black;
-            this.TxtVentasXpuntos.Location = new System.Drawing.Point(517, 76);
-            this.TxtVentasXpuntos.Name = "TxtVentasXpuntos";
-            this.TxtVentasXpuntos.Size = new System.Drawing.Size(225, 24);
-            this.TxtVentasXpuntos.TabIndex = 341;
-            this.TxtVentasXpuntos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtVentasXpuntos_KeyDown);
+            this.TxtFormatoParaFacturas.BackColor = System.Drawing.SystemColors.Window;
+            this.TxtFormatoParaFacturas.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtFormatoParaFacturas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtFormatoParaFacturas.ForeColor = System.Drawing.Color.Black;
+            this.TxtFormatoParaFacturas.Location = new System.Drawing.Point(7, 76);
+            this.TxtFormatoParaFacturas.Name = "TxtFormatoParaFacturas";
+            this.TxtFormatoParaFacturas.Size = new System.Drawing.Size(225, 24);
+            this.TxtFormatoParaFacturas.TabIndex = 313;
+            this.TxtFormatoParaFacturas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtFormatoParaFacturas_KeyDown);
             // 
-            // label47
+            // label29
             // 
-            this.label47.AutoSize = true;
-            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label47.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label47.Location = new System.Drawing.Point(515, 55);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(181, 18);
-            this.label47.TabIndex = 342;
-            this.label47.Text = "【♥】VENTAS X PUNTOS";
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label29.Location = new System.Drawing.Point(5, 55);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(200, 18);
+            this.label29.TabIndex = 314;
+            this.label29.Text = "【♥】FORMATO FACTURAS";
             // 
-            // TxtVentasAcosto
+            // TxtFormatoParaTickets
             // 
-            this.TxtVentasAcosto.BackColor = System.Drawing.SystemColors.Window;
-            this.TxtVentasAcosto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtVentasAcosto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtVentasAcosto.ForeColor = System.Drawing.Color.Black;
-            this.TxtVentasAcosto.Location = new System.Drawing.Point(516, 28);
-            this.TxtVentasAcosto.Name = "TxtVentasAcosto";
-            this.TxtVentasAcosto.Size = new System.Drawing.Size(226, 24);
-            this.TxtVentasAcosto.TabIndex = 339;
-            this.TxtVentasAcosto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtVentasAcosto_KeyDown);
+            this.TxtFormatoParaTickets.BackColor = System.Drawing.SystemColors.Window;
+            this.TxtFormatoParaTickets.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtFormatoParaTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtFormatoParaTickets.ForeColor = System.Drawing.Color.Black;
+            this.TxtFormatoParaTickets.Location = new System.Drawing.Point(6, 28);
+            this.TxtFormatoParaTickets.Name = "TxtFormatoParaTickets";
+            this.TxtFormatoParaTickets.Size = new System.Drawing.Size(226, 24);
+            this.TxtFormatoParaTickets.TabIndex = 311;
+            this.TxtFormatoParaTickets.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtFormatoTickets_KeyDown);
             // 
-            // label48
+            // label28
             // 
-            this.label48.AutoSize = true;
-            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label48.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label48.Location = new System.Drawing.Point(516, 7);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(171, 18);
-            this.label48.TabIndex = 340;
-            this.label48.Text = "【♥】VENTAS A COSTO";
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label28.Location = new System.Drawing.Point(6, 7);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(183, 18);
+            this.label28.TabIndex = 312;
+            this.label28.Text = "【♥】FORMATO TICKETS";
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.BtnUpdateDb);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(772, 381);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Actulizaciones";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // BtnUpdateDb
+            // 
+            this.BtnUpdateDb.Location = new System.Drawing.Point(6, 20);
+            this.BtnUpdateDb.Name = "BtnUpdateDb";
+            this.BtnUpdateDb.Size = new System.Drawing.Size(124, 26);
+            this.BtnUpdateDb.TabIndex = 330;
+            this.BtnUpdateDb.Text = "Actualizar base datos";
+            this.BtnUpdateDb.UseVisualStyleBackColor = true;
+            this.BtnUpdateDb.Click += new System.EventHandler(this.BtnUpdateDb_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label15.Location = new System.Drawing.Point(361, 67);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(209, 18);
+            this.label15.TabIndex = 393;
+            this.label15.Text = "DIRECTORIO DEV. COMPRA";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(651, 86);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(42, 26);
+            this.button1.TabIndex = 391;
+            this.button1.Text = "- - -";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.textBox1.ForeColor = System.Drawing.Color.Black;
+            this.textBox1.Location = new System.Drawing.Point(360, 88);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(284, 24);
+            this.textBox1.TabIndex = 392;
+            this.textBox1.TabStop = false;
             // 
             // FrmEmpresa
             // 
@@ -1698,17 +1577,8 @@
         private System.Windows.Forms.Button BtnComprobantes;
         private System.Windows.Forms.TextBox TxtRutaComprobantes;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button BtnCortes;
-        private System.Windows.Forms.Button BtnFormatoCorte;
         private System.Windows.Forms.TextBox TxtRutaCortes;
-        private System.Windows.Forms.TextBox TxtFormatoCorte;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Button BtnFormatoFactura;
-        private System.Windows.Forms.TextBox TxtFormatoFactura;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button BtnFormatoTicket;
-        private System.Windows.Forms.TextBox TxtFormatoTicket;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button BtnCo;
         private System.Windows.Forms.TextBox TxtRutaCO;
@@ -1725,9 +1595,6 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Button BtnDirTrabajo;
         private System.Windows.Forms.TextBox TxtDirectorioTrabajo;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Button BtnPlanDetTraspaso;
-        private System.Windows.Forms.TextBox TxtRutaPlantillaDetalleTraspaso;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Button BtnDirectorioImg;
         private System.Windows.Forms.TextBox TxtDirectorioImg;
@@ -1786,5 +1653,8 @@
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.TextBox TxtMovsInv;
         private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
