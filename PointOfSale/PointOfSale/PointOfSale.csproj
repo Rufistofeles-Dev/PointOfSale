@@ -713,6 +713,12 @@
     <Compile Include="Views\Modulos\Importaciones\FrmImportaProds.Designer.cs">
       <DependentUpon>FrmImportaProds.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Modulos\Logistica\FrmDevoliciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Modulos\Logistica\FrmDevoliciones.Designer.cs">
+      <DependentUpon>FrmDevoliciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Modulos\Logistica\FrmEntradaPorCompra2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -969,6 +975,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Modulos\Importaciones\FrmImportaProds.resx">
       <DependentUpon>FrmImportaProds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Modulos\Logistica\FrmDevoliciones.resx">
+      <DependentUpon>FrmDevoliciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Modulos\Logistica\FrmEntradaPorCompra2.resx">
       <DependentUpon>FrmEntradaPorCompra2.cs</DependentUpon>

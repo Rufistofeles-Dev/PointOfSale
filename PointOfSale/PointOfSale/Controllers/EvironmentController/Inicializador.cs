@@ -1,4 +1,6 @@
 ﻿using PointOfSale.Models;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dictionary;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -325,6 +327,25 @@ namespace PointOfSale.Controllers
 
                         db.Add(prodSys);
                     }
+
+
+
+
+                    /**************ACTUALIZA CONEXION REPORTES**************/
+                    var informes = db.Informe.ToList();
+
+                    foreach (var informe in informes)
+                    {
+
+                        var stiReport = new StiReport();
+                        stiReport.LoadPackedReportFromString(informe.Codigo);
+                        stiReport.Dictionary.Databases.Clear();
+                        stiReport.Dictionary.Databases.Add(new StiSqlDatabase("Dym", Ambiente.Conexion.StandardSecurityConnectionString()));
+                        informe.Codigo = stiReport.SavePackedReportToString();
+                        db.Update(informe);
+                        db.SaveChanges();
+                    }
+                    /*******************************************************/
 
 
                     Ambiente.InformeTicket = db.Informe.FirstOrDefault(x => x.InformeId.Equals(

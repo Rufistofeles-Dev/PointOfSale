@@ -36,11 +36,13 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.TxtClave = new System.Windows.Forms.TextBox();
+            this.CboES = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BtnCancelar
             // 
-            this.BtnCancelar.Location = new System.Drawing.Point(166, 182);
+            this.BtnCancelar.Location = new System.Drawing.Point(168, 228);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(148, 40);
             this.BtnCancelar.TabIndex = 131;
@@ -50,7 +52,7 @@
             // 
             // BtnAceptar
             // 
-            this.BtnAceptar.Location = new System.Drawing.Point(13, 182);
+            this.BtnAceptar.Location = new System.Drawing.Point(15, 228);
             this.BtnAceptar.Name = "BtnAceptar";
             this.BtnAceptar.Size = new System.Drawing.Size(148, 40);
             this.BtnAceptar.TabIndex = 130;
@@ -124,11 +126,37 @@
             this.TxtClave.TabIndex = 127;
             this.TxtClave.Leave += new System.EventHandler(this.TxtClave_Leave);
             // 
+            // CboES
+            // 
+            this.CboES.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboES.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CboES.FormattingEnabled = true;
+            this.CboES.Items.AddRange(new object[] {
+            "E",
+            "S"});
+            this.CboES.Location = new System.Drawing.Point(13, 184);
+            this.CboES.Name = "CboES";
+            this.CboES.Size = new System.Drawing.Size(297, 26);
+            this.CboES.TabIndex = 274;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label2.Location = new System.Drawing.Point(9, 161);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(148, 20);
+            this.label2.TabIndex = 273;
+            this.label2.Text = "ENTRADA / SAIDA";
+            // 
             // FrmConceptosMovsInv
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(316, 230);
+            this.ClientSize = new System.Drawing.Size(316, 280);
+            this.Controls.Add(this.CboES);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.BtnAceptar);
@@ -154,5 +182,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox TxtClave;
+        private System.Windows.Forms.ComboBox CboES;
+        private System.Windows.Forms.Label label2;
     }
 }

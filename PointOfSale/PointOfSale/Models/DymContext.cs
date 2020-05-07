@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using PointOfSale.Controllers;
 
 namespace PointOfSale.Models
 {
@@ -95,8 +94,8 @@ namespace PointOfSale.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-
-                optionsBuilder.UseSqlServer(Ambiente.Conexion.StandardSecurityConnectionString());
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=Dym;Trusted_Connection=True;");
             }
         }
 
@@ -730,6 +729,11 @@ namespace PointOfSale.Models
                 entity.Property(e => e.Descripcion)
                     .IsRequired()
                     .HasMaxLength(150);
+
+                entity.Property(e => e.Es)
+                    .IsRequired()
+                    .HasColumnName("ES")
+                    .HasMaxLength(1);
 
                 entity.Property(e => e.IsDeleted).HasColumnName("isDeleted");
             });

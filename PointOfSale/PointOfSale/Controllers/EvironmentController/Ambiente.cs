@@ -5,6 +5,7 @@ using Microsoft.SqlServer.Management.Smo;
 using OfficeOpenXml;
 using PointOfSale.Models;
 using Stimulsoft.Report;
+using Stimulsoft.Report.Dictionary;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -37,19 +38,22 @@ namespace PointOfSale.Controllers
         public static string RutaImgs { get; set; }
         public static string PrefijoRutaImg { get; set; }
         public static bool ServerImgAccesible { get; set; }
+
         public static Informe InformeTicket { get; set; }
         public static Informe InformeFactura { get; set; }
         public static Informe InformeCorte { get; set; }
+        public static Informe InformeCompra { get; set; }
 
         public static StiReport stiReport { get; set; }
         public static ReporteController reporteController { get; set; }
-        public static Informe InformeCompra { get; set; }
+
 
         public static ImageList ImageList;
 
         public static string S1 { get; set; }
         public static string S2 { get; set; }
         public static string S3 { get; set; }
+        public static StiSqlDatabase DbDym { get; internal set; }
 
         private static Reporte reporte;
         private static List<Parametro> ReportParams;
@@ -1070,6 +1074,8 @@ namespace PointOfSale.Controllers
                     //stiReport.sapa
                     stiReport = new StiReport();
                     stiReport.LoadPackedReportFromString(InformeTicket.Codigo);
+
+
                     stiReport.Dictionary.Variables["ventaId"].ValueObject = venta.VentaId;
 
                     settings.PrinterName = estacion.ImpresoraT;

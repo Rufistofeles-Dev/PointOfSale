@@ -139,6 +139,7 @@ namespace PointOfSale.Views.ReportDesigner
                     stiReport.LoadPackedReportFromString(informe.Codigo);
                     stiReport.Dictionary.Databases.Clear();
                     stiReport.Dictionary.Databases.Add(new StiSqlDatabase("Dym", Ambiente.Conexion.StandardSecurityConnectionString()));
+                   // stiReport.sa
 
                     designer.Report = stiReport;
                 }

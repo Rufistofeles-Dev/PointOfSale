@@ -3,6 +3,7 @@ using PointOfSale.Controllers.EvironmentController;
 using PointOfSale.Models;
 using PointOfSale.Views.Modulos.Busquedas;
 using Stimulsoft.Report;
+using Stimulsoft.Report.Dictionary;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -635,11 +636,19 @@ namespace PointOfSale.Views.Modulos.Logistica
                         {
                             Ambiente.stiReport = new Stimulsoft.Report.StiReport();
                             Ambiente.stiReport.LoadPackedReportFromString(Ambiente.InformeCompra.Codigo);
+
+                            Ambiente.DbDym = (StiSqlDatabase)Ambiente.stiReport.Dictionary.Databases["Dym"];
+                            Ambiente.DbDym.ConnectionString = Ambiente.Conexion.StandardSecurityConnectionString();
+
+
                             Ambiente.stiReport.Dictionary.Variables["CompraId"].ValueObject = compra.CompraId;
 
 
                             //Fill dictionary
                             var file = empresa.DirectorioReportes + "COMPRA " + compra.CompraId + ".PDF";
+
+
+
 
 
                             Ambiente.stiReport.Render(false);

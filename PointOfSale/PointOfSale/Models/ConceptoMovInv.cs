@@ -13,6 +13,7 @@ namespace PointOfSale.Models
         public string ConceptoMovInvId { get; set; }
         public string Descripcion { get; set; }
         public bool IsDeleted { get; set; }
+        public string Es { get; set; }
 
         public virtual ICollection<MovInv> MovInv { get; set; }
     }

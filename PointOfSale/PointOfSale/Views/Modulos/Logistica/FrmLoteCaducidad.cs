@@ -135,7 +135,6 @@ namespace PointOfSale.Views.Modulos.Logistica
                 foreach (var l in lotes)
                     loteController.InsertOne(l);
                 DialogResult = DialogResult.OK;
-                Ambiente.Mensaje("Proceso concluido con éxito");
                 Close();
             }
             else

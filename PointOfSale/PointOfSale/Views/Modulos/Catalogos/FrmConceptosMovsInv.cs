@@ -33,6 +33,7 @@ namespace PointOfSale.Views.Modulos.Catalogos
         {
             conceptoMovInvController = new ConceptoMovInvController();
             objeto = null;
+            CboES.SelectedIndex = 0;
         }
 
         private void BtnAceptar_Click(object sender, EventArgs e)
@@ -52,6 +53,7 @@ namespace PointOfSale.Views.Modulos.Catalogos
                 objeto = new ConceptoMovInv();
                 objeto.ConceptoMovInvId = TxtClave.Text.Trim();
                 objeto.Descripcion = TxtNombre.Text.Trim();
+                objeto.Es = CboES.Text.Trim();
                 if (conceptoMovInvController.InsertOne(objeto))
                 {
                     Ambiente.Mensaje("Cambios guardados");
@@ -70,6 +72,7 @@ namespace PointOfSale.Views.Modulos.Catalogos
                 }
                 objeto.ConceptoMovInvId = TxtClave.Text.Trim();
                 objeto.Descripcion = TxtNombre.Text.Trim();
+                objeto.Es = CboES.Text.Trim();
                 if (conceptoMovInvController.Update(objeto))
                 {
                     Ambiente.Mensaje("Cambios guardados");
@@ -94,7 +97,7 @@ namespace PointOfSale.Views.Modulos.Catalogos
 
             TxtClave.Text = objeto.ConceptoMovInvId;
             TxtNombre.Text = objeto.Descripcion;
-
+            if (objeto.Es.Trim().Equals("E")) CboES.SelectedIndex = 0; else CboES.SelectedIndex = 1;
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
