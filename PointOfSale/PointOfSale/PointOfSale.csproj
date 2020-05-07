@@ -401,6 +401,8 @@
     <Compile Include="Controllers\CorteController.cs" />
     <Compile Include="Controllers\CxpController.cs" />
     <Compile Include="Controllers\CxppController.cs" />
+    <Compile Include="Controllers\DevolucionController.cs" />
+    <Compile Include="Controllers\DevolucionpController.cs" />
     <Compile Include="Controllers\DymErrorController.cs" />
     <Compile Include="Controllers\EmpresaController.cs" />
     <Compile Include="Controllers\EstacionController.cs" />
@@ -477,6 +479,8 @@
     <Compile Include="Models\Cxcp.cs" />
     <Compile Include="Models\Cxp.cs" />
     <Compile Include="Models\Cxpp.cs" />
+    <Compile Include="Models\Devolucion.cs" />
+    <Compile Include="Models\Devolucionp.cs" />
     <Compile Include="Models\Documento.cs" />
     <Compile Include="Models\DymContext.cs" />
     <Compile Include="Models\DymError.cs" />

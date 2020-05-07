@@ -45,34 +45,11 @@ namespace DYM.Views
             o.Show();
         }
 
-        private void Button2_Click(object sender, EventArgs e)
+        private void BtnDevRotura_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void Button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Button8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Button7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Button6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Button5_Click(object sender, EventArgs e)
-        {
-
+            var o = new FrmDevoliciones();
+            o.MdiParent = MdiParent;
+            o.Show();
         }
     }
 }

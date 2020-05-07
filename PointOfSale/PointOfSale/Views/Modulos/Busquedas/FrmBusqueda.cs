@@ -36,6 +36,8 @@ namespace PointOfSale.Views.Modulos.Busquedas
         public CRegimenfiscal Regimenfiscal;
         public Sucursal Sucursal;
         public Informe Informe;
+        public ConceptoMovInv ConceptoMovInv;
+        public Lote Lote;
 
 
         public FrmBusqueda()
@@ -281,6 +283,19 @@ namespace PointOfSale.Views.Modulos.Busquedas
 
                     }
                     break;
+                case (int)Ambiente.TipoBusqueda.ConceptoMovsInv:
+                    using (var db = new DymContext())
+                    {
+                        Grid1.DataSource = db.ConceptoMovInv.AsNoTracking().Where(x => x.Descripcion.Contains(SearchText)).
+                           Select(x => new { ID = x.ConceptoMovInvId, x.Descripcion, Entrada_Salida = x.Es }).ToList();
+                    }
+                    break;
+                case (int)Ambiente.TipoBusqueda.Lotes:
+                    using (var db = new DymContext())
+                    {
+                        Grid1.DataSource = db.Lote.AsNoTracking().Where(x => x.ProductoId.Equals(SearchText)).ToList();
+                    }
+                    break;
                 default:
                     MessageBox.Show("Error, no hay enumerador para catalogo");
                     break;
@@ -482,6 +497,20 @@ namespace PointOfSale.Views.Modulos.Busquedas
                         Informe = db.Informe.Where(x => x.InformeId.Equals(Grid1.Rows[Grid1.CurrentCell.RowIndex].Cells[0].Value.ToString())).FirstOrDefault();
                     }
                     break;
+
+                case (int)Ambiente.TipoBusqueda.ConceptoMovsInv:
+                    using (var db = new DymContext())
+                    {
+                        ConceptoMovInv = db.ConceptoMovInv.Where(x => x.ConceptoMovInvId.Equals(Grid1.Rows[Grid1.CurrentCell.RowIndex].Cells[0].Value.ToString())).FirstOrDefault();
+                    }
+                    break;
+                case (int)Ambiente.TipoBusqueda.Lotes:
+                    using (var db = new DymContext())
+                    {
+                        Lote = db.Lote.Where(x => x.LoteId == (int)Grid1.Rows[Grid1.CurrentCell.RowIndex].Cells[0].Value).FirstOrDefault();
+                    }
+                    break;
+
                 default:
                     MessageBox.Show("Error, no hay enumerador para catalogo");
                     break;

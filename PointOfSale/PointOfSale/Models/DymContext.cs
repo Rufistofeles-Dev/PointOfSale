@@ -48,6 +48,8 @@ namespace PointOfSale.Models
         public virtual DbSet<Cxcp> Cxcp { get; set; }
         public virtual DbSet<Cxp> Cxp { get; set; }
         public virtual DbSet<Cxpp> Cxpp { get; set; }
+        public virtual DbSet<Devolucion> Devolucion { get; set; }
+        public virtual DbSet<Devolucionp> Devolucionp { get; set; }
         public virtual DbSet<DymError> DymError { get; set; }
         public virtual DbSet<Empresa> Empresa { get; set; }
         public virtual DbSet<Estacion> Estacion { get; set; }
@@ -973,6 +975,66 @@ namespace PointOfSale.Models
                     .HasForeignKey(d => d.ProveedorId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PCXP_Proveedor");
+            });
+
+            modelBuilder.Entity<Devolucion>(entity =>
+            {
+                entity.Property(e => e.ConceptoMovInvId).HasMaxLength(10);
+
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime");
+
+                entity.Property(e => e.CreatedBy)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Documento).HasMaxLength(50);
+
+                entity.Property(e => e.EstadoDocId)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Impuesto).HasColumnType("decimal(18, 2)");
+
+                entity.Property(e => e.ProveedorId).HasMaxLength(10);
+
+                entity.Property(e => e.Subtotal).HasColumnType("decimal(18, 2)");
+
+                entity.Property(e => e.Total).HasColumnType("decimal(18, 2)");
+            });
+
+            modelBuilder.Entity<Devolucionp>(entity =>
+            {
+                entity.Property(e => e.Caducidad).HasColumnType("datetime");
+
+                entity.Property(e => e.Descripcion).IsRequired();
+
+                entity.Property(e => e.ImporteImpuesto1).HasColumnType("decimal(18, 2)");
+
+                entity.Property(e => e.ImporteImpuesto2).HasColumnType("decimal(18, 2)");
+
+                entity.Property(e => e.Impuesto1).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.Impuesto2).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.ImpuestoId1)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.ImpuestoId2)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.NoLote).HasMaxLength(50);
+
+                entity.Property(e => e.PrecioCompra).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.ProductoId)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Subtotal).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.Total).HasColumnType("decimal(18, 6)");
             });
 
             modelBuilder.Entity<DymError>(entity =>

@@ -418,8 +418,6 @@ namespace PointOfSale.Views.Modulos.Logistica
             }
 
         }
-
-
         private void AfectaMovsInv()
         {
             foreach (var p in partidas)
@@ -480,6 +478,7 @@ namespace PointOfSale.Views.Modulos.Logistica
         {
             return traspasopController.InsertRange(partidas);
         }
+
         private void EnviarTraspaso(bool enviarPrecios)
         {
             try
@@ -588,6 +587,10 @@ namespace PointOfSale.Views.Modulos.Logistica
 
             }
         }
+
+
+
+
         private void Malla_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Oemplus)

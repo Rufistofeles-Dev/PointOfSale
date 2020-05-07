@@ -704,6 +704,8 @@ namespace PointOfSale.Views.Modulos.Logistica
                             cambioPrecio.Utilidad4Viejo = p.Utilidad4;
                             //precios nuevos
                             cambioPrecio.PrecioCompraNuevo = pa.PrecioCompra;
+                            p.PrecioCompra = pa.PrecioCompra;
+                            p.PrecioCaja = pa.PrecioCaja;
                             cambioPrecio.Precio1Nuevo = pr.Precio1;
                             cambioPrecio.Precio2Nuevo = pr.Precio2;
                             cambioPrecio.Precio3Nuevo = pr.Precio3;
@@ -717,6 +719,7 @@ namespace PointOfSale.Views.Modulos.Logistica
                             cambioPrecio.CreatedAt = DateTime.Now;
                             cambioPrecio.CreatedBy = Ambiente.LoggedUser.UsuarioId;
                             cambioPrecioController.InsertOne(cambioPrecio);
+                            productoController.Update(p);
                         }
                         else
                             Ambiente.Mensaje("El producto ya no existe");
@@ -1015,8 +1018,6 @@ namespace PointOfSale.Views.Modulos.Logistica
             NPrecioCaja.Refresh();
             NCostoU.Controls[0].Hide();
             NCostoU.Refresh();
-            NCostoUlt.Controls[0].Hide();
-            NCostoUlt.Refresh();
             NCantidad.Controls[0].Hide();
             NCantidad.Refresh();
             NprecioLista.Controls[0].Hide();
@@ -1028,129 +1029,334 @@ namespace PointOfSale.Views.Modulos.Logistica
 
         private void NCantidad_Leave(object sender, EventArgs e)
         {
-            NprecioLista.Value = descueto(NPrecioCaja.Value, NDesc1.Value);
-            NImporte.Value = NCantidad.Value * NCostoU.Value;
+            try
+            {
+                NprecioLista.Value = descueto(NPrecioCaja.Value, NDesc1.Value);
+                NImporte.Value = NCantidad.Value * NCostoU.Value;
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
         }
         private void NPrecioCaja_Leave(object sender, EventArgs e)
         {
-            NprecioLista.Value = descueto(NPrecioCaja.Value, NDesc1.Value);
+            try
+            {
+                NprecioLista.Value = descueto(NPrecioCaja.Value, NDesc1.Value);
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
         }
         private void NDesc1_Leave(object sender, EventArgs e)
         {
-            NprecioLista.Value = descueto(NPrecioCaja.Value, NDesc1.Value);
-            NDesc1.Value = pdescueto(NPrecioCaja.Value, NprecioLista.Value);
+            try
+            {
+                NprecioLista.Value = descueto(NPrecioCaja.Value, NDesc1.Value);
+                NDesc1.Value = pdescueto(NPrecioCaja.Value, NprecioLista.Value);
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
         }
 
 
 
         private void NprecioLista_Leave(object sender, EventArgs e)
         {
-            NDesc1.Value = pdescueto(NPrecioCaja.Value, NprecioLista.Value);
+            try
+            {
+                NDesc1.Value = pdescueto(NPrecioCaja.Value, NprecioLista.Value);
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
         }
 
         private void NCostoU_Leave(object sender, EventArgs e)
         {
-            NDesc2.Value = pdescueto(NprecioLista.Value, NCostoU.Value);
-            NImporte.Value = NCantidad.Value * NCostoU.Value;
+            try
+            {
+                NDesc2.Value = pdescueto(NprecioLista.Value, NCostoU.Value);
+                NImporte.Value = NCantidad.Value * NCostoU.Value;
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
         }
 
         private void NImporte_Leave(object sender, EventArgs e)
         {
-            NCostoU.Value = NImporte.Value / NCantidad.Value;
-            NImporte.Value = NCantidad.Value * NCostoU.Value;
-            NDesc2.Value = pdescueto(NprecioLista.Value, NCostoU.Value);
+            try
+            {
+                NCostoU.Value = NImporte.Value / NCantidad.Value;
+                NImporte.Value = NCantidad.Value * NCostoU.Value;
+                NDesc2.Value = pdescueto(NprecioLista.Value, NCostoU.Value);
+            }
+            catch (Exception ex)
+            {
+                Ambiente.Mensaje(ex.Message);
+            }
+
 
         }
         private void NDesc2_Leave_1(object sender, EventArgs e)
         {
-            NCostoU.Value = descueto(NprecioLista.Value, NDesc2.Value);
+            try
+            {
+                NCostoU.Value = descueto(NprecioLista.Value, NDesc2.Value);
+            }
+            catch (Exception ex)
+            {
+                Ambiente.Mensaje(ex.Message);
+            }
         }
         #endregion
 
 
         private decimal descueto(decimal vlBase, decimal vlDescuento)
         {
-            return vlBase - (vlBase * (vlDescuento / 100));
+            try
+            {
+                return vlBase - (vlBase * (vlDescuento / 100));
+            }
+            catch (Exception ex)
+            {
+                Ambiente.Mensaje(ex.Message);
+                return 0;
+            }
+
         }
         private decimal pdescueto(decimal vlOriginal, decimal vlNuevo)
         {
-            if (vlOriginal == 0) return 0;
-            if (vlOriginal == vlNuevo) return 0;
+            try
+            {
+                if (vlOriginal == 0) return 0;
+                if (vlOriginal == vlNuevo) return 0;
 
-            var x = 100 - ((vlNuevo * 100) / vlOriginal);
+                var x = 100 - ((vlNuevo * 100) / vlOriginal);
 
-            return x;
+                return x;
+            }
+            catch (Exception ex)
+            {
+                Ambiente.Mensaje(ex.Message);
+                return 0;
+            }
+
         }
 
         private void NCantidad_Enter(object sender, EventArgs e)
         {
-            NCantidad.Select(0, NCantidad.Text.Length);
+            try
+            {
+                NCantidad.Select(0, NCantidad.Text.Length);
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
         }
 
         private void NCantidad_Click(object sender, EventArgs e)
         {
-            NCantidad.Select(0, NCantidad.Text.Length);
+            try
+            {
+                NCantidad.Select(0, NCantidad.Text.Length);
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
         }
 
         private void NPrecioCaja_Enter(object sender, EventArgs e)
         {
-            NPrecioCaja.Select(0, NPrecioCaja.Text.Length);
+            try
+            {
+                NPrecioCaja.Select(0, NPrecioCaja.Text.Length);
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
         }
 
         private void NDesc1_Enter(object sender, EventArgs e)
         {
-            NDesc1.Select(0, NDesc1.Text.Length);
+            try
+            {
+                NDesc1.Select(0, NDesc1.Text.Length);
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
+
         }
 
         private void NprecioLista_Enter(object sender, EventArgs e)
         {
-            NprecioLista.Select(0, NprecioLista.Text.Length);
+            try
+            {
+                NprecioLista.Select(0, NprecioLista.Text.Length);
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
 
         }
 
         private void NDesc2_Enter(object sender, EventArgs e)
         {
-            NDesc2.Select(0, NDesc2.Text.Length);
+            try
+            {
+                NDesc2.Select(0, NDesc2.Text.Length);
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
         }
 
         private void NCostoU_Enter(object sender, EventArgs e)
         {
-            NCostoU.Select(0, NCostoU.Text.Length);
+            try
+            {
+                NCostoU.Select(0, NCostoU.Text.Length);
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
         }
 
         private void NImporte_Enter(object sender, EventArgs e)
         {
-            NImporte.Select(0, NImporte.Text.Length);
+            try
+            {
+                NImporte.Select(0, NImporte.Text.Length);
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
         }
 
         private void NPrecioCaja_Click(object sender, EventArgs e)
         {
-            NPrecioCaja.Select(0, NPrecioCaja.Text.Length);
+            try
+            {
+                NPrecioCaja.Select(0, NPrecioCaja.Text.Length);
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
         }
 
         private void NDesc1_Click(object sender, EventArgs e)
         {
-            NDesc1.Select(0, NDesc1.Text.Length);
+            try
+            {
+                NDesc1.Select(0, NDesc1.Text.Length);
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
         }
 
         private void NprecioLista_Click(object sender, EventArgs e)
         {
-            NprecioLista.Select(0, NprecioLista.Text.Length);
+            try
+            {
+                NprecioLista.Select(0, NprecioLista.Text.Length);
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
         }
 
         private void NDesc2_Click(object sender, EventArgs e)
         {
-            NDesc2.Select(0, NDesc2.Text.Length);
+            try
+            {
+                NDesc2.Select(0, NDesc2.Text.Length);
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
         }
 
         private void NCostoU_Click(object sender, EventArgs e)
         {
-            NCostoU.Select(0, NCostoU.Text.Length);
+            try
+            {
+                NCostoU.Select(0, NCostoU.Text.Length);
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
         }
 
         private void NImporte_Click(object sender, EventArgs e)
         {
-            NImporte.Select(0, NImporte.Text.Length);
+            try
+            {
+                NImporte.Select(0, NImporte.Text.Length);
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
         }
 
         private void NDesc1_ValueChanged(object sender, EventArgs e)

@@ -30,14 +30,14 @@
         {
             this.BtnProductosCapturaPrecios = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.BtnAjusteInv = new System.Windows.Forms.Button();
+            this.BtnReporteAjustes = new System.Windows.Forms.Button();
+            this.BtnSalidasxTras = new System.Windows.Forms.Button();
+            this.BtnTRReposicion = new System.Windows.Forms.Button();
+            this.BtnDevRotura = new System.Windows.Forms.Button();
+            this.BtnPedidos = new System.Windows.Forms.Button();
+            this.BtnMovDetallados = new System.Windows.Forms.Button();
+            this.BtnRecepXTras = new System.Windows.Forms.Button();
             this.BtnSalida = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -66,93 +66,88 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // BtnAjusteInv
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(83, 216);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(133, 49);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "&AJUSTE DE INVENTARIO";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            this.BtnAjusteInv.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAjusteInv.Location = new System.Drawing.Point(83, 216);
+            this.BtnAjusteInv.Name = "BtnAjusteInv";
+            this.BtnAjusteInv.Size = new System.Drawing.Size(133, 49);
+            this.BtnAjusteInv.TabIndex = 3;
+            this.BtnAjusteInv.Text = "&AJUSTE DE INVENTARIO";
+            this.BtnAjusteInv.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // BtnReporteAjustes
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(83, 288);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(133, 49);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "&REPORTE DE AJUSTES";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.Button3_Click);
+            this.BtnReporteAjustes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnReporteAjustes.Location = new System.Drawing.Point(83, 288);
+            this.BtnReporteAjustes.Name = "BtnReporteAjustes";
+            this.BtnReporteAjustes.Size = new System.Drawing.Size(133, 49);
+            this.BtnReporteAjustes.TabIndex = 4;
+            this.BtnReporteAjustes.Text = "&REPORTE DE AJUSTES";
+            this.BtnReporteAjustes.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // BtnSalidasxTras
             // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(83, 360);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(133, 49);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "&SALIDAS POR TRASPASO";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.Button4_Click);
+            this.BtnSalidasxTras.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSalidasxTras.Location = new System.Drawing.Point(83, 360);
+            this.BtnSalidasxTras.Name = "BtnSalidasxTras";
+            this.BtnSalidasxTras.Size = new System.Drawing.Size(133, 49);
+            this.BtnSalidasxTras.TabIndex = 5;
+            this.BtnSalidasxTras.Text = "&SALIDAS POR TRASPASO";
+            this.BtnSalidasxTras.UseVisualStyleBackColor = true;
+            this.BtnSalidasxTras.Click += new System.EventHandler(this.Button4_Click);
             // 
-            // button5
+            // BtnTRReposicion
             // 
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(359, 48);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(133, 49);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "&PRODUCTO_TR [REPOSISION]";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.Button5_Click);
+            this.BtnTRReposicion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnTRReposicion.Location = new System.Drawing.Point(359, 48);
+            this.BtnTRReposicion.Name = "BtnTRReposicion";
+            this.BtnTRReposicion.Size = new System.Drawing.Size(133, 49);
+            this.BtnTRReposicion.TabIndex = 6;
+            this.BtnTRReposicion.Text = "&PRODUCTO_TR [REPOSISION]";
+            this.BtnTRReposicion.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // BtnDevRotura
             // 
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(359, 132);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(133, 49);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "&DEVOLUCION O ROTURA";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.Button6_Click);
+            this.BtnDevRotura.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnDevRotura.Location = new System.Drawing.Point(359, 132);
+            this.BtnDevRotura.Name = "BtnDevRotura";
+            this.BtnDevRotura.Size = new System.Drawing.Size(133, 49);
+            this.BtnDevRotura.TabIndex = 7;
+            this.BtnDevRotura.Text = "&DEVOLUCION O ROTURA";
+            this.BtnDevRotura.UseVisualStyleBackColor = true;
+            this.BtnDevRotura.Click += new System.EventHandler(this.BtnDevRotura_Click);
             // 
-            // button7
+            // BtnPedidos
             // 
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(359, 216);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(133, 49);
-            this.button7.TabIndex = 8;
-            this.button7.Text = "&PEDIDOS";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.Button7_Click);
+            this.BtnPedidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnPedidos.Location = new System.Drawing.Point(359, 216);
+            this.BtnPedidos.Name = "BtnPedidos";
+            this.BtnPedidos.Size = new System.Drawing.Size(133, 49);
+            this.BtnPedidos.TabIndex = 8;
+            this.BtnPedidos.Text = "&PEDIDOS";
+            this.BtnPedidos.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // BtnMovDetallados
             // 
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(359, 288);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(133, 49);
-            this.button8.TabIndex = 9;
-            this.button8.Text = "&MOVIMIENTOS DE TALLADOS";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.Button8_Click);
+            this.BtnMovDetallados.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnMovDetallados.Location = new System.Drawing.Point(359, 288);
+            this.BtnMovDetallados.Name = "BtnMovDetallados";
+            this.BtnMovDetallados.Size = new System.Drawing.Size(133, 49);
+            this.BtnMovDetallados.TabIndex = 9;
+            this.BtnMovDetallados.Text = "&MOVIMIENTOS DE TALLADOS";
+            this.BtnMovDetallados.UseVisualStyleBackColor = true;
             // 
-            // button9
+            // BtnRecepXTras
             // 
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(359, 360);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(133, 49);
-            this.button9.TabIndex = 10;
-            this.button9.Text = "&RECEPCION POR TRASPASO";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.Button9_Click);
+            this.BtnRecepXTras.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnRecepXTras.Location = new System.Drawing.Point(359, 360);
+            this.BtnRecepXTras.Name = "BtnRecepXTras";
+            this.BtnRecepXTras.Size = new System.Drawing.Size(133, 49);
+            this.BtnRecepXTras.TabIndex = 10;
+            this.BtnRecepXTras.Text = "&RECEPCION POR TRASPASO";
+            this.BtnRecepXTras.UseVisualStyleBackColor = true;
+            this.BtnRecepXTras.Click += new System.EventHandler(this.Button9_Click);
             // 
             // BtnSalida
             // 
@@ -203,14 +198,14 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.BtnSalida);
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.BtnRecepXTras);
+            this.Controls.Add(this.BtnMovDetallados);
+            this.Controls.Add(this.BtnPedidos);
+            this.Controls.Add(this.BtnDevRotura);
+            this.Controls.Add(this.BtnTRReposicion);
+            this.Controls.Add(this.BtnSalidasxTras);
+            this.Controls.Add(this.BtnReporteAjustes);
+            this.Controls.Add(this.BtnAjusteInv);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.BtnProductosCapturaPrecios);
             this.MaximumSize = new System.Drawing.Size(693, 504);
@@ -226,14 +221,14 @@
 
         private System.Windows.Forms.Button BtnProductosCapturaPrecios;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button BtnAjusteInv;
+        private System.Windows.Forms.Button BtnReporteAjustes;
+        private System.Windows.Forms.Button BtnSalidasxTras;
+        private System.Windows.Forms.Button BtnTRReposicion;
+        private System.Windows.Forms.Button BtnDevRotura;
+        private System.Windows.Forms.Button BtnPedidos;
+        private System.Windows.Forms.Button BtnMovDetallados;
+        private System.Windows.Forms.Button BtnRecepXTras;
         private System.Windows.Forms.Button BtnSalida;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label1;

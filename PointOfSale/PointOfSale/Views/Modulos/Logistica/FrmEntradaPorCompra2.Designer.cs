@@ -41,13 +41,28 @@
             this.BtnAgregar = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.Malla = new System.Windows.Forms.DataGridView();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label21 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.NDesc2 = new System.Windows.Forms.NumericUpDown();
             this.label28 = new System.Windows.Forms.Label();
-            this.NCostoUlt = new System.Windows.Forms.NumericUpDown();
             this.NImporte = new System.Windows.Forms.NumericUpDown();
             this.NCostoU = new System.Windows.Forms.NumericUpDown();
             this.NprecioLista = new System.Windows.Forms.NumericUpDown();
@@ -115,28 +130,11 @@
             this.TxtProvedorId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.NDesc1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NCantidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Malla)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NDesc2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NCostoUlt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NImporte)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NCostoU)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NprecioLista)).BeginInit();
@@ -158,7 +156,7 @@
             this.TxtDescripcion.Location = new System.Drawing.Point(6, 74);
             this.TxtDescripcion.Name = "TxtDescripcion";
             this.TxtDescripcion.ReadOnly = true;
-            this.TxtDescripcion.Size = new System.Drawing.Size(523, 24);
+            this.TxtDescripcion.Size = new System.Drawing.Size(599, 24);
             this.TxtDescripcion.TabIndex = 235;
             this.TxtDescripcion.TabStop = false;
             this.toolTip1.SetToolTip(this.TxtDescripcion, "Almacen donde de agregarán las existencias");
@@ -290,6 +288,106 @@
             this.Malla.MouseEnter += new System.EventHandler(this.Malla_MouseEnter);
             this.Malla.MouseLeave += new System.EventHandler(this.Malla_MouseLeave);
             // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "PRODUCTOID";
+            this.Column3.Name = "Column3";
+            this.Column3.Visible = false;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "PRODUCTO";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 150;
+            // 
+            // Column17
+            // 
+            this.Column17.HeaderText = "LABORATORIO";
+            this.Column17.Name = "Column17";
+            this.Column17.Width = 85;
+            // 
+            // Column18
+            // 
+            this.Column18.HeaderText = "STOCK";
+            this.Column18.Name = "Column18";
+            this.Column18.Width = 50;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "CANT.";
+            this.Column7.Name = "Column7";
+            this.Column7.Width = 50;
+            // 
+            // Column19
+            // 
+            this.Column19.HeaderText = "PCAJA";
+            this.Column19.Name = "Column19";
+            this.Column19.Width = 80;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "PCOSTO";
+            this.Column8.Name = "Column8";
+            this.Column8.Width = 80;
+            // 
+            // Column9
+            // 
+            this.Column9.FillWeight = 50F;
+            this.Column9.HeaderText = "DESC.";
+            this.Column9.Name = "Column9";
+            this.Column9.Width = 50;
+            // 
+            // Column11
+            // 
+            this.Column11.FillWeight = 50F;
+            this.Column11.HeaderText = "IMP.1";
+            this.Column11.Name = "Column11";
+            this.Column11.Width = 50;
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "IMP.2";
+            this.Column12.Name = "Column12";
+            this.Column12.Width = 50;
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "IMPORTE";
+            this.Column14.Name = "Column14";
+            this.Column14.Width = 80;
+            // 
+            // Column15
+            // 
+            this.Column15.HeaderText = "IMPUESTOS";
+            this.Column15.Name = "Column15";
+            this.Column15.Visible = false;
+            this.Column15.Width = 80;
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "IMPORTE NETO";
+            this.Column13.Name = "Column13";
+            this.Column13.Width = 115;
+            // 
+            // Column16
+            // 
+            this.Column16.HeaderText = "CANTIMP";
+            this.Column16.Name = "Column16";
+            this.Column16.Visible = false;
+            this.Column16.Width = 50;
+            // 
+            // Column20
+            // 
+            this.Column20.HeaderText = "LOTE";
+            this.Column20.Name = "Column20";
+            this.Column20.Width = 50;
+            // 
+            // Column21
+            // 
+            this.Column21.HeaderText = "CADUCIDAD";
+            this.Column21.Name = "Column21";
+            this.Column21.Width = 80;
+            // 
             // label21
             // 
             this.label21.AutoSize = true;
@@ -327,7 +425,6 @@
             // 
             this.groupBox2.Controls.Add(this.NDesc2);
             this.groupBox2.Controls.Add(this.label28);
-            this.groupBox2.Controls.Add(this.NCostoUlt);
             this.groupBox2.Controls.Add(this.NImporte);
             this.groupBox2.Controls.Add(this.NCostoU);
             this.groupBox2.Controls.Add(this.NprecioLista);
@@ -379,31 +476,6 @@
             this.label28.Size = new System.Drawing.Size(58, 18);
             this.label28.TabIndex = 248;
             this.label28.Text = "DESC2";
-            // 
-            // NCostoUlt
-            // 
-            this.NCostoUlt.DecimalPlaces = 2;
-            this.NCostoUlt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NCostoUlt.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.NCostoUlt.Location = new System.Drawing.Point(535, 72);
-            this.NCostoUlt.Maximum = new decimal(new int[] {
-            9999999,
-            0,
-            0,
-            0});
-            this.NCostoUlt.Minimum = new decimal(new int[] {
-            9999999,
-            0,
-            0,
-            -2147483648});
-            this.NCostoUlt.Name = "NCostoUlt";
-            this.NCostoUlt.Size = new System.Drawing.Size(74, 26);
-            this.NCostoUlt.TabIndex = 246;
-            this.NCostoUlt.TabStop = false;
             // 
             // NImporte
             // 
@@ -1248,106 +1320,6 @@
             this.label6.TabIndex = 224;
             this.label6.Text = "♥ALMACEN";
             // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "PRODUCTOID";
-            this.Column3.Name = "Column3";
-            this.Column3.Visible = false;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "PRODUCTO";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 150;
-            // 
-            // Column17
-            // 
-            this.Column17.HeaderText = "LABORATORIO";
-            this.Column17.Name = "Column17";
-            this.Column17.Width = 85;
-            // 
-            // Column18
-            // 
-            this.Column18.HeaderText = "STOCK";
-            this.Column18.Name = "Column18";
-            this.Column18.Width = 50;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "CANT.";
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 50;
-            // 
-            // Column19
-            // 
-            this.Column19.HeaderText = "PCAJA";
-            this.Column19.Name = "Column19";
-            this.Column19.Width = 80;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "PCOSTO";
-            this.Column8.Name = "Column8";
-            this.Column8.Width = 80;
-            // 
-            // Column9
-            // 
-            this.Column9.FillWeight = 50F;
-            this.Column9.HeaderText = "DESC.";
-            this.Column9.Name = "Column9";
-            this.Column9.Width = 50;
-            // 
-            // Column11
-            // 
-            this.Column11.FillWeight = 50F;
-            this.Column11.HeaderText = "IMP.1";
-            this.Column11.Name = "Column11";
-            this.Column11.Width = 50;
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "IMP.2";
-            this.Column12.Name = "Column12";
-            this.Column12.Width = 50;
-            // 
-            // Column14
-            // 
-            this.Column14.HeaderText = "IMPORTE";
-            this.Column14.Name = "Column14";
-            this.Column14.Width = 80;
-            // 
-            // Column15
-            // 
-            this.Column15.HeaderText = "IMPUESTOS";
-            this.Column15.Name = "Column15";
-            this.Column15.Visible = false;
-            this.Column15.Width = 80;
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "IMPORTE NETO";
-            this.Column13.Name = "Column13";
-            this.Column13.Width = 115;
-            // 
-            // Column16
-            // 
-            this.Column16.HeaderText = "CANTIMP";
-            this.Column16.Name = "Column16";
-            this.Column16.Visible = false;
-            this.Column16.Width = 50;
-            // 
-            // Column20
-            // 
-            this.Column20.HeaderText = "LOTE";
-            this.Column20.Name = "Column20";
-            this.Column20.Width = 50;
-            // 
-            // Column21
-            // 
-            this.Column21.HeaderText = "CADUCIDAD";
-            this.Column21.Name = "Column21";
-            this.Column21.Width = 80;
-            // 
             // FrmEntradaPorCompra2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1372,7 +1344,6 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NDesc2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NCostoUlt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NImporte)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NCostoU)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NprecioLista)).EndInit();
@@ -1468,7 +1439,6 @@
         private System.Windows.Forms.NumericUpDown NCostoU;
         private System.Windows.Forms.NumericUpDown NprecioLista;
         private System.Windows.Forms.NumericUpDown NPrecioCaja;
-        private System.Windows.Forms.NumericUpDown NCostoUlt;
         private System.Windows.Forms.NumericUpDown NDesc2;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;

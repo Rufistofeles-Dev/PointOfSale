@@ -69,7 +69,7 @@ namespace PointOfSale.Controllers
             Usuarios, ProductoImpuesto, ProductoSustancia,
             ProductosCompleto, MetodoPago, FormaPago, UsoCDFI,
             Tickets, Empresas, RegimenFiscal, Sucursal, Lotes, Reportes,
-            Informes
+            Informes, ConceptoMovsInv
 
         };
 
