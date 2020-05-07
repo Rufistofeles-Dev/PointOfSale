@@ -170,7 +170,7 @@ namespace PointOfSale.Controllers
             {
                 using (var db = new DymContext())
                 {
-                    var partidas = db.Devolucion.Where(x => x.DevolucionId == devolucion.DevolucionId).ToList();
+                    var partidas = db.Devolucionp.Where(x => x.DevolucionId == devolucion.DevolucionId).ToList();
                     if (partidas != null)
                     {
                         db.RemoveRange(partidas);

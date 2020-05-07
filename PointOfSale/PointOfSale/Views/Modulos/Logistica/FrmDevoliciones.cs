@@ -92,7 +92,7 @@ namespace PointOfSale.Views.Modulos.Logistica
             TxtConceptoMovInv.Text = "";
             TxtProveedor.Text = "";
             TxtDocto.Text = "";
-            TxtFecha.Text = "";
+            TxtFecha.Text = DateTime.Now.ToString("dd-MM-yyyy");
             TxtProducto.Text = "";
             TxtDescrip.Text = "";
             TxtLote.Text = "";
@@ -103,6 +103,7 @@ namespace PointOfSale.Views.Modulos.Logistica
         }
         private void CreaDevolucion()
         {
+            TxtFecha.Text = DateTime.Now.ToString("dd-MM-yyyy");
             devolucion = new Devolucion();
             devolucion.ConceptoMovInvId = "";
             devolucion.EstadoDocId = "PEN";
@@ -266,6 +267,7 @@ namespace PointOfSale.Views.Modulos.Logistica
                 if (pendiente) devolucion.EstadoDocId = "PEN"; else devolucion.EstadoDocId = "CON";
                 devolucion.ConceptoMovInvId = conceptoMovInv.ConceptoMovInvId;
                 devolucion.ProveedorId = proveedor == null ? null : proveedor.ProveedorId;
+                devolucion.Documento = TxtDocto.Text.Trim();
                 devolucion.Impuesto = Impuesto;
                 devolucion.Subtotal = Subtotal;
                 devolucion.Total = Subtotal + Impuesto;
@@ -274,16 +276,21 @@ namespace PointOfSale.Views.Modulos.Logistica
                 {
                     if (GuardaPartidas())
                     {
-
-                        SumaLotes();
-                        AfectaStock();
-                        AfectaMovsInv();
-                        if (!Ambiente.CancelaProceso)
-                            Ambiente.Mensaje("Proceso concluido con éxito");
+                        if (!pendiente)
+                        {
+                            RestaLotes();
+                            AfectaStock();
+                            AfectaMovsInv();
+                            if (!Ambiente.CancelaProceso)
+                                Ambiente.Mensaje("Proceso concluido con éxito");
+                            else
+                                Ambiente.Mensaje("Proceso concluido con inconsistencias");
+                            ResetPDD();
+                        }
                         else
-                            Ambiente.Mensaje("Proceso concluido con inconsistencias");
-
-                        ResetPDD();
+                        {
+                            Close();
+                        }
                     }
                     else
                     {
@@ -292,7 +299,7 @@ namespace PointOfSale.Views.Modulos.Logistica
                 }
                 else
                 {
-                    Ambiente.Mensaje("Algo salio mal con: if (traspasoController.Update(traspaso))");
+                    Ambiente.Mensaje("Algo salio mal con: if (traspasoController.Update(devolucion))");
                 }
             }
 
@@ -324,7 +331,7 @@ namespace PointOfSale.Views.Modulos.Logistica
                 Ambiente.CancelaProceso = !productoController.Update(prod);
             }
         }
-        private void SumaLotes()
+        private void RestaLotes()
         {
             foreach (var p in partidas)
             {
@@ -334,7 +341,7 @@ namespace PointOfSale.Views.Modulos.Logistica
                     var l = loteController.SelectOne((int)p.LoteId);
                     if (l != null)
                     {
-                        l.StockRestante += p.Cantidad;
+                        l.StockRestante -= p.Cantidad;
                         Ambiente.CancelaProceso = !loteController.Update(l);
                     }
                 }
