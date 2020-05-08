@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -282,7 +283,15 @@ namespace PointOfSale.Views.Modulos.Logistica
                             AfectaStock();
                             AfectaMovsInv();
                             if (!Ambiente.CancelaProceso)
-                                Ambiente.Mensaje("Proceso concluido con éxito");
+                            {
+                                Ambiente.stiReport = new Stimulsoft.Report.StiReport();
+                                Ambiente.stiReport.LoadPackedReportFromString(Ambiente.InformeDevCom.Codigo);
+                                Ambiente.stiReport.Dictionary.Variables["DevolucionId"].ValueObject = devolucion.DevolucionId;
+                                Ambiente.S1 = Ambiente.Empresa.DirectorioDevCom + "DEVCOM-" + devolucion.DevolucionId + ".PDF";
+                                Ambiente.stiReport.Render(false);
+                                Ambiente.stiReport.ExportDocument(Stimulsoft.Report.StiExportFormat.Pdf, Ambiente.S1);
+                                Process.Start(Ambiente.S1);
+                            }
                             else
                                 Ambiente.Mensaje("Proceso concluido con inconsistencias");
                             ResetPDD();
