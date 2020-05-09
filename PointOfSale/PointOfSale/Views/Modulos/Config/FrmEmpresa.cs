@@ -70,6 +70,8 @@ namespace PointOfSale.Views.Modulos.Config
                 empresa.FormatoVentasXperiodoDet = TxtVentasXperiodoDet.Text.Trim();
                 empresa.FormatoEntradaXcompra = TxtEntradaXcompra.Text.Trim();
                 empresa.DirectorioDevCom = TxtDirectorioDevCom.Text.Trim();
+                empresa.MicroPvdb = TxtMicropvdb.Text.Trim();
+
                 if (empresa.RegimenFiscalId.Trim().Length == 0)
                 {
                     Ambiente.Mensaje("Nada que guardar");
@@ -125,7 +127,7 @@ namespace PointOfSale.Views.Modulos.Config
                 empresa.FormatoVentasXperiodoDet = TxtVentasXperiodoDet.Text.Trim();
                 empresa.FormatoEntradaXcompra = TxtEntradaXcompra.Text.Trim();
                 empresa.DirectorioDevCom = TxtDirectorioDevCom.Text.Trim();
-
+                empresa.MicroPvdb = TxtMicropvdb.Text.Trim();
                 if (empresa.RegimenFiscalId.Trim().Length == 0)
                 {
                     Ambiente.Mensaje("Nada que guardar");
@@ -187,6 +189,7 @@ namespace PointOfSale.Views.Modulos.Config
             TxtVentasXperiodoDet.Text = empresa.FormatoVentasXperiodoDet;
             TxtEntradaXcompra.Text = empresa.FormatoEntradaXcompra;
             TxtDirectorioDevCom.Text = empresa.DirectorioDevCom;
+            TxtMicropvdb.Text = empresa.MicroPvdb;
         }
 
         private void BtnAceptar_Click(object sender, EventArgs e)
@@ -586,6 +589,11 @@ namespace PointOfSale.Views.Modulos.Config
         private void BtnDevCom_Click(object sender, EventArgs e)
         {
             TxtDirectorioDevCom.Text = Ambiente.GetFolderPath();
+        }
+
+        private void BtnMicroPvDb_Click(object sender, EventArgs e)
+        {
+            TxtMicropvdb.Text = Ambiente.GetFilePath().Item1;
         }
     }
 }

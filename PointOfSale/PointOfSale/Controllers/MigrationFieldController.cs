@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace PointOfSale.Controllers
 {
-    public class DevolucionController
+    public class MigrationFieldController
     {
-        public bool Delete(Devolucion o)
+        public bool Delete(MigrationField o)
         {
             try
             {
@@ -33,7 +33,7 @@ namespace PointOfSale.Controllers
             {
                 using (var db = new DymContext())
                 {
-                    var temp = db.Devolucion.FirstOrDefault(x => x.DevolucionId == Id);
+                    var temp = db.MigrationField.FirstOrDefault(x => x.MigrationFieldId == Id);
                     if (temp != null)
                     {
 
@@ -49,7 +49,7 @@ namespace PointOfSale.Controllers
             return false;
         }
 
-        public bool InsertOne(Devolucion o)
+        public bool InsertOne(MigrationField o)
         {
             try
             {
@@ -66,7 +66,7 @@ namespace PointOfSale.Controllers
             return false;
         }
 
-        public bool InsertRange(List<Devolucion> lista)
+        public bool InsertRange(List<MigrationField> lista)
         {
             try
             {
@@ -83,13 +83,13 @@ namespace PointOfSale.Controllers
             return false;
         }
 
-        public List<Devolucion> SelectAll()
+        public List<MigrationField> SelectAll()
         {
             try
             {
                 using (var db = new DymContext())
                 {
-                    return db.Devolucion.ToList();
+                    return db.MigrationField.ToList();
                 }
             }
             catch (Exception ex)
@@ -99,13 +99,13 @@ namespace PointOfSale.Controllers
             return null;
         }
 
-        public List<Devolucion> SelectMany(int cantidad)
+        public List<MigrationField> SelectMany(int cantidad)
         {
             try
             {
                 using (var db = new DymContext())
                 {
-                    return db.Devolucion.Take(cantidad).ToList();
+                    return db.MigrationField.Take(cantidad).ToList();
                 }
             }
             catch (Exception ex)
@@ -115,13 +115,13 @@ namespace PointOfSale.Controllers
             return null;
         }
 
-        public Devolucion SelectOne(int Id)
+        public MigrationField SelectOne(int Id)
         {
             try
             {
                 using (var db = new DymContext())
                 {
-                    return db.Devolucion.FirstOrDefault(x => x.DevolucionId == Id);
+                    return db.MigrationField.FirstOrDefault(x => x.MigrationFieldId == Id);
                 }
             }
             catch (Exception ex)
@@ -131,13 +131,13 @@ namespace PointOfSale.Controllers
             return null;
         }
 
-        public List<Devolucion> SelectOneOverList(int Id)
+        public List<MigrationField> SelectOneOverList(int Id)
         {
             try
             {
                 using (var db = new DymContext())
                 {
-                    return db.Devolucion.Where(x => x.DevolucionId == Id).ToList();
+                    return db.MigrationField.Where(x => x.MigrationFieldId == Id).ToList();
                 }
             }
             catch (Exception ex)
@@ -147,7 +147,7 @@ namespace PointOfSale.Controllers
             return null;
         }
 
-        public bool Update(Devolucion o)
+        public bool Update(MigrationField o)
         {
             try
             {
@@ -164,13 +164,13 @@ namespace PointOfSale.Controllers
             return false;
         }
 
-        public bool DeletePartidas(Devolucion devolucion)
+        public bool DeletePartidas(MigrationField devolucion)
         {
             try
             {
                 using (var db = new DymContext())
                 {
-                    var partidas = db.Devolucionp.Where(x => x.DevolucionId == devolucion.DevolucionId).ToList();
+                    var partidas = db.MigrationField.Where(x => x.MigrationTableId == devolucion.MigrationTableId).ToList();
                     if (partidas != null)
                     {
                         db.RemoveRange(partidas);
@@ -185,7 +185,6 @@ namespace PointOfSale.Controllers
             }
             return false;
         }
-
 
     }
 }

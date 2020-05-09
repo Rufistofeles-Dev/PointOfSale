@@ -68,6 +68,9 @@
             this.BtnCer = new System.Windows.Forms.Button();
             this.TxtRutaCer = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label15 = new System.Windows.Forms.Label();
+            this.BtnDevCom = new System.Windows.Forms.Button();
+            this.TxtDirectorioDevCom = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.BtnDirReportes = new System.Windows.Forms.Button();
             this.TxtDirectorioReportes = new System.Windows.Forms.TextBox();
@@ -137,9 +140,9 @@
             this.label28 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.BtnUpdateDb = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.BtnDevCom = new System.Windows.Forms.Button();
-            this.TxtDirectorioDevCom = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.BtnMicroPvDb = new System.Windows.Forms.Button();
+            this.TxtMicropvdb = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -621,6 +624,9 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label16);
+            this.tabPage3.Controls.Add(this.BtnMicroPvDb);
+            this.tabPage3.Controls.Add(this.TxtMicropvdb);
             this.tabPage3.Controls.Add(this.label15);
             this.tabPage3.Controls.Add(this.BtnDevCom);
             this.tabPage3.Controls.Add(this.TxtDirectorioDevCom);
@@ -655,6 +661,40 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Directorios y formatos";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label15.Location = new System.Drawing.Point(361, 67);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(209, 18);
+            this.label15.TabIndex = 393;
+            this.label15.Text = "DIRECTORIO DEV. COMPRA";
+            // 
+            // BtnDevCom
+            // 
+            this.BtnDevCom.Location = new System.Drawing.Point(651, 86);
+            this.BtnDevCom.Name = "BtnDevCom";
+            this.BtnDevCom.Size = new System.Drawing.Size(42, 26);
+            this.BtnDevCom.TabIndex = 391;
+            this.BtnDevCom.Text = "- - -";
+            this.BtnDevCom.UseVisualStyleBackColor = true;
+            this.BtnDevCom.Click += new System.EventHandler(this.BtnDevCom_Click);
+            // 
+            // TxtDirectorioDevCom
+            // 
+            this.TxtDirectorioDevCom.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtDirectorioDevCom.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtDirectorioDevCom.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.TxtDirectorioDevCom.ForeColor = System.Drawing.Color.Black;
+            this.TxtDirectorioDevCom.Location = new System.Drawing.Point(360, 88);
+            this.TxtDirectorioDevCom.Name = "TxtDirectorioDevCom";
+            this.TxtDirectorioDevCom.ReadOnly = true;
+            this.TxtDirectorioDevCom.Size = new System.Drawing.Size(284, 24);
+            this.TxtDirectorioDevCom.TabIndex = 392;
+            this.TxtDirectorioDevCom.TabStop = false;
             // 
             // label25
             // 
@@ -899,7 +939,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label11.Location = new System.Drawing.Point(359, 128);
+            this.label11.Location = new System.Drawing.Point(359, 189);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(212, 18);
             this.label11.TabIndex = 363;
@@ -907,7 +947,7 @@
             // 
             // BtnCo
             // 
-            this.BtnCo.Location = new System.Drawing.Point(648, 147);
+            this.BtnCo.Location = new System.Drawing.Point(648, 208);
             this.BtnCo.Name = "BtnCo";
             this.BtnCo.Size = new System.Drawing.Size(42, 26);
             this.BtnCo.TabIndex = 359;
@@ -921,7 +961,7 @@
             this.TxtRutaCO.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtRutaCO.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.TxtRutaCO.ForeColor = System.Drawing.Color.Black;
-            this.TxtRutaCO.Location = new System.Drawing.Point(360, 146);
+            this.TxtRutaCO.Location = new System.Drawing.Point(360, 207);
             this.TxtRutaCO.Name = "TxtRutaCO";
             this.TxtRutaCO.ReadOnly = true;
             this.TxtRutaCO.Size = new System.Drawing.Size(284, 24);
@@ -1481,39 +1521,39 @@
             this.BtnUpdateDb.UseVisualStyleBackColor = true;
             this.BtnUpdateDb.Click += new System.EventHandler(this.BtnUpdateDb_Click);
             // 
-            // label15
+            // label16
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label15.Location = new System.Drawing.Point(361, 67);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(209, 18);
-            this.label15.TabIndex = 393;
-            this.label15.Text = "DIRECTORIO DEV. COMPRA";
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label16.Location = new System.Drawing.Point(361, 127);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(158, 18);
+            this.label16.TabIndex = 396;
+            this.label16.Text = "MICROPV DATABASE";
             // 
-            // BtnDevCom
+            // BtnMicroPvDb
             // 
-            this.BtnDevCom.Location = new System.Drawing.Point(651, 86);
-            this.BtnDevCom.Name = "BtnDevCom";
-            this.BtnDevCom.Size = new System.Drawing.Size(42, 26);
-            this.BtnDevCom.TabIndex = 391;
-            this.BtnDevCom.Text = "- - -";
-            this.BtnDevCom.UseVisualStyleBackColor = true;
-            this.BtnDevCom.Click += new System.EventHandler(this.BtnDevCom_Click);
+            this.BtnMicroPvDb.Location = new System.Drawing.Point(651, 146);
+            this.BtnMicroPvDb.Name = "BtnMicroPvDb";
+            this.BtnMicroPvDb.Size = new System.Drawing.Size(42, 26);
+            this.BtnMicroPvDb.TabIndex = 394;
+            this.BtnMicroPvDb.Text = "- - -";
+            this.BtnMicroPvDb.UseVisualStyleBackColor = true;
+            this.BtnMicroPvDb.Click += new System.EventHandler(this.BtnMicroPvDb_Click);
             // 
-            // TxtDirectorioDevCom
+            // TxtMicropvdb
             // 
-            this.TxtDirectorioDevCom.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtDirectorioDevCom.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtDirectorioDevCom.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.TxtDirectorioDevCom.ForeColor = System.Drawing.Color.Black;
-            this.TxtDirectorioDevCom.Location = new System.Drawing.Point(360, 88);
-            this.TxtDirectorioDevCom.Name = "TxtDirectorioDevCom";
-            this.TxtDirectorioDevCom.ReadOnly = true;
-            this.TxtDirectorioDevCom.Size = new System.Drawing.Size(284, 24);
-            this.TxtDirectorioDevCom.TabIndex = 392;
-            this.TxtDirectorioDevCom.TabStop = false;
+            this.TxtMicropvdb.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtMicropvdb.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtMicropvdb.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.TxtMicropvdb.ForeColor = System.Drawing.Color.Black;
+            this.TxtMicropvdb.Location = new System.Drawing.Point(360, 148);
+            this.TxtMicropvdb.Name = "TxtMicropvdb";
+            this.TxtMicropvdb.ReadOnly = true;
+            this.TxtMicropvdb.Size = new System.Drawing.Size(284, 24);
+            this.TxtMicropvdb.TabIndex = 395;
+            this.TxtMicropvdb.TabStop = false;
             // 
             // FrmEmpresa
             // 
@@ -1657,5 +1697,8 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button BtnDevCom;
         private System.Windows.Forms.TextBox TxtDirectorioDevCom;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button BtnMicroPvDb;
+        private System.Windows.Forms.TextBox TxtMicropvdb;
     }
 }

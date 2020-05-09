@@ -65,6 +65,8 @@ namespace PointOfSale.Models
         public virtual DbSet<Laboratorio> Laboratorio { get; set; }
         public virtual DbSet<Lote> Lote { get; set; }
         public virtual DbSet<LoteVentap> LoteVentap { get; set; }
+        public virtual DbSet<MigrationField> MigrationField { get; set; }
+        public virtual DbSet<MigrationTable> MigrationTable { get; set; }
         public virtual DbSet<MovInv> MovInv { get; set; }
         public virtual DbSet<Municipio> Municipio { get; set; }
         public virtual DbSet<Pais> Pais { get; set; }
@@ -1114,6 +1116,8 @@ namespace PointOfSale.Models
 
                 entity.Property(e => e.IsDeleted).HasDefaultValueSql("((0))");
 
+                entity.Property(e => e.MicroPvdb).HasMaxLength(550);
+
                 entity.Property(e => e.Nombre).HasMaxLength(50);
 
                 entity.Property(e => e.PassWstimbrado)
@@ -1432,6 +1436,37 @@ namespace PointOfSale.Models
                     .HasForeignKey(d => d.VentaId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_LoteVentap_Venta");
+            });
+
+            modelBuilder.Entity<MigrationField>(entity =>
+            {
+                entity.Property(e => e.Campo).HasMaxLength(50);
+
+                entity.Property(e => e.CreatedBy).HasMaxLength(50);
+
+                entity.Property(e => e.Expresion).HasMaxLength(250);
+
+                entity.Property(e => e.UpdateBy).HasColumnType("datetime");
+
+                entity.HasOne(d => d.MigrationTable)
+                    .WithMany(p => p.MigrationField)
+                    .HasForeignKey(d => d.MigrationTableId)
+                    .HasConstraintName("FK_MigrationField_MigrationTable");
+            });
+
+            modelBuilder.Entity<MigrationTable>(entity =>
+            {
+                entity.Property(e => e.CreatedBy)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Tabla)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.UltSincronizacion).HasColumnType("datetime");
+
+                entity.Property(e => e.UpdatedBy).HasMaxLength(50);
             });
 
             modelBuilder.Entity<MovInv>(entity =>

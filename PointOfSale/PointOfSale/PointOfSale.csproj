@@ -426,6 +426,8 @@
     <Compile Include="Controllers\ConceptoMovInvController.cs" />
     <Compile Include="Controllers\LoteController.cs" />
     <Compile Include="Controllers\LoteVentapController.cs" />
+    <Compile Include="Controllers\MigrationFieldController.cs" />
+    <Compile Include="Controllers\MigrationTableController.cs" />
     <Compile Include="Controllers\MovInvController.cs" />
     <Compile Include="Controllers\PresentacionController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
@@ -499,6 +501,8 @@
     <Compile Include="Models\Lote.cs" />
     <Compile Include="Models\LoteVentap.cs" />
     <Compile Include="Models\MetodoPago.cs" />
+    <Compile Include="Models\MigrationField.cs" />
+    <Compile Include="Models\MigrationTable.cs" />
     <Compile Include="Models\MovInv.cs" />
     <Compile Include="Models\Municipio.cs" />
     <Compile Include="Models\Pais.cs" />

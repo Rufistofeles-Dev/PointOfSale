@@ -54,6 +54,7 @@ namespace PointOfSale.Models
         public string FormatoVentasXperiodoDet { get; set; }
         public string FormatoEntradaXcompra { get; set; }
         public string DirectorioDevCom { get; set; }
+        public string MicroPvdb { get; set; }
 
         public virtual CRegimenfiscal RegimenFiscalNavigation { get; set; }
     }
