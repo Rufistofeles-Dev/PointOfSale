@@ -1440,17 +1440,24 @@ namespace PointOfSale.Models
 
             modelBuilder.Entity<MigrationField>(entity =>
             {
-                entity.Property(e => e.Campo).HasMaxLength(50);
+                entity.Property(e => e.Campo)
+                    .IsRequired()
+                    .HasMaxLength(50);
 
-                entity.Property(e => e.CreatedBy).HasMaxLength(50);
+                entity.Property(e => e.CreatedBy)
+                    .IsRequired()
+                    .HasMaxLength(50);
 
-                entity.Property(e => e.Expresion).HasMaxLength(250);
+                entity.Property(e => e.Expresion)
+                    .IsRequired()
+                    .HasMaxLength(250);
 
                 entity.Property(e => e.UpdateBy).HasColumnType("datetime");
 
                 entity.HasOne(d => d.MigrationTable)
                     .WithMany(p => p.MigrationField)
                     .HasForeignKey(d => d.MigrationTableId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_MigrationField_MigrationTable");
             });
 

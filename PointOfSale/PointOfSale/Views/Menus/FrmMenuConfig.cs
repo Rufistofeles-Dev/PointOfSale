@@ -46,5 +46,12 @@ namespace PointOfSale.Views.Menus
             o.MdiParent = MdiParent;
             o.Show();
         }
+
+        private void BtnSincMicropv_Click(object sender, EventArgs e)
+        {
+            var o = new FrmSincronizampv();
+            o.MdiParent = MdiParent;
+            o.Show();
+        }
     }
 }

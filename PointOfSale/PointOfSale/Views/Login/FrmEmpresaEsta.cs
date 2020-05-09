@@ -86,5 +86,10 @@ namespace PointOfSale.Views.Login
         {
             Application.Exit();
         }
+
+        private void CboEmpresa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -98,6 +98,21 @@ namespace PointOfSale.Controllers
             }
             return null;
         }
+        public List<MigrationField> SelectByTableId(int id)
+        {
+            try
+            {
+                using (var db = new DymContext())
+                {
+                    return db.MigrationField.Where(x => x.MigrationTableId == id).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Ambiente.Mensaje("Algo salio mal con: " + MethodBase.GetCurrentMethod().Name + "@" + GetType().Name + "\n" + ex.ToString());
+            }
+            return null;
+        }
 
         public List<MigrationField> SelectMany(int cantidad)
         {

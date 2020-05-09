@@ -37,6 +37,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.BtnMonedero = new System.Windows.Forms.Button();
             this.BtnInformes = new System.Windows.Forms.Button();
+            this.BtnSincMicropv = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label13
@@ -134,11 +135,23 @@
             this.BtnInformes.UseVisualStyleBackColor = true;
             this.BtnInformes.Click += new System.EventHandler(this.BtnInformes_Click);
             // 
+            // BtnSincMicropv
+            // 
+            this.BtnSincMicropv.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSincMicropv.Location = new System.Drawing.Point(271, 279);
+            this.BtnSincMicropv.Name = "BtnSincMicropv";
+            this.BtnSincMicropv.Size = new System.Drawing.Size(133, 49);
+            this.BtnSincMicropv.TabIndex = 250;
+            this.BtnSincMicropv.Text = "&SINCRONIZACION MICROPV";
+            this.BtnSincMicropv.UseVisualStyleBackColor = true;
+            this.BtnSincMicropv.Click += new System.EventHandler(this.BtnSincMicropv_Click);
+            // 
             // FrmMenuConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(517, 373);
+            this.Controls.Add(this.BtnSincMicropv);
             this.Controls.Add(this.BtnInformes);
             this.Controls.Add(this.BtnMonedero);
             this.Controls.Add(this.button4);
@@ -167,5 +180,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button BtnMonedero;
         private System.Windows.Forms.Button BtnInformes;
+        private System.Windows.Forms.Button BtnSincMicropv;
     }
 }

@@ -55,6 +55,7 @@ namespace PointOfSale.Controllers
         public static string S3 { get; set; }
         public static StiSqlDatabase DbDym { get; internal set; }
         public static Informe InformeDevCom { get; internal set; }
+        public static bool BoolValue { get; internal set; }
 
         private static Reporte reporte;
         private static List<Parametro> ReportParams;
@@ -73,6 +74,8 @@ namespace PointOfSale.Controllers
             Informes, ConceptoMovsInv
 
         };
+
+        internal static int i1;
 
         #endregion
 

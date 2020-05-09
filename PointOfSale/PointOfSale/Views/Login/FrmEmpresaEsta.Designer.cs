@@ -95,6 +95,7 @@
             this.CboEmpresa.Name = "CboEmpresa";
             this.CboEmpresa.Size = new System.Drawing.Size(306, 26);
             this.CboEmpresa.TabIndex = 272;
+            this.CboEmpresa.SelectedIndexChanged += new System.EventHandler(this.CboEmpresa_SelectedIndexChanged);
             // 
             // CboEstablecimineto
             // 
