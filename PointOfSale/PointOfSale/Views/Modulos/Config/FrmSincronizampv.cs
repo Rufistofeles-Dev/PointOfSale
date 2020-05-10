@@ -27,6 +27,7 @@ namespace PointOfSale.Views.Modulos.Config
         private CategoriaController categoriaController;
         private SustanciaController sustanciaController;
         private ProductoController productoController;
+        private LoteController loteController;
 
         //Objetos
         private ProductoSustancia productoSustancia;
@@ -38,6 +39,7 @@ namespace PointOfSale.Views.Modulos.Config
         private Categoria categoria;
         private Sustancia sustancia;
         private Producto producto;
+        private Lote lote;
 
         //Listas
         private List<ProductoSustancia> productoSustancias;
@@ -49,6 +51,7 @@ namespace PointOfSale.Views.Modulos.Config
         private List<Categoria> categorias;
         private List<Sustancia> sustancias;
         private List<Producto> productos;
+        private List<Lote> lotes;
 
         //Conexion
         private OleDbConnection oleDbConnection;
@@ -79,6 +82,7 @@ namespace PointOfSale.Views.Modulos.Config
             categoriaController = new CategoriaController();
             sustanciaController = new SustanciaController();
             productoController = new ProductoController();
+            loteController = new LoteController();
 
             //Objetos
             productoSustancia = null;
@@ -90,6 +94,7 @@ namespace PointOfSale.Views.Modulos.Config
             categoria = null;
             sustancia = null;
             producto = null;
+            lote = null;
 
             //Listas
             productoSustancias = new List<ProductoSustancia>();
@@ -101,6 +106,7 @@ namespace PointOfSale.Views.Modulos.Config
             categorias = new List<Categoria>();
             sustancias = new List<Sustancia>();
             productos = new List<Producto>();
+            lotes = new List<Lote>();
 
 
             try
@@ -125,8 +131,6 @@ namespace PointOfSale.Views.Modulos.Config
                 MessageBox.Show(ex.ToString());
             }
         }
-
-
         private DataTable GetDataTable(string sqlCommand)
         {
             if (oleDbConnection.State == ConnectionState.Open)
@@ -198,6 +202,473 @@ namespace PointOfSale.Views.Modulos.Config
                 Ambiente.Mensaje(ex.ToString());
             }
         }
+        private void SincronizaFabricantes()
+        {
+            try
+            {
+                migrationTable = migrationTableController.SelectOne(3);
+                migrationFields = migrationFieldController.SelectByTableId(migrationTable.MigrationTableId);
+                Sql = "SELECT ";
+
+                foreach (var f in migrationFields)
+                {
+                    if (migrationFields.Last() == f)
+                        Sql += f.Expresion + " FROM " + migrationTable.Tabla;
+                    else
+                        Sql += f.Expresion + " , ";
+                }
+
+                GetDataTable(Sql);
+                laboratorio = null;
+                laboratorios = laboratorioController.SelectAll();
+
+
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    Ambiente.S1 = row["clave"].ToString().Trim().ToUpper();
+                    Ambiente.S2 = row["descrip"].ToString().Trim().ToUpper();
+
+                    laboratorio = laboratorios.FirstOrDefault(x => x.LaboratorioId.ToUpper().Equals(Ambiente.S1));
+
+                    if (laboratorio == null)
+                    {
+                        laboratorio = new Laboratorio();
+                        laboratorio.LaboratorioId = Ambiente.S1;
+                        laboratorio.Nombre = Ambiente.S2;
+                        laboratorio.IsDeleted = false;
+                        laboratorioController.InsertOne(laboratorio);
+                    }
+                    else
+                    {
+                        laboratorio.Nombre = Ambiente.S2;
+                        laboratorio.IsDeleted = false;
+                        laboratorioController.Update(laboratorio);
+                    }
+                }
+                Ambiente.Mensaje("Proceso concluido");
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.ToString());
+            }
+        }
+        private void SincronizaCategorias()
+        {
+            try
+            {
+                migrationTable = migrationTableController.SelectOne(4);
+                migrationFields = migrationFieldController.SelectByTableId(migrationTable.MigrationTableId);
+                Sql = "SELECT ";
+
+                foreach (var f in migrationFields)
+                {
+                    if (migrationFields.Last() == f)
+                        Sql += f.Expresion + " FROM " + migrationTable.Tabla;
+                    else
+                        Sql += f.Expresion + " , ";
+                }
+
+                GetDataTable(Sql);
+                categoria = null;
+                categorias = categoriaController.SelectAll();
+
+
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    Ambiente.S1 = row["clave"].ToString().Trim().ToUpper();
+                    Ambiente.S2 = row["descrip"].ToString().Trim().ToUpper();
+
+                    categoria = categorias.FirstOrDefault(x => x.CategoriaId.ToUpper().Equals(Ambiente.S1));
+
+                    if (categoria == null)
+                    {
+                        categoria = new Categoria();
+                        categoria.CategoriaId = Ambiente.S1;
+                        categoria.Nombre = Ambiente.S2;
+                        categoria.IsDeleted = false;
+                        categoriaController.InsertOne(categoria);
+                    }
+                    else
+                    {
+                        categoria.Nombre = Ambiente.S2;
+                        categoria.IsDeleted = false;
+                        categoriaController.Update(categoria);
+                    }
+                }
+                Ambiente.Mensaje("Proceso concluido");
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.ToString());
+            }
+        }
+        private void SincronizaComponentes()
+        {
+            try
+            {
+                migrationTable = migrationTableController.SelectOne(5);
+                migrationFields = migrationFieldController.SelectByTableId(migrationTable.MigrationTableId);
+                Sql = "SELECT ";
+
+                foreach (var f in migrationFields)
+                {
+                    if (migrationFields.Last() == f)
+                        Sql += f.Expresion + " FROM " + migrationTable.Tabla;
+                    else
+                        Sql += f.Expresion + " , ";
+                }
+
+                GetDataTable(Sql);
+                sustancia = null;
+                sustancias = sustanciaController.SelectAll();
+
+
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    Ambiente.S1 = row["clave"].ToString().Trim().ToUpper();
+                    Ambiente.S2 = row["descrip"].ToString().Trim().ToUpper();
+
+                    sustancia = sustancias.FirstOrDefault(x => x.SustanciaId.ToUpper().Equals(Ambiente.S1));
+
+                    if (sustancia == null)
+                    {
+                        sustancia = new Sustancia();
+                        sustancia.SustanciaId = Ambiente.S1;
+                        sustancia.Nombre = Ambiente.S2;
+                        sustancia.IsDeleted = false;
+                        sustanciaController.InsertOne(sustancia);
+                    }
+                    else
+                    {
+                        sustancia.Nombre = Ambiente.S2;
+                        sustancia.IsDeleted = false;
+                        sustanciaController.Update(sustancia);
+                    }
+                }
+                Ambiente.Mensaje("Proceso concluido");
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.ToString());
+            }
+        }
+        private void SincronizaProductos()
+        {
+            try
+            {
+                migrationTable = migrationTableController.SelectOne(6);
+                migrationFields = migrationFieldController.SelectByTableId(migrationTable.MigrationTableId);
+                Sql = "SELECT ";
+
+                foreach (var f in migrationFields)
+                {
+                    if (migrationFields.Last() == f)
+                        Sql += f.Expresion + " FROM " + migrationTable.Tabla;
+                    else
+                        Sql += f.Expresion + " , ";
+                }
+
+                GetDataTable(Sql);
+                producto = null;
+                productos = productoController.SelectAll();
+                categorias = categoriaController.SelectAll();
+                presentaciones = presentacionController.SelectAll();
+                laboratorios = laboratorioController.SelectAll();
+
+                decimal p = 0;
+                bool b = false;
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    Ambiente.S1 = row["clave"].ToString().Trim().ToUpper();
+                    Ambiente.S2 = row["descrip"].ToString().Trim().ToUpper();
+                    Ambiente.S3 = row["cupo"].ToString().Trim().ToUpper();
+
+                    Ambiente.S4 = row["presenta"].ToString().Trim().ToUpper();
+                    Ambiente.S4 = presentaciones.FirstOrDefault(x => x.PresentacionId.ToUpper().Equals(Ambiente.S4)) == null ? "SYS" : Ambiente.S4;
+
+                    Ambiente.S5 = row["unidades"].ToString().Trim().ToUpper();
+                    Ambiente.S6 = row["fabricante"].ToString().Trim().ToUpper();
+                    Ambiente.S6 = laboratorios.FirstOrDefault(x => x.LaboratorioId.ToUpper().Equals(Ambiente.S6)) == null ? "SYS" : Ambiente.S6;
+
+                    Ambiente.S8 = row["imagen"].ToString().Trim().ToUpper();
+                    Ambiente.S9 = row["categoria"].ToString().Trim().ToUpper();
+                    Ambiente.S9 = categorias.FirstOrDefault(x => x.CategoriaId.ToUpper().Equals(Ambiente.S9)) == null ? "SYS" : Ambiente.S9;
+
+                    Ambiente.Boolean1 = bool.TryParse(row["encatalogo"].ToString(), out b) == true ? b : false;
+                    Ambiente.Boolean2 = bool.TryParse(row["cklote"].ToString(), out b) == true ? b : false;
+
+
+                    Ambiente.Decimal1 = decimal.TryParse(row["pcompra"].ToString().Trim(), out p) == true ? p : 0;
+                    Ambiente.Decimal2 = decimal.TryParse(row["pventa"].ToString().Trim(), out p) == true ? p : 0;
+                    Ambiente.Decimal3 = decimal.TryParse(row["pmayoreo"].ToString().Trim(), out p) == true ? p : 0;
+                    Ambiente.Decimal4 = decimal.TryParse(row["pcaja"].ToString().Trim(), out p) == true ? p : 0;
+
+
+                    if (row["tasaimp"].ToString().Trim().ToUpper().Equals("E"))
+                        Ambiente.S7 = "SYS";
+                    else if (row["tasaimp"].ToString().Trim().ToUpper().Equals("I"))
+                        Ambiente.S7 = "IVA";
+                    else
+                        Ambiente.S7 = "SYS";
+
+                    producto = productos.FirstOrDefault(x => x.ProductoId.ToUpper().Equals(Ambiente.S1));
+
+                    if (producto == null)
+                    {
+                        producto = new Producto();
+                        producto.ProductoId = Ambiente.S1;
+                        producto.CategoriaId = Ambiente.S9;
+                        producto.PresentacionId = Ambiente.S4;
+                        producto.LaboratorioId = Ambiente.S6;
+                        producto.Descripcion = Ambiente.S2;
+                        producto.Unidades = Ambiente.S5;
+                        producto.Stock = 0; //atencion
+                        producto.PrecioCompra = Ambiente.Decimal1;
+                        producto.PrecioCaja = Ambiente.Decimal4;
+                        producto.Precio1 = Ambiente.Decimal2;
+                        producto.Precio2 = Ambiente.Decimal3;
+                        producto.Precio3 = 0;
+                        producto.Precio4 = 0;
+                        producto.Utilidad1 = Ambiente.Margen(producto.PrecioCompra, producto.Precio1);
+                        producto.Utilidad2 = Ambiente.Margen(producto.PrecioCompra, producto.Precio2); ;
+                        producto.Utilidad3 = 0;
+                        producto.Utilidad4 = 0;
+                        producto.TieneLote = Ambiente.Boolean2;
+                        producto.IsDeleted = false;
+                        producto.CratedBy = "JMENDOZAJ";
+                        producto.CratedAt = DateTime.Now;
+                        producto.DeletedBy = null;
+                        producto.UpdatedBy = "JMENDOZAJ";
+                        producto.LoteId = null; //Atencion
+                        producto.UnidadMedidaId = "PZA";
+                        producto.ClaveProdServId = "01010101";
+                        producto.ClaveUnidadId = "H87";
+                        producto.RutaImg = Ambiente.Empresa.DirectorioImg + Ambiente.S8; //Atencion
+                        producto.ChkCaducidad = producto.TieneLote;
+                        producto.Impuesto1Id = Ambiente.S7;
+                        producto.Impuesto2Id = "SYS";
+                        producto.Impuesto3Id = "SYS";
+                        producto.Ocupado = false;
+                        producto.IsDeleted = false;
+                        productoController.InsertOne(producto);
+                    }
+                    else
+                    {
+                        producto.ProductoId = Ambiente.S1;
+                        producto.CategoriaId = Ambiente.S9;
+                        producto.PresentacionId = Ambiente.S4;
+                        producto.LaboratorioId = Ambiente.S6;
+                        producto.Descripcion = Ambiente.S2;
+                        producto.Unidades = Ambiente.S5;
+                        producto.Stock = 0; //atencion
+                        producto.PrecioCompra = Ambiente.Decimal1;
+                        producto.PrecioCaja = Ambiente.Decimal4;
+                        producto.Precio1 = Ambiente.Decimal2;
+                        producto.Precio2 = Ambiente.Decimal3;
+                        producto.Precio3 = 0;
+                        producto.Precio4 = 0;
+                        producto.Utilidad1 = Ambiente.Margen(producto.Precio1, producto.PrecioCompra);
+                        producto.Utilidad2 = Ambiente.Margen(producto.Precio2, producto.PrecioCompra);
+                        producto.Utilidad3 = 0;
+                        producto.Utilidad4 = 0;
+                        producto.TieneLote = Ambiente.Boolean2;
+                        producto.IsDeleted = false;
+                        producto.CratedBy = "JMENDOZAJ";
+                        producto.CratedAt = DateTime.Now;
+                        producto.DeletedBy = null;
+                        producto.UpdatedBy = "JMENDOZAJ";
+                        producto.LoteId = null; //Atencion
+                        producto.UnidadMedidaId = "PZA";
+                        producto.ClaveProdServId = "01010101";
+                        producto.ClaveUnidadId = "H87";
+                        producto.RutaImg = Ambiente.Empresa.DirectorioImg + Ambiente.S8; //Atencion
+                        producto.ChkCaducidad = producto.TieneLote;
+                        producto.Impuesto1Id = Ambiente.S7;
+                        producto.Impuesto2Id = "SYS";
+                        producto.Impuesto3Id = "SYS";
+                        producto.Ocupado = false;
+                        producto.IsDeleted = false;
+                        productoController.Update(producto);
+                    }
+                }
+                Ambiente.Mensaje("Proceso concluido");
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.ToString());
+            }
+        }
+        private void Sincronizaprodsus()
+        {
+            try
+            {
+                migrationTable = migrationTableController.SelectOne(9);
+                migrationFields = migrationFieldController.SelectByTableId(migrationTable.MigrationTableId);
+                Sql = "SELECT ";
+
+                foreach (var f in migrationFields)
+                {
+                    if (migrationFields.Last() == f)
+                        Sql += f.Expresion + " FROM " + migrationTable.Tabla;
+                    else
+                        Sql += f.Expresion + " , ";
+                }
+
+                GetDataTable(Sql);
+                productoSustancia = null;
+                productoSustancias = productoSustanciaController.SelectAll();
+
+                int p = 0;
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    Ambiente.S1 = row["producto"].ToString().Trim().ToUpper();
+                    Ambiente.S2 = row["componen"].ToString().Trim().ToUpper();
+                    //Ambiente.Int1 = int.TryParse(row["orden"].ToString().Trim(), out p) == true ? p : 0;
+
+                    productoSustancia = productoSustancias.FirstOrDefault(x => x.ProductoId.ToUpper().Equals(Ambiente.S1) && x.SustanciaId.ToUpper().Equals(Ambiente.S2));
+
+                    if (productoSustancia == null)
+                    {
+                        if (productos.FirstOrDefault(x => x.ProductoId.Equals(Ambiente.S1)) == null || sustancias.FirstOrDefault(x => x.SustanciaId.Equals(Ambiente.S2)) == null)
+                            continue;
+
+                        productoSustancia = new ProductoSustancia();
+                        productoSustancia.ProductoId = Ambiente.S1;
+                        productoSustancia.SustanciaId = Ambiente.S2;
+                        productoSustancia.Contenido = productos.FirstOrDefault(x => x.ProductoId.Equals(productoSustancia.ProductoId)) == null ? "" : productos.FirstOrDefault(x => x.ProductoId.Equals(productoSustancia.ProductoId)).Contenido;
+                        productoSustanciaController.InsertOne(productoSustancia);
+                    }
+                    else
+                    {
+                        productoSustancia.Contenido = productos.FirstOrDefault(x => x.ProductoId.Equals(productoSustancia.ProductoId)) == null ? "" : productos.FirstOrDefault(x => x.ProductoId.Equals(productoSustancia.ProductoId)).Contenido;
+                        productoSustanciaController.Update(productoSustancia);
+                    }
+                }
+                Ambiente.Mensaje("Proceso concluido");
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.ToString());
+            }
+        }
+        private void SincronizaLotes()
+        {
+            try
+            {
+                migrationTable = migrationTableController.SelectOne(8);
+                migrationFields = migrationFieldController.SelectByTableId(migrationTable.MigrationTableId);
+                Sql = "SELECT ";
+
+                foreach (var f in migrationFields)
+                {
+                    if (migrationFields.Last() == f)
+                        Sql += f.Expresion + " FROM " + migrationTable.Tabla;
+                    else
+                        Sql += f.Expresion + " , ";
+                }
+
+                GetDataTable(Sql);
+                lote = null;
+                lotes = loteController.SelectAll();
+
+
+
+                int i = 0;
+                DateTime dateTime;
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    Ambiente.S1 = row["producto"].ToString().Trim().ToUpper();
+                    Ambiente.S2 = row["lote"].ToString().Trim().ToUpper();
+                    Ambiente.Datetime1 = DateTime.TryParse(row["caducidad"].ToString().Trim(), out dateTime) == true ? dateTime : DateTime.Now;
+                    Ambiente.Int1 = int.TryParse(row["cant"].ToString().Trim(), out i) == true ? i : 0;
+                    Ambiente.Int2 = int.TryParse(row["cant_orig"].ToString().Trim(), out i) == true ? i : 0;
+
+                    lote = null;
+                    lote = lotes.FirstOrDefault(x => x.ProductoId.ToUpper().Equals(Ambiente.S1) && x.NoLote.ToUpper().Equals(Ambiente.S2.ToUpper()));
+
+                    if (lote == null)
+                    {
+                        lote = new Lote();
+                        lote.ProductoId = Ambiente.S1;
+                        lote.NoLote = Ambiente.S2.ToUpper();
+                        lote.Caducidad = Ambiente.Datetime1;
+                        lote.StockInicial = Ambiente.Int2;
+                        lote.StockRestante = Ambiente.Int1;
+                        loteController.InsertOne(lote);
+                    }
+                    else
+                    {
+                        lote.ProductoId = Ambiente.S1;
+                        lote.NoLote = Ambiente.S2.ToUpper();
+                        lote.Caducidad = Ambiente.Datetime1;
+                        lote.StockInicial = Ambiente.Int2;
+                        lote.StockRestante = Ambiente.Int1;
+                        loteController.Update(lote);
+                    }
+                }
+
+                //foreach (var l in lotes)
+                //{
+                //    producto = productos.FirstOrDefault(x => x.ProductoId.Equals(l.ProductoId));
+                //}
+                Ambiente.Mensaje("Proceso concluido");
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.ToString());
+            }
+        }
+        private void Sincronizaprodsalma()
+        {
+            try
+            {
+                migrationTable = migrationTableController.SelectOne(11);
+                migrationFields = migrationFieldController.SelectByTableId(migrationTable.MigrationTableId);
+                Sql = "SELECT ";
+
+                foreach (var f in migrationFields)
+                {
+                    if (migrationFields.Last() == f)
+                        Sql += f.Expresion + " FROM " + migrationTable.Tabla;
+                    else
+                        Sql += f.Expresion + " , ";
+                }
+
+                GetDataTable(Sql);
+
+                productos = productoController.SelectAll();
+
+                int i = 0;
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    Ambiente.S1 = row["producto"].ToString().Trim().ToUpper();
+                    Ambiente.Int1 = int.TryParse(row["existenc"].ToString().Trim(), out i) == true ? i : 0;
+
+                    producto = null;
+                    producto = productos.FirstOrDefault(x => x.ProductoId.ToUpper().Equals(Ambiente.S1));
+
+                    if (producto != null)
+                    {
+
+                        producto.Stock = Ambiente.Int1;
+                        productoController.Update(producto);
+                    }
+                }
+                Ambiente.Mensaje("Proceso concluido");
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.ToString());
+            }
+        }
+
         private void CargaGrid()
         {
 
@@ -252,7 +723,7 @@ namespace PointOfSale.Views.Modulos.Config
                 return;
             }
 
-           // migrationFields = migrationFieldController.SelectByTableId(migrationTable.MigrationTableId);
+            // migrationFields = migrationFieldController.SelectByTableId(migrationTable.MigrationTableId);
 
             foreach (DataGridViewRow row in Malla.Rows)
             {
@@ -308,6 +779,7 @@ namespace PointOfSale.Views.Modulos.Config
                 }
             }
         }
+
         #endregion
 
 
@@ -322,32 +794,32 @@ namespace PointOfSale.Views.Modulos.Config
 
         private void BtnSincFabricantes_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            SincronizaFabricantes();
         }
 
         private void BtnSincCategorias_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            SincronizaCategorias();
         }
 
         private void BtnSincComponentes_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            SincronizaComponentes();
         }
 
         private void BtnSincProds_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            SincronizaProductos();
         }
 
         private void BtnSincProdcomp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            Sincronizaprodsus();
         }
 
         private void BtnSincProdImp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            Ambiente.Mensaje("Los impuestos se cargaron automaticamente al sincronizar los productos");
         }
 
         private void BtnSincronizaTodo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

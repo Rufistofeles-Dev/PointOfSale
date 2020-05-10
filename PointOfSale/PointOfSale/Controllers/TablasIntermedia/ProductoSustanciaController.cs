@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -32,11 +33,11 @@ namespace PointOfSale.Controllers.TablasIntermedia
                             prodsus.Contenido = item.Contenido;
 
                             listaCorrectos.Add(prodsus);
-                         
+
                         }
                         else
                         {
-                            errores.Add(item.SustanciaId + ", NO EXISTE EN LAS SUSTANCIAS o, "+item.ProductoId+ ", NO EXISTE EN LOS PRODUCTOS");
+                            errores.Add(item.SustanciaId + ", NO EXISTE EN LAS SUSTANCIAS o, " + item.ProductoId + ", NO EXISTE EN LOS PRODUCTOS");
                         }
                     }
                     db.ProductoSustancia.AddRange(listaCorrectos);
@@ -51,12 +52,100 @@ namespace PointOfSale.Controllers.TablasIntermedia
             catch (Exception ex)
             {
 
-                Ambiente.Mensaje(Ambiente.CatalgoMensajes[-1] + "@"+ this.GetType().Name+"\n" + ex.ToString());
+                Ambiente.Mensaje(Ambiente.CatalgoMensajes[-1] + "@" + this.GetType().Name + "\n" + ex.ToString());
             }
 
             return correctos;
 
         }
+
+
+
+        public bool Delete(ProductoSustancia o)
+        {
+            try
+            {
+                using (var db = new DymContext())
+                {
+                    db.Remove(o);
+                    return db.SaveChanges() > 0 ? true : false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Ambiente.Mensaje("Algo salio mal con: " + MethodBase.GetCurrentMethod().Name + "@" + GetType().Name + "\n" + ex.ToString());
+            }
+            return false;
+        }
+        public bool Update(ProductoSustancia o)
+        {
+            try
+            {
+                using (var db = new DymContext())
+                {
+                    db.Entry(o).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    return db.SaveChanges() > 0 ? true : false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Ambiente.Mensaje("Algo salio mal con: " + MethodBase.GetCurrentMethod().Name + "@" + GetType().Name + "\n" + ex.ToString());
+            }
+            return false;
+        }
+
+
+        public bool InsertOne(ProductoSustancia o)
+        {
+            try
+            {
+                using (var db = new DymContext())
+                {
+                    db.Add(o);
+                    return db.SaveChanges() > 0 ? true : false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Ambiente.Mensaje("Algo salio mal con: " + MethodBase.GetCurrentMethod().Name + "@" + GetType().Name + "\n" + ex.ToString());
+            }
+            return false;
+        }
+
+
+        public List<ProductoSustancia> SelectAll()
+        {
+            try
+            {
+                using (var db = new DymContext())
+                {
+                    return db.ProductoSustancia.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Ambiente.Mensaje("Algo salio mal con: " + MethodBase.GetCurrentMethod().Name + "@" + GetType().Name + "\n" + ex.ToString());
+            }
+            return null;
+        }
+
+        public List<ProductoSustancia> SelectMany(int cantidad)
+        {
+            try
+            {
+                using (var db = new DymContext())
+                {
+                    return db.ProductoSustancia.Take(cantidad).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Ambiente.Mensaje("Algo salio mal con: " + MethodBase.GetCurrentMethod().Name + "@" + GetType().Name + "\n" + ex.ToString());
+            }
+            return null;
+        }
+     
+
 
     }
 }

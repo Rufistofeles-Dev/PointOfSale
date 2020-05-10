@@ -53,13 +53,68 @@ namespace PointOfSale.Controllers
         public static string S1 { get; set; }
         public static string S2 { get; set; }
         public static string S3 { get; set; }
+        public static string S4 { get; set; }
+        public static string S5 { get; set; }
+        public static string S6 { get; set; }
+        public static string S7 { get; set; }
+        public static string S8 { get; set; }
+        public static string S9 { get; set; }
+        public static string S10 { get; set; }
+        public static string S11 { get; set; }
+        public static string S12 { get; set; }
+        public static string S13 { get; set; }
+        public static string S14 { get; set; }
+        public static string S15 { get; set; }
+        public static string S16 { get; set; }
+        public static string S17 { get; set; }
+        public static string S18 { get; set; }
+        public static string S19 { get; set; }
+        public static string S20 { get; set; }
+
+        public static decimal Decimal1 { get; set; }
+        public static decimal Decimal2 { get; set; }
+        public static decimal Decimal3 { get; set; }
+        public static decimal Decimal4 { get; set; }
+        public static decimal Decimal5 { get; set; }
+        public static decimal Decimal6 { get; set; }
+
+
+        public static bool Boolean1 { get; set; }
+        public static bool Boolean2 { get; set; }
+        public static bool Boolean3 { get; set; }
+
+        public static DateTime Datetime1 { get; set; }
+        public static DateTime Datetime2 { get; set; }
+        public static DateTime Datetime3 { get; set; }
+
+
+        public static int Int1 { get; set; }
+        public static int Int2 { get; set; }
+        public static int Int3 { get; set; }
+
+
+
         public static StiSqlDatabase DbDym { get; internal set; }
         public static Informe InformeDevCom { get; internal set; }
         public static bool BoolValue { get; internal set; }
 
         private static Reporte reporte;
         private static List<Parametro> ReportParams;
+        public static decimal Margen(decimal precio, decimal costo)
+        {
+            try
+            {
+                if (costo == 0) return 0;
+                var r = ((precio / costo) - 1) * 100;
+                return ((precio / costo) - 1) * 100;
+            }
+            catch (Exception ex)
+            {
+                Ambiente.Mensaje(ex.Message);
+                return 0;
+            }
 
+        }
 
         #region Enums
         public enum TipoBusqueda
@@ -75,7 +130,6 @@ namespace PointOfSale.Controllers
 
         };
 
-        internal static int i1;
 
         #endregion
 
