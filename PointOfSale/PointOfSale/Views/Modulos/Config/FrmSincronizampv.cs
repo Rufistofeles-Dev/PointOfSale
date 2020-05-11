@@ -847,7 +847,14 @@ namespace PointOfSale.Views.Modulos.Config
 
         private void BtnSincronizaTodo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            if (Ambiente.LoggedUser.UsuarioId.Equals("JMENDOZAJ"))
+            {
+                using (var db = new DymContext())
+                {
+                  //  db.Database
 
+                }
+            }
         }
 
         private void BtnGuardar_Click(object sender, EventArgs e)

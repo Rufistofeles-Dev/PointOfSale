@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.Malla = new System.Windows.Forms.DataGridView();
@@ -113,14 +113,14 @@
             this.Malla.BackgroundColor = System.Drawing.Color.White;
             this.Malla.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Malla.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Malla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Malla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.Malla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Malla.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -513,10 +513,10 @@
             this.BtnSincronizaTodo.LinkColor = System.Drawing.Color.Blue;
             this.BtnSincronizaTodo.Location = new System.Drawing.Point(345, 19);
             this.BtnSincronizaTodo.Name = "BtnSincronizaTodo";
-            this.BtnSincronizaTodo.Size = new System.Drawing.Size(117, 18);
+            this.BtnSincronizaTodo.Size = new System.Drawing.Size(116, 18);
             this.BtnSincronizaTodo.TabIndex = 2;
             this.BtnSincronizaTodo.TabStop = true;
-            this.BtnSincronizaTodo.Text = "Sincronizar todo";
+            this.BtnSincronizaTodo.Text = "Reset catalogos";
             this.BtnSincronizaTodo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.BtnSincronizaTodo_LinkClicked);
             // 
             // panel7

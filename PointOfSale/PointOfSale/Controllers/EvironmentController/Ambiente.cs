@@ -195,7 +195,7 @@ namespace PointOfSale.Controllers
             var porcentaje = 0;
             var index = 0;
 
-            var prods = new ProductoController().SelectMany(10);
+            var prods = new ProductoController().SelectManyRandom(10);
             foreach (var p in prods)
             {
                 if (File.Exists(p.RutaImg))

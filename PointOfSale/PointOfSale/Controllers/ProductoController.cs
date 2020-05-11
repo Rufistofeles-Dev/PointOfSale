@@ -110,11 +110,32 @@ namespace PointOfSale.Controllers
         {
             try
             {
+                //r => Guid.NewGuid()
                 using (var db = new DymContext())
                 {
                     return db.Producto
                         .Include(x => x.ProductoSustancia)
                         .Where(x => x.IsDeleted == false)
+                        .Take(cantidad).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Ambiente.Mensaje(Ambiente.CatalgoMensajes[-1] + "@" + GetType().Name + "\n" + ex.ToString());
+            }
+            return null;
+        }
+        public List<Producto> SelectManyRandom(int cantidad)
+        {
+            try
+            {
+                //r => Guid.NewGuid()
+                using (var db = new DymContext())
+                {
+                    return db.Producto
+                        .Include(x => x.ProductoSustancia)
+                        .Where(x => x.IsDeleted == false)
+                        .OrderBy(r => Guid.NewGuid())
                         .Take(cantidad).ToList();
                 }
             }
