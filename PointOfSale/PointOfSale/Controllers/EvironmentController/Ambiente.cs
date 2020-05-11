@@ -35,8 +35,8 @@ namespace PointOfSale.Controllers
         public static Usuario LoggedUser { get; set; }
         public static Estacion Estacion { get; set; }
         public static Empresa Empresa { get; set; }
-        public static string RutaImgs { get; set; }
-        public static string PrefijoRutaImg { get; set; }
+      
+
         public static bool ServerImgAccesible { get; set; }
 
         public static Informe InformeTicket { get; set; }
@@ -204,6 +204,19 @@ namespace PointOfSale.Controllers
             }
 
             if (porcentaje >= 7) return true; else return false;
+        }
+        public static string GetFileName(string path)
+        {
+
+            try
+            {
+                return Path.GetFileName(path);
+            }
+            catch (Exception e)
+            {
+
+                return "";
+            }
         }
         public static Traspaso SerializaPH(string path)
         {
@@ -586,6 +599,7 @@ namespace PointOfSale.Controllers
         {
             return "'" + dateTime.Date.ToString("yyyy-MM-dd") + "'";
         }
+       
         public static string FDinero(string valor)
         {
 

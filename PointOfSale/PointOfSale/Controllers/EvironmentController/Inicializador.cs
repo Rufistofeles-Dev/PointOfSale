@@ -58,8 +58,8 @@ namespace PointOfSale.Controllers
         {
             try
             {
-                Ambiente.RutaImgs = @"C:\Dympos\Compartido\Imgs";
-                Ambiente.PrefijoRutaImg = @"C:\Dympos\Compartido\";
+
+             
                 Ambiente.Empresa = new EmpresaController().SelectTopOne();
                 Ambiente.reporteController = new ReporteController();
                 Ambiente.ImageList = new System.Windows.Forms.ImageList();
@@ -322,7 +322,7 @@ namespace PointOfSale.Controllers
                         prodSys.CratedAt = DateTime.Now;
                         prodSys.UnidadMedidaId = "SYS";
                         prodSys.ClaveProdServId = "01010101";
-                        prodSys.ClaveUnidadId = "SYS";
+                        prodSys.ClaveUnidadId = "H87";
                         prodSys.ChkCaducidad = false;
 
                         db.Add(prodSys);

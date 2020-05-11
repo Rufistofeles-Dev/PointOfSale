@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -151,6 +152,7 @@ namespace PointOfSale.Views.Modulos.Config
             else
                 return new DataTable();
         }
+
         private void SincronizaPresentacion()
         {
             try
@@ -166,6 +168,7 @@ namespace PointOfSale.Views.Modulos.Config
                     else
                         Sql += f.Expresion + " , ";
                 }
+                Sql += " " + migrationTable.Condicion;
 
                 GetDataTable(Sql);
                 presentacion = null;
@@ -217,6 +220,7 @@ namespace PointOfSale.Views.Modulos.Config
                     else
                         Sql += f.Expresion + " , ";
                 }
+                Sql += " " + migrationTable.Condicion;
 
                 GetDataTable(Sql);
                 laboratorio = null;
@@ -268,7 +272,7 @@ namespace PointOfSale.Views.Modulos.Config
                     else
                         Sql += f.Expresion + " , ";
                 }
-
+                Sql += " " + migrationTable.Condicion;
                 GetDataTable(Sql);
                 categoria = null;
                 categorias = categoriaController.SelectAll();
@@ -319,7 +323,7 @@ namespace PointOfSale.Views.Modulos.Config
                     else
                         Sql += f.Expresion + " , ";
                 }
-
+                Sql += " " + migrationTable.Condicion;
                 GetDataTable(Sql);
                 sustancia = null;
                 sustancias = sustanciaController.SelectAll();
@@ -336,7 +340,7 @@ namespace PointOfSale.Views.Modulos.Config
                     {
                         sustancia = new Sustancia();
                         sustancia.SustanciaId = Ambiente.S1;
-                        sustancia.Nombre = Ambiente.S2;
+                        sustancia.Nombre = Ambiente.S2.Length == 0 ? Ambiente.S1 : Ambiente.S2;
                         sustancia.IsDeleted = false;
                         sustanciaController.InsertOne(sustancia);
                     }
@@ -370,7 +374,7 @@ namespace PointOfSale.Views.Modulos.Config
                     else
                         Sql += f.Expresion + " , ";
                 }
-
+                Sql += " " + migrationTable.Condicion;
                 GetDataTable(Sql);
                 producto = null;
                 productos = productoController.SelectAll();
@@ -394,6 +398,8 @@ namespace PointOfSale.Views.Modulos.Config
                     Ambiente.S6 = laboratorios.FirstOrDefault(x => x.LaboratorioId.ToUpper().Equals(Ambiente.S6)) == null ? "SYS" : Ambiente.S6;
 
                     Ambiente.S8 = row["imagen"].ToString().Trim().ToUpper();
+                    Ambiente.S8 = Ambiente.Empresa.DirectorioImg + Path.GetFileName(Ambiente.S8);
+
                     Ambiente.S9 = row["categoria"].ToString().Trim().ToUpper();
                     Ambiente.S9 = categorias.FirstOrDefault(x => x.CategoriaId.ToUpper().Equals(Ambiente.S9)) == null ? "SYS" : Ambiente.S9;
 
@@ -425,44 +431,7 @@ namespace PointOfSale.Views.Modulos.Config
                         producto.LaboratorioId = Ambiente.S6;
                         producto.Descripcion = Ambiente.S2;
                         producto.Unidades = Ambiente.S5;
-                        producto.Stock = 0; //atencion
-                        producto.PrecioCompra = Ambiente.Decimal1;
-                        producto.PrecioCaja = Ambiente.Decimal4;
-                        producto.Precio1 = Ambiente.Decimal2;
-                        producto.Precio2 = Ambiente.Decimal3;
-                        producto.Precio3 = 0;
-                        producto.Precio4 = 0;
-                        producto.Utilidad1 = Ambiente.Margen(producto.PrecioCompra, producto.Precio1);
-                        producto.Utilidad2 = Ambiente.Margen(producto.PrecioCompra, producto.Precio2); ;
-                        producto.Utilidad3 = 0;
-                        producto.Utilidad4 = 0;
-                        producto.TieneLote = Ambiente.Boolean2;
-                        producto.IsDeleted = false;
-                        producto.CratedBy = "JMENDOZAJ";
-                        producto.CratedAt = DateTime.Now;
-                        producto.DeletedBy = null;
-                        producto.UpdatedBy = "JMENDOZAJ";
-                        producto.LoteId = null; //Atencion
-                        producto.UnidadMedidaId = "PZA";
-                        producto.ClaveProdServId = "01010101";
-                        producto.ClaveUnidadId = "H87";
-                        producto.RutaImg = Ambiente.Empresa.DirectorioImg + Ambiente.S8; //Atencion
-                        producto.ChkCaducidad = producto.TieneLote;
-                        producto.Impuesto1Id = Ambiente.S7;
-                        producto.Impuesto2Id = "SYS";
-                        producto.Impuesto3Id = "SYS";
-                        producto.Ocupado = false;
-                        producto.IsDeleted = false;
-                        productoController.InsertOne(producto);
-                    }
-                    else
-                    {
-                        producto.ProductoId = Ambiente.S1;
-                        producto.CategoriaId = Ambiente.S9;
-                        producto.PresentacionId = Ambiente.S4;
-                        producto.LaboratorioId = Ambiente.S6;
-                        producto.Descripcion = Ambiente.S2;
-                        producto.Unidades = Ambiente.S5;
+                        producto.Contenido = Ambiente.S3;
                         producto.Stock = 0; //atencion
                         producto.PrecioCompra = Ambiente.Decimal1;
                         producto.PrecioCaja = Ambiente.Decimal4;
@@ -484,7 +453,46 @@ namespace PointOfSale.Views.Modulos.Config
                         producto.UnidadMedidaId = "PZA";
                         producto.ClaveProdServId = "01010101";
                         producto.ClaveUnidadId = "H87";
-                        producto.RutaImg = Ambiente.Empresa.DirectorioImg + Ambiente.S8; //Atencion
+                        producto.RutaImg = Ambiente.S8;//Atencion
+                        producto.ChkCaducidad = producto.TieneLote;
+                        producto.Impuesto1Id = Ambiente.S7;
+                        producto.Impuesto2Id = "SYS";
+                        producto.Impuesto3Id = "SYS";
+                        producto.Ocupado = false;
+                        producto.IsDeleted = false;
+                        productoController.InsertOne(producto);
+                    }
+                    else
+                    {
+                        // producto.ProductoId = Ambiente.S1;
+                        producto.CategoriaId = Ambiente.S9;
+                        producto.PresentacionId = Ambiente.S4;
+                        producto.LaboratorioId = Ambiente.S6;
+                        producto.Descripcion = Ambiente.S2;
+                        producto.Unidades = Ambiente.S5;
+                        producto.Contenido = Ambiente.S3;
+                        producto.Stock = 0; //atencion
+                        producto.PrecioCompra = Ambiente.Decimal1;
+                        producto.PrecioCaja = Ambiente.Decimal4;
+                        producto.Precio1 = Ambiente.Decimal2;
+                        producto.Precio2 = Ambiente.Decimal3;
+                        producto.Precio3 = 0;
+                        producto.Precio4 = 0;
+                        producto.Utilidad1 = Ambiente.Margen(producto.Precio1, producto.PrecioCompra);
+                        producto.Utilidad2 = Ambiente.Margen(producto.Precio2, producto.PrecioCompra);
+                        producto.Utilidad3 = 0;
+                        producto.Utilidad4 = 0;
+                        producto.TieneLote = Ambiente.Boolean2;
+                        producto.IsDeleted = false;
+                        producto.CratedBy = "JMENDOZAJ";
+                        producto.CratedAt = DateTime.Now;
+                        producto.DeletedBy = null;
+                        producto.UpdatedBy = "JMENDOZAJ";
+                        producto.LoteId = null; //Atencion
+                        producto.UnidadMedidaId = "PZA";
+                        producto.ClaveProdServId = "01010101";
+                        producto.ClaveUnidadId = "H87";
+                        producto.RutaImg = Ambiente.S8; //Atencion
                         producto.ChkCaducidad = producto.TieneLote;
                         producto.Impuesto1Id = Ambiente.S7;
                         producto.Impuesto2Id = "SYS";
@@ -517,10 +525,12 @@ namespace PointOfSale.Views.Modulos.Config
                     else
                         Sql += f.Expresion + " , ";
                 }
-
+                Sql += " " + migrationTable.Condicion;
                 GetDataTable(Sql);
                 productoSustancia = null;
                 productoSustancias = productoSustanciaController.SelectAll();
+                sustancias = sustanciaController.SelectAll();
+                productos = productoController.SelectAll();
 
                 int p = 0;
                 foreach (DataRow row in dataTable.Rows)
@@ -571,34 +581,47 @@ namespace PointOfSale.Views.Modulos.Config
                     else
                         Sql += f.Expresion + " , ";
                 }
-
+                Sql += " " + migrationTable.Condicion;
                 GetDataTable(Sql);
                 lote = null;
                 lotes = loteController.SelectAll();
+                productos = productoController.SelectAll();
 
 
-
-                int i = 0;
+                decimal i = 0;
                 DateTime dateTime;
                 foreach (DataRow row in dataTable.Rows)
                 {
                     Ambiente.S1 = row["producto"].ToString().Trim().ToUpper();
                     Ambiente.S2 = row["lote"].ToString().Trim().ToUpper();
+
+                    //var d = row["caducidad"].ToString().Trim();
+
                     Ambiente.Datetime1 = DateTime.TryParse(row["caducidad"].ToString().Trim(), out dateTime) == true ? dateTime : DateTime.Now;
-                    Ambiente.Int1 = int.TryParse(row["cant"].ToString().Trim(), out i) == true ? i : 0;
-                    Ambiente.Int2 = int.TryParse(row["cant_orig"].ToString().Trim(), out i) == true ? i : 0;
+
+                    Ambiente.Decimal1 = decimal.TryParse(row["cant"].ToString().Trim(), out i) == true ? i : 0;
+                    Ambiente.Decimal2 = decimal.TryParse(row["cant_orig"].ToString().Trim(), out i) == true ? i : 0;
+                    Ambiente.Decimal2 = Ambiente.Decimal2 == 0 ? Ambiente.Decimal1 : Ambiente.Decimal2;
+
 
                     lote = null;
                     lote = lotes.FirstOrDefault(x => x.ProductoId.ToUpper().Equals(Ambiente.S1) && x.NoLote.ToUpper().Equals(Ambiente.S2.ToUpper()));
 
                     if (lote == null)
                     {
+                        producto = productos.FirstOrDefault(x => x.ProductoId.ToUpper().Equals(Ambiente.S1.ToUpper()));
+
+                        if (producto == null)
+                            continue;
+
                         lote = new Lote();
                         lote.ProductoId = Ambiente.S1;
                         lote.NoLote = Ambiente.S2.ToUpper();
                         lote.Caducidad = Ambiente.Datetime1;
-                        lote.StockInicial = Ambiente.Int2;
-                        lote.StockRestante = Ambiente.Int1;
+                        lote.StockInicial = Ambiente.Decimal2;
+                        lote.StockRestante = Ambiente.Decimal1;
+                        lote.CreatedAt = DateTime.Now;
+                        lote.CreatedBy = "JMENDOZAJ";
                         loteController.InsertOne(lote);
                     }
                     else
@@ -606,8 +629,10 @@ namespace PointOfSale.Views.Modulos.Config
                         lote.ProductoId = Ambiente.S1;
                         lote.NoLote = Ambiente.S2.ToUpper();
                         lote.Caducidad = Ambiente.Datetime1;
-                        lote.StockInicial = Ambiente.Int2;
-                        lote.StockRestante = Ambiente.Int1;
+                        lote.StockInicial = Ambiente.Decimal2;
+                        lote.StockRestante = Ambiente.Decimal1;
+                        lote.CreatedAt = DateTime.Now;
+                        lote.CreatedBy = "JMENDOZAJ";
                         loteController.Update(lote);
                     }
                 }
@@ -639,24 +664,22 @@ namespace PointOfSale.Views.Modulos.Config
                     else
                         Sql += f.Expresion + " , ";
                 }
-
+                Sql += " " + migrationTable.Condicion;
                 GetDataTable(Sql);
 
                 productos = productoController.SelectAll();
 
-                int i = 0;
+                decimal i = 0;
                 foreach (DataRow row in dataTable.Rows)
                 {
-                    Ambiente.S1 = row["producto"].ToString().Trim().ToUpper();
-                    Ambiente.Int1 = int.TryParse(row["existenc"].ToString().Trim(), out i) == true ? i : 0;
 
-                    producto = null;
+                    Ambiente.S1 = row["producto"].ToString().Trim().ToUpper();
+                    Ambiente.Decimal1 = decimal.TryParse(row["existenc"].ToString().Trim(), out i) == true ? i : 0;
                     producto = productos.FirstOrDefault(x => x.ProductoId.ToUpper().Equals(Ambiente.S1));
 
                     if (producto != null)
                     {
-
-                        producto.Stock = Ambiente.Int1;
+                        producto.Stock = Ambiente.Decimal1;
                         productoController.Update(producto);
                     }
                 }
@@ -819,7 +842,7 @@ namespace PointOfSale.Views.Modulos.Config
 
         private void BtnSincProdImp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Ambiente.Mensaje("Los impuestos se cargaron automaticamente al sincronizar los productos");
+            Sincronizaprodsalma();
         }
 
         private void BtnSincronizaTodo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -829,12 +852,12 @@ namespace PointOfSale.Views.Modulos.Config
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
 
         private void BtnAddCampo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -854,6 +877,7 @@ namespace PointOfSale.Views.Modulos.Config
         {
             BorrarCampo();
         }
+
 
 
 
@@ -896,5 +920,9 @@ namespace PointOfSale.Views.Modulos.Config
             }
         }
 
+        private void BtnSincLotes_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            SincronizaLotes();
+        }
     }
 }

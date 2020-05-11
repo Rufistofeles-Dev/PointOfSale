@@ -15,6 +15,7 @@ namespace PointOfSale.Models
         public DateTime? UltSincronizacion { get; set; }
         public string UpdatedBy { get; set; }
         public string CreatedBy { get; set; }
+        public string Condicion { get; set; }
 
         public virtual ICollection<MigrationField> MigrationField { get; set; }
     }

@@ -789,7 +789,7 @@ namespace PointOfSale.Views.Modulos.Catalogos
 
                 var name = imgdata.Item2;
                 var origen = imgdata.Item1;
-                var destino = Path.Combine(Ambiente.RutaImgs, name);
+                var destino = Path.Combine(Ambiente.Empresa.DirectorioImg, name);
 
                 if (!File.Exists(destino))
                     File.Copy(origen, destino);

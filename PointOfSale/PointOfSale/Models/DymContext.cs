@@ -1463,6 +1463,8 @@ namespace PointOfSale.Models
 
             modelBuilder.Entity<MigrationTable>(entity =>
             {
+                entity.Property(e => e.Condicion).HasMaxLength(550);
+
                 entity.Property(e => e.CreatedBy)
                     .IsRequired()
                     .HasMaxLength(50);
