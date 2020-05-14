@@ -49,26 +49,9 @@ namespace PointOfSale.Views.Modulos.Config
                 empresa.DirectorioOpenSslBin = TxtOpenSslBin.Text;
                 empresa.RutaArchivoPfx = TxtRutaArchivoPfx.Text;
                 empresa.TimbradoTest = ChkTimbradoTest.Checked;
-                empresa.FormatoParaTickets = TxtFormatoParaTickets.Text.Trim();
-                empresa.FormatoParaFacturas = TxtFormatoParaFacturas.Text.Trim();
-                empresa.FormatoCortes = TxtFormatoCortes.Text.Trim();
-                empresa.FormatoCierres = TxtFormatoCierres.Text.Trim();
 
-                empresa.FormatoClientesXpuntos = TxtClientesXpuntos.Text.Trim();
-                empresa.FormatoProdsXcompra = TxtProdsXCompra.Text.Trim();
-                empresa.FormatoComprasXperido = TxtComprasXPeriodo.Text.Trim();
-                empresa.FormatoMovsInv = TxtMovsInv.Text.Trim();
-                empresa.FormatoStockXprods = TxtStockXprod.Text.Trim();
-                empresa.FormatoInventarioAut = TxtInvAut.Text.Trim();
-                empresa.FormatoComprasVsventas = TxtComprasVsVentas.Text.Trim();
-                empresa.FormatoCatProds = TxtCatProd.Text.Trim();
-                empresa.FormatoProdsXprecios = TxtProdsXprecios.Text.Trim();
-                empresa.FormatoProveed = TxtProveed.Text.Trim();
-                empresa.FormatoVentasAcosto = TxtVentasAcosto.Text.Trim();
-                empresa.FormatoVentasXpuntos = TxtVentasXpuntos.Text.Trim();
-                empresa.FormatoVentasXperiodo = TxtVentasXperiodo.Text.Trim();
-                empresa.FormatoVentasXperiodoDet = TxtVentasXperiodoDet.Text.Trim();
-                empresa.FormatoEntradaXcompra = TxtEntradaXcompra.Text.Trim();
+                empresa.GuardarDescStd = ChkGuardarDescStd.Checked;
+
                 empresa.DirectorioDevCom = TxtDirectorioDevCom.Text.Trim();
                 empresa.MicroPvdb = TxtMicropvdb.Text.Trim();
 
@@ -107,27 +90,9 @@ namespace PointOfSale.Views.Modulos.Config
                 empresa.DirectorioOpenSslBin = TxtOpenSslBin.Text;
                 empresa.RutaArchivoPfx = TxtRutaArchivoPfx.Text;
                 empresa.TimbradoTest = ChkTimbradoTest.Checked;
-                empresa.FormatoParaTickets = TxtFormatoParaTickets.Text.Trim();
-                empresa.FormatoParaFacturas = TxtFormatoParaFacturas.Text.Trim();
-                empresa.FormatoCortes = TxtFormatoCortes.Text.Trim();
-                empresa.FormatoCierres = TxtFormatoCierres.Text.Trim();
-                empresa.FormatoClientesXpuntos = TxtClientesXpuntos.Text.Trim();
-                empresa.FormatoProdsXcompra = TxtProdsXCompra.Text.Trim();
-                empresa.FormatoComprasXperido = TxtComprasXPeriodo.Text.Trim();
-                empresa.FormatoMovsInv = TxtMovsInv.Text.Trim();
-                empresa.FormatoStockXprods = TxtStockXprod.Text.Trim();
-                empresa.FormatoInventarioAut = TxtInvAut.Text.Trim();
-                empresa.FormatoComprasVsventas = TxtComprasVsVentas.Text.Trim();
-                empresa.FormatoCatProds = TxtCatProd.Text.Trim();
-                empresa.FormatoProdsXprecios = TxtProdsXprecios.Text.Trim();
-                empresa.FormatoProveed = TxtProveed.Text.Trim();
-                empresa.FormatoVentasAcosto = TxtVentasAcosto.Text.Trim();
-                empresa.FormatoVentasXpuntos = TxtVentasXpuntos.Text.Trim();
-                empresa.FormatoVentasXperiodo = TxtVentasXperiodo.Text.Trim();
-                empresa.FormatoVentasXperiodoDet = TxtVentasXperiodoDet.Text.Trim();
-                empresa.FormatoEntradaXcompra = TxtEntradaXcompra.Text.Trim();
                 empresa.DirectorioDevCom = TxtDirectorioDevCom.Text.Trim();
                 empresa.MicroPvdb = TxtMicropvdb.Text.Trim();
+                empresa.GuardarDescStd = ChkGuardarDescStd.Checked;
                 if (empresa.RegimenFiscalId.Trim().Length == 0)
                 {
                     Ambiente.Mensaje("Nada que guardar");
@@ -163,31 +128,14 @@ namespace PointOfSale.Views.Modulos.Config
             TxtDirectorioTraspasos.Text = empresa.DirectorioTraspasos;
             TxtDirectorioTrabajo.Text = empresa.DirectorioTrabajo;
             TxtDirectorioImg.Text = empresa.DirectorioImg;
-
+            ChkGuardarDescStd.Checked = empresa.GuardarDescStd;
             TxtDirectorioReportes.Text = empresa.DirectorioReportes;
             TxtOpenSslBin.Text = empresa.DirectorioOpenSslBin;
             TxtRutaArchivoPfx.Text = empresa.RutaArchivoPfx;
             ChkTimbradoTest.Checked = empresa.TimbradoTest;
-            TxtFormatoParaTickets.Text = empresa.FormatoParaTickets;
-            TxtFormatoParaFacturas.Text = empresa.FormatoParaFacturas;
-            TxtFormatoCortes.Text = empresa.FormatoCortes;
-            TxtFormatoCierres.Text = empresa.FormatoCierres;
+           
 
-            TxtClientesXpuntos.Text = empresa.FormatoClientesXpuntos;
-            TxtProdsXCompra.Text = empresa.FormatoProdsXcompra;
-            TxtComprasXPeriodo.Text = empresa.FormatoComprasXperido;
-            TxtMovsInv.Text = empresa.FormatoMovsInv;
-            TxtStockXprod.Text = empresa.FormatoStockXprods;
-            TxtInvAut.Text = empresa.FormatoInventarioAut;
-            TxtComprasVsVentas.Text = empresa.FormatoComprasVsventas;
-            TxtCatProd.Text = empresa.FormatoCatProds;
-            TxtProdsXprecios.Text = empresa.FormatoProdsXprecios;
-            TxtProveed.Text = empresa.FormatoProveed;
-            TxtVentasAcosto.Text = empresa.FormatoVentasAcosto;
-            TxtVentasXpuntos.Text = empresa.FormatoVentasXpuntos;
-            TxtVentasXperiodo.Text = empresa.FormatoVentasXperiodo;
-            TxtVentasXperiodoDet.Text = empresa.FormatoVentasXperiodoDet;
-            TxtEntradaXcompra.Text = empresa.FormatoEntradaXcompra;
+           
             TxtDirectorioDevCom.Text = empresa.DirectorioDevCom;
             TxtMicropvdb.Text = empresa.MicroPvdb;
         }
@@ -327,265 +275,13 @@ namespace PointOfSale.Views.Modulos.Config
             TxtRutaArchivoPfx.Text = Ambiente.GetFilePath().Item1;
         }
 
-        private void TxtFormatoTickets_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                using (var form = new FrmBusqueda(TxtFormatoParaTickets.Text.Trim(), (int)Ambiente.TipoBusqueda.Reportes))
-                {
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        TxtFormatoParaTickets.Text = form.Informe == null ? "" : form.Informe.InformeId;
-                    }
-                }
-            }
-        }
-
-        private void TxtFormatoParaFacturas_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                using (var form = new FrmBusqueda(TxtFormatoParaFacturas.Text.Trim(), (int)Ambiente.TipoBusqueda.Reportes))
-                {
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        TxtFormatoParaFacturas.Text = form.Informe == null ? "" : form.Informe.InformeId;
-                    }
-                }
-            }
-
-        }
-
+ 
         private void BtnUpdateDb_Click(object sender, EventArgs e)
         {
             Ambiente.InsertaActualizacion();
         }
 
-        private void TxtFormatoCortes_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                using (var form = new FrmBusqueda(TxtFormatoCortes.Text.Trim(), (int)Ambiente.TipoBusqueda.Reportes))
-                {
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        TxtFormatoCortes.Text = form.Informe == null ? "" : form.Informe.InformeId;
-                    }
-                }
-            }
-        }
-
-        private void TxtFormatoCierres_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                using (var form = new FrmBusqueda(TxtFormatoCierres.Text.Trim(), (int)Ambiente.TipoBusqueda.Reportes))
-                {
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        TxtFormatoCierres.Text = form.Informe == null ? "" : form.Informe.InformeId;
-                    }
-                }
-            }
-        }
-        /*******************************/
-
-        private void TxtClientesXpuntos_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                using (var form = new FrmBusqueda(TxtClientesXpuntos.Text.Trim(), (int)Ambiente.TipoBusqueda.Reportes))
-                {
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        TxtClientesXpuntos.Text = form.Informe == null ? "" : form.Informe.InformeId;
-                    }
-                }
-            }
-        }
-
-        private void TxtProdsXCompra_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                using (var form = new FrmBusqueda(TxtProdsXCompra.Text.Trim(), (int)Ambiente.TipoBusqueda.Reportes))
-                {
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        TxtProdsXCompra.Text = form.Informe == null ? "" : form.Informe.InformeId;
-                    }
-                }
-            }
-        }
-
-        private void TxtComprasXPeriodo_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                using (var form = new FrmBusqueda(TxtComprasXPeriodo.Text.Trim(), (int)Ambiente.TipoBusqueda.Reportes))
-                {
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        TxtComprasXPeriodo.Text = form.Informe == null ? "" : form.Informe.InformeId;
-                    }
-                }
-            }
-        }
-
-        private void TxtMovsInv_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                using (var form = new FrmBusqueda(TxtMovsInv.Text.Trim(), (int)Ambiente.TipoBusqueda.Reportes))
-                {
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        TxtMovsInv.Text = form.Informe == null ? "" : form.Informe.InformeId;
-                    }
-                }
-            }
-        }
-
-        private void TxtStockXprod_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                using (var form = new FrmBusqueda(TxtStockXprod.Text.Trim(), (int)Ambiente.TipoBusqueda.Reportes))
-                {
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        TxtStockXprod.Text = form.Informe == null ? "" : form.Informe.InformeId;
-                    }
-                }
-            }
-        }
-
-        private void TextBox8_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                using (var form = new FrmBusqueda(TxtInvAut.Text.Trim(), (int)Ambiente.TipoBusqueda.Reportes))
-                {
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        TxtInvAut.Text = form.Informe == null ? "" : form.Informe.InformeId;
-                    }
-                }
-            }
-        }
-
-        private void TxtComprasVsVentas_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                using (var form = new FrmBusqueda(TxtComprasVsVentas.Text.Trim(), (int)Ambiente.TipoBusqueda.Reportes))
-                {
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        TxtComprasVsVentas.Text = form.Informe == null ? "" : form.Informe.InformeId;
-                    }
-                }
-            }
-        }
-
-        private void TxtCatProd_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                using (var form = new FrmBusqueda(TxtCatProd.Text.Trim(), (int)Ambiente.TipoBusqueda.Reportes))
-                {
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        TxtCatProd.Text = form.Informe == null ? "" : form.Informe.InformeId;
-                    }
-                }
-            }
-        }
-
-        private void TxtProdsXprecios_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                using (var form = new FrmBusqueda(TxtProdsXprecios.Text.Trim(), (int)Ambiente.TipoBusqueda.Reportes))
-                {
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        TxtProdsXprecios.Text = form.Informe == null ? "" : form.Informe.InformeId;
-                    }
-                }
-            }
-        }
-
-        private void TxtProveed_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                using (var form = new FrmBusqueda(TxtProveed.Text.Trim(), (int)Ambiente.TipoBusqueda.Reportes))
-                {
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        TxtProveed.Text = form.Informe == null ? "" : form.Informe.InformeId;
-                    }
-                }
-            }
-        }
-
-        private void TxtVentasAcosto_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                using (var form = new FrmBusqueda(TxtVentasAcosto.Text.Trim(), (int)Ambiente.TipoBusqueda.Reportes))
-                {
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        TxtVentasAcosto.Text = form.Informe == null ? "" : form.Informe.InformeId;
-                    }
-                }
-            }
-        }
-
-        private void TxtVentasXpuntos_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                using (var form = new FrmBusqueda(TxtVentasXpuntos.Text.Trim(), (int)Ambiente.TipoBusqueda.Reportes))
-                {
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        TxtVentasXpuntos.Text = form.Informe == null ? "" : form.Informe.InformeId;
-                    }
-                }
-            }
-        }
-
-        private void TxtVentasXperiodo_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                using (var form = new FrmBusqueda(TxtVentasXperiodo.Text.Trim(), (int)Ambiente.TipoBusqueda.Reportes))
-                {
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        TxtVentasXperiodo.Text = form.Informe == null ? "" : form.Informe.InformeId;
-                    }
-                }
-            }
-        }
-
-        private void TxtVentasXperiodoDet_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                using (var form = new FrmBusqueda(TxtVentasXperiodoDet.Text.Trim(), (int)Ambiente.TipoBusqueda.Reportes))
-                {
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        TxtVentasXperiodoDet.Text = form.Informe == null ? "" : form.Informe.InformeId;
-                    }
-                }
-            }
-        }
-
+   
         private void BtnDevCom_Click(object sender, EventArgs e)
         {
             TxtDirectorioDevCom.Text = Ambiente.GetFolderPath();

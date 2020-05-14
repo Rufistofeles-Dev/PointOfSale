@@ -49,8 +49,8 @@ namespace PointOfSale.Views.Menus
                 Ambiente.stiReport.Dictionary.Variables["Creador"].ValueObject = Ambiente.LoggedUser.Nombre;
                 Ambiente.stiReport.Dictionary.Variables["Estacion"].ValueObject = Ambiente.Estacion.EstacionId;
                 Ambiente.S1 = Ambiente.Empresa.DirectorioCortes + "CORTE " + Ambiente.LoggedUser.Nombre + "_" + Ambiente.TimeText(DateTime.Now) + ".PDF"; ;
-
                 Ambiente.stiReport.Render(true);
+
                 Ambiente.stiReport.ExportDocument(StiExportFormat.Pdf, Ambiente.S1);
 
                 Process.Start(Ambiente.S1);

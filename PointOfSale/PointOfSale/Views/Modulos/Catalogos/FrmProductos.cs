@@ -70,7 +70,8 @@ namespace PointOfSale.Views.Modulos.Catalogos
                 objeto.CategoriaId = TxtCategoria.Text.Trim().Length == 0 ? "SYS" : TxtCategoria.Text.Trim();
                 objeto.ClaveUnidadId = TxtUnidadCFDI.Text.Trim().Length == 0 ? "H87" : TxtUnidadCFDI.Text.Trim();
                 objeto.ClaveProdServId = TxtClaveCFDI.Text.Trim().Length == 0 ? "01010101" : TxtClaveCFDI.Text.Trim();
-
+                objeto.Min = NMin.Value;
+                objeto.Max = NMax.Value;
 
                 bool success = true;
 
@@ -211,7 +212,8 @@ namespace PointOfSale.Views.Modulos.Catalogos
                 objeto.CategoriaId = TxtCategoria.Text.Trim().Length == 0 ? "SYS" : TxtCategoria.Text.Trim();
                 objeto.ClaveUnidadId = TxtUnidadCFDI.Text.Trim().Length == 0 ? "H87" : TxtUnidadCFDI.Text.Trim();
                 objeto.ClaveProdServId = TxtClaveCFDI.Text.Trim().Length == 0 ? "01010101" : TxtClaveCFDI.Text.Trim();
-
+                objeto.Min = NMin.Value;
+                objeto.Max = NMax.Value;
                 bool success = true;
 
                 if (TxtPrecioCompra.Text.Trim().Length == 0)
@@ -487,10 +489,12 @@ namespace PointOfSale.Views.Modulos.Catalogos
                 TxtU2.Text = objeto.Utilidad2.ToString();
                 TxtU3.Text = objeto.Utilidad3.ToString();
                 TxtU4.Text = objeto.Utilidad4.ToString();
-                //TxtPrecioS1.Text = Ambiente.GetPrecioSalida(objeto.Precio1.ToString(), objeto.ProductoImpuesto);
-                //TxtPrecioS2.Text = Ambiente.GetPrecioSalida(objeto.Precio2.ToString(), objeto.ProductoImpuesto);
-                //TxtPrecioS3.Text = Ambiente.GetPrecioSalida(objeto.Precio3.ToString(), objeto.ProductoImpuesto);
-                //TxtPrecioS4.Text = Ambiente.GetPrecioSalida(objeto.Precio4.ToString(), objeto.ProductoImpuesto);
+                NMin.Value = objeto.Min;
+                NMax.Value = objeto.Max;
+                TxtPrecioS1.Text = Ambiente.GetPrecioSalida(objeto.Precio1.ToString(),  Impuestos);
+                TxtPrecioS2.Text = Ambiente.GetPrecioSalida(objeto.Precio2.ToString(), Impuestos);
+                TxtPrecioS3.Text = Ambiente.GetPrecioSalida(objeto.Precio3.ToString(), Impuestos);
+                TxtPrecioS4.Text = Ambiente.GetPrecioSalida(objeto.Precio4.ToString(), Impuestos);
                 TxtRutaImg.Text = objeto.RutaImg;
                 //GridExistencias.DataSource = objeto.ProductoAlmacen.Select(x => new { x.AlmacenId, x.ExistenciaId }).ToList();
                 PbxImagen.Image = GetImg(objeto.RutaImg);
@@ -851,28 +855,40 @@ namespace PointOfSale.Views.Modulos.Catalogos
             TxtPrecio1.Text = Ambiente.FDinero(TxtPrecio1.Text);
             TxtU1.Text = Ambiente.GetMargen(TxtPrecioCompra.Text, TxtPrecio1.Text);
 
-            TxtPrecioS1.Text = Ambiente.GetPrecioSalida(TxtPrecio1.Text, Impuestos);
+           
+                TxtPrecioS1.Text = Ambiente.GetPrecioSalida(TxtPrecio1.Text,  Impuestos);
+           
+
+
         }
 
         private void TxtPrecio2_Leave(object sender, EventArgs e)
         {
             TxtPrecio2.Text = Ambiente.FDinero(TxtPrecio2.Text);
             TxtU2.Text = Ambiente.GetMargen(TxtPrecioCompra.Text, TxtPrecio2.Text);
-            TxtPrecioS2.Text = Ambiente.GetPrecioSalida(TxtPrecio2.Text, Impuestos);
+
+           
+                TxtPrecioS2.Text = Ambiente.GetPrecioSalida(TxtPrecio2.Text, Impuestos);
+           
         }
 
         private void TxtPrecio3_Leave(object sender, EventArgs e)
         {
             TxtPrecio3.Text = Ambiente.FDinero(TxtPrecio3.Text);
             TxtU3.Text = Ambiente.GetMargen(TxtPrecioCompra.Text, TxtPrecio3.Text);
-            TxtPrecioS3.Text = Ambiente.GetPrecioSalida(TxtPrecio3.Text, Impuestos);
+            
+                TxtPrecioS3.Text = Ambiente.GetPrecioSalida(TxtPrecio3.Text, Impuestos);
+            
         }
 
         private void TxtPrecio4_Leave(object sender, EventArgs e)
         {
             TxtPrecio4.Text = Ambiente.FDinero(TxtPrecio4.Text);
             TxtU4.Text = Ambiente.GetMargen(TxtPrecioCompra.Text, TxtPrecio4.Text);
-            TxtPrecioS4.Text = Ambiente.GetPrecioSalida(TxtPrecio4.Text, Impuestos);
+
+            
+                TxtPrecioS4.Text = Ambiente.GetPrecioSalida(TxtPrecio4.Text,  Impuestos);
+          
         }
 
         private void GridImpuestos_KeyDown(object sender, KeyEventArgs e)

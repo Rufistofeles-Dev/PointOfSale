@@ -35,7 +35,7 @@ namespace PointOfSale.Controllers
         public static Usuario LoggedUser { get; set; }
         public static Estacion Estacion { get; set; }
         public static Empresa Empresa { get; set; }
-      
+
 
         public static bool ServerImgAccesible { get; set; }
 
@@ -599,7 +599,7 @@ namespace PointOfSale.Controllers
         {
             return "'" + dateTime.Date.ToString("yyyy-MM-dd") + "'";
         }
-       
+
         public static string FDinero(string valor)
         {
 
@@ -785,7 +785,6 @@ namespace PointOfSale.Controllers
             {
                 if (decimal.TryParse(nPrecio, out precio))
                 {
-                    acumulado = precio;
                     foreach (var i in impuestos)
                         acumulado += precio * i.Tasa;
                 }
@@ -797,7 +796,7 @@ namespace PointOfSale.Controllers
 
                 Ambiente.Mensaje(Ambiente.CatalgoMensajes[-1] + " precio y/o margen invalidos");
             }
-            return FDinero((acumulado).ToString());
+            return FDinero((precio + acumulado).ToString());
         }
 
         public static decimal GetPrecioSalida(Producto producto, int listaPrecio = 1)

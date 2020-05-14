@@ -128,6 +128,10 @@
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnAceptar = new System.Windows.Forms.Button();
             this.LblCoincidencias = new System.Windows.Forms.Label();
+            this.NMin = new System.Windows.Forms.NumericUpDown();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.NMax = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.GridSustancias)).BeginInit();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridExistencias)).BeginInit();
@@ -138,6 +142,8 @@
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridImpuestos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NMin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NMax)).BeginInit();
             this.SuspendLayout();
             // 
             // TxtPrecio2
@@ -864,10 +870,10 @@
             this.ChkLote.AutoSize = true;
             this.ChkLote.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.ChkLote.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ChkLote.Location = new System.Drawing.Point(611, 332);
+            this.ChkLote.Location = new System.Drawing.Point(783, 334);
             this.ChkLote.Name = "ChkLote";
             this.ChkLote.Size = new System.Drawing.Size(76, 22);
-            this.ChkLote.TabIndex = 15;
+            this.ChkLote.TabIndex = 17;
             this.ChkLote.Text = "LOTES";
             this.ChkLote.UseVisualStyleBackColor = true;
             this.ChkLote.Leave += new System.EventHandler(this.ChkLote_Leave);
@@ -877,10 +883,10 @@
             this.ChkEnCatalogo.AutoSize = true;
             this.ChkEnCatalogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.ChkEnCatalogo.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ChkEnCatalogo.Location = new System.Drawing.Point(611, 308);
+            this.ChkEnCatalogo.Location = new System.Drawing.Point(783, 310);
             this.ChkEnCatalogo.Name = "ChkEnCatalogo";
             this.ChkEnCatalogo.Size = new System.Drawing.Size(134, 22);
-            this.ChkEnCatalogo.TabIndex = 14;
+            this.ChkEnCatalogo.TabIndex = 16;
             this.ChkEnCatalogo.Text = "EN CATÁLOGO";
             this.ChkEnCatalogo.UseVisualStyleBackColor = true;
             // 
@@ -1215,11 +1221,58 @@
             this.LblCoincidencias.TabIndex = 235;
             this.LblCoincidencias.Text = "0 Coincidencias";
             // 
+            // NMin
+            // 
+            this.NMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NMin.Location = new System.Drawing.Point(601, 330);
+            this.NMin.Name = "NMin";
+            this.NMin.Size = new System.Drawing.Size(86, 24);
+            this.NMin.TabIndex = 14;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label29.Location = new System.Drawing.Point(601, 308);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(35, 18);
+            this.label29.TabIndex = 237;
+            this.label29.Text = "MIN";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label30.Location = new System.Drawing.Point(688, 308);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(40, 18);
+            this.label30.TabIndex = 239;
+            this.label30.Text = "MAX";
+            // 
+            // NMax
+            // 
+            this.NMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NMax.Location = new System.Drawing.Point(691, 330);
+            this.NMax.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.NMax.Name = "NMax";
+            this.NMax.Size = new System.Drawing.Size(86, 24);
+            this.NMax.TabIndex = 15;
+            // 
             // FrmProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1074, 635);
+            this.Controls.Add(this.NMax);
+            this.Controls.Add(this.label30);
+            this.Controls.Add(this.label29);
+            this.Controls.Add(this.NMin);
             this.Controls.Add(this.LblCoincidencias);
             this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.BtnAceptar);
@@ -1277,6 +1330,8 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridImpuestos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NMin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NMax)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1375,5 +1430,9 @@
         private System.Windows.Forms.Label LblCoincidencias;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.NumericUpDown NMin;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.NumericUpDown NMax;
     }
 }

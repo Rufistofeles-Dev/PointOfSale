@@ -1627,6 +1627,10 @@ namespace PointOfSale.Models
                     .HasMaxLength(50)
                     .HasDefaultValueSql("((1))");
 
+                entity.Property(e => e.Max).HasColumnType("decimal(18, 0)");
+
+                entity.Property(e => e.Min).HasColumnType("decimal(18, 0)");
+
                 entity.Property(e => e.Ocupado).HasDefaultValueSql("((0))");
 
                 entity.Property(e => e.Precio1)

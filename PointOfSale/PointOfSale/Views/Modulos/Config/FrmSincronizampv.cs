@@ -851,7 +851,7 @@ namespace PointOfSale.Views.Modulos.Config
             {
                 using (var db = new DymContext())
                 {
-                  //  db.Database
+                    //  db.Database
 
                 }
             }

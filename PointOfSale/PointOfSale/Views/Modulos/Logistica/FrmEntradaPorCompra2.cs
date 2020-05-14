@@ -287,7 +287,8 @@ namespace PointOfSale.Views.Modulos.Logistica
             partida.Cantidad = NCantidad.Value;
             partida.PrecioCompra = NCostoU.Value;
             partida.PrecioCaja = NPrecioCaja.Value;
-            partida.Descuento = NDesc1.Value / 100;
+            if (Ambiente.Empresa.GuardarDescStd)
+                partida.Descuento = NDesc1.Value / 100;
             partida.NImpuestos = impuestos.Count;
 
             //control lotes
@@ -309,6 +310,7 @@ namespace PointOfSale.Views.Modulos.Logistica
             }
 
             //cambios de precio
+
             if (partida.PrecioCompra != producto.PrecioCompra)
             {
                 producto.PrecioCompra = NCostoU.Value;
@@ -354,6 +356,12 @@ namespace PointOfSale.Views.Modulos.Logistica
             ResetPartida();
 
         }
+
+        private void AgregaProductoactualizado()
+        {
+            throw new NotImplementedException();
+        }
+
         private void LimpiarFilaMalla(int index)
         {
             Malla.Rows[index].Cells[0].Value = null;
@@ -833,7 +841,9 @@ namespace PointOfSale.Views.Modulos.Logistica
         {
             TxtPrecio1.Text = Ambiente.FDinero(TxtPrecio1.Text);
             TxtU1.Text = Ambiente.GetMargen(NCostoU.Value.ToString(), TxtPrecio1.Text);
+
             TxtPrecioS1.Text = Ambiente.GetPrecioSalida(TxtPrecio1.Text, impuestos);
+
         }
         private void TxtU2_Leave(object sender, EventArgs e)
         {
@@ -844,7 +854,9 @@ namespace PointOfSale.Views.Modulos.Logistica
         {
             TxtPrecio2.Text = Ambiente.FDinero(TxtPrecio2.Text);
             TxtU2.Text = Ambiente.GetMargen(NCostoU.Value.ToString(), TxtPrecio2.Text);
+
             TxtPrecioS2.Text = Ambiente.GetPrecioSalida(TxtPrecio2.Text, impuestos);
+
         }
         private void TxtU3_Leave(object sender, EventArgs e)
         {
@@ -855,7 +867,10 @@ namespace PointOfSale.Views.Modulos.Logistica
         {
             TxtPrecio3.Text = Ambiente.FDinero(TxtPrecio3.Text);
             TxtU3.Text = Ambiente.GetMargen(NCostoU.Value.ToString(), TxtPrecio3.Text);
+
             TxtPrecioS3.Text = Ambiente.GetPrecioSalida(TxtPrecio3.Text, impuestos);
+
+
         }
         private void TxtU4_Leave(object sender, EventArgs e)
         {
@@ -866,7 +881,9 @@ namespace PointOfSale.Views.Modulos.Logistica
         {
             TxtPrecio4.Text = Ambiente.FDinero(TxtPrecio4.Text);
             TxtU4.Text = Ambiente.GetMargen(NCostoU.Value.ToString(), TxtPrecio4.Text);
+
             TxtPrecioS4.Text = Ambiente.GetPrecioSalida(TxtPrecio4.Text, impuestos);
+
             BtnAgregar.Focus();
         }
         private void BtnAceptar_Click(object sender, EventArgs e)
@@ -1010,20 +1027,20 @@ namespace PointOfSale.Views.Modulos.Logistica
 
         private void FrmEntradaPorCompra2_Load(object sender, EventArgs e)
         {
-            NDesc1.Controls[0].Hide();
-            NDesc1.Refresh();
-            NDesc2.Controls[0].Hide();
-            NDesc2.Refresh();
-            NPrecioCaja.Controls[0].Hide();
-            NPrecioCaja.Refresh();
-            NCostoU.Controls[0].Hide();
-            NCostoU.Refresh();
-            NCantidad.Controls[0].Hide();
-            NCantidad.Refresh();
-            NprecioLista.Controls[0].Hide();
-            NprecioLista.Refresh();
-            NImporte.Controls[0].Hide();
-            NImporte.Refresh();
+            //NDesc1.Controls[0].Hide();
+            //NDesc1.Refresh();
+            //NDesc2.Controls[0].Hide();
+            //NDesc2.Refresh();
+            //NPrecioCaja.Controls[0].Hide();
+            //NPrecioCaja.Refresh();
+            //NCostoU.Controls[0].Hide();
+            //NCostoU.Refresh();
+            //NCantidad.Controls[0].Hide();
+            //NCantidad.Refresh();
+            //NprecioLista.Controls[0].Hide();
+            //NprecioLista.Refresh();
+            //NImporte.Controls[0].Hide();
+            //NImporte.Refresh();
         }
 
 
