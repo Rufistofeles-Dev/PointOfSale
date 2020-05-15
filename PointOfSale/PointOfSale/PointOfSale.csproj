@@ -420,6 +420,7 @@
     <Compile Include="Controllers\InformeController.cs" />
     <Compile Include="Controllers\InformeParametroController.cs" />
     <Compile Include="Controllers\InventarioController.cs" />
+    <Compile Include="Controllers\InventariopController.cs" />
     <Compile Include="Controllers\LaboratorioController.cs" />
     <Compile Include="Controllers\LoggerController\TraceLogger.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -439,6 +440,7 @@
     <Compile Include="Controllers\SustanciaController.cs" />
     <Compile Include="Controllers\TablasIntermedia\ProductoImpuestoController.cs" />
     <Compile Include="Controllers\TablasIntermedia\ProductoSustanciaController.cs" />
+    <Compile Include="Controllers\TipoInventarioController.cs" />
     <Compile Include="Controllers\TraspasoController.cs" />
     <Compile Include="Controllers\TraspasopController.cs" />
     <Compile Include="Controllers\UnidadMedidaController.cs" />
@@ -497,6 +499,8 @@
     <Compile Include="Models\InformeCategoria.cs" />
     <Compile Include="Models\InformeConfiguracion.cs" />
     <Compile Include="Models\InformeParametro.cs" />
+    <Compile Include="Models\Inventario.cs" />
+    <Compile Include="Models\Inventariop.cs" />
     <Compile Include="Models\Laboratorio.cs" />
     <Compile Include="Models\Lote.cs" />
     <Compile Include="Models\LoteVentap.cs" />
@@ -527,6 +531,7 @@
     <Compile Include="Models\Sustancia.cs" />
     <Compile Include="Models\Test.cs" />
     <Compile Include="Models\TipoDoc.cs" />
+    <Compile Include="Models\TipoInventario.cs" />
     <Compile Include="Models\Traspaso.cs" />
     <Compile Include="Models\Traspasop.cs" />
     <Compile Include="Models\UnidadMedida.cs" />
@@ -564,6 +569,12 @@
     </Compile>
     <Compile Include="Views\Mensajes\Pregunta.designer.cs">
       <DependentUpon>Pregunta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Menus\FrmAlmacenes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Menus\FrmAlmacenes.Designer.cs">
+      <DependentUpon>FrmAlmacenes.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Menus\FrmMain.cs">
       <SubType>Form</SubType>
@@ -745,6 +756,12 @@
     <Compile Include="Views\Modulos\Logistica\FrmEntradasPorTraspaso.Designer.cs">
       <DependentUpon>FrmEntradasPorTraspaso.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Modulos\Logistica\FrmInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Modulos\Logistica\FrmInventario.Designer.cs">
+      <DependentUpon>FrmInventario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Modulos\Logistica\FrmLoteCaducidad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -912,6 +929,9 @@
     <EmbeddedResource Include="Views\Mensajes\Pregunta.resx">
       <DependentUpon>Pregunta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Menus\FrmAlmacenes.resx">
+      <DependentUpon>FrmAlmacenes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Menus\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -1001,6 +1021,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Modulos\Logistica\FrmEntradasPorTraspaso.resx">
       <DependentUpon>FrmEntradasPorTraspaso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Modulos\Logistica\FrmInventario.resx">
+      <DependentUpon>FrmInventario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Modulos\Logistica\FrmLoteCaducidad.resx">
       <DependentUpon>FrmLoteCaducidad.cs</DependentUpon>
@@ -1193,6 +1216,7 @@
     <Content Include="Localization\sv.xml" />
     <Content Include="Localization\tr.xml" />
     <Content Include="Localization\zh-CHT.xml" />
+    <None Include="Resources\inv.PNG" />
     <None Include="Resources\tasy3.png" />
     <None Include="Resources\tasy2.png" />
     <None Include="Resources\tasy.png" />

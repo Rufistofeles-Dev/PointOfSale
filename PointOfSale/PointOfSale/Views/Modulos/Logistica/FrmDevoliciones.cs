@@ -244,6 +244,24 @@ namespace PointOfSale.Views.Modulos.Logistica
                 index++;
             }
         }
+        private bool GuardaPartidas()
+        {
+            return devolucionpController.InsertRange(partidas);
+        }
+        private void PendienteOdescarta()
+        {
+            if (partidas.Count > 0 && devolucion.EstadoDocId.Equals("PEN"))
+            {
+                if (Ambiente.Pregunta("Quiere dejar la devolucion como pendiente"))
+                    CerrarDevolucion(true);
+                else
+                    EliminaDevolucion();
+            }
+            else
+                EliminaDevolucion();
+            Close();
+        }
+
         private void CerrarDevolucion(bool pendiente)
         {
             if (partidas.Count > 0)
@@ -358,11 +376,7 @@ namespace PointOfSale.Views.Modulos.Logistica
             }
         }
 
-        private bool GuardaPartidas()
-        {
-            return devolucionpController.InsertRange(partidas);
-        }
-
+      
 
 
         private void TxtConceptoMovInv_KeyDown(object sender, KeyEventArgs e)
@@ -519,20 +533,7 @@ namespace PointOfSale.Views.Modulos.Logistica
         {
             PendienteOdescarta();
         }
-        private void PendienteOdescarta()
-        {
-            if (partidas.Count > 0 && devolucion.EstadoDocId.Equals("PEN"))
-            {
-                if (Ambiente.Pregunta("Quiere dejar la devolucion como pendiente"))
-                    CerrarDevolucion(true);
-                else
-                    EliminaDevolucion();
-            }
-            else
-                EliminaDevolucion();
-            Close();
-        }
-
+       
         private void Malla_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             ActualizaCantidad(int.Parse(Malla.CurrentCell.Value.ToString()), e.RowIndex);

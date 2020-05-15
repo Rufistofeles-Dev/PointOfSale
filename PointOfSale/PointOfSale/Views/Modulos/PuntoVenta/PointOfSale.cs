@@ -33,7 +33,7 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
         private ProductoController productoController;
         private ImpuestoController ImpuestoController;
         private ClienteController clienteController;
-        private InventarioController inventarioController;
+
         private EmpresaController empresaController;
         private LoteController loteController;
         private MovInvController movInvController;
@@ -227,7 +227,7 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
             ventapController = new VentapController();
             productoController = new ProductoController();
             clienteController = new ClienteController();
-            inventarioController = new InventarioController();
+
             ImpuestoController = new ImpuestoController();
             empresaController = new EmpresaController();
             loteController = new LoteController();
@@ -735,26 +735,9 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
         {
             foreach (var p in partidas)
             {
-                if (ventapController.InsertOne(p))
-                {
-                    var prod = productoController.SelectOne(p.ProductoId);
-                    if (prod != null)
-                    {
-                        //if (loteController.RestaLote(prod, p.Cantidad))
-                        //{
-                        //    if (!inventarioController.AfectaInventario(p.ProductoId, -p.Cantidad))
-                        //        Ambiente.Mensaje("Algo salió mal al afectar el inventario");
-                        //}
-                        //else
-                        // Ambiente.Mensaje("Algo salió mal al restar el lote");
-                    }
-                    else
-                        Ambiente.Mensaje("Algo salió mal con la partida: " + p.Descripcion);
-                }
-                else
-                {
+                if (!ventapController.InsertOne(p))
                     Ambiente.Mensaje("Algo salió mal con la partida: " + p.Descripcion);
-                }
+
             }
         }
         private bool HayStockSuficiente(Producto producto, decimal cant)

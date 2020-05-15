@@ -62,6 +62,8 @@ namespace PointOfSale.Models
         public virtual DbSet<InformeCategoria> InformeCategoria { get; set; }
         public virtual DbSet<InformeConfiguracion> InformeConfiguracion { get; set; }
         public virtual DbSet<InformeParametro> InformeParametro { get; set; }
+        public virtual DbSet<Inventario> Inventario { get; set; }
+        public virtual DbSet<Inventariop> Inventariop { get; set; }
         public virtual DbSet<Laboratorio> Laboratorio { get; set; }
         public virtual DbSet<Lote> Lote { get; set; }
         public virtual DbSet<LoteVentap> LoteVentap { get; set; }
@@ -86,6 +88,7 @@ namespace PointOfSale.Models
         public virtual DbSet<Sustancia> Sustancia { get; set; }
         public virtual DbSet<Test> Test { get; set; }
         public virtual DbSet<TipoDoc> TipoDoc { get; set; }
+        public virtual DbSet<TipoInventario> TipoInventario { get; set; }
         public virtual DbSet<Traspaso> Traspaso { get; set; }
         public virtual DbSet<Traspasop> Traspasop { get; set; }
         public virtual DbSet<UnidadMedida> UnidadMedida { get; set; }
@@ -1373,6 +1376,58 @@ namespace PointOfSale.Models
                     .HasConstraintName("FK_InformeParametro_Informe");
             });
 
+            modelBuilder.Entity<Inventario>(entity =>
+            {
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime");
+
+                entity.Property(e => e.CreatedBy)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.EstadoDocId)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.FechaAplicacion).HasColumnType("datetime");
+
+                entity.Property(e => e.FechaAutorizacion).HasColumnType("datetime");
+
+                entity.Property(e => e.FechaBloqueo).HasColumnType("datetime");
+
+                entity.Property(e => e.TipoInventario)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.UsuarioAplicacion).HasMaxLength(50);
+
+                entity.Property(e => e.UsuarioAutorizacion).HasMaxLength(50);
+
+                entity.Property(e => e.UsuarioAutorizacionId).HasMaxLength(50);
+
+                entity.Property(e => e.UsuarioBloqueoId).HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<Inventariop>(entity =>
+            {
+                entity.Property(e => e.InventariopId).ValueGeneratedNever();
+
+                entity.Property(e => e.CostoParcial).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.Descripcion).HasMaxLength(250);
+
+                entity.Property(e => e.Diferencia).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.ExistenciaFisica).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.ExistenciaTeorica).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.PrecioCompra).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.ProductoId)
+                    .IsRequired()
+                    .HasMaxLength(50);
+            });
+
             modelBuilder.Entity<Laboratorio>(entity =>
             {
                 entity.Property(e => e.LaboratorioId)
@@ -1956,6 +2011,13 @@ namespace PointOfSale.Models
                     .HasMaxLength(50)
                     .ValueGeneratedNever();
 
+                entity.Property(e => e.Descripcion)
+                    .IsRequired()
+                    .HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<TipoInventario>(entity =>
+            {
                 entity.Property(e => e.Descripcion)
                     .IsRequired()
                     .HasMaxLength(50);

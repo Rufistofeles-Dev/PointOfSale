@@ -460,6 +460,8 @@ namespace PointOfSale.Views.Modulos.Config
                         producto.Impuesto3Id = "SYS";
                         producto.Ocupado = false;
                         producto.IsDeleted = false;
+                        producto.Min = 10;
+                        producto.Max = 20;
                         productoController.InsertOne(producto);
                     }
                     else
@@ -670,16 +672,27 @@ namespace PointOfSale.Views.Modulos.Config
                 productos = productoController.SelectAll();
 
                 decimal i = 0;
+                int I = 0;
                 foreach (DataRow row in dataTable.Rows)
                 {
-
                     Ambiente.S1 = row["producto"].ToString().Trim().ToUpper();
                     Ambiente.Decimal1 = decimal.TryParse(row["existenc"].ToString().Trim(), out i) == true ? i : 0;
+                    Ambiente.Int1 = int.TryParse(row["min"].ToString().Trim(), out I) == true ? I : 0;
+                    Ambiente.Int2 = int.TryParse(row["max"].ToString().Trim(), out I) == true ? I : 0;
+                    //RECUPERAR MAXIMO
+                    //RECUPERAR MINIMO
+                    // PROBAR LA SINCRONZIZACION
+                    //GENERAR REPORTES EXISTENCIAS
+
+
                     producto = productos.FirstOrDefault(x => x.ProductoId.ToUpper().Equals(Ambiente.S1));
+
 
                     if (producto != null)
                     {
                         producto.Stock = Ambiente.Decimal1;
+                        producto.Min = Ambiente.Int1;
+                        producto.Max = Ambiente.Int2;
                         productoController.Update(producto);
                     }
                 }

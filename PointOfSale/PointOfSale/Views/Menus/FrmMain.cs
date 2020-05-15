@@ -94,5 +94,12 @@ namespace DYM.Views
             o.MdiParent = MdiParent;
             o.Show();
         }
+
+        private void BtnAlmacenes_Click(object sender, EventArgs e)
+        {
+            var o = new FrmAlmacenes();
+            o.MdiParent = MdiParent;
+            o.Show();
+        }
     }
 }

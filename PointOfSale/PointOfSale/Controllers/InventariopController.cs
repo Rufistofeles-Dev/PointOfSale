@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace PointOfSale.Controllers
 {
-    public class InventarioController
+    public class InventariopController
     {
-
-        public bool Delete(Inventario o)
+        public bool Delete(Inventariop o)
         {
             try
             {
@@ -34,7 +33,7 @@ namespace PointOfSale.Controllers
             {
                 using (var db = new DymContext())
                 {
-                    var temp = db.Inventario.FirstOrDefault(x => x.InventarioId == Id);
+                    var temp = db.Inventariop.FirstOrDefault(x => x.InventarioId == Id);
                     if (temp != null)
                     {
 
@@ -50,7 +49,7 @@ namespace PointOfSale.Controllers
             return false;
         }
 
-        public bool InsertOne(Inventario o)
+        public bool InsertOne(Inventariop o)
         {
             try
             {
@@ -67,7 +66,7 @@ namespace PointOfSale.Controllers
             return false;
         }
 
-        public bool InsertRange(List<Inventario> lista)
+        public bool InsertRange(List<Inventariop> lista)
         {
             try
             {
@@ -84,13 +83,13 @@ namespace PointOfSale.Controllers
             return false;
         }
 
-        public List<Inventario> SelectAll()
+        public List<Inventariop> SelectAll()
         {
             try
             {
                 using (var db = new DymContext())
                 {
-                    return db.Inventario.ToList();
+                    return db.Inventariop.ToList();
                 }
             }
             catch (Exception ex)
@@ -100,13 +99,13 @@ namespace PointOfSale.Controllers
             return null;
         }
 
-        public List<Inventario> SelectMany(int cantidad)
+        public List<Inventariop> SelectMany(int cantidad)
         {
             try
             {
                 using (var db = new DymContext())
                 {
-                    return db.Inventario.Take(cantidad).ToList();
+                    return db.Inventariop.Take(cantidad).ToList();
                 }
             }
             catch (Exception ex)
@@ -116,13 +115,13 @@ namespace PointOfSale.Controllers
             return null;
         }
 
-        public Inventario SelectOne(int Id)
+        public Inventariop SelectOne(int Id)
         {
             try
             {
                 using (var db = new DymContext())
                 {
-                    return db.Inventario.FirstOrDefault(x => x.InventarioId == Id);
+                    return db.Inventariop.FirstOrDefault(x => x.InventarioId == Id);
                 }
             }
             catch (Exception ex)
@@ -132,13 +131,13 @@ namespace PointOfSale.Controllers
             return null;
         }
 
-        public List<Inventario> SelectOneOverList(int Id)
+        public List<Inventariop> SelectOneOverList(int Id)
         {
             try
             {
                 using (var db = new DymContext())
                 {
-                    return db.Inventario.Where(x => x.InventarioId == Id).ToList();
+                    return db.Inventariop.Where(x => x.InventarioId == Id).ToList();
                 }
             }
             catch (Exception ex)
@@ -148,7 +147,7 @@ namespace PointOfSale.Controllers
             return null;
         }
 
-        public bool Update(Inventario o)
+        public bool Update(Inventariop o)
         {
             try
             {

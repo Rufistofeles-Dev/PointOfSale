@@ -65,6 +65,7 @@
             this.BtnAlmacenes.TabIndex = 1;
             this.BtnAlmacenes.Text = "&ALMACENES";
             this.BtnAlmacenes.UseVisualStyleBackColor = true;
+            this.BtnAlmacenes.Click += new System.EventHandler(this.BtnAlmacenes_Click);
             // 
             // BtnLogistica
             // 
