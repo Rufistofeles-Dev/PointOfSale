@@ -83,6 +83,7 @@ namespace PointOfSale.Views.Modulos.Logistica
             partida.ExistenciaTeorica = producto.Stock;
             partida.ExistenciaFisica = NCantidad.Value;
             partida.Descripcion = producto.Descripcion;
+            partida.Costo = producto.PrecioCompra;
             partida.MovInvId = null;
             if (lote == null)
                 partida.LoteId = null;
@@ -98,7 +99,7 @@ namespace PointOfSale.Views.Modulos.Logistica
             else
                 partida.Diferencia = partida.ExistenciaFisica - partida.ExistenciaTeorica;
 
-            partida.CostoParcial = partida.PrecioCompra * partida.Diferencia;
+            partida.CostoParcial = partida.Costo * partida.Diferencia;
 
             //partida al grid
             Malla.Rows.Add();
@@ -133,11 +134,11 @@ namespace PointOfSale.Views.Modulos.Logistica
             inventario.UsuarioBloqueoId = null;
             inventario.UsuarioAutorizacionId = null;
             inventario.FechaAutorizacion = null;
-            inventario.FechaAplicacion = null;
-            inventario.UsuarioAplicacion = null;
             inventario.CreatedAt = DateTime.Now;
             inventario.CreatedBy = Ambiente.LoggedUser.UsuarioId;
+            inventario.EstacionId = Ambiente.Estacion.EstacionId;
             inventarioController.InsertOne(inventario);
+
             TxtFechaDoc.Text = DateTime.Now.ToString("dd-MM-yyyy");
 
         }
@@ -271,12 +272,6 @@ namespace PointOfSale.Views.Modulos.Logistica
                         if (pendiente) inventario.EstadoDocId = "PEN"; else inventario.EstadoDocId = "CON";
                         inventario.FechaBloqueo = DateTime.Now;
                         inventario.UsuarioBloqueoId = Ambiente.LoggedUser.UsuarioId;
-                        inventario.UsuarioAutorizacionId = null;
-                        inventario.FechaAutorizacion = null;
-                        inventario.FechaAplicacion = null;
-                        inventario.UsuarioAplicacion = null;
-                        inventario.CreatedAt = DateTime.Now;
-                        inventario.CreatedBy = Ambiente.LoggedUser.UsuarioId;
 
                         if (inventarioController.Update(inventario))
                         {
@@ -290,12 +285,13 @@ namespace PointOfSale.Views.Modulos.Logistica
                                     if (!Ambiente.CancelaProceso)
                                     {
                                         Ambiente.stiReport = new Stimulsoft.Report.StiReport();
-                                        Ambiente.stiReport.LoadPackedReportFromString(Ambiente.InformeDevCom.Codigo);
-                                        //Ambiente.stiReport.Dictionary.Variables["DevolucionId"].ValueObject = devolucion.DevolucionId;
-                                        //Ambiente.S1 = Ambiente.Empresa.DirectorioDevCom + "DEVCOM-" + devolucion.DevolucionId + ".PDF";
+                                        Ambiente.stiReport.LoadPackedReportFromString(Ambiente.InformeInvetarios.Codigo);
+                                        Ambiente.stiReport.Dictionary.Variables["InventarioId"].ValueObject = inventario.InventarioId;
+                                        Ambiente.S1 = Ambiente.Empresa.DirectorioInverarios + "INVENTARIO-" + inventario.InventarioId + ".PDF";
                                         Ambiente.stiReport.Render(false);
                                         Ambiente.stiReport.ExportDocument(Stimulsoft.Report.StiExportFormat.Pdf, Ambiente.S1);
                                         Process.Start(Ambiente.S1);
+                                        Close();
                                     }
                                     else
                                         Ambiente.Mensaje("Proceso concluido con inconsistencias");
@@ -303,7 +299,7 @@ namespace PointOfSale.Views.Modulos.Logistica
                                 }
                                 else
                                 {
-                                    Close();
+                                    PendienteOdescarta();
                                 }
                             }
                             else
@@ -323,14 +319,13 @@ namespace PointOfSale.Views.Modulos.Logistica
                     inventario.TipoInventario = tipoInventario.Descripcion;
                     inventario.TipoInventarioId = tipoInventario.TipoInventarioId;
                     if (pendiente) inventario.EstadoDocId = "PEN"; else inventario.EstadoDocId = "CON";
-                    inventario.FechaBloqueo = DateTime.Now;
-                    inventario.UsuarioBloqueoId = Ambiente.LoggedUser.UsuarioId;
-                    inventario.UsuarioAutorizacionId = null;
-                    inventario.FechaAutorizacion = null;
-                    inventario.FechaAplicacion = null;
-                    inventario.UsuarioAplicacion = null;
-                    inventario.CreatedAt = DateTime.Now;
-                    inventario.CreatedBy = Ambiente.LoggedUser.UsuarioId;
+                    inventario.FechaBloqueo = null;
+                    inventario.UsuarioBloqueoId = null;
+                    inventario.UsuarioAutorizacionId = Ambiente.LoggedUser.UsuarioId;
+                    inventario.UsuarioAutorizacion = Ambiente.LoggedUser.Nombre;
+                    inventario.FechaAutorizacion = DateTime.Now;
+                    //inventario.CreatedAt = DateTime.Now;
+                    //inventario.CreatedBy = Ambiente.LoggedUser.UsuarioId;
 
                     if (inventarioController.Update(inventario))
                     {
@@ -343,13 +338,15 @@ namespace PointOfSale.Views.Modulos.Logistica
                                 AfectaMovsInv();
                                 if (!Ambiente.CancelaProceso)
                                 {
+
                                     Ambiente.stiReport = new Stimulsoft.Report.StiReport();
-                                    Ambiente.stiReport.LoadPackedReportFromString(Ambiente.InformeDevCom.Codigo);
-                                    // Ambiente.stiReport.Dictionary.Variables["DevolucionId"].ValueObject = devolucion.DevolucionId;
-                                    //Ambiente.S1 = Ambiente.Empresa.DirectorioDevCom + "DEVCOM-" + devolucion.DevolucionId + ".PDF";
+                                    Ambiente.stiReport.LoadPackedReportFromString(Ambiente.InformeInvetarios.Codigo);
+                                    Ambiente.stiReport.Dictionary.Variables["InventarioId"].ValueObject = inventario.InventarioId;
+                                    Ambiente.S1 = Ambiente.Empresa.DirectorioInverarios + "INVENTARIO-" + inventario.InventarioId + ".PDF";
                                     Ambiente.stiReport.Render(false);
                                     Ambiente.stiReport.ExportDocument(Stimulsoft.Report.StiExportFormat.Pdf, Ambiente.S1);
                                     Process.Start(Ambiente.S1);
+                                    Close();
                                 }
                                 else
                                     Ambiente.Mensaje("Proceso concluido con inconsistencias");
@@ -357,7 +354,7 @@ namespace PointOfSale.Views.Modulos.Logistica
                             }
                             else
                             {
-                                Close();
+                                PendienteOdescarta();
                             }
                         }
                         else
@@ -399,7 +396,7 @@ namespace PointOfSale.Views.Modulos.Logistica
                 }
 
                 movInv.ProductoId = p.ProductoId;
-                movInv.Precio = p.PrecioCompra;
+                movInv.Precio = p.Costo;
                 movInv.Cantidad = p.Diferencia;
                 movInv.CreatedAt = DateTime.Now;
                 movInv.CreatedBy = Ambiente.LoggedUser.UsuarioId;

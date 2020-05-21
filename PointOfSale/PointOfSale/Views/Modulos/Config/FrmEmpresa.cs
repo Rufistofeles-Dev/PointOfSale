@@ -49,11 +49,10 @@ namespace PointOfSale.Views.Modulos.Config
                 empresa.DirectorioOpenSslBin = TxtOpenSslBin.Text;
                 empresa.RutaArchivoPfx = TxtRutaArchivoPfx.Text;
                 empresa.TimbradoTest = ChkTimbradoTest.Checked;
-
                 empresa.GuardarDescStd = ChkGuardarDescStd.Checked;
-
                 empresa.DirectorioDevCom = TxtDirectorioDevCom.Text.Trim();
                 empresa.MicroPvdb = TxtMicropvdb.Text.Trim();
+                empresa.DirectorioInverarios = TxtDirectorioInformesInvetarios.Text.Trim();
 
                 if (empresa.RegimenFiscalId.Trim().Length == 0)
                 {
@@ -93,6 +92,9 @@ namespace PointOfSale.Views.Modulos.Config
                 empresa.DirectorioDevCom = TxtDirectorioDevCom.Text.Trim();
                 empresa.MicroPvdb = TxtMicropvdb.Text.Trim();
                 empresa.GuardarDescStd = ChkGuardarDescStd.Checked;
+                empresa.DirectorioInverarios = TxtDirectorioInformesInvetarios.Text.Trim();
+
+
                 if (empresa.RegimenFiscalId.Trim().Length == 0)
                 {
                     Ambiente.Mensaje("Nada que guardar");
@@ -133,9 +135,9 @@ namespace PointOfSale.Views.Modulos.Config
             TxtOpenSslBin.Text = empresa.DirectorioOpenSslBin;
             TxtRutaArchivoPfx.Text = empresa.RutaArchivoPfx;
             ChkTimbradoTest.Checked = empresa.TimbradoTest;
-           
+            TxtDirectorioInformesInvetarios.Text = empresa.DirectorioInverarios;
 
-           
+
             TxtDirectorioDevCom.Text = empresa.DirectorioDevCom;
             TxtMicropvdb.Text = empresa.MicroPvdb;
         }
@@ -275,13 +277,13 @@ namespace PointOfSale.Views.Modulos.Config
             TxtRutaArchivoPfx.Text = Ambiente.GetFilePath().Item1;
         }
 
- 
+
         private void BtnUpdateDb_Click(object sender, EventArgs e)
         {
             Ambiente.InsertaActualizacion();
         }
 
-   
+
         private void BtnDevCom_Click(object sender, EventArgs e)
         {
             TxtDirectorioDevCom.Text = Ambiente.GetFolderPath();
@@ -290,6 +292,11 @@ namespace PointOfSale.Views.Modulos.Config
         private void BtnMicroPvDb_Click(object sender, EventArgs e)
         {
             TxtMicropvdb.Text = Ambiente.GetFilePath().Item1;
+        }
+
+        private void BtnInvetarios_Click(object sender, EventArgs e)
+        {
+            TxtDirectorioInformesInvetarios.Text = Ambiente.GetFolderPath();
         }
     }
 }

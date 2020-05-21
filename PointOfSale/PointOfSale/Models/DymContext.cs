@@ -1069,6 +1069,8 @@ namespace PointOfSale.Models
 
                 entity.Property(e => e.DirectorioImg).HasMaxLength(250);
 
+                entity.Property(e => e.DirectorioInverarios).HasMaxLength(250);
+
                 entity.Property(e => e.DirectorioOpenSslBin).HasMaxLength(250);
 
                 entity.Property(e => e.DirectorioReportes).HasMaxLength(250);
@@ -1384,11 +1386,13 @@ namespace PointOfSale.Models
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.EstadoDocId)
+                entity.Property(e => e.EstacionId)
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.FechaAplicacion).HasColumnType("datetime");
+                entity.Property(e => e.EstadoDocId)
+                    .IsRequired()
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.FechaAutorizacion).HasColumnType("datetime");
 
@@ -1397,8 +1401,6 @@ namespace PointOfSale.Models
                 entity.Property(e => e.TipoInventario)
                     .IsRequired()
                     .HasMaxLength(50);
-
-                entity.Property(e => e.UsuarioAplicacion).HasMaxLength(50);
 
                 entity.Property(e => e.UsuarioAutorizacion).HasMaxLength(50);
 
@@ -1409,7 +1411,7 @@ namespace PointOfSale.Models
 
             modelBuilder.Entity<Inventariop>(entity =>
             {
-                entity.Property(e => e.InventariopId).ValueGeneratedNever();
+                entity.Property(e => e.Costo).HasColumnType("decimal(18, 6)");
 
                 entity.Property(e => e.CostoParcial).HasColumnType("decimal(18, 6)");
 
@@ -1420,8 +1422,6 @@ namespace PointOfSale.Models
                 entity.Property(e => e.ExistenciaFisica).HasColumnType("decimal(18, 6)");
 
                 entity.Property(e => e.ExistenciaTeorica).HasColumnType("decimal(18, 6)");
-
-                entity.Property(e => e.PrecioCompra).HasColumnType("decimal(18, 6)");
 
                 entity.Property(e => e.ProductoId)
                     .IsRequired()

@@ -14,9 +14,8 @@ namespace PointOfSale.Models
         public string UsuarioAutorizacionId { get; set; }
         public DateTime? FechaAutorizacion { get; set; }
         public string UsuarioAutorizacion { get; set; }
-        public DateTime? FechaAplicacion { get; set; }
-        public string UsuarioAplicacion { get; set; }
         public DateTime CreatedAt { get; set; }
         public string CreatedBy { get; set; }
+        public string EstacionId { get; set; }
     }
 }

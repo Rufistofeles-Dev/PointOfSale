@@ -59,7 +59,7 @@ namespace PointOfSale.Controllers
             try
             {
 
-             
+
                 Ambiente.Empresa = new EmpresaController().SelectTopOne();
                 Ambiente.reporteController = new ReporteController();
                 Ambiente.ImageList = new System.Windows.Forms.ImageList();
@@ -368,6 +368,10 @@ namespace PointOfSale.Controllers
                                            db.InformeConfiguracion.Where(y => y.DevCom == true)
                                            .FirstOrDefault().InformeId));
 
+                    Ambiente.InformeInvetarios = db.Informe.FirstOrDefault(x => x.InformeId.Equals(
+                                           db.InformeConfiguracion.Where(y => y.Inventario == true)
+                                           .FirstOrDefault().InformeId));
+
 
                     if (Ambiente.InformeTicket == null)
                         Ambiente.Mensaje("!Advertencia! El formato de ticket no existe, esto causará problemas");
@@ -383,6 +387,9 @@ namespace PointOfSale.Controllers
 
                     if (Ambiente.InformeCorte == null)
                         Ambiente.Mensaje("!Advertencia! El formato de corte no existe, esto causará problemas");
+
+                    if (Ambiente.InformeInvetarios == null)
+                        Ambiente.Mensaje("!Advertencia! El formato de inventarios no existe, esto causará problemas");
 
                     db.SaveChanges();
                 }

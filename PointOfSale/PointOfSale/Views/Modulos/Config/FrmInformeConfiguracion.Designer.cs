@@ -43,6 +43,7 @@
             this.TxtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.ChkDevCom = new System.Windows.Forms.CheckBox();
             this.ChkCorte = new System.Windows.Forms.CheckBox();
             this.ChkCompras = new System.Windows.Forms.CheckBox();
             this.BtnGuardar = new System.Windows.Forms.Button();
@@ -62,7 +63,7 @@
             this.BtnBorrar = new System.Windows.Forms.LinkLabel();
             this.BtnAnadir = new System.Windows.Forms.LinkLabel();
             this.TxtReporteId = new System.Windows.Forms.TextBox();
-            this.ChkDevCom = new System.Windows.Forms.CheckBox();
+            this.ChkInventario = new System.Windows.Forms.CheckBox();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -237,6 +238,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.ChkInventario);
             this.panel2.Controls.Add(this.ChkDevCom);
             this.panel2.Controls.Add(this.ChkCorte);
             this.panel2.Controls.Add(this.ChkCompras);
@@ -259,6 +261,18 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(467, 418);
             this.panel2.TabIndex = 1;
+            // 
+            // ChkDevCom
+            // 
+            this.ChkDevCom.AutoSize = true;
+            this.ChkDevCom.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.ChkDevCom.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ChkDevCom.Location = new System.Drawing.Point(20, 266);
+            this.ChkDevCom.Name = "ChkDevCom";
+            this.ChkDevCom.Size = new System.Drawing.Size(226, 22);
+            this.ChkDevCom.TabIndex = 271;
+            this.ChkDevCom.Text = "Imprime formato  devcompras";
+            this.ChkDevCom.UseVisualStyleBackColor = true;
             // 
             // ChkCorte
             // 
@@ -488,17 +502,17 @@
             this.TxtReporteId.Size = new System.Drawing.Size(104, 26);
             this.TxtReporteId.TabIndex = 251;
             // 
-            // ChkDevCom
+            // ChkInventario
             // 
-            this.ChkDevCom.AutoSize = true;
-            this.ChkDevCom.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.ChkDevCom.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ChkDevCom.Location = new System.Drawing.Point(20, 266);
-            this.ChkDevCom.Name = "ChkDevCom";
-            this.ChkDevCom.Size = new System.Drawing.Size(226, 22);
-            this.ChkDevCom.TabIndex = 271;
-            this.ChkDevCom.Text = "Imprime formato  devcompras";
-            this.ChkDevCom.UseVisualStyleBackColor = true;
+            this.ChkInventario.AutoSize = true;
+            this.ChkInventario.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.ChkInventario.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ChkInventario.Location = new System.Drawing.Point(244, 266);
+            this.ChkInventario.Name = "ChkInventario";
+            this.ChkInventario.Size = new System.Drawing.Size(211, 22);
+            this.ChkInventario.TabIndex = 272;
+            this.ChkInventario.Text = "Imprime formato inventarios";
+            this.ChkInventario.UseVisualStyleBackColor = true;
             // 
             // FrmInformeConfiguracion
             // 
@@ -566,5 +580,6 @@
         private System.Windows.Forms.CheckBox ChkCompras;
         private System.Windows.Forms.CheckBox ChkCorte;
         private System.Windows.Forms.CheckBox ChkDevCom;
+        private System.Windows.Forms.CheckBox ChkInventario;
     }
 }

@@ -17,5 +17,6 @@ namespace PointOfSale.Models
         public string CreatedBy { get; set; }
         public string UpdatedBy { get; set; }
         public DateTime UpdatedAt { get; set; }
+        public bool Inventario { get; set; }
     }
 }
