@@ -279,9 +279,9 @@ namespace PointOfSale.Views.Modulos.Logistica
                             {
                                 if (!pendiente)
                                 {
-                                    AfectaLotes();
-                                    AfectaStock();
-                                    AfectaMovsInv();
+                                   // AfectaLotes();
+                                   // AfectaStock();
+                                   // AfectaMovsInv();
                                     if (!Ambiente.CancelaProceso)
                                     {
                                         Ambiente.stiReport = new Stimulsoft.Report.StiReport();
