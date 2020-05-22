@@ -155,42 +155,69 @@ namespace PointOfSale.Views.Modulos.Logistica
         }
         private void Incrementa(int rowIndex)
         {
-            if (partidas.Count > 0)
+            try
             {
-                partidas[rowIndex].Cantidad++;
-                Malla.Rows[rowIndex].Cells[2].Value = partidas[rowIndex].Cantidad;
-                CalculaTotales();
-            }
-        }
-        private void Decrementa(int rowIndex)
-        {
-            if (partidas.Count > 0)
-            {
-                if (partidas[rowIndex].Cantidad > 1)
+                if (partidas.Count > 0)
                 {
-                    partidas[rowIndex].Cantidad--;
+                    partidas[rowIndex].Cantidad++;
                     Malla.Rows[rowIndex].Cells[2].Value = partidas[rowIndex].Cantidad;
                     CalculaTotales();
                 }
-                else
-                    Ambiente.Mensaje("Operación denegada, solo cantidades positivas");
             }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
+        }
+        private void Decrementa(int rowIndex)
+        {
+            try
+            {
+                if (partidas.Count > 0)
+                {
+                    if (partidas[rowIndex].Cantidad > 1)
+                    {
+                        partidas[rowIndex].Cantidad--;
+                        Malla.Rows[rowIndex].Cells[2].Value = partidas[rowIndex].Cantidad;
+                        CalculaTotales();
+                    }
+                    else
+                        Ambiente.Mensaje("Operación denegada, solo cantidades positivas");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
         }
         private void ActualizaCantidad(int cant, int rowIndex)
         {
-            if ((rowIndex <= partidas.Count - 1) && cant > 0)
+            try
             {
-                partidas[rowIndex].Cantidad = cant;
-                Malla.Rows[rowIndex].Cells[2].Value = cant;
-                CalculaTotales();
+                if ((rowIndex <= partidas.Count - 1) && cant > 0)
+                {
+                    partidas[rowIndex].Cantidad = cant;
+                    Malla.Rows[rowIndex].Cells[2].Value = cant;
+                    CalculaTotales();
+                }
+                else
+                {
+                    partidas[rowIndex].Cantidad = 1;
+                    Malla.Rows[rowIndex].Cells[2].Value = 1;
+                    CalculaTotales();
+                    Ambiente.Mensaje("Operación denegada, solo cantidades positivas");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                partidas[rowIndex].Cantidad = 1;
-                Malla.Rows[rowIndex].Cells[2].Value = 1;
-                CalculaTotales();
-                Ambiente.Mensaje("Operación denegada, solo cantidades positivas");
+
+                Ambiente.Mensaje(ex.Message);
             }
+
         }
         private void ResetPartida()
         {
@@ -215,21 +242,28 @@ namespace PointOfSale.Views.Modulos.Logistica
         {
             if (Ambiente.Pregunta("Realmente quiere borrar: " + descrip))
             {
+
                 if (partidas.Count > 0 && rowIndex >= 0)
                 {
+                    Malla.Rows.RemoveAt(rowIndex);
                     partidas.RemoveAt(rowIndex);
-                    LimpiarFilaMalla(rowIndex);
                     ReCargaGrid();
-                    CalculaTotales();
                 }
+
+
             }
 
         }
         private void ReCargaGrid()
         {
             int index = 0;
+
+
             foreach (var partida in partidas)
             {
+
+                if (partidas.IndexOf(partida) > Malla.RowCount - 1)
+                    Malla.Rows.Add();
                 //partida al grid
                 Malla.Rows[index].Cells[0].Value = partida.Descripcion;
                 Malla.Rows[index].Cells[1].Value = partida.Stock;
@@ -413,13 +447,32 @@ namespace PointOfSale.Views.Modulos.Logistica
         {
             if (e.KeyCode == Keys.Enter)
             {
+                if (conceptoMovInv == null)
+                {
+                    Ambiente.Mensaje("Operacion abortada, seleccione el tipo de movimiento");
+                    return;
+                }
+
+
                 producto = productoController.SelectOne(TxtProducto.Text);
                 if (producto != null)
                 {
                     TxtProducto.Text = producto.ProductoId;
                     TxtDescrip.Text = producto.Descripcion;
-                    TxtLote.Text = producto.ProductoId;
-                    TxtLote.Focus();
+
+                    if (producto.TieneLote && conceptoMovInv.Es.Equals("S"))
+                    {
+                        TxtLote.Enabled = true;
+                        TxtLote.Text = producto.ProductoId;
+                        TxtLote.Focus();
+
+                    }
+                    else if (producto.TieneLote && conceptoMovInv.Es.Equals("E"))
+                    {
+                        TxtLote.Enabled = false;
+                        TxtLote.Text = "";
+                        NCantidad.Focus();
+                    }
                     return;
                 }
                 using (var form = new FrmBusqueda(TxtProducto.Text, (int)Ambiente.TipoBusqueda.Productos))
@@ -429,7 +482,21 @@ namespace PointOfSale.Views.Modulos.Logistica
                         producto = form.Producto;
                         TxtProducto.Text = producto.ProductoId;
                         TxtDescrip.Text = producto.Descripcion;
-                        TxtLote.Text = producto.ProductoId;
+
+                        if (producto.TieneLote && conceptoMovInv.Es.Equals("S"))
+                        {
+                            TxtLote.Enabled = true;
+                            TxtLote.Text = producto.ProductoId;
+                            TxtLote.Focus();
+
+                        }
+                        else if (producto.TieneLote && conceptoMovInv.Es.Equals("E"))
+                        {
+                            TxtLote.Enabled = false;
+                            TxtLote.Text = "";
+                            NCantidad.Focus();
+                        }
+                        return;
                     }
                 }
             }
@@ -483,10 +550,35 @@ namespace PointOfSale.Views.Modulos.Logistica
             }
 
             if (conceptoMovInv == null) return;
+
+
+
             var partida = new Devolucionp();
 
-            if (producto.TieneLote)
+
+            if (producto.TieneLote && conceptoMovInv.Es.Equals("E"))
             {
+                using (var form = new FrmLoteCaducidad(0, NCantidad.Value, producto.ProductoId, devolucion.DevolucionId, conceptoMovInv.ConceptoMovInvId))
+                {
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        partida.LoteId = form.lotes[0].LoteId;
+                        partida.NoLote = form.lotes[0].NoLote;
+                        partida.Caducidad = form.lotes[0].Caducidad;
+                    }
+                    else
+                    {
+                        partida.LoteId = null;
+                        partida.NoLote = null;
+                        partida.Caducidad = null;
+                    }
+                }
+                BtnAceptar.Focus();
+            }
+
+            if (producto.TieneLote && conceptoMovInv.Es.Equals("S"))
+            {
+
                 producto.Lote = new List<Lote>();
                 if (lote == null)
                 {
@@ -501,6 +593,10 @@ namespace PointOfSale.Views.Modulos.Logistica
                     partida.Caducidad = lote.Caducidad;
                 }
             }
+
+            //control lotes
+
+
 
             partida.DevolucionId = devolucion.DevolucionId;
             partida.ProductoId = producto.ProductoId;
@@ -550,6 +646,15 @@ namespace PointOfSale.Views.Modulos.Logistica
 
         private void Malla_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
             ActualizaCantidad(int.Parse(Malla.CurrentCell.Value.ToString()), e.RowIndex);
             CalculaTotales();
             TxtProducto.Focus();
@@ -583,8 +688,17 @@ namespace PointOfSale.Views.Modulos.Logistica
                 Decrementa(Malla.CurrentCell.RowIndex);
             else if (e.KeyCode == Keys.Delete)
             {
-                if (Malla.Rows[Malla.CurrentCell.RowIndex].Cells[3].Value != null)
-                    EliminaPartida(Malla.CurrentCell.RowIndex, Malla.Rows[Malla.CurrentCell.RowIndex].Cells[0].Value.ToString());
+                try
+                {
+                    if (Malla.Rows[Malla.CurrentCell.RowIndex].Cells[3].Value != null)
+                        EliminaPartida(Malla.CurrentCell.RowIndex, Malla.Rows[Malla.CurrentCell.RowIndex].Cells[0].Value.ToString());
+                }
+                catch (Exception ex)
+                {
+
+                    Ambiente.Mensaje(ex.Message);
+                }
+
             }
         }
 

@@ -1503,6 +1503,11 @@ namespace PointOfSale.Models
                     .IsRequired()
                     .HasMaxLength(50);
 
+                entity.Property(e => e.ReferenciaString)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasDefaultValueSql("('')");
+
                 entity.Property(e => e.StockInicial).HasColumnType("decimal(18, 6)");
 
                 entity.Property(e => e.StockRestante).HasColumnType("decimal(18, 6)");

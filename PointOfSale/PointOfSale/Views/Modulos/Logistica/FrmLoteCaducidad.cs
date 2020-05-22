@@ -28,12 +28,13 @@ namespace PointOfSale.Views.Modulos.Logistica
         //Variables
         decimal cantidadTotal;
         decimal restante;
-        int compraId;
+        int compraId, referenciaInt;
+        string referenciaString;
 
 
 
 
-        public FrmLoteCaducidad(int compId, decimal cantidad = 0, string productoId = "")
+        public FrmLoteCaducidad(int compId, decimal cantidad = 0, string productoId = "", int refInt = 0, string refString = "")
         {
             InitializeComponent();
             Inicializa();
@@ -41,6 +42,8 @@ namespace PointOfSale.Views.Modulos.Logistica
             if (cantidad > 0)
             {
                 compraId = compId;
+                referenciaInt = refInt;
+                referenciaString = refString;
                 LlenaCampos(productoId, cantidad);
             }
         }
@@ -78,6 +81,8 @@ namespace PointOfSale.Views.Modulos.Logistica
                 lote = new Lote();
                 lote.NoLote = TxtNoLote.Text.Trim();
                 lote.CompraId = compraId;
+                lote.ReferenciaInt = referenciaInt;
+                lote.ReferenciaString = referenciaString;
                 lote.ProductoId = TxtProductoId.Text.Trim();
                 lote.StockInicial = NCantidad.Value;
                 lote.StockRestante = NCantidad.Value;

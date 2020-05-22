@@ -19,6 +19,8 @@ namespace PointOfSale.Models
         public DateTime Caducidad { get; set; }
         public string CreatedBy { get; set; }
         public DateTime CreatedAt { get; set; }
+        public int ReferenciaInt { get; set; }
+        public string ReferenciaString { get; set; }
 
         public virtual Producto Producto { get; set; }
         public virtual ICollection<LoteVentap> LoteVentap { get; set; }
