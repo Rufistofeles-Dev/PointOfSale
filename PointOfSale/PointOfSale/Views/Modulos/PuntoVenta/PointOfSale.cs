@@ -141,69 +141,96 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
         }
         private void Incrementa(int rowIndex)
         {
-            if (partidas.Count > 0)
+            try
             {
-                if (Ambiente.Estacion.VenderSinStock)
+                if (partidas.Count > 0)
                 {
-                    partidas[rowIndex].Cantidad++;
-                    CalculaTotales();
-                }
-                else
-                {
-                    if (HayStockSuficiente(partidas[rowIndex].ProductoId, partidas[rowIndex].Cantidad + 1))
+                    if (Ambiente.Estacion.VenderSinStock)
                     {
                         partidas[rowIndex].Cantidad++;
                         CalculaTotales();
                     }
-
                     else
                     {
-                        Ambiente.Mensaje("Stock insuficiente");
-                        return;
-                    }
-                }
+                        if (HayStockSuficiente(partidas[rowIndex].ProductoId, partidas[rowIndex].Cantidad + 1))
+                        {
+                            partidas[rowIndex].Cantidad++;
+                            CalculaTotales();
+                        }
 
+                        else
+                        {
+                            Ambiente.Mensaje("Stock insuficiente");
+                            return;
+                        }
+                    }
+
+                }
             }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+         
         }
         private void Decrementa(int rowIndex)
         {
-            if (partidas.Count > 0)
+            try
             {
-                if (partidas[rowIndex].Cantidad >= 2)
+                if (partidas.Count > 0)
                 {
-                    partidas[rowIndex].Cantidad--;
-                    CalculaTotales();
+                    if (partidas[rowIndex].Cantidad >= 2)
+                    {
+                        partidas[rowIndex].Cantidad--;
+                        CalculaTotales();
+                    }
+                    else
+                        Ambiente.Mensaje("Operación denegada");
                 }
-                else
-                    Ambiente.Mensaje("Operación denegada");
             }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
         }
         private void ActualizaCantidad(decimal cant, int rowIndex)
         {
-            if (partidas.Count > 0)
+            try
             {
+                if (partidas.Count > 0)
+                {
 
-                if (Ambiente.Estacion.VenderSinStock)
-                {
-                    partidas[rowIndex].Cantidad = cant;
-                    CalculaTotales();
-                }
-                else
-                {
-                    if (HayStockSuficiente(partidas[rowIndex].ProductoId, cant))
+                    if (Ambiente.Estacion.VenderSinStock)
                     {
                         partidas[rowIndex].Cantidad = cant;
                         CalculaTotales();
                     }
-
                     else
                     {
-                        Ambiente.Mensaje("Stock insuficiente");
-                        return;
-                    }
-                }
+                        if (HayStockSuficiente(partidas[rowIndex].ProductoId, cant))
+                        {
+                            partidas[rowIndex].Cantidad = cant;
+                            CalculaTotales();
+                        }
 
+                        else
+                        {
+                            Ambiente.Mensaje("Stock insuficiente");
+                            return;
+                        }
+                    }
+
+                }
             }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
         }
         private void ResetPartida()
         {
@@ -984,21 +1011,39 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
 
         private void Malla_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            ActualizaCantidad(decimal.Parse(Malla.CurrentCell.Value.ToString()), e.RowIndex);
-            CalculaTotales();
-            TxtProductoId.Focus();
+            try
+            {
+                ActualizaCantidad(decimal.Parse(Malla.CurrentCell.Value.ToString()), e.RowIndex);
+                CalculaTotales();
+                TxtProductoId.Focus();
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
         }
 
         private void Malla_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Oemplus)
+            if (e.KeyCode == Keys.Oemplus || e.KeyCode == Keys.Add)
                 Incrementa(Malla.CurrentCell.RowIndex);
-            else if (e.KeyCode == Keys.OemMinus)
+            else if (e.KeyCode == Keys.OemMinus || e.KeyCode == Keys.Subtract)
                 Decrementa(Malla.CurrentCell.RowIndex);
             else if (e.KeyCode == Keys.Delete)
             {
-                if (Malla.Rows[Malla.CurrentCell.RowIndex].Cells[9].Value != null)
-                    EliminaPartida(Malla.CurrentCell.RowIndex, Malla.Rows[Malla.CurrentCell.RowIndex].Cells[0].Value.ToString());
+                try
+                {
+                    if (Malla.Rows[Malla.CurrentCell.RowIndex].Cells[9].Value != null)
+                        EliminaPartida(Malla.CurrentCell.RowIndex, Malla.Rows[Malla.CurrentCell.RowIndex].Cells[0].Value.ToString());
+                }
+                catch (Exception ex)
+                {
+
+                    Ambiente.Mensaje(ex.Message);
+                }
+                
             }
         }
 

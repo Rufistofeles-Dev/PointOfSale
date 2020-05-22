@@ -1,4 +1,7 @@
-﻿using PointOfSale.Views.Modulos.Finanzas;
+﻿using PointOfSale.Views.Modulos.Catalogos;
+using PointOfSale.Views.Modulos.Finanzas;
+using PointOfSale.Views.Modulos.Logistica;
+using PointOfSale.Views.ReportDesigner;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +26,34 @@ namespace PointOfSale.Views.Menus
             var o = new FrmInvetarioAut();
             o.MdiParent = MdiParent;
             o.Show();
+        }
+
+        private void BtnAjusteInventarios_Click(object sender, EventArgs e)
+        {
+            var o = new FrmDevoliciones();
+            o.MdiParent = MdiParent;
+            o.Show();
+        }
+
+        private void BtnReportes_Click(object sender, EventArgs e)
+        {
+            var o = new FrmTreeViewReportes();
+            o.MdiParent = MdiParent;
+            o.Show();
+
+        }
+
+        private void BtnProds_Click(object sender, EventArgs e)
+        {
+            var o = new FrmProductos();
+            o.MdiParent = MdiParent;
+            o.Show();
+
+        }
+
+        private void BtnSalir_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -224,8 +224,6 @@ namespace PointOfSale.Views.Modulos.Logistica
         {
             try
             {
-
-
                 if (!Ambiente.ServerImgAccesible) return null;
 
                 if (!File.Exists(ruta)) return null;
@@ -273,7 +271,19 @@ namespace PointOfSale.Views.Modulos.Logistica
                 return;
             }
 
+            try
+            {
+                if ((bool)producto.Ocupado)
+                {
+                    Ambiente.Mensaje("Operación abortada, el articulo está bloqueado por otro proceso [INVENTARIOS, AJUSTES, AUTORIZACIONES, ETC]");
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
 
+                Ambiente.Mensaje(ex.Message);
+            }
 
 
             //partida a la lista
@@ -382,43 +392,70 @@ namespace PointOfSale.Views.Modulos.Logistica
         }
         private void Incrementa(int rowIndex)
         {
-            if (partidas.Count > 0)
+            try
             {
-                partidas[rowIndex].Cantidad++;
-                Malla.Rows[rowIndex].Cells[4].Value = partidas[rowIndex].Cantidad;
-                CalculaTotales();
-            }
-        }
-        private void Decrementa(int rowIndex)
-        {
-            if (partidas.Count > 0)
-            {
-                if (partidas[rowIndex].Cantidad > 1)
+                if (partidas.Count > 0)
                 {
-                    partidas[rowIndex].Cantidad--;
+                    partidas[rowIndex].Cantidad++;
                     Malla.Rows[rowIndex].Cells[4].Value = partidas[rowIndex].Cantidad;
                     CalculaTotales();
                 }
-                else
-                    Ambiente.Mensaje("Operación denegada, solo cantidades positivas");
             }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
+        }
+        private void Decrementa(int rowIndex)
+        {
+            try
+            {
+                if (partidas.Count > 0)
+                {
+                    if (partidas[rowIndex].Cantidad > 1)
+                    {
+                        partidas[rowIndex].Cantidad--;
+                        Malla.Rows[rowIndex].Cells[4].Value = partidas[rowIndex].Cantidad;
+                        CalculaTotales();
+                    }
+                    else
+                        Ambiente.Mensaje("Operación denegada, solo cantidades positivas");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
         }
         private void ActualizaCantidad(decimal cant, int rowIndex)
         {
-            if ((rowIndex < partidas.Count))
+            try
             {
-                if (cant > 0)
+                if ((rowIndex < partidas.Count))
                 {
-                    partidas[rowIndex].Cantidad = cant;
-                    Malla.Rows[rowIndex].Cells[4].Value = cant;
-                }
-                else
-                {
-                    partidas[rowIndex].Cantidad = 1;
-                    Malla.Rows[rowIndex].Cells[4].Value = 1;
-                    Ambiente.Mensaje("Operación denegada, solo cantidades positivas");
+                    if (cant > 0)
+                    {
+                        partidas[rowIndex].Cantidad = cant;
+                        Malla.Rows[rowIndex].Cells[4].Value = cant;
+                    }
+                    else
+                    {
+                        partidas[rowIndex].Cantidad = 1;
+                        Malla.Rows[rowIndex].Cells[4].Value = 1;
+                        Ambiente.Mensaje("Operación denegada, solo cantidades positivas");
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
         }
         private void ActualizaPrecioCaja(decimal pcaja, int rowIndex)
         {
@@ -1000,15 +1037,24 @@ namespace PointOfSale.Views.Modulos.Logistica
         }
         private void Malla_KeyDown(object sender, KeyEventArgs e)
         {
-            
+
             if (e.KeyCode == Keys.Oemplus || e.KeyCode == Keys.Add)
                 Incrementa(Malla.CurrentCell.RowIndex);
             else if (e.KeyCode == Keys.OemMinus || e.KeyCode == Keys.Subtract)
                 Decrementa(Malla.CurrentCell.RowIndex);
             else if (e.KeyCode == Keys.Delete)
             {
-                if (Malla.Rows[Malla.CurrentCell.RowIndex].Cells[3].Value != null)
-                    EliminaPartida(Malla.CurrentCell.RowIndex, Malla.Rows[Malla.CurrentCell.RowIndex].Cells[1].Value.ToString());
+                try
+                {
+                    if (Malla.Rows[Malla.CurrentCell.RowIndex].Cells[3].Value != null)
+                        EliminaPartida(Malla.CurrentCell.RowIndex, Malla.Rows[Malla.CurrentCell.RowIndex].Cells[1].Value.ToString());
+                }
+                catch (Exception ex)
+                {
+
+                    Ambiente.Mensaje(ex.Message);
+                }
+
             }
         }
 

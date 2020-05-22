@@ -51,6 +51,7 @@
             this.BtnAjusteInventarios.TabIndex = 248;
             this.BtnAjusteInventarios.Text = "&AJUSTES INVENTARIO";
             this.BtnAjusteInventarios.UseVisualStyleBackColor = true;
+            this.BtnAjusteInventarios.Click += new System.EventHandler(this.BtnAjusteInventarios_Click);
             // 
             // BtnProds
             // 
@@ -61,6 +62,7 @@
             this.BtnProds.TabIndex = 249;
             this.BtnProds.Text = "&PRODUCTOS CAPTURA";
             this.BtnProds.UseVisualStyleBackColor = true;
+            this.BtnProds.Click += new System.EventHandler(this.BtnProds_Click);
             // 
             // BtnReportes
             // 
@@ -71,6 +73,7 @@
             this.BtnReportes.TabIndex = 250;
             this.BtnReportes.Text = "&REPORTES";
             this.BtnReportes.UseVisualStyleBackColor = true;
+            this.BtnReportes.Click += new System.EventHandler(this.BtnReportes_Click);
             // 
             // BtnReportesG
             // 
@@ -154,6 +157,7 @@
             this.BtnSalir.TabIndex = 268;
             this.BtnSalir.Text = "SALIR";
             this.BtnSalir.UseVisualStyleBackColor = true;
+            this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
             // 
             // FrmMenuFinanzas
             // 
