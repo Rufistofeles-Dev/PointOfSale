@@ -16,5 +16,7 @@ namespace PointOfSale.Models
         public int? LoteId { get; set; }
         public decimal CostoParcial { get; set; }
         public decimal Costo { get; set; }
+
+        public virtual Inventario Inventario { get; set; }
     }
 }

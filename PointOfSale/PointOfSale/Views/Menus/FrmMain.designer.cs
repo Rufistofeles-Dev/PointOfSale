@@ -32,9 +32,9 @@
             this.BtnAlmacenes = new System.Windows.Forms.Button();
             this.BtnLogistica = new System.Windows.Forms.Button();
             this.BtnReportes = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.BtnCaja = new System.Windows.Forms.Button();
+            this.BtnFinanzas = new System.Windows.Forms.Button();
+            this.BtnCatalogos = new System.Windows.Forms.Button();
             this.BtnConfiguracion = new System.Windows.Forms.Button();
             this.BtnReportesGraficas = new System.Windows.Forms.Button();
             this.BtnSalida = new System.Windows.Forms.Button();
@@ -89,37 +89,38 @@
             this.BtnReportes.UseVisualStyleBackColor = true;
             this.BtnReportes.Click += new System.EventHandler(this.BtnReportes_Click);
             // 
-            // button5
+            // BtnCaja
             // 
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(323, 106);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(133, 49);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "&CAJA";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.Button5_Click);
+            this.BtnCaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCaja.Location = new System.Drawing.Point(323, 106);
+            this.BtnCaja.Name = "BtnCaja";
+            this.BtnCaja.Size = new System.Drawing.Size(133, 49);
+            this.BtnCaja.TabIndex = 4;
+            this.BtnCaja.Text = "&CAJA";
+            this.BtnCaja.UseVisualStyleBackColor = true;
+            this.BtnCaja.Click += new System.EventHandler(this.Button5_Click);
             // 
-            // button6
+            // BtnFinanzas
             // 
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(347, 166);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(133, 49);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "&FINANZAS";
-            this.button6.UseVisualStyleBackColor = true;
+            this.BtnFinanzas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnFinanzas.Location = new System.Drawing.Point(347, 166);
+            this.BtnFinanzas.Name = "BtnFinanzas";
+            this.BtnFinanzas.Size = new System.Drawing.Size(133, 49);
+            this.BtnFinanzas.TabIndex = 5;
+            this.BtnFinanzas.Text = "&FINANZAS";
+            this.BtnFinanzas.UseVisualStyleBackColor = true;
+            this.BtnFinanzas.Click += new System.EventHandler(this.BtnFinanzas_Click);
             // 
-            // button7
+            // BtnCatalogos
             // 
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(370, 226);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(133, 49);
-            this.button7.TabIndex = 6;
-            this.button7.Text = "&CATALOGOS";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.Button7_Click);
+            this.BtnCatalogos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCatalogos.Location = new System.Drawing.Point(370, 226);
+            this.BtnCatalogos.Name = "BtnCatalogos";
+            this.BtnCatalogos.Size = new System.Drawing.Size(133, 49);
+            this.BtnCatalogos.TabIndex = 6;
+            this.BtnCatalogos.Text = "&CATALOGOS";
+            this.BtnCatalogos.UseVisualStyleBackColor = true;
+            this.BtnCatalogos.Click += new System.EventHandler(this.Button7_Click);
             // 
             // BtnConfiguracion
             // 
@@ -208,9 +209,9 @@
             this.Controls.Add(this.BtnSalida);
             this.Controls.Add(this.BtnReportesGraficas);
             this.Controls.Add(this.BtnConfiguracion);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.BtnCatalogos);
+            this.Controls.Add(this.BtnFinanzas);
+            this.Controls.Add(this.BtnCaja);
             this.Controls.Add(this.BtnReportes);
             this.Controls.Add(this.BtnLogistica);
             this.Controls.Add(this.BtnAlmacenes);
@@ -231,9 +232,9 @@
         private System.Windows.Forms.Button BtnAlmacenes;
         private System.Windows.Forms.Button BtnLogistica;
         private System.Windows.Forms.Button BtnReportes;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button BtnCaja;
+        private System.Windows.Forms.Button BtnFinanzas;
+        private System.Windows.Forms.Button BtnCatalogos;
         private System.Windows.Forms.Button BtnConfiguracion;
         private System.Windows.Forms.Button BtnReportesGraficas;
         private System.Windows.Forms.Button BtnSalida;

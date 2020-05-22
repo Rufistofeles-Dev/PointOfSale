@@ -12,6 +12,10 @@ namespace PointOfSale.Models
             Corte = new HashSet<Corte>();
             Cxc = new HashSet<Cxc>();
             Cxp = new HashSet<Cxp>();
+            Devolucion = new HashSet<Devolucion>();
+            Inventario = new HashSet<Inventario>();
+            MovInv = new HashSet<MovInv>();
+            Traspaso = new HashSet<Traspaso>();
             UsuarioRole = new HashSet<UsuarioRole>();
             Venta = new HashSet<Venta>();
         }
@@ -31,6 +35,10 @@ namespace PointOfSale.Models
         public virtual ICollection<Corte> Corte { get; set; }
         public virtual ICollection<Cxc> Cxc { get; set; }
         public virtual ICollection<Cxp> Cxp { get; set; }
+        public virtual ICollection<Devolucion> Devolucion { get; set; }
+        public virtual ICollection<Inventario> Inventario { get; set; }
+        public virtual ICollection<MovInv> MovInv { get; set; }
+        public virtual ICollection<Traspaso> Traspaso { get; set; }
         public virtual ICollection<UsuarioRole> UsuarioRole { get; set; }
         public virtual ICollection<Venta> Venta { get; set; }
     }

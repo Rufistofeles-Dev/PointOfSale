@@ -101,5 +101,12 @@ namespace DYM.Views
             o.MdiParent = MdiParent;
             o.Show();
         }
+
+        private void BtnFinanzas_Click(object sender, EventArgs e)
+        {
+            var o = new FrmMenuFinanzas();
+            o.MdiParent = MdiParent;
+            o.Show();
+        }
     }
 }

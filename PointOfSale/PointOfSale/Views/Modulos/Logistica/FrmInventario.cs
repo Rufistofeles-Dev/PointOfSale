@@ -59,6 +59,7 @@ namespace PointOfSale.Views.Modulos.Logistica
             Costo = 0;
             partidas = new List<Inventariop>(); ;
             CreaInventario();
+            TxtTipoInv.Focus();
         }
         private void InsertaPartida()
         {
@@ -128,12 +129,12 @@ namespace PointOfSale.Views.Modulos.Logistica
             TxtSituacion.Text = "PENDIENTE";
             inventario = new Inventario();
             inventario.TipoInventario = "NO DEFINIDO";
-            inventario.TipoInventarioId = null;
+            inventario.TipoInventarioId = 1;
             inventario.EstadoDocId = "PEN";
-            inventario.FechaBloqueo = null;
+            inventario.FechaBloqueo = DateTime.Now;
             inventario.UsuarioBloqueoId = null;
             inventario.UsuarioAutorizacionId = null;
-            inventario.FechaAutorizacion = null;
+            inventario.FechaAutorizacion = DateTime.Now;
             inventario.CreatedAt = DateTime.Now;
             inventario.CreatedBy = Ambiente.LoggedUser.UsuarioId;
             inventario.EstacionId = Ambiente.Estacion.EstacionId;
@@ -144,6 +145,8 @@ namespace PointOfSale.Views.Modulos.Logistica
         }
 
 
+
+
         private void LimpiarFilaMalla(int index)
         {
             Malla.Rows[index].Cells[0].Value = null;
@@ -152,51 +155,42 @@ namespace PointOfSale.Views.Modulos.Logistica
         }
         private void Incrementa(int rowIndex)
         {
-            if (partidas.Count > 0)
+            try
             {
-                partidas[rowIndex].ExistenciaFisica++;
-                Malla.Rows[rowIndex].Cells[2].Value = partidas[rowIndex].ExistenciaFisica;
-                //CalculaTotales();
+                if (partidas.Count > 0)
+                {
+                    partidas[rowIndex].ExistenciaFisica++;
+                    Malla.Rows[rowIndex].Cells[2].Value = partidas[rowIndex].ExistenciaFisica;
+                    //CalculaTotales();
+                }
             }
+            catch (Exception ex)
+            {
+                Ambiente.Mensaje(ex.Message);
+            }
+
         }
         private void Decrementa(int rowIndex)
         {
-            if (partidas.Count > 0)
+            try
             {
-                if (partidas[rowIndex].ExistenciaFisica > 1)
+                if (partidas.Count > 0)
                 {
-                    partidas[rowIndex].ExistenciaFisica--;
-                    Malla.Rows[rowIndex].Cells[2].Value = partidas[rowIndex].ExistenciaFisica;
-                    // CalculaTotales();
+                    if (partidas[rowIndex].ExistenciaFisica > 1)
+                    {
+                        partidas[rowIndex].ExistenciaFisica--;
+                        Malla.Rows[rowIndex].Cells[2].Value = partidas[rowIndex].ExistenciaFisica;
+                        // CalculaTotales();
+                    }
+                    else
+                        Ambiente.Mensaje("Operación denegada, solo cantidades positivas");
                 }
-                else
-                    Ambiente.Mensaje("Operación denegada, solo cantidades positivas");
             }
-        }
-        private void ActualizaCantidad(int cant, int rowIndex)
-        {
-            if ((rowIndex <= partidas.Count - 1) && cant > 0)
+            catch (Exception ex)
             {
-                partidas[rowIndex].ExistenciaFisica = cant;
-                Malla.Rows[rowIndex].Cells[2].Value = cant;
-                //CalculaTotales();
+                Ambiente.Mensaje(ex.Message);
             }
-            else
-            {
-                partidas[rowIndex].ExistenciaFisica = 1;
-                Malla.Rows[rowIndex].Cells[2].Value = 1;
-                //CalculaTotales();
-                Ambiente.Mensaje("Operación denegada, solo cantidades positivas");
-            }
-        }
 
-        private void EliminaInventario()
-        {
-            if (inventario != null)
-            {
-                inventarioController.DeletePartidas(inventario);
-                inventarioController.Delete(inventario);
-            }
         }
         private void EliminaPartida(int rowIndex, string descrip)
         {
@@ -204,12 +198,36 @@ namespace PointOfSale.Views.Modulos.Logistica
             {
                 if (partidas.Count > 0 && rowIndex >= 0)
                 {
+                    Malla.Rows.RemoveAt(rowIndex);
                     partidas.RemoveAt(rowIndex);
-                    LimpiarFilaMalla(rowIndex);
                     ReCargaGrid();
-                    // CalculaTotales();
                 }
             }
+
+        }
+        private void ActualizaCantidad(int cant, int rowIndex)
+        {
+            try
+            {
+                if ((rowIndex <= partidas.Count - 1) && cant > 0)
+                {
+                    partidas[rowIndex].ExistenciaFisica = cant;
+                    Malla.Rows[rowIndex].Cells[2].Value = cant;
+                    //CalculaTotales();
+                }
+                else
+                {
+                    partidas[rowIndex].ExistenciaFisica = 1;
+                    Malla.Rows[rowIndex].Cells[2].Value = 1;
+                    //CalculaTotales();
+                    Ambiente.Mensaje("Operación denegada, solo cantidades positivas");
+                }
+            }
+            catch (Exception ex)
+            {
+                Ambiente.Mensaje(ex.Message);
+            }
+
 
         }
         private void ReCargaGrid()
@@ -217,6 +235,7 @@ namespace PointOfSale.Views.Modulos.Logistica
             int index = 0;
             foreach (var partida in partidas)
             {
+
                 //partida al grid
                 Malla.Rows[index].Cells[0].Value = partida.ProductoId;
                 Malla.Rows[index].Cells[1].Value = partida.Descripcion;
@@ -225,23 +244,7 @@ namespace PointOfSale.Views.Modulos.Logistica
                 index++;
             }
         }
-        private bool GuardaPartidas()
-        {
-            return inventariopController.InsertRange(partidas);
-        }
-        private void PendienteOdescarta()
-        {
-            if (partidas.Count > 0 && inventario.EstadoDocId.Equals("PEN"))
-            {
-                if (Ambiente.Pregunta("Quiere dejar el inventario como pendiente"))
-                    CerrarInventario(true);
-                else
-                    EliminaInventario();
-            }
-            else
-                EliminaInventario();
-            Close();
-        }
+
 
         private void CerrarInventario(bool pendiente)
         {
@@ -269,7 +272,7 @@ namespace PointOfSale.Views.Modulos.Logistica
 
                         inventario.TipoInventario = tipoInventario.Descripcion;
                         inventario.TipoInventarioId = tipoInventario.TipoInventarioId;
-                        if (pendiente) inventario.EstadoDocId = "PEN"; else inventario.EstadoDocId = "CON";
+                        inventario.EstadoDocId = "PEN";
                         inventario.FechaBloqueo = DateTime.Now;
                         inventario.UsuarioBloqueoId = Ambiente.LoggedUser.UsuarioId;
 
@@ -279,9 +282,9 @@ namespace PointOfSale.Views.Modulos.Logistica
                             {
                                 if (!pendiente)
                                 {
-                                   // AfectaLotes();
-                                   // AfectaStock();
-                                   // AfectaMovsInv();
+                                    // AfectaLotes();
+                                    // AfectaStock();
+                                    // AfectaMovsInv();
                                     if (!Ambiente.CancelaProceso)
                                     {
                                         Ambiente.stiReport = new Stimulsoft.Report.StiReport();
@@ -319,7 +322,7 @@ namespace PointOfSale.Views.Modulos.Logistica
                     inventario.TipoInventario = tipoInventario.Descripcion;
                     inventario.TipoInventarioId = tipoInventario.TipoInventarioId;
                     if (pendiente) inventario.EstadoDocId = "PEN"; else inventario.EstadoDocId = "CON";
-                    inventario.FechaBloqueo = null;
+                    inventario.FechaBloqueo = DateTime.Now;
                     inventario.UsuarioBloqueoId = null;
                     inventario.UsuarioAutorizacionId = Ambiente.LoggedUser.UsuarioId;
                     inventario.UsuarioAutorizacion = Ambiente.LoggedUser.Nombre;
@@ -431,6 +434,38 @@ namespace PointOfSale.Views.Modulos.Logistica
             }
         }
 
+
+
+
+        private void EliminaInventario()
+        {
+            if (inventario != null)
+            {
+                inventarioController.DeletePartidas(inventario);
+                inventarioController.Delete(inventario);
+            }
+        }
+
+
+        private bool GuardaPartidas()
+        {
+            return inventariopController.InsertRange(partidas);
+        }
+        private void PendienteOdescarta()
+        {
+            if (partidas.Count > 0 && inventario.EstadoDocId.Equals("PEN"))
+            {
+                if (Ambiente.Pregunta("Quiere dejar el inventario como pendiente"))
+                    CerrarInventario(true);
+                else
+                    EliminaInventario();
+            }
+            else
+                EliminaInventario();
+            Close();
+        }
+
+
         private void TxtTipoInv_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -515,7 +550,25 @@ namespace PointOfSale.Views.Modulos.Logistica
 
         private void Malla_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            if (Malla.CurrentCell.Value == null)
+                return;
 
+
+            if (Malla.CurrentCell.ColumnIndex == 2)
+            {
+                //Cantidad
+                try
+                {
+                    ActualizaCantidad(int.Parse(Malla.CurrentCell.Value.ToString()), e.RowIndex);
+                    ReCargaGrid();
+                    TxtProducto.Focus();
+                }
+                catch (Exception ex)
+                {
+
+                    Ambiente.Mensaje(ex.Message);
+                }
+            }
         }
         private void ColumnCant_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -540,9 +593,9 @@ namespace PointOfSale.Views.Modulos.Logistica
 
         private void Malla_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Oemplus)
+            if (e.KeyCode == Keys.Oemplus || e.KeyCode == Keys.Add)
                 Incrementa(Malla.CurrentCell.RowIndex);
-            else if (e.KeyCode == Keys.OemMinus)
+            else if (e.KeyCode == Keys.OemMinus || e.KeyCode == Keys.Subtract)
                 Decrementa(Malla.CurrentCell.RowIndex);
             else if (e.KeyCode == Keys.Delete)
             {

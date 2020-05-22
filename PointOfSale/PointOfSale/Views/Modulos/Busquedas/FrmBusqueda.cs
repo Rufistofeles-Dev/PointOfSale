@@ -39,6 +39,7 @@ namespace PointOfSale.Views.Modulos.Busquedas
         public ConceptoMovInv ConceptoMovInv;
         public Lote Lote;
         public TipoInventario TipoInventario;
+        public Inventario Inventario;
 
 
         public FrmBusqueda()
@@ -47,21 +48,23 @@ namespace PointOfSale.Views.Modulos.Busquedas
         }
         public FrmBusqueda(string searchText, int tipoBuscqueda, bool licencia = false)
         {
-
-            if (searchText.Length <= 3)
+            if (searchText.Trim().Equals("%%%"))
             {
-
-                if (searchText.Trim().Equals("%%%"))
-                {
-                    searchText = "";
+                searchText = "";
+                Ambiente.CancelaProceso = false;
+            }
+            else
+            {
+                if (searchText.Length >= 3)
                     Ambiente.CancelaProceso = false;
-                }
                 else
                 {
                     Ambiente.CancelaProceso = true;
                     Ambiente.Mensaje("Ingrese almenos 3 caracteres para filtrar");
                 }
             }
+
+
 
             InitializeComponent();
             SearchText = searchText;
@@ -316,6 +319,13 @@ namespace PointOfSale.Views.Modulos.Busquedas
                             .Select(x => new { ID = x.TipoInventarioId, Descripcion = x.Descripcion, x.Bloquea }).ToList();
                     }
                     break;
+                case (int)Ambiente.TipoBusqueda.Inventarios:
+                    using (var db = new DymContext())
+                    {
+                        Grid1.DataSource = db.Inventario.AsNoTracking().Where(x => x.EstadoDocId.Equals("PEN"))
+                            .Select(x => new { ID = x.InventarioId, SITUACION = x.EstadoDocId, x.FechaBloqueo, x.UsuarioBloqueoId }).ToList();
+                    }
+                    break;
                 default:
                     MessageBox.Show("Error, no hay enumerador para catalogo");
                     break;
@@ -536,7 +546,12 @@ namespace PointOfSale.Views.Modulos.Busquedas
                         TipoInventario = db.TipoInventario.Where(x => x.TipoInventarioId == (int)Grid1.Rows[Grid1.CurrentCell.RowIndex].Cells[0].Value).FirstOrDefault();
                     }
                     break;
-
+                case (int)Ambiente.TipoBusqueda.Inventarios:
+                    using (var db = new DymContext())
+                    {
+                        Inventario = db.Inventario.Where(x => x.InventarioId == (int)Grid1.Rows[Grid1.CurrentCell.RowIndex].Cells[0].Value).FirstOrDefault();
+                    }
+                    break;
 
                 default:
                     MessageBox.Show("Error, no hay enumerador para catalogo");

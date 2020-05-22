@@ -1,4 +1,5 @@
-﻿using PointOfSale.Views.Modulos.Catalogos;
+﻿using PointOfSale.Controllers;
+using PointOfSale.Views.Modulos.Catalogos;
 using PointOfSale.Views.Modulos.Logistica;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,16 @@ namespace PointOfSale.Views.Menus
             var o = new FrmInventario();
             o.MdiParent = MdiParent;
             o.Show();
+        }
+
+        private void BtnSalir_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void BtnImprimeEtiquetas_Click(object sender, EventArgs e)
+        {
+            Ambiente.Mensaje("No implementado");
         }
     }
 }

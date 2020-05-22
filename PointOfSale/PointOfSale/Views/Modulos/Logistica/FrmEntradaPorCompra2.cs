@@ -1000,9 +1000,10 @@ namespace PointOfSale.Views.Modulos.Logistica
         }
         private void Malla_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Oemplus)
+            
+            if (e.KeyCode == Keys.Oemplus || e.KeyCode == Keys.Add)
                 Incrementa(Malla.CurrentCell.RowIndex);
-            else if (e.KeyCode == Keys.OemMinus)
+            else if (e.KeyCode == Keys.OemMinus || e.KeyCode == Keys.Subtract)
                 Decrementa(Malla.CurrentCell.RowIndex);
             else if (e.KeyCode == Keys.Delete)
             {

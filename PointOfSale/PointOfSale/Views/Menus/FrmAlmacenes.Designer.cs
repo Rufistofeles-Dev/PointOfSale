@@ -65,6 +65,7 @@
             this.BtnImprimeEtiquetas.TabIndex = 4;
             this.BtnImprimeEtiquetas.Text = "&IMPRIME ETIQUETAS X SUSTANCIA";
             this.BtnImprimeEtiquetas.UseVisualStyleBackColor = true;
+            this.BtnImprimeEtiquetas.Click += new System.EventHandler(this.BtnImprimeEtiquetas_Click);
             // 
             // BtnSalir
             // 
@@ -75,6 +76,7 @@
             this.BtnSalir.TabIndex = 5;
             this.BtnSalir.Text = "&SALIDA";
             this.BtnSalir.UseVisualStyleBackColor = true;
+            this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
             // 
             // FrmAlmacenes
             // 

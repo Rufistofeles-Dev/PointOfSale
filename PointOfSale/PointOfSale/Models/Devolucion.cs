@@ -5,6 +5,11 @@ namespace PointOfSale.Models
 {
     public partial class Devolucion
     {
+        public Devolucion()
+        {
+            Devolucionp = new HashSet<Devolucionp>();
+        }
+
         public int DevolucionId { get; set; }
         public string ConceptoMovInvId { get; set; }
         public string EstadoDocId { get; set; }
@@ -15,5 +20,8 @@ namespace PointOfSale.Models
         public decimal Subtotal { get; set; }
         public decimal Impuesto { get; set; }
         public decimal Total { get; set; }
+
+        public virtual Usuario CreatedByNavigation { get; set; }
+        public virtual ICollection<Devolucionp> Devolucionp { get; set; }
     }
 }

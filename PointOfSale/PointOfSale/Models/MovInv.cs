@@ -20,5 +20,6 @@ namespace PointOfSale.Models
         public bool IsDeleted { get; set; }
 
         public virtual ConceptoMovInv ConceptoMovsInv { get; set; }
+        public virtual Usuario CreatedByNavigation { get; set; }
     }
 }

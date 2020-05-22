@@ -33,7 +33,7 @@ namespace PointOfSale.Controllers
             {
                 using (var db = new DymContext())
                 {
-                    var temp = db.Inventariop.FirstOrDefault(x => x.InventarioId == Id);
+                    var temp = db.Inventariop.FirstOrDefault(x => x.InventariopId == Id);
                     if (temp != null)
                     {
 
@@ -146,7 +146,21 @@ namespace PointOfSale.Controllers
             }
             return null;
         }
-
+        public List<Inventariop> SelectPartidasById(int Id)
+        {
+            try
+            {
+                using (var db = new DymContext())
+                {
+                    return db.Inventariop.Where(x => x.InventarioId == Id).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Ambiente.Mensaje("Algo salio mal con: " + MethodBase.GetCurrentMethod().Name + "@" + GetType().Name + "\n" + ex.ToString());
+            }
+            return null;
+        }
         public bool Update(Inventariop o)
         {
             try

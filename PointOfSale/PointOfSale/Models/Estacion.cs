@@ -9,6 +9,7 @@ namespace PointOfSale.Models
         {
             Compra = new HashSet<Compra>();
             Corte = new HashSet<Corte>();
+            Inventario = new HashSet<Inventario>();
             Venta = new HashSet<Venta>();
         }
 
@@ -29,6 +30,7 @@ namespace PointOfSale.Models
 
         public virtual ICollection<Compra> Compra { get; set; }
         public virtual ICollection<Corte> Corte { get; set; }
+        public virtual ICollection<Inventario> Inventario { get; set; }
         public virtual ICollection<Venta> Venta { get; set; }
     }
 }

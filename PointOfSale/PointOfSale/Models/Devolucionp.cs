@@ -23,5 +23,7 @@ namespace PointOfSale.Models
         public decimal ImporteImpuesto2 { get; set; }
         public decimal Subtotal { get; set; }
         public decimal Total { get; set; }
+
+        public virtual Devolucion Devolucion { get; set; }
     }
 }

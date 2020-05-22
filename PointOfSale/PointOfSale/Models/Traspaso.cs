@@ -30,6 +30,7 @@ namespace PointOfSale.Models
         public decimal Subtotal { get; set; }
         public decimal Total { get; set; }
 
+        public virtual Usuario CreatedByNavigation { get; set; }
         public virtual Sucursal SucursalDestino { get; set; }
         public virtual Sucursal SucursalOrigen { get; set; }
         public virtual ICollection<Traspasop> Traspasop { get; set; }

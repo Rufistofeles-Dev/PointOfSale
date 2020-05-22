@@ -1005,6 +1005,12 @@ namespace PointOfSale.Models
                 entity.Property(e => e.Subtotal).HasColumnType("decimal(18, 2)");
 
                 entity.Property(e => e.Total).HasColumnType("decimal(18, 2)");
+
+                entity.HasOne(d => d.CreatedByNavigation)
+                    .WithMany(p => p.Devolucion)
+                    .HasForeignKey(d => d.CreatedBy)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Devolucion_Usuario");
             });
 
             modelBuilder.Entity<Devolucionp>(entity =>
@@ -1040,6 +1046,12 @@ namespace PointOfSale.Models
                 entity.Property(e => e.Subtotal).HasColumnType("decimal(18, 6)");
 
                 entity.Property(e => e.Total).HasColumnType("decimal(18, 6)");
+
+                entity.HasOne(d => d.Devolucion)
+                    .WithMany(p => p.Devolucionp)
+                    .HasForeignKey(d => d.DevolucionId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Devolucionp_Devolucion");
             });
 
             modelBuilder.Entity<DymError>(entity =>
@@ -1355,6 +1367,12 @@ namespace PointOfSale.Models
                 entity.Property(e => e.UpdatedBy)
                     .IsRequired()
                     .HasMaxLength(50);
+
+                entity.HasOne(d => d.Informe)
+                    .WithMany(p => p.InformeConfiguracion)
+                    .HasForeignKey(d => d.InformeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_InformeConfiguracion_Informe");
             });
 
             modelBuilder.Entity<InformeParametro>(entity =>
@@ -1402,11 +1420,33 @@ namespace PointOfSale.Models
                     .IsRequired()
                     .HasMaxLength(50);
 
+                entity.Property(e => e.UpdatedAt).HasColumnType("datetime");
+
+                entity.Property(e => e.UpdatedBy).HasMaxLength(50);
+
                 entity.Property(e => e.UsuarioAutorizacion).HasMaxLength(50);
 
                 entity.Property(e => e.UsuarioAutorizacionId).HasMaxLength(50);
 
                 entity.Property(e => e.UsuarioBloqueoId).HasMaxLength(50);
+
+                entity.HasOne(d => d.CreatedByNavigation)
+                    .WithMany(p => p.Inventario)
+                    .HasForeignKey(d => d.CreatedBy)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Inventario_Usuario");
+
+                entity.HasOne(d => d.Estacion)
+                    .WithMany(p => p.Inventario)
+                    .HasForeignKey(d => d.EstacionId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Inventario_Estacion");
+
+                entity.HasOne(d => d.TipoInventarioNavigation)
+                    .WithMany(p => p.Inventario)
+                    .HasForeignKey(d => d.TipoInventarioId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Inventario_TipoInventario");
             });
 
             modelBuilder.Entity<Inventariop>(entity =>
@@ -1426,6 +1466,12 @@ namespace PointOfSale.Models
                 entity.Property(e => e.ProductoId)
                     .IsRequired()
                     .HasMaxLength(50);
+
+                entity.HasOne(d => d.Inventario)
+                    .WithMany(p => p.Inventariop)
+                    .HasForeignKey(d => d.InventarioId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Inventariop_Inventario");
             });
 
             modelBuilder.Entity<Laboratorio>(entity =>
@@ -1566,6 +1612,12 @@ namespace PointOfSale.Models
                     .HasForeignKey(d => d.ConceptoMovsInvId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_MovsInv_ConceptoMovInv");
+
+                entity.HasOne(d => d.CreatedByNavigation)
+                    .WithMany(p => p.MovInv)
+                    .HasForeignKey(d => d.CreatedBy)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_MovInv_Usuario");
             });
 
             modelBuilder.Entity<Municipio>(entity =>
@@ -2064,6 +2116,12 @@ namespace PointOfSale.Models
                 entity.Property(e => e.TipoDocId).HasMaxLength(5);
 
                 entity.Property(e => e.Total).HasColumnType("decimal(18, 2)");
+
+                entity.HasOne(d => d.CreatedByNavigation)
+                    .WithMany(p => p.Traspaso)
+                    .HasForeignKey(d => d.CreatedBy)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Traspaso_Usuario");
 
                 entity.HasOne(d => d.SucursalDestino)
                     .WithMany(p => p.TraspasoSucursalDestino)
