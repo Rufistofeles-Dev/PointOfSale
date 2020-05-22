@@ -180,6 +180,21 @@ namespace PointOfSale.Views.Modulos.Logistica
             if (producto == null)
                 return;
 
+            try
+            {
+                if ((bool)producto.Ocupado)
+                {
+                    Ambiente.Mensaje("Operación abortada, el articulo está bloqueado por otro proceso [INVENTARIOS, AJUSTES, AUTORIZACIONES, ETC]");
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
+
             if (traspaso != null)
             {
                 if (traspaso.TraspasoId == 0)

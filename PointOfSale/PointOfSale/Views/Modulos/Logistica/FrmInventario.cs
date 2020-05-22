@@ -75,6 +75,19 @@ namespace PointOfSale.Views.Modulos.Logistica
             }
             //producto = productoController.SelectOne(TxtProducto.Text.Trim());
 
+            try
+            {
+                if ((bool)producto.Ocupado)
+                {
+                    Ambiente.Mensaje("Operación abortada, el articulo está bloqueado por otro proceso [INVENTARIOS, AJUSTES, AUTORIZACIONES, ETC]");
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
             var partida = new Inventariop();
 
 

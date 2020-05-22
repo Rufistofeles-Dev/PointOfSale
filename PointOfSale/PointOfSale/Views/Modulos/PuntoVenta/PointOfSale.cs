@@ -172,7 +172,7 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
 
                 Ambiente.Mensaje(ex.Message);
             }
-         
+
         }
         private void Decrementa(int rowIndex)
         {
@@ -669,6 +669,20 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
                 return;
             }
 
+            try
+            {
+                if ((bool)producto.Ocupado)
+                {
+                    Ambiente.Mensaje("Operación abortada, el articulo está bloqueado por otro proceso [INVENTARIOS, AJUSTES, AUTORIZACIONES, ETC]");
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
             //partida a la lista
             var partida = new Ventap();
             partida.VentaId = venta.VentaId;
@@ -1043,7 +1057,7 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
 
                     Ambiente.Mensaje(ex.Message);
                 }
-                
+
             }
         }
 

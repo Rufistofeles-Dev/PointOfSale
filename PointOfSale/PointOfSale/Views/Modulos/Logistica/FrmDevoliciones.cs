@@ -376,7 +376,7 @@ namespace PointOfSale.Views.Modulos.Logistica
             }
         }
 
-      
+
 
 
         private void TxtConceptoMovInv_KeyDown(object sender, KeyEventArgs e)
@@ -468,6 +468,20 @@ namespace PointOfSale.Views.Modulos.Logistica
 
 
             if (producto == null) return;
+            try
+            {
+                if ((bool)producto.Ocupado)
+                {
+                    Ambiente.Mensaje("Operación abortada, el articulo está bloqueado por otro proceso [INVENTARIOS, AJUSTES, AUTORIZACIONES, ETC]");
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.Message);
+            }
+
             if (conceptoMovInv == null) return;
             var partida = new Devolucionp();
 
@@ -533,7 +547,7 @@ namespace PointOfSale.Views.Modulos.Logistica
         {
             PendienteOdescarta();
         }
-       
+
         private void Malla_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             ActualizaCantidad(int.Parse(Malla.CurrentCell.Value.ToString()), e.RowIndex);

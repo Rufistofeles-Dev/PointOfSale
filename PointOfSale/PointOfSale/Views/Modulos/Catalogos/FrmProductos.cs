@@ -201,6 +201,19 @@ namespace PointOfSale.Views.Modulos.Catalogos
                     objeto = new Producto();
                     objeto.ProductoId = TxtProductoId.Text.Trim();
                 }
+                try
+                {
+                    if ((bool)objeto.Ocupado)
+                    {
+                        Ambiente.Mensaje("Operación abortada, el articulo está bloqueado por otro proceso [INVENTARIOS, AJUSTES, AUTORIZACIONES, ETC]");
+                        return;
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    Ambiente.Mensaje(ex.Message);
+                }
 
 
                 objeto.Descripcion = TxtDescripcion.Text.Length == 0 ? "SYS" : TxtDescripcion.Text;
