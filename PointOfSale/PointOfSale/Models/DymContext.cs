@@ -2401,6 +2401,8 @@ namespace PointOfSale.Models
                     .HasMaxLength(50)
                     .HasDefaultValueSql("(N'H87')");
 
+                entity.Property(e => e.Costo).HasColumnType("decimal(18, 6)");
+
                 entity.Property(e => e.Descripcion).HasMaxLength(250);
 
                 entity.Property(e => e.Descuento).HasColumnType("decimal(18, 6)");

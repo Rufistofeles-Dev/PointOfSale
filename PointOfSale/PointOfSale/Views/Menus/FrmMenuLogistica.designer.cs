@@ -75,6 +75,7 @@
             this.BtnAjusteInv.TabIndex = 3;
             this.BtnAjusteInv.Text = "&AJUSTE DE INVENTARIO";
             this.BtnAjusteInv.UseVisualStyleBackColor = true;
+            this.BtnAjusteInv.Click += new System.EventHandler(this.BtnAjusteInv_Click);
             // 
             // BtnReporteAjustes
             // 
@@ -85,6 +86,7 @@
             this.BtnReporteAjustes.TabIndex = 4;
             this.BtnReporteAjustes.Text = "&REPORTE DE AJUSTES";
             this.BtnReporteAjustes.UseVisualStyleBackColor = true;
+            this.BtnReporteAjustes.Click += new System.EventHandler(this.BtnReporteAjustes_Click);
             // 
             // BtnSalidasxTras
             // 

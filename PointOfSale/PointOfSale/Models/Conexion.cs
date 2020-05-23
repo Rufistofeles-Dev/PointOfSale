@@ -8,7 +8,7 @@ namespace PointOfSale.Models
 {
     public class Conexion
     {
-        
+
         public int ConexionId { get; set; }
         public string Empresa { get; set; }
         public bool TrustedConnection { get; set; }
@@ -27,7 +27,11 @@ namespace PointOfSale.Models
         }
         public string StandardSecurityConnectionString()
         {
-            return "Server=" + Host + @"\" + InstanceName + ";Database=" + DbName + ";User Id=" + User + ";Password=" + Password + ";";
+            if (InstanceName.Equals(""))
+                return "Server=" + Host + ";Database=" + DbName + ";User Id=" + User + ";Password=" + Password + ";";
+            else
+                return "Server=" + Host + @"\" + InstanceName + ";Database=" + DbName + ";User Id=" + User + ";Password=" + Password + ";";
+
         }
     }
 }

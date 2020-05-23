@@ -1,5 +1,6 @@
 ﻿using PointOfSale.Views.Modulos.Catalogos;
 using PointOfSale.Views.Modulos.Logistica;
+using PointOfSale.Views.ReportDesigner;
 using System;
 using System.Windows.Forms;
 
@@ -48,6 +49,20 @@ namespace DYM.Views
         private void BtnDevRotura_Click(object sender, EventArgs e)
         {
             var o = new FrmDevoliciones();
+            o.MdiParent = MdiParent;
+            o.Show();
+        }
+
+        private void BtnAjusteInv_Click(object sender, EventArgs e)
+        {
+            var o = new FrmDevoliciones();
+            o.MdiParent = MdiParent;
+            o.Show();
+        }
+
+        private void BtnReporteAjustes_Click(object sender, EventArgs e)
+        {
+            var o = new FrmTreeViewReportes();
             o.MdiParent = MdiParent;
             o.Show();
         }

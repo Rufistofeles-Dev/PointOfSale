@@ -55,5 +55,19 @@ namespace PointOfSale.Views.Menus
         {
             Close();
         }
+
+        private void BtnReporteAjustesInv_Click(object sender, EventArgs e)
+        {
+            var o = new FrmTreeViewReportes();
+            o.MdiParent = MdiParent;
+            o.Show();
+        }
+
+        private void BtnReportesG_Click(object sender, EventArgs e)
+        {
+            var o = new FrmTreeViewReportes();
+            o.MdiParent = MdiParent;
+            o.Show();
+        }
     }
 }

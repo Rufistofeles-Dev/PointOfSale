@@ -84,6 +84,7 @@
             this.BtnReportesG.TabIndex = 251;
             this.BtnReportesG.Text = "&REPORTES GRAFICAS";
             this.BtnReportesG.UseVisualStyleBackColor = true;
+            this.BtnReportesG.Click += new System.EventHandler(this.BtnReportesG_Click);
             // 
             // BtnReporteAjustesInv
             // 
@@ -94,6 +95,7 @@
             this.BtnReporteAjustesInv.TabIndex = 252;
             this.BtnReporteAjustesInv.Text = "&REPORTE DE AJUSTES";
             this.BtnReporteAjustesInv.UseVisualStyleBackColor = true;
+            this.BtnReporteAjustesInv.Click += new System.EventHandler(this.BtnReporteAjustesInv_Click);
             // 
             // BtnAutInv
             // 
