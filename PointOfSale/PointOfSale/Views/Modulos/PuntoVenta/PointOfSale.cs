@@ -313,6 +313,7 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
         {
             venta.TipoDocId = form.tipoDoc;
 
+
             if (venta.TipoDocId.Equals("TIC"))
                 venta.NoRef = Ambiente.TraeSiguiente("TIC");
 
@@ -536,18 +537,25 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
         {
             foreach (var p in partidas)
             {
+
+                //**************MOVIMIENTO DE INVENTARIO****************//
                 var movInv = new MovInv();
-                movInv.ConceptoMovsInvId = "VEN";
-                movInv.NoRef = (int)venta.NoRef;
-                movInv.EntradaSalida = "S";
-                movInv.IdEntrada = null;
-                movInv.IdSalida = p.VentapId;
+                movInv.ConceptoMovsInvId = venta.TipoDocId;
+                movInv.Referencia = venta.VentaId;
+                movInv.Referenciap = p.VentapId;
+                movInv.Es = "S";
+                movInv.Afectacion = movInv.Es.Equals("E") ? 1 : -1;
                 movInv.ProductoId = p.ProductoId;
-                movInv.Precio = p.Precio;
                 movInv.Cantidad = p.Cantidad;
+                producto = productoController.SelectOne(p.ProductoId);
+                movInv.Costo = producto == null ? 0 : producto.PrecioCompra;
+                movInv.PrecioVta = p.Precio;
+                movInv.Stock = producto == null ? 0 : producto.Stock;
                 movInv.CreatedAt = DateTime.Now;
                 movInv.CreatedBy = Ambiente.LoggedUser.UsuarioId;
-                movInvController.InsertOne(movInv);
+                movInv.EstacionId = Ambiente.Estacion.EstacionId;
+                movInv.IsDeleted = false;
+                Ambiente.CancelaProceso = !movInvController.InsertOne(movInv);
             }
         }
         private void AfectaFlujo()
@@ -575,7 +583,7 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
                     flujo.EstacionId = Ambiente.Estacion.EstacionId;
                     flujo.VentaOrigen = venta.VentaId;
                     flujo.Cortado = false;
-                    flujo.ConceptoImporteId = venta.ConceptoPago1;
+                    flujo.ConceptoImporteId = "CAM";
                     flujo.CreatedAt = DateTime.Now;
                     flujo.CreatedBy = Ambiente.LoggedUser.UsuarioId;
                     flujoController.InsertOne(flujo);

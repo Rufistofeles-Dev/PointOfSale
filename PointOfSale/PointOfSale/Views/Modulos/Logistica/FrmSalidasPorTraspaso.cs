@@ -112,7 +112,7 @@ namespace PointOfSale.Views.Modulos.Logistica
             traspaso.SucursalDestinoId = null;
             traspaso.SucursalDestinoName = "SIN DATOS";
             traspaso.SerieDestino = "";
-            traspaso.TipoDocId = "TRA";
+            traspaso.TipoDocId = "STR";
             traspaso.EstadoDocId = "PEN";
             traspaso.CreatedAt = DateTime.Now;
             traspaso.CreatedBy = Ambiente.LoggedUser.UsuarioId;
@@ -437,18 +437,26 @@ namespace PointOfSale.Views.Modulos.Logistica
         {
             foreach (var p in partidas)
             {
+
+                //**************MOVIMIENTO DE INVENTARIO****************//
                 var movInv = new MovInv();
-                movInv.ConceptoMovsInvId = "ST";
-                movInv.NoRef = (int)traspaso.TraspasoId;
-                movInv.EntradaSalida = "S";
-                movInv.IdEntrada = null;
-                movInv.IdSalida = p.TraspasopId;
+                movInv.ConceptoMovsInvId = traspaso.TipoDocId;
+                movInv.Referencia = traspaso.TraspasoId;
+                movInv.Referenciap = p.TraspasopId;
+                movInv.Es = "S";
+                movInv.Afectacion = movInv.Es.Equals("E") ? 1 : -1;
                 movInv.ProductoId = p.ProductoId;
-                movInv.Precio = p.Precio;
                 movInv.Cantidad = p.Cantidad;
+                producto = productoController.SelectOne(p.ProductoId);
+                movInv.Costo = producto == null ? 0 : producto.PrecioCompra;
+                movInv.PrecioVta = producto == null ? 0 : producto.Precio1;
+                movInv.Stock = producto == null ? 0 : producto.Stock;
                 movInv.CreatedAt = DateTime.Now;
                 movInv.CreatedBy = Ambiente.LoggedUser.UsuarioId;
-                movInvController.InsertOne(movInv);
+                movInv.EstacionId = Ambiente.Estacion.EstacionId;
+                movInv.IsDeleted = false;
+                Ambiente.CancelaProceso = !movInvController.InsertOne(movInv);
+
             }
         }
         private void AfectaStock()

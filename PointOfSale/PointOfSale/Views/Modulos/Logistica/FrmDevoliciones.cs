@@ -369,28 +369,27 @@ namespace PointOfSale.Views.Modulos.Logistica
         {
             foreach (var p in partidas)
             {
+
+
+                //**************MOVIMIENTO DE INVENTARIO****************//
                 var movInv = new MovInv();
                 movInv.ConceptoMovsInvId = conceptoMovInv.ConceptoMovInvId;
-                movInv.NoRef = devolucion.DevolucionId;
-                movInv.EntradaSalida = conceptoMovInv.Es;
-
-                if (conceptoMovInv.Es.Equals("E"))
-                {
-                    movInv.IdEntrada = p.DevolucionpId;
-                    movInv.IdSalida = null;
-                }
-                else
-                {
-                    movInv.IdEntrada = null;
-                    movInv.IdSalida = p.DevolucionpId;
-                }
-
+                movInv.Referencia = devolucion.DevolucionId;
+                movInv.Referenciap = p.DevolucionpId;
+                movInv.Es = conceptoMovInv.Es;
+                movInv.Afectacion = conceptoMovInv.Afectacion;
                 movInv.ProductoId = p.ProductoId;
-                movInv.Precio = p.PrecioCompra;
                 movInv.Cantidad = p.Cantidad;
+                producto = productoController.SelectOne(p.ProductoId);
+                movInv.Costo = producto == null ? 0 : producto.PrecioCompra;
+                movInv.PrecioVta = producto == null ? 0 : producto.Precio1;
+                movInv.Stock = producto == null ? 0 : producto.Stock;
                 movInv.CreatedAt = DateTime.Now;
                 movInv.CreatedBy = Ambiente.LoggedUser.UsuarioId;
+                movInv.EstacionId = Ambiente.Estacion.EstacionId;
+                movInv.IsDeleted = false;
                 Ambiente.CancelaProceso = !movInvController.InsertOne(movInv);
+
             }
         }
         private void AfectaStock()

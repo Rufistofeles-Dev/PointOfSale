@@ -268,6 +268,7 @@ namespace PointOfSale.Controllers
                                 //SucursalOrigenName
                                 case 5:
                                     traspaso.SucursalOrigenName = workSheet.Cells[row, col].Text.Trim();
+                                    
                                     break;
 
                                 //SerieOrigen

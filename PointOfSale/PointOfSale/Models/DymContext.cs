@@ -1586,13 +1586,13 @@ namespace PointOfSale.Models
 
             modelBuilder.Entity<MovInv>(entity =>
             {
-                entity.Property(e => e.Cantidad).HasColumnType("decimal(18, 1)");
+                entity.Property(e => e.Cantidad).HasColumnType("decimal(18, 6)");
 
                 entity.Property(e => e.ConceptoMovsInvId)
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.Costo).HasColumnType("decimal(18, 2)");
+                entity.Property(e => e.Costo).HasColumnType("decimal(18, 6)");
 
                 entity.Property(e => e.CreatedAt).HasColumnType("datetime");
 
@@ -1600,17 +1600,24 @@ namespace PointOfSale.Models
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.EntradaSalida)
+                entity.Property(e => e.Es)
                     .IsRequired()
+                    .HasColumnName("ES")
                     .HasMaxLength(1);
+
+                entity.Property(e => e.EstacionId)
+                    .IsRequired()
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.IsDeleted).HasColumnName("isDeleted");
 
-                entity.Property(e => e.Precio).HasColumnType("decimal(18, 2)");
+                entity.Property(e => e.PrecioVta).HasColumnType("decimal(18, 6)");
 
                 entity.Property(e => e.ProductoId)
                     .IsRequired()
                     .HasMaxLength(50);
+
+                entity.Property(e => e.Stock).HasColumnType("decimal(18, 6)");
 
                 entity.HasOne(d => d.ConceptoMovsInv)
                     .WithMany(p => p.MovInv)

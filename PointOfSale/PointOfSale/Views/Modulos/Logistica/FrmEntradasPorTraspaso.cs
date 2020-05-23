@@ -27,7 +27,7 @@ namespace PointOfSale.Views.Modulos.Logistica
         //objetos
         Empresa empresa;
         Traspaso traspaso;
-
+        Producto producto;
         //List
         List<Traspasop> partidas;
 
@@ -93,6 +93,7 @@ namespace PointOfSale.Views.Modulos.Logistica
             if (Ambiente.ExtraerFile(empresa.DirectorioTraspasos + CboTraspasos.Text.Trim(), empresa.DirectorioTrabajo))
             {
                 traspaso = Ambiente.SerializaPH(empresa.DirectorioTrabajo + @"\PH.XLSX");
+                traspaso.TipoDocId = "ETR";
                 partidas = Ambiente.SerializaPD(empresa.DirectorioTrabajo + @"\PD.XLSX");
                 LlenaHeader();
                 LlenaMalla();
@@ -190,18 +191,24 @@ namespace PointOfSale.Views.Modulos.Logistica
         {
             foreach (var p in partidas)
             {
+                //**************MOVIMIENTO DE INVENTARIO****************//
                 var movInv = new MovInv();
-                movInv.ConceptoMovsInvId = "ET";
-                movInv.NoRef = (int)traspaso.TraspasoId;
-                movInv.EntradaSalida = "E";
-                movInv.IdEntrada = p.TraspasopId;
-                movInv.IdSalida = null;
+                movInv.ConceptoMovsInvId = traspaso.TipoDocId;
+                movInv.Referencia = traspaso.TraspasoId;
+                movInv.Referenciap = p.TraspasopId;
+                movInv.Es = "E";
+                movInv.Afectacion = movInv.Es.Equals("E") ? 1 : -1;
                 movInv.ProductoId = p.ProductoId;
-                movInv.Precio = p.Precio;
                 movInv.Cantidad = p.Cantidad;
+                producto = productoController.SelectOne(p.ProductoId);
+                movInv.Costo = producto == null ? 0 : producto.PrecioCompra;
+                movInv.PrecioVta = producto == null ? 0 : producto.Precio1;
+                movInv.Stock = producto == null ? 0 : producto.Stock;
                 movInv.CreatedAt = DateTime.Now;
                 movInv.CreatedBy = Ambiente.LoggedUser.UsuarioId;
-                movInvController.InsertOne(movInv);
+                movInv.EstacionId = Ambiente.Estacion.EstacionId;
+                movInv.IsDeleted = false;
+                Ambiente.CancelaProceso = !movInvController.InsertOne(movInv);
             }
         }
         private void AfectaStock()

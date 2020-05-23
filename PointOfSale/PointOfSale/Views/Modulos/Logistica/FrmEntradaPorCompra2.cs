@@ -780,18 +780,25 @@ namespace PointOfSale.Views.Modulos.Logistica
         {
             foreach (var p in partidas)
             {
+
+                //**************MOVIMIENTO DE INVENTARIO****************//
                 var movInv = new MovInv();
-                movInv.ConceptoMovsInvId = "COM";
-                movInv.NoRef = compra.CompraId;
-                movInv.EntradaSalida = "E";
-                movInv.IdEntrada = p.ComprapId;
-                movInv.IdSalida = null;
+                movInv.ConceptoMovsInvId = compra.TipoDocId;
+                movInv.Referencia = compra.CompraId;
+                movInv.Referenciap = p.ComprapId;
+                movInv.Es = "E";
+                movInv.Afectacion = movInv.Es.Equals("E") ? 1 : -1;
                 movInv.ProductoId = p.ProductoId;
-                movInv.Precio = p.PrecioCompra;
                 movInv.Cantidad = p.Cantidad;
+                producto = productoController.SelectOne(p.ProductoId);
+                movInv.Costo = p.PrecioCompra;
+                movInv.PrecioVta = producto == null ? 0 : producto.Precio1;
+                movInv.Stock = producto == null ? 0 : producto.Stock;
                 movInv.CreatedAt = DateTime.Now;
                 movInv.CreatedBy = Ambiente.LoggedUser.UsuarioId;
-                movInvController.InsertOne(movInv);
+                movInv.EstacionId = Ambiente.Estacion.EstacionId;
+                movInv.IsDeleted = false;
+                Ambiente.CancelaProceso = !movInvController.InsertOne(movInv);
             }
         }
 
