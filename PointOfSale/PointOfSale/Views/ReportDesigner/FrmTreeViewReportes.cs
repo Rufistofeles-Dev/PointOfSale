@@ -120,81 +120,106 @@ namespace PointOfSale.Views.ReportDesigner
 
         private void OnCreating(object sender, StiCreatingObjectEventArgs e)
         {
-            informe = null;
-            stiReport = new StiReport();
-            stiReport.Dictionary.Databases.Add(new StiSqlDatabase("Dym", Ambiente.ConnectionString()));
-            designer.Report = stiReport;
+            try
+            {
+                informe = null;
+                stiReport = new StiReport();
+                stiReport.Dictionary.Databases.Add(new StiSqlDatabase("Dym", Ambiente.ConnectionString()));
+                designer.Report = stiReport;
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.ToString());
+            }
+
         }
 
         private void OnLoading(object sender, StiLoadingObjectEventArgs e)
         {
-            using (var form = new FrmBuscadorInformes())
+            try
             {
-                if (form.ShowDialog() == DialogResult.OK)
+                using (var form = new FrmBuscadorInformes())
                 {
-                    informe = form.Informe;
-                    //Add data to datastore
-                    stiReport = new StiReport();
-                    //stiReport.LoadEncryptedReportFromString(informe.Codigo, informe.Guid);
-                    stiReport.LoadPackedReportFromString(informe.Codigo);
-                    stiReport.Dictionary.Databases.Clear();
-                    stiReport.Dictionary.Databases.Add(new StiSqlDatabase("Dym", Ambiente.Conexion.StandardSecurityConnectionString()));
-                   // stiReport.sa
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        informe = form.Informe;
+                        //Add data to datastore
+                        stiReport = new StiReport();
+                        //stiReport.LoadEncryptedReportFromString(informe.Codigo, informe.Guid);
+                        stiReport.LoadPackedReportFromString(informe.Codigo);
+                        stiReport.Dictionary.Databases.Clear();
+                        stiReport.Dictionary.Databases.Add(new StiSqlDatabase("Dym", Ambiente.Conexion.StandardSecurityConnectionString()));
+                        // stiReport.sa
 
-                    designer.Report = stiReport;
+                        designer.Report = stiReport;
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.ToString());
+            }
+
         }
 
         private void OnSaveReport(object sender, StiSavingObjectEventArgs e)
         {
-            if (designer.Report == null) return;
-            e.Processed = true;
+            try
+            {
+                if (designer.Report == null) return;
+                e.Processed = true;
 
-            if (informe == null)
-            {
-                informe = new Informe();
-                informe.Guid = Guid.NewGuid().ToString();
-                using (var form = new FrmNuevoInforme())
+                if (informe == null)
                 {
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        //informe.Codigo = designer.Report.SaveEncryptedReportToString(informe.Guid);
-                        informe.Codigo = designer.Report.SavePackedReportToString();
-                        informe.Descripcion = form.Descrip;
-                        informe.InformeCateforiaId = form.CategoriaId;
-                        informe.Sistema = form.Sistema;
-                        informe.InformeId = form.ReporteId;
-                        if (informeController.InsertOne(informe))
-                            Ambiente.Mensaje("Cambios guardados");
-                    }
-                }
-            }
-            else
-            {
-                if (!informe.Sistema)
-                {
-                    using (var form = new FrmNuevoInforme(informe.InformeCateforiaId, informe.Descripcion, informe.Sistema, informe.InformeId))
+                    informe = new Informe();
+                    informe.Guid = Guid.NewGuid().ToString();
+                    using (var form = new FrmNuevoInforme())
                     {
                         if (form.ShowDialog() == DialogResult.OK)
                         {
-                            // informe.Codigo = designer.Report.SaveEncryptedReportToString(informe.Guid);
+                            //informe.Codigo = designer.Report.SaveEncryptedReportToString(informe.Guid);
                             informe.Codigo = designer.Report.SavePackedReportToString();
                             informe.Descripcion = form.Descrip;
                             informe.InformeCateforiaId = form.CategoriaId;
                             informe.Sistema = form.Sistema;
-                            if (informeController.Update(informe))
+                            informe.InformeId = form.ReporteId;
+                            if (informeController.InsertOne(informe))
                                 Ambiente.Mensaje("Cambios guardados");
                         }
                     }
                 }
                 else
                 {
-                    Ambiente.Mensaje("Ningun cambio guardado, el reporte es del sistema");
-                    return;
+                    if (!informe.Sistema)
+                    {
+                        using (var form = new FrmNuevoInforme(informe.InformeCateforiaId, informe.Descripcion, informe.Sistema, informe.InformeId))
+                        {
+                            if (form.ShowDialog() == DialogResult.OK)
+                            {
+                                // informe.Codigo = designer.Report.SaveEncryptedReportToString(informe.Guid);
+                                informe.Codigo = designer.Report.SavePackedReportToString();
+                                informe.Descripcion = form.Descrip;
+                                informe.InformeCateforiaId = form.CategoriaId;
+                                informe.Sistema = form.Sistema;
+                                if (informeController.Update(informe))
+                                    Ambiente.Mensaje("Cambios guardados");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Ambiente.Mensaje("Ningun cambio guardado, el reporte es del sistema");
+                        return;
+                    }
                 }
             }
-            //your code for save report
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.ToString());
+            }
         }
 
         private void BtnNuevo_Click(object sender, EventArgs e)
@@ -208,17 +233,28 @@ namespace PointOfSale.Views.ReportDesigner
 
         private void BtnProbar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                informe = informeController.SelectOne(Malla.Rows[Malla.CurrentRow.Index].Cells[0].Value.ToString());
+                if (informe != null)
+                {
+                    stiReport = new StiReport();
+                    stiReport.LoadPackedReportFromString(informe.Codigo);
+                    stiReport.Dictionary.Databases.Clear();
+                    stiReport.Dictionary.Databases.Add(new StiSqlDatabase("Dym", Ambiente.Conexion.StandardSecurityConnectionString()));
+                    stiReport.Render();
+                    stiReport.Show();
+                }
+                else Ambiente.Mensaje("El informe ya no existe");
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.ToString());
+            }
             if (Malla.RowCount == 0) return;
 
-            informe = informeController.SelectOne(Malla.Rows[Malla.CurrentRow.Index].Cells[0].Value.ToString());
-            if (informe != null)
-            {
-                stiReport = new StiReport();
-                stiReport.LoadEncryptedReportFromString(informe.Codigo, informe.Guid);
-                stiReport.Render();
-                stiReport.Show();
-            }
-            else Ambiente.Mensaje("El informe ya no existe");
+
         }
     }
 }

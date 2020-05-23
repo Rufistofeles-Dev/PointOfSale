@@ -370,11 +370,21 @@ namespace PointOfSale.Views.Modulos.Logistica
             foreach (var p in partidas)
             {
                 var movInv = new MovInv();
-                movInv.ConceptoMovsInvId = "DCOM";
+                movInv.ConceptoMovsInvId = conceptoMovInv.ConceptoMovInvId;
                 movInv.NoRef = devolucion.DevolucionId;
-                movInv.EntradaSalida = "S";
-                movInv.IdEntrada = null;
-                movInv.IdSalida = p.DevolucionpId;
+                movInv.EntradaSalida = conceptoMovInv.Es;
+
+                if (conceptoMovInv.Es.Equals("E"))
+                {
+                    movInv.IdEntrada = p.DevolucionpId;
+                    movInv.IdSalida = null;
+                }
+                else
+                {
+                    movInv.IdEntrada = null;
+                    movInv.IdSalida = p.DevolucionpId;
+                }
+
                 movInv.ProductoId = p.ProductoId;
                 movInv.Precio = p.PrecioCompra;
                 movInv.Cantidad = p.Cantidad;

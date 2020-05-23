@@ -308,8 +308,6 @@ namespace PointOfSale.Views.Modulos.Busquedas
                     {
                         Grid1.DataSource = db.Lote.AsNoTracking().Where(x => x.ProductoId.Equals(SearchText) && x.StockRestante > 0)
                             .Select(x => new { ID = x.LoteId, Compra = x.CompraId, Lote = x.NoLote, Stock = x.StockRestante, x.Caducidad, x.ReferenciaInt, x.ReferenciaString }).ToList();
-
-
                     }
                     break;
                 case (int)Ambiente.TipoBusqueda.TipoInvetario:
