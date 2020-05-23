@@ -90,7 +90,7 @@ namespace DYM.Views
 
         private void BtnDisenar_Click(object sender, EventArgs e)
         {
-            var o = new FrmDesigner();
+            var o = new FrmTreeViewReportes();
             o.MdiParent = MdiParent;
             o.Show();
         }

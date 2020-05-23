@@ -882,29 +882,11 @@
     <Compile Include="Views\ReportDesigner\FrmBuscadorInformes.Designer.cs">
       <DependentUpon>FrmBuscadorInformes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\ReportDesigner\FrmBuscadorReportes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\ReportDesigner\FrmBuscadorReportes.Designer.cs">
-      <DependentUpon>FrmBuscadorReportes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ReportDesigner\FrmDesigner.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\ReportDesigner\FrmDesigner.Designer.cs">
-      <DependentUpon>FrmDesigner.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\ReportDesigner\FrmNuevoInforme.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\ReportDesigner\FrmNuevoInforme.Designer.cs">
       <DependentUpon>FrmNuevoInforme.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ReportDesigner\FrmReporte.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\ReportDesigner\FrmReporte.Designer.cs">
-      <DependentUpon>FrmReporte.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ReportDesigner\FrmTreeViewReportes.cs">
       <SubType>Form</SubType>
@@ -1097,17 +1079,8 @@
     <EmbeddedResource Include="Views\ReportDesigner\FrmBuscadorInformes.resx">
       <DependentUpon>FrmBuscadorInformes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ReportDesigner\FrmBuscadorReportes.resx">
-      <DependentUpon>FrmBuscadorReportes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\ReportDesigner\FrmDesigner.resx">
-      <DependentUpon>FrmDesigner.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\ReportDesigner\FrmNuevoInforme.resx">
       <DependentUpon>FrmNuevoInforme.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\ReportDesigner\FrmReporte.resx">
-      <DependentUpon>FrmReporte.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ReportDesigner\FrmTreeViewReportes.resx">
       <DependentUpon>FrmTreeViewReportes.cs</DependentUpon>
