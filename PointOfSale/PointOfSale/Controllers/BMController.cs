@@ -187,7 +187,9 @@ namespace PointOfSale.Controllers
                     //
                     Id = x.ConceptoMovInvId,
                     x.Descripcion,
-                    Entrada_Salida = x.Es
+                    Entrada_Salida = x.Es,
+                    x.Afectacion,
+                    x.Digitacion
                 }).OrderBy(x => x.Descripcion).ToList();
             }
 

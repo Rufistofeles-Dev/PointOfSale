@@ -14,6 +14,8 @@ namespace PointOfSale.Models
         public string Descripcion { get; set; }
         public bool IsDeleted { get; set; }
         public string Es { get; set; }
+        public int Afectacion { get; set; }
+        public bool Digitacion { get; set; }
 
         public virtual ICollection<MovInv> MovInv { get; set; }
     }

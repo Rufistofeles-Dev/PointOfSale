@@ -38,11 +38,13 @@
             this.TxtClave = new System.Windows.Forms.TextBox();
             this.CboES = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.CboDigitacion = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BtnCancelar
             // 
-            this.BtnCancelar.Location = new System.Drawing.Point(168, 228);
+            this.BtnCancelar.Location = new System.Drawing.Point(162, 272);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(148, 40);
             this.BtnCancelar.TabIndex = 131;
@@ -52,7 +54,7 @@
             // 
             // BtnAceptar
             // 
-            this.BtnAceptar.Location = new System.Drawing.Point(15, 228);
+            this.BtnAceptar.Location = new System.Drawing.Point(9, 272);
             this.BtnAceptar.Name = "BtnAceptar";
             this.BtnAceptar.Size = new System.Drawing.Size(148, 40);
             this.BtnAceptar.TabIndex = 130;
@@ -150,11 +152,37 @@
             this.label2.TabIndex = 273;
             this.label2.Text = "ENTRADA / SAIDA";
             // 
+            // CboDigitacion
+            // 
+            this.CboDigitacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboDigitacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CboDigitacion.FormattingEnabled = true;
+            this.CboDigitacion.Items.AddRange(new object[] {
+            "SI",
+            "NO"});
+            this.CboDigitacion.Location = new System.Drawing.Point(13, 240);
+            this.CboDigitacion.Name = "CboDigitacion";
+            this.CboDigitacion.Size = new System.Drawing.Size(297, 26);
+            this.CboDigitacion.TabIndex = 276;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label3.Location = new System.Drawing.Point(9, 217);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(178, 20);
+            this.label3.TabIndex = 275;
+            this.label3.Text = "PERMITE DIGITACIÓN";
+            // 
             // FrmConceptosMovsInv
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(316, 280);
+            this.ClientSize = new System.Drawing.Size(316, 345);
+            this.Controls.Add(this.CboDigitacion);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.CboES);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label6);
@@ -184,5 +212,7 @@
         private System.Windows.Forms.TextBox TxtClave;
         private System.Windows.Forms.ComboBox CboES;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox CboDigitacion;
+        private System.Windows.Forms.Label label3;
     }
 }
