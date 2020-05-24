@@ -1,5 +1,6 @@
 ﻿using PointOfSale.Controllers;
 using PointOfSale.Controllers.Utils;
+using PointOfSale.Models;
 using PointOfSale.Views.Modulos.Busquedas;
 using System;
 using System.Collections.Generic;
@@ -22,20 +23,18 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
         public decimal pago3;
         public decimal cambio;
 
-        public string formapago1;
-        public string formapago2;
-        public string formapago3;
-        public string concepto1;
-        public string concepto2;
-        public string concepto3;
         public string totalLetra;
         public string tipoDoc;
-        public string formaPago;
-        public string metodoPago;
         public string NoTarjeta;
         public bool CobroConPuntos;
 
         public bool Cxc;
+        public Cliente cliente;
+        public FormaPago formaPago1;
+        public FormaPago formaPago2;
+        public FormaPago formaPago3;
+        public CMetodopago metodoPago;
+        public FormaPagoController formaPagoController;
 
 
         public FrmCobroRapido()
@@ -43,23 +42,22 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
             InitializeComponent();
         }
 
-        public FrmCobroRapido(decimal total)
+        public FrmCobroRapido(decimal total, Cliente c = null)
         {
             InitializeComponent();
+            formaPagoController = new FormaPagoController();
             this.total = total;
+            cliente = c;
             InicializaCampos();
         }
 
         private void InicializaCampos()
         {
+            formaPago1 = formaPagoController.SelectOne("01");
             TxtTotal.Text = total.ToString();
             TxtPago1.Text = total.ToString();
-            formapago1 = "01";
-            concepto1 = "EFECTIVO";
-            formapago2 = null;
-            concepto2 = null;
-            formapago3 = null;
-            concepto3 = null;
+            formaPago2 = null;
+            formaPago3 = null;
             totalLetra = "";
             pago1 = 0;
             pago2 = 0;
@@ -80,8 +78,56 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
                     form.ShowDialog();
                     if (form.DialogResult == DialogResult.OK)
                     {
+                        if (form.FormaPago.FormaPagoId.Equals("05"))
+                        {
+                            if (cliente == null)
+                            {
+
+                                Ambiente.Mensaje("Seleccione un cliente en la venta");
+                                DialogResult = DialogResult.Cancel;
+                            }
+                            else
+                            {
+                                TxtPago2.Text = Ambiente.FDinero(cliente.DineroElectronico.ToString());
+                                TxtPago2.Enabled = false;
+
+                                TxtPago3.Enabled = true;
+                                TxtPago3.Text = "";
+                                TxtFormaPago3.Text = "";
+                                TxtPago1.Enabled = true;
+                                TxtPago1.Text = "";
+                                TxtFormaPago1.Text = "";
+                                ChkCobrarConPtos.Checked = true;
+                                ChkCobrarConPtos.Enabled = false;
+                            }
+                        }
+                        else
+                        {
+                            if (formaPago1 != null && formaPago3 != null)
+                            {
+                                if (!formaPago1.FormaPagoId.Equals("05") && !formaPago3.FormaPagoId.Equals("05"))
+                                {
+                                    ChkCobrarConPtos.Checked = false;
+                                    ChkCobrarConPtos.Enabled = true;
+                                }
+                            }
+
+
+                            TxtPago3.Enabled = true;
+                        }
                         TxtFormaPago2.Text = form.FormaPago.FormaPagoId;
                         TxtConceptoPago2.Text = form.FormaPago.Descripcion.ToUpper();
+
+
+                        if (TxtPago1.Text.Trim().Length == 0)
+                            formaPago1 = null;
+                        if (TxtPago2.Text.Trim().Length == 0)
+                            formaPago2 = null;
+                        if (TxtPago3.Text.Trim().Length == 0)
+                            formaPago3 = null;
+
+                        formaPago2 = form.FormaPago;
+
                     }
                 }
             }
@@ -96,8 +142,55 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
                     form.ShowDialog();
                     if (form.DialogResult == DialogResult.OK)
                     {
+                        if (form.FormaPago.FormaPagoId.Equals("05"))
+                        {
+                            if (cliente == null)
+                            {
+
+                                Ambiente.Mensaje("Seleccione un cliente en la venta");
+                                DialogResult = DialogResult.Cancel;
+                            }
+                            else
+                            {
+                                TxtPago3.Text = Ambiente.FDinero(cliente.DineroElectronico.ToString());
+                                TxtPago3.Enabled = false;
+
+                                TxtPago2.Enabled = true;
+                                TxtPago2.Text = "";
+                                TxtFormaPago2.Text = "";
+                                TxtPago1.Enabled = true;
+                                TxtPago1.Text = "";
+                                TxtFormaPago1.Text = "";
+                                ChkCobrarConPtos.Checked = true;
+                                ChkCobrarConPtos.Enabled = false;
+                            }
+                        }
+                        else
+                        {
+                            if (formaPago1 != null && formaPago2 != null)
+                            {
+                                if (!formaPago1.FormaPagoId.Equals("05") && !formaPago2.FormaPagoId.Equals("05"))
+                                {
+                                    ChkCobrarConPtos.Checked = false;
+                                    ChkCobrarConPtos.Enabled = true;
+                                }
+                            }
+
+                           
+                            TxtPago3.Enabled = true;
+                        }
                         TxtFormaPago3.Text = form.FormaPago.FormaPagoId;
                         TxtConceptoPago3.Text = form.FormaPago.Descripcion.ToUpper();
+
+
+                        if (TxtPago1.Text.Trim().Length == 0)
+                            formaPago1 = null;
+                        if (TxtPago2.Text.Trim().Length == 0)
+                            formaPago2 = null;
+                        if (TxtPago3.Text.Trim().Length == 0)
+                            formaPago3 = null;
+
+                        formaPago3 = form.FormaPago;
                     }
                 }
             }
@@ -175,8 +268,54 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
                     form.ShowDialog();
                     if (form.DialogResult == DialogResult.OK)
                     {
+                        if (form.FormaPago.FormaPagoId.Equals("05"))
+                        {
+                            if (cliente == null)
+                            {
+
+                                Ambiente.Mensaje("Seleccione un cliente en la venta");
+                                DialogResult = DialogResult.Cancel;
+                            }
+                            else
+                            {
+                                TxtPago1.Text = Ambiente.FDinero(cliente.DineroElectronico.ToString());
+                                TxtPago1.Enabled = false;
+
+                                TxtPago3.Enabled = true;
+                                TxtPago3.Text = "";
+                                TxtFormaPago3.Text = "";
+                                TxtPago2.Enabled = true;
+                                TxtPago2.Text = "";
+                                TxtFormaPago2.Text = "";
+                                ChkCobrarConPtos.Checked = true;
+                                ChkCobrarConPtos.Enabled = false;
+                            }
+                        }
+                        else
+                        {
+                            if (formaPago2 != null && formaPago3 != null)
+                            {
+                                if (!formaPago2.FormaPagoId.Equals("05") && !formaPago3.FormaPagoId.Equals("05"))
+                                {
+                                    ChkCobrarConPtos.Checked = false;
+                                    ChkCobrarConPtos.Enabled = true;
+                                }
+                            }
+
+                            TxtPago1.Enabled = true;
+                        }
                         TxtFormaPago1.Text = form.FormaPago.FormaPagoId;
                         TxtConceptoPago1.Text = form.FormaPago.Descripcion.ToUpper();
+
+
+                        if (TxtPago1.Text.Trim().Length == 0)
+                            formaPago1 = null;
+                        if (TxtPago2.Text.Trim().Length == 0)
+                            formaPago2 = null;
+                        if (TxtPago3.Text.Trim().Length == 0)
+                            formaPago3 = null;
+
+                        formaPago1 = form.FormaPago;
                     }
                 }
             }
@@ -227,16 +366,23 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
                 return;
             }
 
-            if (tipoDoc.Equals("FAC") && Ambiente.Estacion.SolicitarFmpago)
+            if (true)
             {
-                using (var form = new FrmMetodoPago())
-                {
-                    if (form.ShowDialog() == DialogResult.OK)
-                        metodoPago = form.MetodoPago;
-                    else
-                        metodoPago = "PUE";
-                }
+
             }
+            //if (tipoDoc.Equals("FAC") && Ambiente.Estacion.SolicitarFmpago)
+            //{
+            //    using (var form = new FrmMetodoPago())
+            //    {
+            //        if (form.ShowDialog() == DialogResult.OK)
+            //            metodoPago = form.MetodoPago;
+            //        else
+            //            metodoPago = "PUE";
+            //    }
+            //}
+
+
+
             CobroConPuntos = ChkCobrarConPtos.Checked;
             totalLetra = moneda.Convertir(total.ToString(), true);
             DialogResult = DialogResult.OK;
@@ -245,32 +391,32 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
 
         private void TxtFormaPago1_TextChanged(object sender, EventArgs e)
         {
-            formapago1 = TxtFormaPago1.Text.Trim();
+            // formapago1 = TxtFormaPago1.Text.Trim();
         }
 
         private void TxtFormaPago2_TextChanged(object sender, EventArgs e)
         {
-            formapago2 = TxtFormaPago2.Text.Trim();
+            // formapago2 = TxtFormaPago2.Text.Trim();
         }
 
         private void TxtFormaPago3_TextChanged(object sender, EventArgs e)
         {
-            formapago3 = TxtFormaPago3.Text.Trim();
+            //formapago3 = TxtFormaPago3.Text.Trim();
         }
 
         private void TxtConceptoPago1_TextChanged(object sender, EventArgs e)
         {
-            concepto1 = TxtConceptoPago1.Text.Trim();
+            // concepto1 = TxtConceptoPago1.Text.Trim();
         }
 
         private void TxtConceptoPago2_TextChanged(object sender, EventArgs e)
         {
-            concepto2 = TxtConceptoPago2.Text.Trim();
+            // concepto2 = TxtConceptoPago2.Text.Trim();
         }
 
         private void TxtConceptoPago3_TextChanged(object sender, EventArgs e)
         {
-            concepto3 = TxtConceptoPago3.Text.Trim();
+            // concepto3 = TxtConceptoPago3.Text.Trim();
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)

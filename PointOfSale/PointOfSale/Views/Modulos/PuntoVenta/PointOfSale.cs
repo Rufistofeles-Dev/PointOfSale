@@ -353,13 +353,13 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
             venta.TotalConLetra = new Moneda().Convertir(venta.Total.ToString(), true);
             venta.EsCxc = form.Cxc;
 
-            venta.FormaPago1 = form.formapago1;
-            venta.FormaPago2 = form.formapago2;
-            venta.FormaPago3 = form.formapago3;
+            venta.FormaPago1 = form.formaPago1 == null ? "01" : form.formaPago1.FormaPagoId;
+            venta.FormaPago2 = form.formaPago2 == null ? null : form.formaPago2.FormaPagoId;
+            venta.FormaPago3 = form.formaPago2 == null ? null : form.formaPago3.FormaPagoId;
 
-            venta.ConceptoPago1 = form.concepto1;
-            venta.ConceptoPago2 = form.concepto2;
-            venta.ConceptoPago3 = form.concepto3;
+            venta.ConceptoPago1 = form.formaPago1 == null ? "EFECTIVO" : form.formaPago1.Descripcion;
+            venta.ConceptoPago2 = form.formaPago1 == null ? null : form.formaPago2.Descripcion;
+            venta.ConceptoPago3 = form.formaPago1 == null ? null : form.formaPago3.Descripcion;
 
             venta.Pago1 = form.pago1;
             venta.Pago2 = form.pago2;
@@ -560,68 +560,73 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
         }
         private void AfectaFlujo()
         {
-            Flujo flujo = new Flujo();
 
-            flujo.ConceptoIngresoId = "CLIEN";
-            flujo.EntradaSalida = "E";
-            flujo.Importe = venta.Pago1;
-            flujo.EstacionId = Ambiente.Estacion.EstacionId;
-            flujo.VentaOrigen = venta.VentaId;
-            flujo.Cortado = false;
-            flujo.ConceptoImporteId = venta.ConceptoPago1;
-            flujo.CreatedAt = DateTime.Now;
-            flujo.CreatedBy = Ambiente.LoggedUser.UsuarioId;
-            flujoController.InsertOne(flujo);
-            if (venta.Cambio != null)
+
+            if (venta.ConceptoPago1 != null)
             {
-                if (venta.Cambio > 0)
-                {
-                    flujo = new Flujo();
-                    flujo.ConceptoEgresoId = "CAM";
-                    flujo.EntradaSalida = "S";
-                    flujo.Importe = (decimal)venta.Cambio;
-                    flujo.EstacionId = Ambiente.Estacion.EstacionId;
-                    flujo.VentaOrigen = venta.VentaId;
-                    flujo.Cortado = false;
-                    flujo.ConceptoImporteId = "CAM";
-                    flujo.CreatedAt = DateTime.Now;
-                    flujo.CreatedBy = Ambiente.LoggedUser.UsuarioId;
-                    flujoController.InsertOne(flujo);
-                }
-            }
-
-            if (venta.ConceptoPago2 != null)
-            {
-                flujo = new Flujo();
-
-                flujo.ConceptoIngresoId = "CLIEN";
-                flujo.EntradaSalida = "E";
-                flujo.Importe = venta.Pago2;
+                Flujo flujo = new Flujo();
+                flujo.ConceptoId = venta.TipoDocId;
                 flujo.EstacionId = Ambiente.Estacion.EstacionId;
-                flujo.VentaOrigen = venta.VentaId;
-                flujo.Cortado = false;
-                flujo.ConceptoImporteId = venta.ConceptoPago2;
+                flujo.ConceptoPagoId = venta.ConceptoPago1;
+                flujo.Referencia = venta.VentaId;
+                flujo.Referenciap = "NULL";
+                flujo.Es = "E";
+                flujo.Importe = venta.Pago1;
                 flujo.CreatedAt = DateTime.Now;
                 flujo.CreatedBy = Ambiente.LoggedUser.UsuarioId;
+                flujo.IsDeleted = false;
+                flujoController.InsertOne(flujo);
+            }
+            if (venta.ConceptoPago2 != null)
+            {
+                Flujo flujo = new Flujo();
+                flujo.ConceptoId = venta.TipoDocId;
+                flujo.EstacionId = Ambiente.Estacion.EstacionId;
+                flujo.ConceptoPagoId = venta.ConceptoPago2;
+                flujo.Referencia = venta.VentaId;
+                flujo.Referenciap = "NULL";
+                flujo.Es = "E";
+                flujo.Importe = venta.Pago2;
+                flujo.CreatedAt = DateTime.Now;
+                flujo.CreatedBy = Ambiente.LoggedUser.UsuarioId;
+                flujo.IsDeleted = false;
                 flujoController.InsertOne(flujo);
             }
 
             if (venta.ConceptoPago3 != null)
             {
-                flujo = new Flujo();
-
-                flujo.ConceptoIngresoId = "CLIEN";
-                flujo.EntradaSalida = "E";
-                flujo.Importe = venta.Pago3;
+                Flujo flujo = new Flujo();
+                flujo.ConceptoId = venta.TipoDocId;
                 flujo.EstacionId = Ambiente.Estacion.EstacionId;
-                flujo.VentaOrigen = venta.VentaId;
-                flujo.Cortado = false;
-                flujo.ConceptoImporteId = venta.ConceptoPago3;
+                flujo.ConceptoPagoId = venta.ConceptoPago3;
+                flujo.Referencia = venta.VentaId;
+                flujo.Referenciap = "NULL";
+                flujo.Es = "E";
+                flujo.Importe = venta.Pago3;
                 flujo.CreatedAt = DateTime.Now;
                 flujo.CreatedBy = Ambiente.LoggedUser.UsuarioId;
+                flujo.IsDeleted = false;
                 flujoController.InsertOne(flujo);
             }
 
+            if (venta.Cambio != null)
+            {
+                if (venta.Cambio > 0)
+                {
+                    Flujo flujo = new Flujo();
+                    flujo.ConceptoId = venta.TipoDocId;
+                    flujo.EstacionId = Ambiente.Estacion.EstacionId;
+                    flujo.ConceptoPagoId = "CAM";
+                    flujo.Referencia = venta.VentaId;
+                    flujo.Referenciap = "NULL";
+                    flujo.Es = "S";
+                    flujo.Importe = (decimal)venta.Cambio;
+                    flujo.CreatedAt = DateTime.Now;
+                    flujo.CreatedBy = Ambiente.LoggedUser.UsuarioId;
+                    flujo.IsDeleted = false;
+                    flujoController.InsertOne(flujo);
+                }
+            }
 
 
 
@@ -1010,7 +1015,7 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
             if (venta.Total > 0)
             {
 
-                using (var form = new FrmCobroRapido(venta.Total))
+                using (var form = new FrmCobroRapido(venta.Total, cliente))
                 {
                     if (form.ShowDialog() == DialogResult.OK)
                     {

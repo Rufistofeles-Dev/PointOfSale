@@ -565,18 +565,18 @@ namespace PointOfSale.Controllers.EvironmentController
 
                 using (var db = new DymContext())
                 {
-                    if (todasLasFechas)
-                    {
-                        ingresos = db.Flujo.Where(x => x.EntradaSalida.Equals("E")).ToList();
-                        egresos = db.Flujo.Where(x => x.EntradaSalida.Equals("S")).ToList();
+                    //if (todasLasFechas)
+                    //{
+                    //    ingresos = db.Flujo.Where(x => x.EntradaSalida.Equals("E")).ToList();
+                    //    egresos = db.Flujo.Where(x => x.EntradaSalida.Equals("S")).ToList();
 
-                    }
-                    else
-                    {
-                        ingresos = db.Flujo.Where(x => x.EntradaSalida.Equals("E") && (x.CreatedAt.Date >= inicial && x.CreatedAt <= final)).ToList();
-                        egresos = db.Flujo.Where(x => x.EntradaSalida.Equals("S") && (x.CreatedAt.Date >= inicial && x.CreatedAt <= final)).ToList();
+                    //}
+                    //else
+                    //{
+                    //    ingresos = db.Flujo.Where(x => x.EntradaSalida.Equals("E") && (x.CreatedAt.Date >= inicial && x.CreatedAt <= final)).ToList();
+                    //    egresos = db.Flujo.Where(x => x.EntradaSalida.Equals("S") && (x.CreatedAt.Date >= inicial && x.CreatedAt <= final)).ToList();
 
-                    }
+                    //}
 
                 }
 

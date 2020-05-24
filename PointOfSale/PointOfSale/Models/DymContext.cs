@@ -1246,13 +1246,13 @@ namespace PointOfSale.Models
 
             modelBuilder.Entity<Flujo>(entity =>
             {
-                entity.Property(e => e.ConceptoEgresoId).HasMaxLength(50);
-
-                entity.Property(e => e.ConceptoImporteId)
+                entity.Property(e => e.ConceptoId)
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.ConceptoIngresoId).HasMaxLength(50);
+                entity.Property(e => e.ConceptoPagoId)
+                    .IsRequired()
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.CreatedAt).HasColumnType("datetime");
 
@@ -1260,26 +1260,25 @@ namespace PointOfSale.Models
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.EntradaSalida)
+                entity.Property(e => e.Es)
                     .IsRequired()
+                    .HasColumnName("ES")
                     .HasMaxLength(1);
 
                 entity.Property(e => e.EstacionId)
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.Importe).HasColumnType("decimal(18, 2)");
+                entity.Property(e => e.Importe).HasColumnType("decimal(18, 6)");
 
-                entity.Property(e => e.RefBancaria).HasMaxLength(50);
+                entity.Property(e => e.Referenciap)
+                    .IsRequired()
+                    .HasMaxLength(10);
 
-                entity.HasOne(d => d.ConceptoEgreso)
+                entity.HasOne(d => d.Concepto)
                     .WithMany(p => p.Flujo)
-                    .HasForeignKey(d => d.ConceptoEgresoId)
-                    .HasConstraintName("FK_Flujo_ConceptoEgreso");
-
-                entity.HasOne(d => d.ConceptoIngreso)
-                    .WithMany(p => p.Flujo)
-                    .HasForeignKey(d => d.ConceptoIngresoId)
+                    .HasForeignKey(d => d.ConceptoId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Flujo_ConceptoIngreso");
             });
 
