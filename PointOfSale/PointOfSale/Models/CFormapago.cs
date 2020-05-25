@@ -13,6 +13,7 @@ namespace PointOfSale.Models
         public string FormaPagoId { get; set; }
         public string Descripcion { get; set; }
         public string Bancarizado { get; set; }
+        public bool AfectaCorte { get; set; }
 
         public virtual ICollection<Cliente> Cliente { get; set; }
     }

@@ -30,9 +30,10 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
 
         public bool Cxc;
         public Cliente cliente;
-        public FormaPago formaPago1;
-        public FormaPago formaPago2;
-        public FormaPago formaPago3;
+        public CFormapago formaPago1 { get; set; }
+        public CFormapago formaPago2 { get; set; }
+        public CFormapago formaPago3 { get; set; }
+        
         public CMetodopago metodoPago;
         public FormaPagoController formaPagoController;
 

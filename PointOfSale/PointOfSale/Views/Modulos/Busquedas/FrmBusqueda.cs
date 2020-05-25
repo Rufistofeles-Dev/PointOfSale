@@ -28,7 +28,7 @@ namespace PointOfSale.Views.Modulos.Busquedas
         public Presentacion Presentacion;
         public UnidadMedida UnidadMedida;
         public Usuario Usuario;
-        public FormaPago FormaPago;
+        public CFormapago FormaPago;
         public CMetodopago MetodoPago;
         public CUsocfdi Usocfdi;
         public Venta Venta;
@@ -229,7 +229,7 @@ namespace PointOfSale.Views.Modulos.Busquedas
                 case (int)Ambiente.TipoBusqueda.FormaPago:
                     using (var db = new DymContext())
                     {
-                        Grid1.DataSource = db.FormaPago.AsNoTracking().Where(x => x.Descripcion.Contains(SearchText)).OrderBy(x => x.Descripcion).
+                        Grid1.DataSource = db.CFormapago.AsNoTracking().Where(x => x.Descripcion.Contains(SearchText)).OrderBy(x => x.Descripcion).
                             Select(x => new { x.FormaPagoId, x.Descripcion }).ToList();
 
 
@@ -481,8 +481,8 @@ namespace PointOfSale.Views.Modulos.Busquedas
                 case (int)Ambiente.TipoBusqueda.FormaPago:
                     using (var db = new DymContext())
                     {
-                        FormaPago = db.FormaPago.Where(x => x.FormaPagoId ==
-                    Grid1.Rows[Grid1.CurrentCell.RowIndex].Cells[0].Value.ToString().Trim()).FirstOrDefault();
+                        FormaPago = db.CFormapago.Where(x => x.FormaPagoId.Equals(
+                    Grid1.Rows[Grid1.CurrentCell.RowIndex].Cells[0].Value.ToString().Trim())).FirstOrDefault();
                     }
                     break;
                 case (int)Ambiente.TipoBusqueda.UsoCDFI:

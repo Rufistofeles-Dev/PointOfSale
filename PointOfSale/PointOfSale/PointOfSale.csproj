@@ -524,7 +524,6 @@
     <Compile Include="Models\Estado.cs" />
     <Compile Include="Models\EstadoDoc.cs" />
     <Compile Include="Models\Flujo.cs" />
-    <Compile Include="Models\FormaPago.cs" />
     <Compile Include="Models\Impuesto.cs" />
     <Compile Include="Models\Informe.cs" />
     <Compile Include="Models\InformeCategoria.cs" />

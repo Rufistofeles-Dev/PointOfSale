@@ -56,7 +56,6 @@ namespace PointOfSale.Models
         public virtual DbSet<Estado> Estado { get; set; }
         public virtual DbSet<EstadoDoc> EstadoDoc { get; set; }
         public virtual DbSet<Flujo> Flujo { get; set; }
-        public virtual DbSet<FormaPago> FormaPago { get; set; }
         public virtual DbSet<Impuesto> Impuesto { get; set; }
         public virtual DbSet<Informe> Informe { get; set; }
         public virtual DbSet<InformeCategoria> InformeCategoria { get; set; }
@@ -533,13 +532,7 @@ namespace PointOfSale.Models
                     .WithMany(p => p.Cliente)
                     .HasForeignKey(d => d.FormaPagoId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Cliente_C_Formapago");
-
-                entity.HasOne(d => d.FormaPagoNavigation)
-                    .WithMany(p => p.Cliente)
-                    .HasForeignKey(d => d.FormaPagoId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Cliente_FormaPago");
+                    .HasConstraintName("FK_Cliente_C_Formapago1");
 
                 entity.HasOne(d => d.MetodoPago)
                     .WithMany(p => p.Cliente)
@@ -1280,17 +1273,18 @@ namespace PointOfSale.Models
                     .HasForeignKey(d => d.ConceptoId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Flujo_ConceptoIngreso");
-            });
 
-            modelBuilder.Entity<FormaPago>(entity =>
-            {
-                entity.Property(e => e.FormaPagoId)
-                    .HasMaxLength(5)
-                    .ValueGeneratedNever();
+                entity.HasOne(d => d.CreatedByNavigation)
+                    .WithMany(p => p.Flujo)
+                    .HasForeignKey(d => d.CreatedBy)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Flujo_Usuario");
 
-                entity.Property(e => e.Descripcion)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.HasOne(d => d.Estacion)
+                    .WithMany(p => p.Flujo)
+                    .HasForeignKey(d => d.EstacionId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Flujo_Estacion");
             });
 
             modelBuilder.Entity<Impuesto>(entity =>

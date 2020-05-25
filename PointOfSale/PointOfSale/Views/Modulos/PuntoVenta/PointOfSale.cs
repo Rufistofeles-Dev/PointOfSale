@@ -39,6 +39,7 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
         private MovInvController movInvController;
         private FlujoController flujoController;
         private ReporteController reporteController;
+        private FormaPagoController formaPagoController;
         private Reporte reporteTickets;
         private DymErrorController dymErrorController;
 
@@ -262,6 +263,7 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
             flujoController = new FlujoController();
             reporteController = new ReporteController();
             dymErrorController = new DymErrorController();
+            formaPagoController = new FormaPagoController();
             oCFDI = new CFDI();
             lote = null;
             TxtProductoId.Focus();
@@ -367,7 +369,7 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
             venta.Cambio = form.cambio;
             venta.EstadoDocId = "CON";
 
-           
+
 
 
             if (ventaController.UpdateOne(venta))
@@ -378,7 +380,7 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
                 LblUltDocumento.Text = "TICKET " + venta.NoRef + " " + DateTime.Now.ToShortTimeString();
                 LblCambio.Text = "SU CAMBIO: " + Ambiente.FDinero(venta.Cambio.ToString());
 
-                AfectaFlujo();
+                AfectaFlujo(form);
                 AfectaMovsInv();
                 AfectaStock();
 
@@ -559,7 +561,7 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
                 Ambiente.CancelaProceso = !movInvController.InsertOne(movInv);
             }
         }
-        private void AfectaFlujo()
+        private void AfectaFlujo(FrmCobroRapido form)
         {
 
 
@@ -569,6 +571,12 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
                 flujo.ConceptoId = venta.TipoDocId;
                 flujo.EstacionId = Ambiente.Estacion.EstacionId;
                 flujo.ConceptoPagoId = venta.ConceptoPago1;
+
+                if (form.formaPago1 == null)
+                    flujo.AfectaCorte = formaPagoController.SelectOneByName(venta.ConceptoPago1).AfectaCorte;
+                else
+                    flujo.AfectaCorte = form.formaPago1.AfectaCorte;
+
                 flujo.Referencia = venta.VentaId;
                 flujo.Referenciap = "NULL";
                 flujo.Es = "E";
@@ -584,6 +592,10 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
                 flujo.ConceptoId = venta.TipoDocId;
                 flujo.EstacionId = Ambiente.Estacion.EstacionId;
                 flujo.ConceptoPagoId = venta.ConceptoPago2;
+                if (form.formaPago2 == null)
+                    flujo.AfectaCorte = formaPagoController.SelectOneByName(venta.ConceptoPago2).AfectaCorte;
+                else
+                    flujo.AfectaCorte = form.formaPago2.AfectaCorte;
                 flujo.Referencia = venta.VentaId;
                 flujo.Referenciap = "NULL";
                 flujo.Es = "E";
@@ -600,6 +612,10 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
                 flujo.ConceptoId = venta.TipoDocId;
                 flujo.EstacionId = Ambiente.Estacion.EstacionId;
                 flujo.ConceptoPagoId = venta.ConceptoPago3;
+                if (form.formaPago3 == null)
+                    flujo.AfectaCorte = formaPagoController.SelectOneByName(venta.ConceptoPago3).AfectaCorte;
+                else
+                    flujo.AfectaCorte = form.formaPago3.AfectaCorte;
                 flujo.Referencia = venta.VentaId;
                 flujo.Referenciap = "NULL";
                 flujo.Es = "E";
@@ -618,6 +634,7 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
                     flujo.ConceptoId = venta.TipoDocId;
                     flujo.EstacionId = Ambiente.Estacion.EstacionId;
                     flujo.ConceptoPagoId = "CAM";
+                    flujo.AfectaCorte = false;
                     flujo.Referencia = venta.VentaId;
                     flujo.Referenciap = "NULL";
                     flujo.Es = "S";
@@ -723,6 +740,11 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
 
 
             partida.Precio = SeleccionaPrecio(producto, cliente);
+            if (partida.Precio == 0)
+            {
+                Ambiente.Mensaje("Proceso abortado, el precio del artículo no puede ser cero.  \n ARTÍCULO: " + producto.ProductoId + " Verifique los precios del artículo y el precio asignado al cliente");
+                return;
+            }
             partida.Impuesto1 = Ambiente.GetTasaImpuesto(producto.Impuesto1Id);
             partida.Impuesto2 = Ambiente.GetTasaImpuesto(producto.Impuesto2Id);
 

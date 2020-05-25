@@ -15,7 +15,7 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
 {
     public partial class FrmFormaPago : Form
     {
-        public FormaPago formapago;
+        public CFormapago formapago;
 
         public FrmFormaPago()
         {

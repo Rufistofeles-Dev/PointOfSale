@@ -41,7 +41,6 @@ namespace PointOfSale.Models
         public decimal DineroElectronico { get; set; }
 
         public virtual CFormapago FormaPago { get; set; }
-        public virtual FormaPago FormaPagoNavigation { get; set; }
         public virtual CMetodopago MetodoPago { get; set; }
         public virtual CUsocfdi UsoCfdi { get; set; }
         public virtual ICollection<Punto> Punto { get; set; }

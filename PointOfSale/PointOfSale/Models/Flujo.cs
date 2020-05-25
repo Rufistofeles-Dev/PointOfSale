@@ -16,7 +16,10 @@ namespace PointOfSale.Models
         public DateTime CreatedAt { get; set; }
         public string CreatedBy { get; set; }
         public bool IsDeleted { get; set; }
+        public bool AfectaCorte { get; set; }
 
         public virtual ConceptoIngreso Concepto { get; set; }
+        public virtual Usuario CreatedByNavigation { get; set; }
+        public virtual Estacion Estacion { get; set; }
     }
 }

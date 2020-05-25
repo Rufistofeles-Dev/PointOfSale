@@ -31,7 +31,7 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
         private Cliente cliente;
         private CUsocfdi usocfdi;
         private CMetodopago metodoPago;
-        private FormaPago formaPago;
+        private CFormapago formaPago;
 
         private Venta venta;
         private List<Ventap> partidas;

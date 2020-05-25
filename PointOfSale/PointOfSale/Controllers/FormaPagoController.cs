@@ -10,7 +10,7 @@ namespace PointOfSale.Controllers
 {
     public class FormaPagoController
     {
-        public bool Delete(FormaPago o)
+        public bool Delete(CFormapago o)
         {
             try
             {
@@ -33,7 +33,7 @@ namespace PointOfSale.Controllers
             {
                 using (var db = new DymContext())
                 {
-                    var temp = db.FormaPago.FirstOrDefault(x => x.FormaPagoId == Id);
+                    var temp = db.CFormapago.FirstOrDefault(x => x.FormaPagoId == Id);
                     if (temp != null)
                     {
 
@@ -49,7 +49,7 @@ namespace PointOfSale.Controllers
             return false;
         }
 
-        public bool InsertOne(FormaPago o)
+        public bool InsertOne(CFormapago o)
         {
             try
             {
@@ -66,7 +66,7 @@ namespace PointOfSale.Controllers
             return false;
         }
 
-        public bool InsertRange(List<FormaPago> lista)
+        public bool InsertRange(List<CFormapago> lista)
         {
             try
             {
@@ -83,13 +83,13 @@ namespace PointOfSale.Controllers
             return false;
         }
 
-        public List<FormaPago> SelectAll()
+        public List<CFormapago> SelectAll()
         {
             try
             {
                 using (var db = new DymContext())
                 {
-                    return db.FormaPago.ToList();
+                    return db.CFormapago.ToList();
                 }
             }
             catch (Exception ex)
@@ -99,13 +99,13 @@ namespace PointOfSale.Controllers
             return null;
         }
 
-        public List<FormaPago> SelectMany(int cantidad)
+        public List<CFormapago> SelectMany(int cantidad)
         {
             try
             {
                 using (var db = new DymContext())
                 {
-                    return db.FormaPago.Take(cantidad).ToList();
+                    return db.CFormapago.Take(cantidad).ToList();
                 }
             }
             catch (Exception ex)
@@ -115,13 +115,28 @@ namespace PointOfSale.Controllers
             return null;
         }
 
-        public FormaPago SelectOne(string Id)
+        public CFormapago SelectOne(string Id)
         {
             try
             {
                 using (var db = new DymContext())
                 {
-                    return db.FormaPago.FirstOrDefault(x => x.FormaPagoId == Id);
+                    return db.CFormapago.FirstOrDefault(x => x.FormaPagoId == Id);
+                }
+            }
+            catch (Exception ex)
+            {
+                Ambiente.Mensaje("Algo salio mal con: " + MethodBase.GetCurrentMethod().Name + "@" + GetType().Name + "\n" + ex.ToString());
+            }
+            return null;
+        }
+        public CFormapago SelectOneByName(string Id)
+        {
+            try
+            {
+                using (var db = new DymContext())
+                {
+                    return db.CFormapago.FirstOrDefault(x => x.Descripcion == Id.Trim());
                 }
             }
             catch (Exception ex)
@@ -131,13 +146,13 @@ namespace PointOfSale.Controllers
             return null;
         }
 
-        public List<FormaPago> SelectOneOverList(string Id)
+        public List<CFormapago> SelectOneOverList(string Id)
         {
             try
             {
                 using (var db = new DymContext())
                 {
-                    return db.FormaPago.Where(x => x.FormaPagoId == Id).ToList();
+                    return db.CFormapago.Where(x => x.FormaPagoId == Id).ToList();
                 }
             }
             catch (Exception ex)
@@ -147,7 +162,7 @@ namespace PointOfSale.Controllers
             return null;
         }
 
-        public bool Update(FormaPago o)
+        public bool Update(CFormapago o)
         {
             try
             {
@@ -164,6 +179,6 @@ namespace PointOfSale.Controllers
             return false;
         }
 
-    
+
     }
 }

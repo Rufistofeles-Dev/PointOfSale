@@ -123,7 +123,10 @@ namespace PointOfSale.Views.Modulos.Catalogos
                 }
 
                 if (proveedorController.InsertOne(objeto))
+                {
                     Ambiente.Mensaje(Ambiente.CatalgoMensajes[3]);
+                    Close();
+                }
                 else
                     Ambiente.Mensaje(Ambiente.CatalgoMensajes[-1] + "@" + GetType().Name);
             }
@@ -160,7 +163,10 @@ namespace PointOfSale.Views.Modulos.Catalogos
                 }
 
                 if (proveedorController.Update(objeto))
+                {
                     Ambiente.Mensaje(Ambiente.CatalgoMensajes[3]);
+                    Close();
+                }
                 else
                     Ambiente.Mensaje(Ambiente.CatalgoMensajes[-1] + "@" + GetType().Name);
             }
