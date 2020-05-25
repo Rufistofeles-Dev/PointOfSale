@@ -44,10 +44,11 @@ namespace PointOfSale.Views.Menus
                 Ambiente.stiReport = new StiReport();
                 Ambiente.stiReport.LoadPackedReportFromString(Ambiente.InformeCorte.Codigo);
 
-                Ambiente.stiReport.Dictionary.Variables["FechaSistema"].ValueObject = DateTime.Now.Date;
+                Ambiente.stiReport.Dictionary.Variables["Finicial"].ValueObject = DateTime.Now.Date;
+                Ambiente.stiReport.Dictionary.Variables["Ffinal"].ValueObject = DateTime.Now.Date;
                 Ambiente.stiReport.Dictionary.Variables["UsuarioId"].ValueObject = Ambiente.LoggedUser.UsuarioId;
-                Ambiente.stiReport.Dictionary.Variables["Creador"].ValueObject = Ambiente.LoggedUser.Nombre;
-                Ambiente.stiReport.Dictionary.Variables["Estacion"].ValueObject = Ambiente.Estacion.EstacionId;
+                //Ambiente.stiReport.Dictionary.Variables["Creador"].ValueObject = Ambiente.LoggedUser.Nombre;
+                //Ambiente.stiReport.Dictionary.Variables["Estacion"].ValueObject = Ambiente.Estacion.EstacionId;
                 Ambiente.S1 = Ambiente.Empresa.DirectorioCortes + "CORTE " + Ambiente.LoggedUser.Nombre + "_" + Ambiente.TimeText(DateTime.Now) + ".PDF"; ;
                 Ambiente.stiReport.Render(true);
 
