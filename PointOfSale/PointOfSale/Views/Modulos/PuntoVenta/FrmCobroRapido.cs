@@ -176,7 +176,7 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
                                 }
                             }
 
-                           
+
                             TxtPago3.Enabled = true;
                         }
                         TxtFormaPago3.Text = form.FormaPago.FormaPagoId;
@@ -309,7 +309,12 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
 
 
                         if (TxtPago1.Text.Trim().Length == 0)
+                        {
                             formaPago1 = null;
+                            // TxtFormaPago1.Text = "";
+                            //TxtConceptoPago1.Text = "";
+                        }
+
                         if (TxtPago2.Text.Trim().Length == 0)
                             formaPago2 = null;
                         if (TxtPago3.Text.Trim().Length == 0)
@@ -366,9 +371,23 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
                 return;
             }
 
-            if (true)
+            if (!(TxtPago1.Text.Trim().Length > 0 && formaPago1 != null))
             {
-
+                Ambiente.Mensaje("Busque y seleccione la forma de pago 1");
+                DialogResult = DialogResult.Cancel;
+                return;
+            }
+            if (!(TxtPago2.Text.Trim().Length > 0 && formaPago2 != null))
+            {
+                Ambiente.Mensaje("Busque y seleccione la forma de pago 2");
+                DialogResult = DialogResult.Cancel;
+                return;
+            }
+            if (!(TxtPago3.Text.Trim().Length > 0 && formaPago3 != null))
+            {
+                Ambiente.Mensaje("Busque y seleccione la forma de pago 3");
+                DialogResult = DialogResult.Cancel;
+                return;
             }
             //if (tipoDoc.Equals("FAC") && Ambiente.Estacion.SolicitarFmpago)
             //{

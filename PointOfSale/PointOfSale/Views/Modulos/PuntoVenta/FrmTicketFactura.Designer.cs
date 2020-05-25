@@ -31,9 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.Malla = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnAceptar = new System.Windows.Forms.Button();
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.TxtNoRereren = new System.Windows.Forms.TextBox();
@@ -46,6 +43,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.TxtCliente = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Malla)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,6 +71,7 @@
             this.Malla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Malla.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
+            this.Column4,
             this.Column3,
             this.Column2});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -87,23 +89,6 @@
             this.Malla.Size = new System.Drawing.Size(612, 122);
             this.Malla.TabIndex = 274;
             this.Malla.TabStop = false;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "TICKET";
-            this.Column1.Name = "Column1";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "STATUS";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 70;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.HeaderText = "DATOS";
-            this.Column2.Name = "Column2";
             // 
             // BtnAceptar
             // 
@@ -251,6 +236,32 @@
             this.label5.TabIndex = 293;
             this.label5.Text = "♥CLIENTE";
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "TICKET";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "IMPORTE";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "STATUS";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 70;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.HeaderText = "DATOS";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
             // FrmTicketFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -296,6 +307,7 @@
         private System.Windows.Forms.TextBox TxtCliente;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }

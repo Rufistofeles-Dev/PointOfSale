@@ -355,11 +355,11 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
 
             venta.FormaPago1 = form.formaPago1 == null ? "01" : form.formaPago1.FormaPagoId;
             venta.FormaPago2 = form.formaPago2 == null ? null : form.formaPago2.FormaPagoId;
-            venta.FormaPago3 = form.formaPago2 == null ? null : form.formaPago3.FormaPagoId;
+            venta.FormaPago3 = form.formaPago3 == null ? null : form.formaPago3.FormaPagoId;
 
             venta.ConceptoPago1 = form.formaPago1 == null ? "EFECTIVO" : form.formaPago1.Descripcion;
-            venta.ConceptoPago2 = form.formaPago1 == null ? null : form.formaPago2.Descripcion;
-            venta.ConceptoPago3 = form.formaPago1 == null ? null : form.formaPago3.Descripcion;
+            venta.ConceptoPago2 = form.formaPago2 == null ? null : form.formaPago2.Descripcion;
+            venta.ConceptoPago3 = form.formaPago3 == null ? null : form.formaPago3.Descripcion;
 
             venta.Pago1 = form.pago1;
             venta.Pago2 = form.pago2;
@@ -367,6 +367,7 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
             venta.Cambio = form.cambio;
             venta.EstadoDocId = "CON";
 
+           
 
 
             if (ventaController.UpdateOne(venta))

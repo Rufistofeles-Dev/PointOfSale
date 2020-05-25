@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace PointOfSale.Controllers
 {
-    public class MetodoPagoController
+    public class UsocfdiController
     {
-        public bool Delete(CMetodopago o)
+        public bool Delete(CUsocfdi o)
         {
             try
             {
@@ -33,7 +33,7 @@ namespace PointOfSale.Controllers
             {
                 using (var db = new DymContext())
                 {
-                    var temp = db.CMetodopago.FirstOrDefault(x => x.MetodoPagoId == Id);
+                    var temp = db.CUsocfdi.FirstOrDefault(x => x.UsoCfdiid == Id);
                     if (temp != null)
                     {
 
@@ -49,7 +49,7 @@ namespace PointOfSale.Controllers
             return false;
         }
 
-        public bool InsertOne(CMetodopago o)
+        public bool InsertOne(CUsocfdi o)
         {
             try
             {
@@ -66,7 +66,7 @@ namespace PointOfSale.Controllers
             return false;
         }
 
-        public bool InsertRange(List<CMetodopago> lista)
+        public bool InsertRange(List<CUsocfdi> lista)
         {
             try
             {
@@ -83,13 +83,13 @@ namespace PointOfSale.Controllers
             return false;
         }
 
-        public List<CMetodopago> SelectAll()
+        public List<CUsocfdi> SelectAll()
         {
             try
             {
                 using (var db = new DymContext())
                 {
-                    return db.CMetodopago.ToList();
+                    return db.CUsocfdi.ToList();
                 }
             }
             catch (Exception ex)
@@ -99,13 +99,13 @@ namespace PointOfSale.Controllers
             return null;
         }
 
-        public List<CMetodopago> SelectMany(int cantidad)
+        public List<CUsocfdi> SelectMany(int cantidad)
         {
             try
             {
                 using (var db = new DymContext())
                 {
-                    return db.CMetodopago.Take(cantidad).ToList();
+                    return db.CUsocfdi.Take(cantidad).ToList();
                 }
             }
             catch (Exception ex)
@@ -115,13 +115,13 @@ namespace PointOfSale.Controllers
             return null;
         }
 
-        public CMetodopago SelectOne(string Id)
+        public CUsocfdi SelectOne(string Id)
         {
             try
             {
                 using (var db = new DymContext())
                 {
-                    return db.CMetodopago.FirstOrDefault(x => x.MetodoPagoId == Id);
+                    return db.CUsocfdi.FirstOrDefault(x => x.UsoCfdiid == Id);
                 }
             }
             catch (Exception ex)
@@ -131,13 +131,13 @@ namespace PointOfSale.Controllers
             return null;
         }
 
-        public List<CMetodopago> SelectOneOverList(string Id)
+        public List<CUsocfdi> SelectOneOverList(string Id)
         {
             try
             {
                 using (var db = new DymContext())
                 {
-                    return db.CMetodopago.Where(x => x.MetodoPagoId == Id).ToList();
+                    return db.CUsocfdi.Where(x => x.UsoCfdiid == Id).ToList();
                 }
             }
             catch (Exception ex)
@@ -147,7 +147,7 @@ namespace PointOfSale.Controllers
             return null;
         }
 
-        public bool Update(CMetodopago o)
+        public bool Update(CUsocfdi o)
         {
             try
             {
@@ -163,6 +163,5 @@ namespace PointOfSale.Controllers
             }
             return false;
         }
-
     }
 }

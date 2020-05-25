@@ -19,15 +19,20 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
     {
         private VentaController ventaController;
         private VentapController ventapController;
-        private ClienteController clienteController;
         private EmpresaController empresaController;
         private ReporteController reporteController;
+
+        private ClienteController clienteController;
+        private MetodoPagoController metodoPagoController;
+        private FormaPagoController formaPagoController;
+        private UsocfdiController usocfdiController;
 
         private Empresa empresa;
         private Cliente cliente;
         private CUsocfdi usocfdi;
         private CMetodopago metodoPago;
         private FormaPago formaPago;
+
         private Venta venta;
         private List<Ventap> partidas;
         private StiReport report;
@@ -54,9 +59,14 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
         {
             ventaController = new VentaController();
             ventapController = new VentapController();
-            clienteController = new ClienteController();
             empresaController = new EmpresaController();
             reporteController = new ReporteController();
+
+            clienteController = new ClienteController();
+            metodoPagoController = new MetodoPagoController();
+            formaPagoController = new FormaPagoController();
+            usocfdiController = new UsocfdiController();
+
             partidas = new List<Ventap>();
             report = new StiReport();
             ds = new DataSet();
@@ -95,22 +105,21 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
             venta.Anulada = true;
             if (ventaController.UpdateOne(venta))
             {
-                if (!ChkMismoCliente.Checked)
+
+                if (cliente == null || formaPago == null || metodoPago == null || usocfdi == null)
                 {
-                    if (cliente == null || formaPago == null || metodoPago == null || usocfdi == null)
-                    {
-                        Ambiente.Mensaje("cliente || formaPago || metodoPago || usocfdi == null");
-                        venta.Anulada = false;
-                        ventaController.UpdateOne(venta);
-                        return false;
-                    }
-
-                    venta.ClienteId = cliente.ClienteId;
-                    venta.FormaPago1 = formaPago.FormaPagoId;
-                    venta.MetodoPago = metodoPago.MetodoPagoId;
-                    venta.UsoCfdi = usocfdi.UsoCfdiid;
-
+                    Ambiente.Mensaje("cliente || formaPago || metodoPago || usocfdi == null");
+                    venta.Anulada = false;
+                    ventaController.UpdateOne(venta);
+                    return false;
                 }
+
+                venta.ClienteId = cliente.ClienteId;
+                venta.FormaPago1 = formaPago.FormaPagoId;
+                venta.MetodoPago = metodoPago.MetodoPagoId;
+                venta.UsoCfdi = usocfdi.UsoCfdiid;
+
+
 
                 venta.NoRef = Ambiente.TraeSiguiente("FAC");
                 venta.VentaOrigen = venta.VentaId;
@@ -146,15 +155,23 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
         {
             if (venta != null)
             {
-                TxtCliente.Text = venta.ClienteId;
-                TxtUsoCFDI.Text = venta.UsoCfdi;
-                TxtFormaPago.Text = venta.FormaPago1;
-                TxtMetodoPago.Text = venta.MetodoPago;
+                cliente = clienteController.SelectOne(venta.ClienteId);
+                usocfdi = usocfdiController.SelectOne(venta.UsoCfdi);
+                formaPago = formaPagoController.SelectOne(venta.FormaPago1);
+                metodoPago = metodoPagoController.SelectOne(venta.MetodoPago);
+
+
+                TxtCliente.Text = cliente == null ? "" : cliente.RazonSocial.Trim().Equals("") ? cliente.Negocio : cliente.RazonSocial.Trim();
+                TxtUsoCFDI.Text = usocfdi == null ? "" : usocfdi.Descripcion;
+                TxtFormaPago.Text = formaPago == null ? "" : formaPago.Descripcion; ;
+                TxtMetodoPago.Text = metodoPago == null ? "" : metodoPago.Descripcion;
+
                 Malla.Rows.Clear();
                 Malla.Rows.Add();
                 Malla.Rows[Malla.RowCount - 1].Cells[0].Value = venta.NoRef;
-                Malla.Rows[Malla.RowCount - 1].Cells[1].Value = venta.EstadoDocId;
-                Malla.Rows[Malla.RowCount - 1].Cells[2].Value = venta.DatosCliente;
+                Malla.Rows[Malla.RowCount - 1].Cells[1].Value = venta.Total;
+                Malla.Rows[Malla.RowCount - 1].Cells[2].Value = venta.EstadoDocId;
+                Malla.Rows[Malla.RowCount - 1].Cells[3].Value = venta.DatosCliente;
             }
             else
             {
@@ -238,9 +255,10 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
 
             if (venta == null)
             {
-                Ambiente.Mensaje("Proceso abortado, no se encontró ninguna venta seleccionada");
+                Ambiente.Mensaje("Proceso abortado, no se encontró ninguna ticket seleccionado");
                 return;
             }
+
             //Si no seleccionó otro cliente, se recupera el de la venta
             if (cliente == null)
                 cliente = clienteController.SelectOne(venta.ClienteId);

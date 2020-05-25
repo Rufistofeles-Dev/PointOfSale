@@ -474,6 +474,7 @@
     <Compile Include="Controllers\TraspasoController.cs" />
     <Compile Include="Controllers\TraspasopController.cs" />
     <Compile Include="Controllers\UnidadMedidaController.cs" />
+    <Compile Include="Controllers\UsocfdiController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\Utils\Moneda.cs" />
     <Compile Include="Controllers\VentaController.cs" />
