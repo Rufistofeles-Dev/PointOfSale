@@ -427,9 +427,6 @@ namespace PointOfSale.Controllers
                 Mensaje(ex.ToString());
                 Mensaje("Falló el envío");
             }
-
-
-
         }
 
         public static List<Traspasop> SerializaPD(string path)
