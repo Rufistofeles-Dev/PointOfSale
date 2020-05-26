@@ -260,5 +260,34 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
             if (!Worker.IsBusy)
                 Worker.RunWorkerAsync();
         }
+
+       
+        private void Enviar()
+        {
+            if (Malla.RowCount == 0)
+                return;
+
+            int ventaId = (int)Malla.Rows[Malla.CurrentCell.RowIndex].Cells[0].Value;
+            if (ventaId > 0)
+            {
+                var venta = ventaController.SelectOne(ventaId);
+                var cliente = clienteController.SelectOne(venta.ClienteId);
+                if (venta != null)
+                {
+                    if (Ambiente.Pregunta("Confirma el envío para " + cliente.Correo))
+                        Ambiente.EnviarFactura(Ambiente.Empresa, venta, cliente.Correo);
+                }
+                else
+                {
+                    Ambiente.Mensaje("Primero selecciona una venta");
+                }
+            }
+
+        }
+
+        private void BtnEnviar_Click(object sender, EventArgs e)
+        {
+            Enviar();
+        }
     }
 }

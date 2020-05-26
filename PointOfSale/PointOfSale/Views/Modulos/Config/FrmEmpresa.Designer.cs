@@ -36,6 +36,9 @@
             this.ChkGuardarDescStd = new System.Windows.Forms.CheckBox();
             this.BtnUpdateDb = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.TxtDirectorioInformesInvetarios = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.BtnInvetarios = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.BtnMicroPvDb = new System.Windows.Forms.Button();
             this.TxtMicropvdb = new System.Windows.Forms.TextBox();
@@ -101,14 +104,25 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.TxtDirectorioInformesInvetarios = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.BtnInvetarios = new System.Windows.Forms.Button();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.TxtPassEmailEnvios = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.TxtPuerto = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.TxtMensajeStd = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.TxtAsuntoStd = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.TxtEmailEnvios = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.TxtSmtpClient = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.tabPage5.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // label13
@@ -231,6 +245,40 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Directorios y formatos";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // TxtDirectorioInformesInvetarios
+            // 
+            this.TxtDirectorioInformesInvetarios.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtDirectorioInformesInvetarios.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtDirectorioInformesInvetarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.TxtDirectorioInformesInvetarios.ForeColor = System.Drawing.Color.Black;
+            this.TxtDirectorioInformesInvetarios.Location = new System.Drawing.Point(360, 269);
+            this.TxtDirectorioInformesInvetarios.Name = "TxtDirectorioInformesInvetarios";
+            this.TxtDirectorioInformesInvetarios.ReadOnly = true;
+            this.TxtDirectorioInformesInvetarios.Size = new System.Drawing.Size(284, 24);
+            this.TxtDirectorioInformesInvetarios.TabIndex = 398;
+            this.TxtDirectorioInformesInvetarios.TabStop = false;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label17.Location = new System.Drawing.Point(361, 248);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(192, 18);
+            this.label17.TabIndex = 399;
+            this.label17.Text = "DIRECTORIO INVETARIOS";
+            // 
+            // BtnInvetarios
+            // 
+            this.BtnInvetarios.Location = new System.Drawing.Point(651, 267);
+            this.BtnInvetarios.Name = "BtnInvetarios";
+            this.BtnInvetarios.Size = new System.Drawing.Size(42, 26);
+            this.BtnInvetarios.TabIndex = 397;
+            this.BtnInvetarios.Text = "- - -";
+            this.BtnInvetarios.UseVisualStyleBackColor = true;
+            this.BtnInvetarios.Click += new System.EventHandler(this.BtnInvetarios_Click);
             // 
             // label16
             // 
@@ -993,6 +1041,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(14, 45);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1000,39 +1049,153 @@
             this.tabControl1.TabIndex = 293;
             this.tabControl1.Tag = "";
             // 
-            // TxtDirectorioInformesInvetarios
+            // tabPage4
             // 
-            this.TxtDirectorioInformesInvetarios.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtDirectorioInformesInvetarios.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtDirectorioInformesInvetarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.TxtDirectorioInformesInvetarios.ForeColor = System.Drawing.Color.Black;
-            this.TxtDirectorioInformesInvetarios.Location = new System.Drawing.Point(360, 269);
-            this.TxtDirectorioInformesInvetarios.Name = "TxtDirectorioInformesInvetarios";
-            this.TxtDirectorioInformesInvetarios.ReadOnly = true;
-            this.TxtDirectorioInformesInvetarios.Size = new System.Drawing.Size(284, 24);
-            this.TxtDirectorioInformesInvetarios.TabIndex = 398;
-            this.TxtDirectorioInformesInvetarios.TabStop = false;
+            this.tabPage4.Controls.Add(this.TxtPassEmailEnvios);
+            this.tabPage4.Controls.Add(this.label32);
+            this.tabPage4.Controls.Add(this.TxtPuerto);
+            this.tabPage4.Controls.Add(this.label31);
+            this.tabPage4.Controls.Add(this.TxtMensajeStd);
+            this.tabPage4.Controls.Add(this.label30);
+            this.tabPage4.Controls.Add(this.TxtAsuntoStd);
+            this.tabPage4.Controls.Add(this.label29);
+            this.tabPage4.Controls.Add(this.TxtEmailEnvios);
+            this.tabPage4.Controls.Add(this.label28);
+            this.tabPage4.Controls.Add(this.TxtSmtpClient);
+            this.tabPage4.Controls.Add(this.label24);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(772, 381);
+            this.tabPage4.TabIndex = 5;
+            this.tabPage4.Text = "E-mail";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // label17
+            // TxtPassEmailEnvios
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label17.Location = new System.Drawing.Point(361, 248);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(192, 18);
-            this.label17.TabIndex = 399;
-            this.label17.Text = "DIRECTORIO INVETARIOS";
+            this.TxtPassEmailEnvios.BackColor = System.Drawing.SystemColors.Window;
+            this.TxtPassEmailEnvios.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtPassEmailEnvios.ForeColor = System.Drawing.Color.Black;
+            this.TxtPassEmailEnvios.Location = new System.Drawing.Point(8, 200);
+            this.TxtPassEmailEnvios.Name = "TxtPassEmailEnvios";
+            this.TxtPassEmailEnvios.Size = new System.Drawing.Size(327, 24);
+            this.TxtPassEmailEnvios.TabIndex = 358;
             // 
-            // BtnInvetarios
+            // label32
             // 
-            this.BtnInvetarios.Location = new System.Drawing.Point(651, 267);
-            this.BtnInvetarios.Name = "BtnInvetarios";
-            this.BtnInvetarios.Size = new System.Drawing.Size(42, 26);
-            this.BtnInvetarios.TabIndex = 397;
-            this.BtnInvetarios.Text = "- - -";
-            this.BtnInvetarios.UseVisualStyleBackColor = true;
-            this.BtnInvetarios.Click += new System.EventHandler(this.BtnInvetarios_Click);
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label32.Location = new System.Drawing.Point(6, 179);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(227, 18);
+            this.label32.TabIndex = 359;
+            this.label32.Text = "PASSWORD EMAIL DE ENVÍOS";
+            // 
+            // TxtPuerto
+            // 
+            this.TxtPuerto.BackColor = System.Drawing.SystemColors.Window;
+            this.TxtPuerto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtPuerto.ForeColor = System.Drawing.Color.Black;
+            this.TxtPuerto.Location = new System.Drawing.Point(7, 82);
+            this.TxtPuerto.Name = "TxtPuerto";
+            this.TxtPuerto.Size = new System.Drawing.Size(327, 24);
+            this.TxtPuerto.TabIndex = 356;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label31.Location = new System.Drawing.Point(5, 61);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(136, 18);
+            this.label31.TabIndex = 357;
+            this.label31.Text = "PUERTO SERVER";
+            // 
+            // TxtMensajeStd
+            // 
+            this.TxtMensajeStd.BackColor = System.Drawing.SystemColors.Window;
+            this.TxtMensajeStd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtMensajeStd.ForeColor = System.Drawing.Color.Black;
+            this.TxtMensajeStd.Location = new System.Drawing.Point(9, 314);
+            this.TxtMensajeStd.Name = "TxtMensajeStd";
+            this.TxtMensajeStd.Size = new System.Drawing.Size(327, 24);
+            this.TxtMensajeStd.TabIndex = 354;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label30.Location = new System.Drawing.Point(7, 293);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(163, 18);
+            this.label30.TabIndex = 355;
+            this.label30.Text = "MENSAJE ESTANDAR";
+            // 
+            // TxtAsuntoStd
+            // 
+            this.TxtAsuntoStd.BackColor = System.Drawing.SystemColors.Window;
+            this.TxtAsuntoStd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtAsuntoStd.ForeColor = System.Drawing.Color.Black;
+            this.TxtAsuntoStd.Location = new System.Drawing.Point(9, 255);
+            this.TxtAsuntoStd.Name = "TxtAsuntoStd";
+            this.TxtAsuntoStd.Size = new System.Drawing.Size(327, 24);
+            this.TxtAsuntoStd.TabIndex = 352;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label29.Location = new System.Drawing.Point(7, 234);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(154, 18);
+            this.label29.TabIndex = 353;
+            this.label29.Text = "ASUNTO ESTANDAR";
+            // 
+            // TxtEmailEnvios
+            // 
+            this.TxtEmailEnvios.BackColor = System.Drawing.SystemColors.Window;
+            this.TxtEmailEnvios.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtEmailEnvios.ForeColor = System.Drawing.Color.Black;
+            this.TxtEmailEnvios.Location = new System.Drawing.Point(8, 143);
+            this.TxtEmailEnvios.Name = "TxtEmailEnvios";
+            this.TxtEmailEnvios.Size = new System.Drawing.Size(327, 24);
+            this.TxtEmailEnvios.TabIndex = 350;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label28.Location = new System.Drawing.Point(6, 122);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(194, 18);
+            this.label28.TabIndex = 351;
+            this.label28.Text = "EMAIL DE ENVÍOS (GMAIL)";
+            // 
+            // TxtSmtpClient
+            // 
+            this.TxtSmtpClient.BackColor = System.Drawing.SystemColors.Window;
+            this.TxtSmtpClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtSmtpClient.ForeColor = System.Drawing.Color.Black;
+            this.TxtSmtpClient.Location = new System.Drawing.Point(6, 30);
+            this.TxtSmtpClient.Name = "TxtSmtpClient";
+            this.TxtSmtpClient.Size = new System.Drawing.Size(327, 24);
+            this.TxtSmtpClient.TabIndex = 348;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label24.Location = new System.Drawing.Point(4, 9);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(106, 18);
+            this.label24.TabIndex = 349;
+            this.label24.Text = "SMTP CLIENT";
             // 
             // FrmEmpresa
             // 
@@ -1056,6 +1219,8 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1139,5 +1304,18 @@
         private System.Windows.Forms.TextBox TxtDirectorioInformesInvetarios;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button BtnInvetarios;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TextBox TxtEmailEnvios;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox TxtSmtpClient;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox TxtAsuntoStd;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox TxtMensajeStd;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.TextBox TxtPuerto;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.TextBox TxtPassEmailEnvios;
+        private System.Windows.Forms.Label label32;
     }
 }

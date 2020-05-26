@@ -7,6 +7,7 @@ using PointOfSale.Models;
 using Stimulsoft.Report;
 using Stimulsoft.Report.Dictionary;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -18,6 +19,9 @@ using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
+using System.Net.Mime;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -268,7 +272,7 @@ namespace PointOfSale.Controllers
                                 //SucursalOrigenName
                                 case 5:
                                     traspaso.SucursalOrigenName = workSheet.Cells[row, col].Text.Trim();
-                                    
+
                                     break;
 
                                 //SerieOrigen
@@ -354,7 +358,79 @@ namespace PointOfSale.Controllers
             return traspaso;
         }
 
+        public static void EnviarFactura(Empresa empresa, Venta venta, string toEmail = null)
+        {
+            try
+            {
+                if (venta == null)
+                {
+                    Mensaje("Proceso abortado. la venta es nula");
+                    return;
+                }
+                if (empresa.SmtpClient == null)
+                {
+                    Mensaje("Proceso abortado. empresa.SmtpClient == null");
+                    return;
+                }
+                if (empresa.CorreoEnvios == null)
+                {
+                    Mensaje("Proceso abortado. empresa.CorreoEnvios == null");
+                    return;
+                }
 
+                if (toEmail == null)
+                {
+                    Mensaje("Proceso abortado. toEmail == null");
+                    return;
+                }
+
+                if (empresa.AsuntoStd == null)
+                {
+                    Mensaje("Proceso abortado. empresa.AsuntoStd == null");
+                    return;
+                }
+
+
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient(empresa.SmtpClient);
+                mail.From = new MailAddress(empresa.CorreoEnvios);
+                mail.To.Add(toEmail.Trim());
+                mail.Subject = empresa.AsuntoStd;
+                mail.Body = empresa.MensajeStd;
+
+                if (venta.TipoDocId.Equals("FAC"))
+                {
+                    if (File.Exists(venta.RutaXml))
+                    {
+                        Attachment xml;
+                        xml = new Attachment(venta.RutaXml);
+
+                        Attachment pdf;
+                        var spdf = venta.RutaXml.Substring(0, venta.RutaXml.Length - 4);
+
+                        pdf = new Attachment(spdf + ".PDF");
+
+                        mail.Attachments.Add(pdf);
+                        mail.Attachments.Add(xml);
+
+                        SmtpServer.Port = int.Parse(empresa.Puerto);
+                        SmtpServer.Credentials = new NetworkCredential(empresa.CorreoEnvios, empresa.PassEnvioCorreos);
+                        SmtpServer.EnableSsl = true;
+
+                        SmtpServer.Send(mail);
+                        Mensaje("Evío exitoso");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje(ex.ToString());
+                Mensaje("Falló el envío");
+            }
+
+
+
+        }
 
         public static List<Traspasop> SerializaPD(string path)
         {

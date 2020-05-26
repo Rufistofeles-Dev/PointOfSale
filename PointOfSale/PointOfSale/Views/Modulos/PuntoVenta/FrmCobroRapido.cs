@@ -372,19 +372,19 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
                 return;
             }
 
-            if (!(TxtPago1.Text.Trim().Length > 0 && formaPago1 != null))
+            if ((TxtPago1.Text.Trim().Length > 0 && formaPago1 == null))
             {
                 Ambiente.Mensaje("Busque y seleccione la forma de pago 1");
                 DialogResult = DialogResult.Cancel;
                 return;
             }
-            if (!(TxtPago2.Text.Trim().Length > 0 && formaPago2 != null))
+            if ((TxtPago2.Text.Trim().Length > 0 && formaPago2 == null))
             {
                 Ambiente.Mensaje("Busque y seleccione la forma de pago 2");
                 DialogResult = DialogResult.Cancel;
                 return;
             }
-            if (!(TxtPago3.Text.Trim().Length > 0 && formaPago3 != null))
+            if ((TxtPago3.Text.Trim().Length > 0 && formaPago3 == null))
             {
                 Ambiente.Mensaje("Busque y seleccione la forma de pago 3");
                 DialogResult = DialogResult.Cancel;

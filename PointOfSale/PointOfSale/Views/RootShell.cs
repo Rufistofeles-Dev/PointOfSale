@@ -1,15 +1,8 @@
 ﻿using DYM.Views;
 using PointOfSale.Controllers;
 using PointOfSale.Views.Login;
-using PointOfSale.Views.ReportDesigner;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 
 namespace PointOfSale.Views
@@ -21,7 +14,7 @@ namespace PointOfSale.Views
         {
             InitializeComponent();
 
-            
+
             Inicializador.InicializaListas();
             GetEmpresaEsta();
         }
@@ -59,6 +52,9 @@ namespace PointOfSale.Views
             }
         }
 
-       
+        private void BtnReporteador_ButtonClick(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Restart();
+        }
     }
 }

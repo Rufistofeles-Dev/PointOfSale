@@ -57,6 +57,12 @@ namespace PointOfSale.Models
         public string MicroPvdb { get; set; }
         public bool GuardarDescStd { get; set; }
         public string DirectorioInverarios { get; set; }
+        public string SmtpClient { get; set; }
+        public string Puerto { get; set; }
+        public string PassEnvioCorreos { get; set; }
+        public string AsuntoStd { get; set; }
+        public string MensajeStd { get; set; }
+        public string CorreoEnvios { get; set; }
 
         public virtual CRegimenfiscal RegimenFiscalNavigation { get; set; }
     }

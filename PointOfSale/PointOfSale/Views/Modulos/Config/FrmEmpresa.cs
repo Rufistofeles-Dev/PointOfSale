@@ -54,6 +54,14 @@ namespace PointOfSale.Views.Modulos.Config
                 empresa.MicroPvdb = TxtMicropvdb.Text.Trim();
                 empresa.DirectorioInverarios = TxtDirectorioInformesInvetarios.Text.Trim();
 
+                empresa.SmtpClient = TxtSmtpClient.Text.Trim();
+                empresa.Puerto = TxtPuerto.Text.Trim();
+                empresa.CorreoEnvios = TxtEmailEnvios.Text.Trim();
+                empresa.PassEnvioCorreos = TxtPassEmailEnvios.Text.Trim();
+                empresa.AsuntoStd = TxtAsuntoStd.Text.Trim();
+                empresa.MensajeStd = TxtMensajeStd.Text.Trim();
+
+
                 if (empresa.RegimenFiscalId.Trim().Length == 0)
                 {
                     Ambiente.Mensaje("Nada que guardar");
@@ -93,7 +101,12 @@ namespace PointOfSale.Views.Modulos.Config
                 empresa.MicroPvdb = TxtMicropvdb.Text.Trim();
                 empresa.GuardarDescStd = ChkGuardarDescStd.Checked;
                 empresa.DirectorioInverarios = TxtDirectorioInformesInvetarios.Text.Trim();
-
+                empresa.SmtpClient = TxtSmtpClient.Text.Trim();
+                empresa.Puerto = TxtPuerto.Text.Trim();
+                empresa.CorreoEnvios = TxtEmailEnvios.Text.Trim();
+                empresa.PassEnvioCorreos = TxtPassEmailEnvios.Text.Trim();
+                empresa.AsuntoStd = TxtAsuntoStd.Text.Trim();
+                empresa.MensajeStd = TxtMensajeStd.Text.Trim();
 
                 if (empresa.RegimenFiscalId.Trim().Length == 0)
                 {
@@ -136,10 +149,17 @@ namespace PointOfSale.Views.Modulos.Config
             TxtRutaArchivoPfx.Text = empresa.RutaArchivoPfx;
             ChkTimbradoTest.Checked = empresa.TimbradoTest;
             TxtDirectorioInformesInvetarios.Text = empresa.DirectorioInverarios;
-
-
             TxtDirectorioDevCom.Text = empresa.DirectorioDevCom;
             TxtMicropvdb.Text = empresa.MicroPvdb;
+
+            TxtSmtpClient.Text = empresa.SmtpClient;
+            TxtPuerto.Text = empresa.Puerto;
+            TxtEmailEnvios.Text = empresa.CorreoEnvios;
+            TxtPassEmailEnvios.Text = empresa.PassEnvioCorreos;
+            TxtAsuntoStd.Text = empresa.AsuntoStd;
+            TxtMensajeStd.Text = empresa.MensajeStd;
+
+
         }
 
         private void BtnAceptar_Click(object sender, EventArgs e)

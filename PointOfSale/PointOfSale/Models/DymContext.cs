@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using PointOfSale.Controllers;
 
 namespace PointOfSale.Models
 {
@@ -101,7 +100,8 @@ namespace PointOfSale.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(Ambiente.Conexion.StandardSecurityConnectionString());
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=Dym;Trusted_Connection=True;");
             }
         }
 
@@ -1060,7 +1060,11 @@ namespace PointOfSale.Models
 
             modelBuilder.Entity<Empresa>(entity =>
             {
+                entity.Property(e => e.AsuntoStd).HasMaxLength(250);
+
                 entity.Property(e => e.ClavePrivada).HasMaxLength(50);
+
+                entity.Property(e => e.CorreoEnvios).HasMaxLength(250);
 
                 entity.Property(e => e.Cp)
                     .HasColumnName("CP")
@@ -1126,13 +1130,19 @@ namespace PointOfSale.Models
 
                 entity.Property(e => e.IsDeleted).HasDefaultValueSql("((0))");
 
+                entity.Property(e => e.MensajeStd).HasMaxLength(250);
+
                 entity.Property(e => e.MicroPvdb).HasMaxLength(550);
 
                 entity.Property(e => e.Nombre).HasMaxLength(50);
 
+                entity.Property(e => e.PassEnvioCorreos).HasMaxLength(250);
+
                 entity.Property(e => e.PassWstimbrado)
                     .HasColumnName("PassWSTimbrado")
                     .HasMaxLength(50);
+
+                entity.Property(e => e.Puerto).HasMaxLength(250);
 
                 entity.Property(e => e.RegimenFiscal).HasMaxLength(50);
 
@@ -1157,6 +1167,8 @@ namespace PointOfSale.Models
                 entity.Property(e => e.RutaKey).HasMaxLength(250);
 
                 entity.Property(e => e.RutaPlantillaDetalleTraspaso).HasMaxLength(250);
+
+                entity.Property(e => e.SmtpClient).HasMaxLength(250);
 
                 entity.Property(e => e.UserWstimbrado)
                     .HasColumnName("UserWSTimbrado")

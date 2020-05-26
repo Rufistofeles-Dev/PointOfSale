@@ -31,6 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Malla = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.ChkSinTimbrar = new System.Windows.Forms.CheckBox();
@@ -49,13 +56,7 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.Worker = new System.ComponentModel.BackgroundWorker();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BtnEnviar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Malla)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -92,6 +93,52 @@
             this.Malla.Size = new System.Drawing.Size(909, 261);
             this.Malla.TabIndex = 275;
             this.Malla.TabStop = false;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "VENTA";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 80;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "No. DOC.";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 80;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "FECHA";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "CLIENTE";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 300;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "IMPORTE";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "ESTADOSAT";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column6.HeaderText = "UUID";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             // 
             // groupBox1
             // 
@@ -196,7 +243,7 @@
             // 
             // BtnCambiarCliente
             // 
-            this.BtnCambiarCliente.Location = new System.Drawing.Point(214, 357);
+            this.BtnCambiarCliente.Location = new System.Drawing.Point(315, 356);
             this.BtnCambiarCliente.Name = "BtnCambiarCliente";
             this.BtnCambiarCliente.Size = new System.Drawing.Size(127, 38);
             this.BtnCambiarCliente.TabIndex = 278;
@@ -229,7 +276,7 @@
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.LimeGreen;
-            this.textBox1.Location = new System.Drawing.Point(475, 366);
+            this.textBox1.Location = new System.Drawing.Point(581, 357);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(100, 20);
@@ -239,7 +286,7 @@
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.Color.White;
-            this.textBox2.Location = new System.Drawing.Point(369, 367);
+            this.textBox2.Location = new System.Drawing.Point(581, 383);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(100, 20);
@@ -249,17 +296,17 @@
             // textBox3
             // 
             this.textBox3.BackColor = System.Drawing.Color.Red;
-            this.textBox3.Location = new System.Drawing.Point(716, 366);
+            this.textBox3.Location = new System.Drawing.Point(687, 357);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.Size = new System.Drawing.Size(129, 20);
             this.textBox3.TabIndex = 285;
             this.textBox3.Text = "Cancelada";
             // 
             // textBox4
             // 
             this.textBox4.BackColor = System.Drawing.Color.Orange;
-            this.textBox4.Location = new System.Drawing.Point(581, 366);
+            this.textBox4.Location = new System.Drawing.Point(687, 383);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(129, 20);
@@ -276,57 +323,24 @@
             this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
-            // Column1
+            // BtnEnviar
             // 
-            this.Column1.HeaderText = "VENTA";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 80;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "No. DOC.";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 80;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "FECHA";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "CLIENTE";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 300;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "IMPORTE";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "ESTADOSAT";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column6.HeaderText = "UUID";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
+            this.BtnEnviar.BackColor = System.Drawing.SystemColors.Control;
+            this.BtnEnviar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnEnviar.Location = new System.Drawing.Point(214, 356);
+            this.BtnEnviar.Name = "BtnEnviar";
+            this.BtnEnviar.Size = new System.Drawing.Size(95, 39);
+            this.BtnEnviar.TabIndex = 288;
+            this.BtnEnviar.Text = "&ENVÍAR";
+            this.BtnEnviar.UseVisualStyleBackColor = false;
+            this.BtnEnviar.Click += new System.EventHandler(this.BtnEnviar_Click);
             // 
             // FrmFacturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 407);
+            this.Controls.Add(this.BtnEnviar);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
@@ -377,5 +391,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.Button BtnEnviar;
     }
 }
