@@ -155,7 +155,7 @@ namespace PointOfSale.Controllers
                     return db.Producto
                         .Include(x => x.ProductoSustancia)
                         .Include(x => x.Laboratorio)
-                        .FirstOrDefault(x => x.ProductoId.Equals(Id.Trim()) && x.IsDeleted == false);
+                        .FirstOrDefault(x => x.ProductoId.Equals(Id.Trim()));
                 }
             }
             catch (Exception ex)
@@ -176,7 +176,7 @@ namespace PointOfSale.Controllers
                     return db.Producto
 
                         .Include(x => x.ProductoSustancia)
-                        .Where(x => x.ProductoId == Id.Trim() && x.IsDeleted == false).ToList();
+                        .Where(x => x.ProductoId == Id.Trim()).ToList();
                 }
             }
             catch (Exception ex)
@@ -222,7 +222,7 @@ namespace PointOfSale.Controllers
                 {
                     return db.Producto
                         .Include(x => x.ProductoSustancia)
-                        .Where(x => x.Descripcion.Contains(SearchText.Trim()) && x.IsDeleted == false).Take(50).ToList();
+                        .Where(x => x.Descripcion.Contains(SearchText.Trim())).Take(50).ToList();
                 }
             }
             catch (Exception ex)

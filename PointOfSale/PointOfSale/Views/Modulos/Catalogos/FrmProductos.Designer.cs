@@ -881,6 +881,8 @@
             // ChkEnCatalogo
             // 
             this.ChkEnCatalogo.AutoSize = true;
+            this.ChkEnCatalogo.Checked = true;
+            this.ChkEnCatalogo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ChkEnCatalogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.ChkEnCatalogo.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ChkEnCatalogo.Location = new System.Drawing.Point(783, 310);

@@ -596,7 +596,7 @@ namespace PointOfSale.Views.Modulos.Config
                 {
                     Ambiente.S1 = row["producto"].ToString().Trim().ToUpper();
                     Ambiente.S2 = row["lote"].ToString().Trim().ToUpper();
-
+                    Ambiente.S3 = "";
                     //var d = row["caducidad"].ToString().Trim();
 
                     Ambiente.Datetime1 = DateTime.TryParse(row["caducidad"].ToString().Trim(), out dateTime) == true ? dateTime : DateTime.Now;
@@ -614,7 +614,11 @@ namespace PointOfSale.Views.Modulos.Config
                         producto = productos.FirstOrDefault(x => x.ProductoId.ToUpper().Equals(Ambiente.S1.ToUpper()));
 
                         if (producto == null)
+                        {
+                            Ambiente.S3 += " NO EXISTE PROD, " + Ambiente.S1 + " \n";
                             continue;
+                        }
+
 
                         lote = new Lote();
                         lote.ProductoId = Ambiente.S1;
@@ -644,6 +648,7 @@ namespace PointOfSale.Views.Modulos.Config
                 //    producto = productos.FirstOrDefault(x => x.ProductoId.Equals(l.ProductoId));
                 //}
                 Ambiente.Mensaje("Proceso concluido");
+
             }
             catch (Exception ex)
             {
@@ -673,30 +678,72 @@ namespace PointOfSale.Views.Modulos.Config
 
                 decimal i = 0;
                 int I = 0;
+                Ambiente.S20 = "AJUSTADO X SINCRONIZACION \n";
+
                 foreach (DataRow row in dataTable.Rows)
                 {
                     Ambiente.S1 = row["producto"].ToString().Trim().ToUpper();
                     Ambiente.Decimal1 = decimal.TryParse(row["existenc"].ToString().Trim(), out i) == true ? i : 0;
                     Ambiente.Int1 = int.TryParse(row["min"].ToString().Trim(), out I) == true ? I : 0;
                     Ambiente.Int2 = int.TryParse(row["max"].ToString().Trim(), out I) == true ? I : 0;
-                    //RECUPERAR MAXIMO
-                    //RECUPERAR MINIMO
-                    // PROBAR LA SINCRONZIZACION
-                    //GENERAR REPORTES EXISTENCIAS
-
 
                     producto = productos.FirstOrDefault(x => x.ProductoId.ToUpper().Equals(Ambiente.S1));
-
 
                     if (producto != null)
                     {
                         producto.Stock = Ambiente.Decimal1;
                         producto.Min = Ambiente.Int1;
                         producto.Max = Ambiente.Int2;
+
+                        if (producto.TieneLote)
+                        {
+                            var lotes = loteController.SelecByProducConRestanteCeros(producto);
+                            Ambiente.Decimal6 = 0;
+
+                            if (lotes != null)
+                            {
+                                if (lotes.Count > 0)
+                                {
+                                    Ambiente.Decimal6 = Ambiente.Decimal1 / lotes.Count;
+                                    foreach (var l in lotes)
+                                    {
+                                        l.StockInicial = Ambiente.Decimal6;
+                                        l.StockRestante = Ambiente.Decimal6;
+                                        loteController.Update(l);
+                                    }
+                                }
+                                else
+                                {
+                                    var l = new Lote();
+                                    l.CompraId = 0;
+                                    l.NoLote = "ABCD";
+                                    l.ProductoId = producto.ProductoId;
+                                    l.StockInicial = producto.Stock;
+                                    l.StockRestante = producto.Stock;
+                                    l.Caducidad = DateTime.Now.AddDays(365);
+                                    l.CreatedBy = Ambiente.LoggedUser.UsuarioId;
+                                    l.CreatedAt = DateTime.Now;
+                                    l.ReferenciaInt = 0;
+                                    l.ReferenciaString = "AJUSTADO X SINCRONIZACION";
+                                    loteController.InsertOne(l);
+
+                                    Ambiente.S20 += " PRODUCTOID: " + producto.ProductoId + " STOCK: " + producto.Stock + " CONTROL_LOTE: TRUE LOTES ENCONTRADOS: " + lotes.Count + "\n";
+                                }
+
+                            }
+                        }
+
                         productoController.Update(producto);
                     }
+                    else
+                        Ambiente.S2 += " NO EXISTE " + Ambiente.S1 + " \n";
                 }
                 Ambiente.Mensaje("Proceso concluido");
+                if (Ambiente.S20.Length > 30)
+                {
+                    Ambiente.Mensaje(Ambiente.S20);
+                }
+
             }
             catch (Exception ex)
             {

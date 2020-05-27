@@ -187,6 +187,7 @@ namespace PointOfSale.Views.Modulos.Catalogos
                 else
                     Ambiente.Mensaje(Ambiente.CatalgoMensajes[-1]);
                 objeto = null;
+
             }
             else
             {
@@ -198,8 +199,8 @@ namespace PointOfSale.Views.Modulos.Catalogos
                     if (TxtProductoId.Text.Trim().Length == 0)
                         return;
 
-                    objeto = new Producto();
-                    objeto.ProductoId = TxtProductoId.Text.Trim();
+                    //objeto = new Producto();
+                    //objeto.ProductoId = TxtProductoId.Text.Trim();
                 }
                 try
                 {
@@ -476,6 +477,11 @@ namespace PointOfSale.Views.Modulos.Catalogos
             {
                 ModoCreate = false;
                 TxtProductoId.Text = objeto.ProductoId;
+                if (objeto.IsDeleted)
+                    TxtProductoId.BackColor = Color.Red;
+                else
+                    TxtProductoId.BackColor = Color.White;
+
                 TxtDescripcion.Text = objeto.Descripcion;
                 TxtContenido.Text = objeto.Contenido;
                 TxtPresentacion.Text = objeto.PresentacionId;
@@ -504,7 +510,7 @@ namespace PointOfSale.Views.Modulos.Catalogos
                 TxtU4.Text = objeto.Utilidad4.ToString();
                 NMin.Value = objeto.Min;
                 NMax.Value = objeto.Max;
-                TxtPrecioS1.Text = Ambiente.GetPrecioSalida(objeto.Precio1.ToString(),  Impuestos);
+                TxtPrecioS1.Text = Ambiente.GetPrecioSalida(objeto.Precio1.ToString(), Impuestos);
                 TxtPrecioS2.Text = Ambiente.GetPrecioSalida(objeto.Precio2.ToString(), Impuestos);
                 TxtPrecioS3.Text = Ambiente.GetPrecioSalida(objeto.Precio3.ToString(), Impuestos);
                 TxtPrecioS4.Text = Ambiente.GetPrecioSalida(objeto.Precio4.ToString(), Impuestos);
@@ -564,6 +570,7 @@ namespace PointOfSale.Views.Modulos.Catalogos
                     GridProductos.Rows.Clear();
                     LlenaGridProductos(productoController.FiltrarVsSustancia(SearchText));
                     Text = "MODO VER / ACTUALIZAR";
+                    ModoCreate = false;
                 }
                 else
                 {
@@ -574,6 +581,7 @@ namespace PointOfSale.Views.Modulos.Catalogos
                         GridProductos.Rows.Clear();
                         LlenaGridProductos(productoController.SelectOneOverList(SearchText));
                         Text = "MODO VER / ACTUALIZAR";
+                        ModoCreate = false;
                     }
                     else
                     {
@@ -582,6 +590,7 @@ namespace PointOfSale.Views.Modulos.Catalogos
                             Text = "MODO VER / ACTUALIZAR";
                             GridProductos.Rows.Clear();
                             LlenaGridProductos(productoController.SelectMany(100));
+                            ModoCreate = false;
                         }
                         else
                         {
@@ -591,6 +600,7 @@ namespace PointOfSale.Views.Modulos.Catalogos
                                 Text = "MODO VER / ACTUALIZAR";
                                 GridProductos.Rows.Clear();
                                 LlenaGridProductos(productoController.FiltrarVsDescrip(SearchText));
+                                ModoCreate = false;
                             }
                             else
                             {
@@ -598,10 +608,11 @@ namespace PointOfSale.Views.Modulos.Catalogos
                                 LblCoincidencias.Text = "0 Coincidencias";
                                 GridProductos.Rows.Clear();
                                 LimpiaCampos();
+                                ChkEnCatalogo.Checked = true;
 
                                 TxtDescripcion.Focus();
                                 TxtProductoId.Text = SearchText;
-
+                                ModoCreate = true;
                             }
 
                         }
@@ -653,7 +664,7 @@ namespace PointOfSale.Views.Modulos.Catalogos
             TxtRutaImg.Text = string.Empty;
             PbxImagen.Image = null;
 
-
+            Impuestos = new List<Impuesto>();
 
 
         }
@@ -868,9 +879,9 @@ namespace PointOfSale.Views.Modulos.Catalogos
             TxtPrecio1.Text = Ambiente.FDinero(TxtPrecio1.Text);
             TxtU1.Text = Ambiente.GetMargen(TxtPrecioCompra.Text, TxtPrecio1.Text);
 
-           
-                TxtPrecioS1.Text = Ambiente.GetPrecioSalida(TxtPrecio1.Text,  Impuestos);
-           
+
+            TxtPrecioS1.Text = Ambiente.GetPrecioSalida(TxtPrecio1.Text, Impuestos);
+
 
 
         }
@@ -880,18 +891,18 @@ namespace PointOfSale.Views.Modulos.Catalogos
             TxtPrecio2.Text = Ambiente.FDinero(TxtPrecio2.Text);
             TxtU2.Text = Ambiente.GetMargen(TxtPrecioCompra.Text, TxtPrecio2.Text);
 
-           
-                TxtPrecioS2.Text = Ambiente.GetPrecioSalida(TxtPrecio2.Text, Impuestos);
-           
+
+            TxtPrecioS2.Text = Ambiente.GetPrecioSalida(TxtPrecio2.Text, Impuestos);
+
         }
 
         private void TxtPrecio3_Leave(object sender, EventArgs e)
         {
             TxtPrecio3.Text = Ambiente.FDinero(TxtPrecio3.Text);
             TxtU3.Text = Ambiente.GetMargen(TxtPrecioCompra.Text, TxtPrecio3.Text);
-            
-                TxtPrecioS3.Text = Ambiente.GetPrecioSalida(TxtPrecio3.Text, Impuestos);
-            
+
+            TxtPrecioS3.Text = Ambiente.GetPrecioSalida(TxtPrecio3.Text, Impuestos);
+
         }
 
         private void TxtPrecio4_Leave(object sender, EventArgs e)
@@ -899,9 +910,9 @@ namespace PointOfSale.Views.Modulos.Catalogos
             TxtPrecio4.Text = Ambiente.FDinero(TxtPrecio4.Text);
             TxtU4.Text = Ambiente.GetMargen(TxtPrecioCompra.Text, TxtPrecio4.Text);
 
-            
-                TxtPrecioS4.Text = Ambiente.GetPrecioSalida(TxtPrecio4.Text,  Impuestos);
-          
+
+            TxtPrecioS4.Text = Ambiente.GetPrecioSalida(TxtPrecio4.Text, Impuestos);
+
         }
 
         private void GridImpuestos_KeyDown(object sender, KeyEventArgs e)

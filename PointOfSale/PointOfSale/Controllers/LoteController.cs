@@ -137,6 +137,26 @@ namespace PointOfSale.Controllers
 
         }
 
+        public List<Lote> SelecByProducConRestanteCeros(Producto producto)
+        {
+            try
+            {
+                using (var db = new DymContext())
+                {
+
+                    return db.Lote.Where(x => x.ProductoId.Equals(producto.ProductoId.Trim()))
+                        .OrderBy(x => x.CreatedAt).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Ambiente.Mensaje(Ambiente.CatalgoMensajes[-1] + "@" + GetType().Name + "\n" + ex.ToString());
+            }
+            return null;
+
+        }
+
+
         public Lote SelectOne(int Id)
         {
             try
