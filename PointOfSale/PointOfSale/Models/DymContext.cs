@@ -2303,6 +2303,10 @@ namespace PointOfSale.Models
                     .HasColumnType("date")
                     .HasDefaultValueSql("(getdate())");
 
+                entity.Property(e => e.FechaTimbrado)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("(getdate())");
+
                 entity.Property(e => e.FormaPago1)
                     .HasMaxLength(2)
                     .HasDefaultValueSql("(N'01')");

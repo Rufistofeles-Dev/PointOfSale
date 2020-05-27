@@ -37,7 +37,7 @@ namespace PointOfSale.Controllers
                     if (solosintimbrar)
                         return db.Venta.Where(x => x.UuId == null && x.TipoDocId.Equals("FAC") && x.EstadoDocId.Equals("CON")).ToList();
                     else
-                        return db.Venta.Where(x => x.CreatedAt >= fini && x.CreatedAt < ffin && x.TipoDocId.Equals("FAC") && x.EstadoDocId.Equals("CON")).ToList();
+                        return db.Venta.Where(x => x.UuId != null && x.FechaTimbrado >= fini && x.FechaTimbrado <= ffin && x.TipoDocId.Equals("FAC") && x.EstadoDocId.Equals("CON")).ToList();
                 }
             }
             catch (Exception ex)

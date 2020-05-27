@@ -174,7 +174,6 @@ namespace PointOfSale.Controllers
                 using (var db = new DymContext())
                 {
                     return db.Producto
-
                         .Include(x => x.ProductoSustancia)
                         .Where(x => x.ProductoId == Id.Trim()).ToList();
                 }

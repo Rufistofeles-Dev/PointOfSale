@@ -62,6 +62,7 @@ namespace PointOfSale.Models
         public string SelloCfdi { get; set; }
         public string SelloSat { get; set; }
         public DateTime? FechaSistema { get; set; }
+        public DateTime? FechaTimbrado { get; set; }
 
         public virtual Cliente Cliente { get; set; }
         public virtual Usuario CreatedByNavigation { get; set; }

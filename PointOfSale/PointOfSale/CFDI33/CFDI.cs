@@ -541,6 +541,7 @@ namespace PointOfSale.CFDI33
                 Venta.NoCertificado = noCertificado;
                 Venta.RutaXml = facturaActual;
                 Venta.EstatusSat = "Vigente";
+                Venta.FechaTimbrado = DateTime.Now;
                 return ventaController.UpdateOne(Venta);
             }
         }
