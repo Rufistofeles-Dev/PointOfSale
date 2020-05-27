@@ -502,7 +502,7 @@ namespace PointOfSale.CFDI33
 
             XslCompiledTransform transformador = new XslCompiledTransform(true);
             transformador.Load(empresa.RutaCadenaOriginal);
-
+            //transformador.Load(@"C:\Dympos\FacturaElectronica\Certificados\cadenaoriginal_3_3.xslt");
             using (StringWriter sw = new StringWriter())
             using (XmlWriter xwo = XmlWriter.Create(sw, transformador.OutputSettings))
             {

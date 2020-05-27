@@ -268,7 +268,8 @@ namespace PointOfSale.Controllers
                 using (var db = new DymContext())
                 {
                     lotes = db.Lote.Where(x => x.ProductoId.Equals(productoId.Trim()) && x.StockRestante > 0)
-                       .OrderBy(x => x.CreatedAt).ToList();
+                       .OrderBy(x => x.Caducidad).ToList();
+
                 }
             }
             catch (Exception ex)

@@ -1,5 +1,6 @@
 ﻿using PointOfSale.Controllers;
 using PointOfSale.Models;
+using PointOfSale.Views.Modulos.Catalogos;
 using PointOfSale.Views.Modulos.PuntoVenta;
 using Stimulsoft.Report;
 using System;
@@ -96,7 +97,9 @@ namespace PointOfSale.Views.Menus
 
         private void Button3_Click(object sender, EventArgs e)
         {
-
+            var o = new FrmClientes();
+            o.MdiParent = MdiParent;
+            o.Show();
         }
     }
 }

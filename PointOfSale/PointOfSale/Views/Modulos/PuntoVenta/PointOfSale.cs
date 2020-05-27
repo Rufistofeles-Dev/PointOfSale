@@ -115,7 +115,7 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
                 Malla.Rows[index].Cells[5].Value = partida.Impuesto1;
                 Malla.Rows[index].Cells[6].Value = partida.Impuesto2;
                 Malla.Rows[index].Cells[7].Value = partida.Total;
-                Malla.Rows[index].Cells[8].Value = partida.LoteId;
+                Malla.Rows[index].Cells[8].Value = partida.NoLote;
                 Malla.Rows[index].Cells[9].Value = partida.ProductoId;
 
 
