@@ -63,6 +63,7 @@ namespace PointOfSale.Models
         public virtual DbSet<InformeParametro> InformeParametro { get; set; }
         public virtual DbSet<Inventario> Inventario { get; set; }
         public virtual DbSet<Inventariop> Inventariop { get; set; }
+        public virtual DbSet<Kardex> Kardex { get; set; }
         public virtual DbSet<Laboratorio> Laboratorio { get; set; }
         public virtual DbSet<Lote> Lote { get; set; }
         public virtual DbSet<LoteVentap> LoteVentap { get; set; }
@@ -1477,6 +1478,41 @@ namespace PointOfSale.Models
                     .HasForeignKey(d => d.InventarioId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Inventariop_Inventario");
+            });
+
+            modelBuilder.Entity<Kardex>(entity =>
+            {
+                entity.Property(e => e.CantEntrada).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.CantGlobal).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.CantSalida).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.Costo).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.Descripcion)
+                    .IsRequired()
+                    .HasMaxLength(550);
+
+                entity.Property(e => e.Estacionid)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.ProductoId)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.StockRestante).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.UsuarioId)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.VlEntrada).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.VlGlobal).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.VlSalida).HasColumnType("decimal(18, 6)");
             });
 
             modelBuilder.Entity<Laboratorio>(entity =>

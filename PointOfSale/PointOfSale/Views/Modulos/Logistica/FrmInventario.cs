@@ -350,8 +350,9 @@ namespace PointOfSale.Views.Modulos.Logistica
                             if (!pendiente)
                             {
                                 AfectaLotes();
-                                AfectaStock();
                                 AfectaMovsInv();
+                                AfectaStock();
+                                
                                 if (!Ambiente.CancelaProceso)
                                 {
 
@@ -410,7 +411,7 @@ namespace PointOfSale.Views.Modulos.Logistica
                 producto = productoController.SelectOne(p.ProductoId);
                 movInv.Costo = producto == null ? 0 : producto.PrecioCompra;
                 movInv.PrecioVta = producto == null ? 0 : producto.Precio1;
-                movInv.Stock = producto == null ? 0 : producto.Stock;
+                movInv.Stock = producto == null ? 0 : producto.Stock ;
                 movInv.CreatedAt = DateTime.Now;
                 movInv.CreatedBy = Ambiente.LoggedUser.UsuarioId;
                 movInv.EstacionId = Ambiente.Estacion.EstacionId;

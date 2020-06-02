@@ -799,6 +799,11 @@ namespace PointOfSale.Views.Modulos.Logistica
                 movInv.EstacionId = Ambiente.Estacion.EstacionId;
                 movInv.IsDeleted = false;
                 Ambiente.CancelaProceso = !movInvController.InsertOne(movInv);
+
+
+                //******************Afecta Kardex***************************//
+                
+
             }
         }
 

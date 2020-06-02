@@ -351,8 +351,8 @@ namespace PointOfSale.Views.Modulos.Finanzas
                             ActualizaPartidas();
 
                             AfectaLotes();
-                            AfectaStock();
                             AfectaMovsInv();
+                            AfectaStock();
 
                             foreach (var p in partidas)
                             {
