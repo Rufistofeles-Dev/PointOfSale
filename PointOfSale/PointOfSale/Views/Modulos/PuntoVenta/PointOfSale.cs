@@ -543,22 +543,22 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
 
                 //**************MOVIMIENTO DE INVENTARIO****************//
                 var movInv = new MovInv();
-                movInv.ConceptoMovsInvId = venta.TipoDocId;
-                movInv.Referencia = venta.VentaId;
-                movInv.Referenciap = p.VentapId;
-                movInv.Es = "S";
-                movInv.Afectacion = movInv.Es.Equals("E") ? 1 : -1;
-                movInv.ProductoId = p.ProductoId;
-                movInv.Cantidad = p.Cantidad;
-                producto = productoController.SelectOne(p.ProductoId);
-                movInv.Costo = producto == null ? 0 : producto.PrecioCompra;
-                movInv.PrecioVta = p.Precio;
-                movInv.Stock = producto == null ? 0 : producto.Stock;
-                movInv.CreatedAt = DateTime.Now;
-                movInv.CreatedBy = Ambiente.LoggedUser.UsuarioId;
-                movInv.EstacionId = Ambiente.Estacion.EstacionId;
-                movInv.IsDeleted = false;
-                Ambiente.CancelaProceso = !movInvController.InsertOne(movInv);
+                //movInv.ConceptoMovsInvId = venta.TipoDocId;
+                //movInv.Referencia = venta.VentaId;
+                //movInv.Referenciap = p.VentapId;
+                //movInv.Es = "S";
+                //movInv.Afectacion = movInv.Es.Equals("E") ? 1 : -1;
+                //movInv.ProductoId = p.ProductoId;
+                //movInv.Cantidad = p.Cantidad;
+                //producto = productoController.SelectOne(p.ProductoId);
+                //movInv.Costo = producto == null ? 0 : producto.PrecioCompra;
+                //movInv.PrecioVta = p.Precio;
+                //movInv.Stock = producto == null ? 0 : producto.Stock;
+                //movInv.CreatedAt = DateTime.Now;
+                //movInv.CreatedBy = Ambiente.LoggedUser.UsuarioId;
+                //movInv.EstacionId = Ambiente.Estacion.EstacionId;
+                //movInv.IsDeleted = false;
+                //Ambiente.CancelaProceso = !movInvController.InsertOne(movInv);
             }
         }
         private void AfectaFlujo(FrmCobroRapido form)

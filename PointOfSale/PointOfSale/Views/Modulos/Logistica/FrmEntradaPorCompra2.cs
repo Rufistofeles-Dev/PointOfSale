@@ -304,19 +304,37 @@ namespace PointOfSale.Views.Modulos.Logistica
             //control lotes
             if (producto.TieneLote)
             {
-                using (var form = new FrmLoteCaducidad(compra.CompraId, NCantidad.Value, producto.ProductoId))
+
+                if (TxtLote.Text.Trim().Length == 0)
                 {
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        partida.Lote = form.lotes[0].NoLote;
-                        partida.Caducidad = form.lotes[0].Caducidad;
-                    }
-                    else
-                    {
-                        partida.Lote = null;
-                        partida.Caducidad = null;
-                    }
+                    Ambiente.Mensaje("Ingrese el lote o desactive el control de lotes para el artículo.");
+                    return;
                 }
+
+                if (DpCaducidad.Value.Date == DateTime.Now.Date)
+                {
+                    if (!Ambiente.Pregunta("Realmente caduca hoy?.... Continuar"))
+                        return;
+                }
+                partida.Lote = TxtLote.Text.Trim();
+                partida.Caducidad = DpCaducidad.Value;
+
+
+
+
+                //using (var form = new FrmLoteCaducidad(compra.CompraId, NCantidad.Value, producto.ProductoId))
+                //{
+                //    if (form.ShowDialog() == DialogResult.OK)
+                //    {
+                //        partida.Lote = form.lotes[0].NoLote;
+                //        partida.Caducidad = form.lotes[0].Caducidad;
+                //    }
+                //    else
+                //    {
+                //        partida.Lote = null;
+                //        partida.Caducidad = null;
+                //    }
+                //}
             }
 
             //cambios de precio
@@ -367,10 +385,7 @@ namespace PointOfSale.Views.Modulos.Logistica
 
         }
 
-        private void AgregaProductoactualizado()
-        {
-            throw new NotImplementedException();
-        }
+
 
         private void LimpiarFilaMalla(int index)
         {
@@ -566,6 +581,8 @@ namespace PointOfSale.Views.Modulos.Logistica
             TxtU4.Text = "";
             TxtDescripcion.Text = "";
             SigPartida++;
+            TxtLote.Text = "";
+            DpCaducidad.Value = DateTime.Now;
 
             TxtProductoId.Focus();
         }
@@ -584,7 +601,7 @@ namespace PointOfSale.Views.Modulos.Logistica
             {
                 if (partidas.Count > 0 && rowIndex >= 0)
                 {
-                    EliminaLotes(Malla.Rows[rowIndex].Cells[0].Value.ToString(), compra.CompraId);
+                    //EliminaLotes(Malla.Rows[rowIndex].Cells[0].Value.ToString(), compra.CompraId);
                     var p = partidas[rowIndex];
                     partidas.RemoveAt(rowIndex);
                     SigPartida -= 1;
@@ -675,11 +692,13 @@ namespace PointOfSale.Views.Modulos.Logistica
                     {
                         GuardaCambioPrecios();
                         ActualizaPrecios();
+                        ActualizaCostopp();
                         AfectaMovsInv();
                         AfectaStock();
+
                         if (Ambiente.InformeCompra != null)
                         {
-                            Ambiente.stiReport = new Stimulsoft.Report.StiReport();
+                            Ambiente.stiReport = new StiReport();
                             Ambiente.stiReport.LoadPackedReportFromString(Ambiente.InformeCompra.Codigo);
 
                             Ambiente.DbDym = (StiSqlDatabase)Ambiente.stiReport.Dictionary.Databases["Dym"];
@@ -714,6 +733,18 @@ namespace PointOfSale.Views.Modulos.Logistica
             }
             else
                 Ambiente.Mensaje("Sin productos.");
+        }
+
+        private void ActualizaCostopp()
+        {
+            foreach (var p in partidas)
+            {
+                producto = productoController.SelectOne(p.ProductoId);
+                producto.UltimoCosto = p.PrecioCompra;
+                producto.ValorStock += (p.Cantidad * p.PrecioCompra);
+                producto.Costopp = producto.ValorStock / (producto.Stock + p.Cantidad);
+                productoController.Update(producto);
+            }
         }
 
         private void ActualizaPrecios()
@@ -783,27 +814,30 @@ namespace PointOfSale.Views.Modulos.Logistica
 
                 //**************MOVIMIENTO DE INVENTARIO****************//
                 var movInv = new MovInv();
+                movInv.FechaOperacion = DateTime.Now;
                 movInv.ConceptoMovsInvId = compra.TipoDocId;
-                movInv.Referencia = compra.CompraId;
-                movInv.Referenciap = p.ComprapId;
-                movInv.Es = "E";
-                movInv.Afectacion = movInv.Es.Equals("E") ? 1 : -1;
                 movInv.ProductoId = p.ProductoId;
+                movInv.CreatedBy = Ambiente.LoggedUser.UsuarioId;
+                movInv.ProveedorId = proveedor.ProveedorId;
+                movInv.ClienteId = "";
+                movInv.EstacionId = Ambiente.Estacion.EstacionId;
+                movInv.ReferenciaId = compra.CompraId;
+                movInv.ReferenciapId = p.ComprapId;
+                movInv.Es = "E";
                 movInv.Cantidad = p.Cantidad;
                 producto = productoController.SelectOne(p.ProductoId);
-                movInv.Costo = p.PrecioCompra;
-                movInv.PrecioVta = producto == null ? 0 : producto.Precio1;
-                movInv.Stock = producto == null ? 0 : producto.Stock;
-                movInv.CreatedAt = DateTime.Now;
-                movInv.CreatedBy = Ambiente.LoggedUser.UsuarioId;
-                movInv.EstacionId = Ambiente.Estacion.EstacionId;
+                movInv.UltimoCosto = p.PrecioCompra;
+                movInv.Costopp = producto.Costopp;
+                movInv.Valor = p.Cantidad * p.PrecioCompra;
+                movInv.StockAlMomento = producto.Stock == 0 ? 0 : producto.Stock - p.Cantidad;
+                movInv.PrecioVta = producto.Precio1;
+                movInv.Afectacion = movInv.Es.Equals("E") ? 1 : -1;
                 movInv.IsDeleted = false;
+                movInv.TieneLote = p.Lote == null ? false : true;
+                movInv.NoLote = movInv.TieneLote == true ? p.Lote : "";
+                movInv.Caducidad = movInv.TieneLote == true ? (DateTime)p.Caducidad : DateTime.Now;
+                movInv.CreatedAt = DateTime.Now;
                 Ambiente.CancelaProceso = !movInvController.InsertOne(movInv);
-
-
-                //******************Afecta Kardex***************************//
-                
-
             }
         }
 

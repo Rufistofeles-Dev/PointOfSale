@@ -324,6 +324,8 @@ namespace PointOfSale.Controllers
                         prodSys.ClaveProdServId = "01010101";
                         prodSys.ClaveUnidadId = "H87";
                         prodSys.ChkCaducidad = false;
+                        prodSys.CratedAt = DateTime.Now;
+                        prodSys.CratedBy = "JMENDOZAJ";
 
                         db.Add(prodSys);
                     }

@@ -405,12 +405,13 @@ namespace PointOfSale.Views.Modulos.Config
 
                     Ambiente.Boolean1 = bool.TryParse(row["encatalogo"].ToString(), out b) == true ? b : false;
                     Ambiente.Boolean2 = bool.TryParse(row["cklote"].ToString(), out b) == true ? b : false;
+                    Ambiente.Boolean3 = (bool)row["cklote"];
 
 
-                    Ambiente.Decimal1 = decimal.TryParse(row["pcompra"].ToString().Trim(), out p) == true ? p : 0;
-                    Ambiente.Decimal2 = decimal.TryParse(row["pventa"].ToString().Trim(), out p) == true ? p : 0;
-                    Ambiente.Decimal3 = decimal.TryParse(row["pmayoreo"].ToString().Trim(), out p) == true ? p : 0;
-                    Ambiente.Decimal4 = decimal.TryParse(row["pcaja"].ToString().Trim(), out p) == true ? p : 0;
+                    Ambiente.Decimal1 = decimal.TryParse(row["pcompra"].ToString().Trim(), out p) == true ? p : 1;
+                    Ambiente.Decimal2 = decimal.TryParse(row["pventa"].ToString().Trim(), out p) == true ? p : 1;
+                    Ambiente.Decimal3 = decimal.TryParse(row["pmayoreo"].ToString().Trim(), out p) == true ? p : 1;
+                    Ambiente.Decimal4 = decimal.TryParse(row["pcaja"].ToString().Trim(), out p) == true ? p : 1;
 
 
                     if (row["tasaimp"].ToString().Trim().ToUpper().Equals("E"))
@@ -462,6 +463,8 @@ namespace PointOfSale.Views.Modulos.Config
                         producto.IsDeleted = false;
                         producto.Min = 10;
                         producto.Max = 20;
+                        producto.Costopp = Ambiente.Decimal1;
+                        producto.UltimoCosto = Ambiente.Decimal1;
                         productoController.InsertOne(producto);
                     }
                     else
@@ -501,6 +504,8 @@ namespace PointOfSale.Views.Modulos.Config
                         producto.Impuesto3Id = "SYS";
                         producto.Ocupado = false;
                         producto.IsDeleted = false;
+                        producto.Costopp = Ambiente.Decimal1;
+                        producto.UltimoCosto = Ambiente.Decimal1;
                         productoController.Update(producto);
                     }
                 }
@@ -694,7 +699,7 @@ namespace PointOfSale.Views.Modulos.Config
                         producto.Stock = Ambiente.Decimal1;
                         producto.Min = Ambiente.Int1;
                         producto.Max = Ambiente.Int2;
-
+                        producto.ValorStock = producto.Costopp * producto.Stock;
                         if (producto.TieneLote)
                         {
                             var lotes = loteController.SelecByProducConRestanteCeros(producto);
@@ -716,7 +721,7 @@ namespace PointOfSale.Views.Modulos.Config
                                 {
                                     var l = new Lote();
                                     l.CompraId = 0;
-                                    l.NoLote = "ABCD";
+                                    l.NoLote = "L0001";
                                     l.ProductoId = producto.ProductoId;
                                     l.StockInicial = producto.Stock;
                                     l.StockRestante = producto.Stock;
@@ -732,6 +737,7 @@ namespace PointOfSale.Views.Modulos.Config
 
                             }
                         }
+
 
                         productoController.Update(producto);
                     }

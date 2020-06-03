@@ -21,6 +21,9 @@ namespace PointOfSale.Models
         public decimal Stock { get; set; }
         public decimal PrecioCompra { get; set; }
         public decimal PrecioCaja { get; set; }
+        public decimal Costopp { get; set; }
+        public decimal UltimoCosto { get; set; }
+        public decimal ValorStock { get; set; }
         public decimal Precio1 { get; set; }
         public decimal Precio2 { get; set; }
         public decimal Precio3 { get; set; }
@@ -43,7 +46,6 @@ namespace PointOfSale.Models
         public string Contenido { get; set; }
         public string RutaImg { get; set; }
         public bool ChkCaducidad { get; set; }
-        public int DiasCredito { get; set; }
         public string Impuesto1Id { get; set; }
         public string Impuesto2Id { get; set; }
         public string Impuesto3Id { get; set; }

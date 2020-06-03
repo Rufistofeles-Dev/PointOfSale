@@ -373,22 +373,22 @@ namespace PointOfSale.Views.Modulos.Logistica
 
                 //**************MOVIMIENTO DE INVENTARIO****************//
                 var movInv = new MovInv();
-                movInv.ConceptoMovsInvId = conceptoMovInv.ConceptoMovInvId;
-                movInv.Referencia = devolucion.DevolucionId;
-                movInv.Referenciap = p.DevolucionpId;
-                movInv.Es = conceptoMovInv.Es;
-                movInv.Afectacion = conceptoMovInv.Afectacion;
-                movInv.ProductoId = p.ProductoId;
-                movInv.Cantidad = p.Cantidad;
-                producto = productoController.SelectOne(p.ProductoId);
-                movInv.Costo = producto == null ? 0 : producto.PrecioCompra;
-                movInv.PrecioVta = producto == null ? 0 : producto.Precio1;
-                movInv.Stock = producto == null ? 0 : producto.Stock;
-                movInv.CreatedAt = DateTime.Now;
-                movInv.CreatedBy = Ambiente.LoggedUser.UsuarioId;
-                movInv.EstacionId = Ambiente.Estacion.EstacionId;
-                movInv.IsDeleted = false;
-                Ambiente.CancelaProceso = !movInvController.InsertOne(movInv);
+                //movInv.ConceptoMovsInvId = conceptoMovInv.ConceptoMovInvId;
+                //movInv.Referencia = devolucion.DevolucionId;
+                //movInv.Referenciap = p.DevolucionpId;
+                //movInv.Es = conceptoMovInv.Es;
+                //movInv.Afectacion = conceptoMovInv.Afectacion;
+                //movInv.ProductoId = p.ProductoId;
+                //movInv.Cantidad = p.Cantidad;
+                //producto = productoController.SelectOne(p.ProductoId);
+                //movInv.Costo = producto == null ? 0 : producto.PrecioCompra;
+                //movInv.PrecioVta = producto == null ? 0 : producto.Precio1;
+                //movInv.Stock = producto == null ? 0 : producto.Stock;
+                //movInv.CreatedAt = DateTime.Now;
+                //movInv.CreatedBy = Ambiente.LoggedUser.UsuarioId;
+                //movInv.EstacionId = Ambiente.Estacion.EstacionId;
+                //movInv.IsDeleted = false;
+                //Ambiente.CancelaProceso = !movInvController.InsertOne(movInv);
 
             }
         }

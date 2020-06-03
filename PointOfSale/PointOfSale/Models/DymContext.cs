@@ -1482,13 +1482,29 @@ namespace PointOfSale.Models
 
             modelBuilder.Entity<Kardex>(entity =>
             {
+                entity.Property(e => e.Caducidad).HasColumnType("datetime");
+
                 entity.Property(e => e.CantEntrada).HasColumnType("decimal(18, 6)");
 
                 entity.Property(e => e.CantGlobal).HasColumnType("decimal(18, 6)");
 
                 entity.Property(e => e.CantSalida).HasColumnType("decimal(18, 6)");
 
+                entity.Property(e => e.ClienteId)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.ConceptoMovInvId)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
                 entity.Property(e => e.Costo).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime");
+
+                entity.Property(e => e.CreatedBy)
+                    .IsRequired()
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Descripcion)
                     .IsRequired()
@@ -1498,7 +1514,19 @@ namespace PointOfSale.Models
                     .IsRequired()
                     .HasMaxLength(50);
 
+                entity.Property(e => e.Max).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.Min).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.NoLote)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
                 entity.Property(e => e.ProductoId)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.ProveedorId)
                     .IsRequired()
                     .HasMaxLength(50);
 
@@ -1627,13 +1655,19 @@ namespace PointOfSale.Models
 
             modelBuilder.Entity<MovInv>(entity =>
             {
+                entity.Property(e => e.Caducidad).HasColumnType("datetime");
+
                 entity.Property(e => e.Cantidad).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.ClienteId)
+                    .IsRequired()
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.ConceptoMovsInvId)
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.Costo).HasColumnType("decimal(18, 6)");
+                entity.Property(e => e.Costopp).HasColumnType("decimal(18, 6)");
 
                 entity.Property(e => e.CreatedAt).HasColumnType("datetime");
 
@@ -1650,7 +1684,13 @@ namespace PointOfSale.Models
                     .IsRequired()
                     .HasMaxLength(50);
 
+                entity.Property(e => e.FechaOperacion).HasColumnType("datetime");
+
                 entity.Property(e => e.IsDeleted).HasColumnName("isDeleted");
+
+                entity.Property(e => e.NoLote)
+                    .IsRequired()
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.PrecioVta).HasColumnType("decimal(18, 6)");
 
@@ -1658,7 +1698,15 @@ namespace PointOfSale.Models
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.Stock).HasColumnType("decimal(18, 6)");
+                entity.Property(e => e.ProveedorId)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.StockAlMomento).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.UltimoCosto).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.Valor).HasColumnType("decimal(18, 6)");
 
                 entity.HasOne(d => d.ConceptoMovsInv)
                     .WithMany(p => p.MovInv)
@@ -1756,11 +1804,17 @@ namespace PointOfSale.Models
                     .HasMaxLength(255)
                     .IsUnicode(false);
 
+                entity.Property(e => e.Costopp)
+                    .HasColumnType("decimal(18, 6)")
+                    .HasDefaultValueSql("((1))");
+
                 entity.Property(e => e.CratedAt)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getdate())");
 
-                entity.Property(e => e.CratedBy).HasMaxLength(50);
+                entity.Property(e => e.CratedBy)
+                    .IsRequired()
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.DeletedBy).HasMaxLength(50);
 
@@ -1787,34 +1841,34 @@ namespace PointOfSale.Models
                     .HasMaxLength(50)
                     .HasDefaultValueSql("((1))");
 
-                entity.Property(e => e.Max).HasColumnType("decimal(18, 0)");
+                entity.Property(e => e.Max).HasColumnType("decimal(18, 6)");
 
-                entity.Property(e => e.Min).HasColumnType("decimal(18, 0)");
+                entity.Property(e => e.Min).HasColumnType("decimal(18, 6)");
 
                 entity.Property(e => e.Ocupado).HasDefaultValueSql("((0))");
 
                 entity.Property(e => e.Precio1)
-                    .HasColumnType("decimal(18, 2)")
+                    .HasColumnType("decimal(18, 6)")
                     .HasDefaultValueSql("((1))");
 
                 entity.Property(e => e.Precio2)
-                    .HasColumnType("decimal(18, 2)")
+                    .HasColumnType("decimal(18, 6)")
                     .HasDefaultValueSql("((1))");
 
                 entity.Property(e => e.Precio3)
-                    .HasColumnType("decimal(18, 2)")
+                    .HasColumnType("decimal(18, 6)")
                     .HasDefaultValueSql("((1))");
 
                 entity.Property(e => e.Precio4)
-                    .HasColumnType("decimal(18, 2)")
+                    .HasColumnType("decimal(18, 6)")
                     .HasDefaultValueSql("((1))");
 
                 entity.Property(e => e.PrecioCaja)
-                    .HasColumnType("decimal(18, 2)")
+                    .HasColumnType("decimal(18, 6)")
                     .HasDefaultValueSql("((1))");
 
                 entity.Property(e => e.PrecioCompra)
-                    .HasColumnType("decimal(18, 2)")
+                    .HasColumnType("decimal(18, 6)")
                     .HasDefaultValueSql("((1))");
 
                 entity.Property(e => e.PresentacionId)
@@ -1826,7 +1880,11 @@ namespace PointOfSale.Models
                     .HasMaxLength(255)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Stock).HasColumnType("decimal(18, 1)");
+                entity.Property(e => e.Stock).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.UltimoCosto)
+                    .HasColumnType("decimal(18, 6)")
+                    .HasDefaultValueSql("((1))");
 
                 entity.Property(e => e.UnidadMedidaId)
                     .IsRequired()
@@ -1840,20 +1898,22 @@ namespace PointOfSale.Models
                 entity.Property(e => e.UpdatedBy).HasMaxLength(50);
 
                 entity.Property(e => e.Utilidad1)
-                    .HasColumnType("decimal(18, 2)")
+                    .HasColumnType("decimal(18, 6)")
                     .HasDefaultValueSql("((1))");
 
                 entity.Property(e => e.Utilidad2)
-                    .HasColumnType("decimal(18, 2)")
+                    .HasColumnType("decimal(18, 6)")
                     .HasDefaultValueSql("((1))");
 
                 entity.Property(e => e.Utilidad3)
-                    .HasColumnType("decimal(18, 2)")
+                    .HasColumnType("decimal(18, 6)")
                     .HasDefaultValueSql("((1))");
 
                 entity.Property(e => e.Utilidad4)
-                    .HasColumnType("decimal(18, 2)")
+                    .HasColumnType("decimal(18, 6)")
                     .HasDefaultValueSql("((1))");
+
+                entity.Property(e => e.ValorStock).HasColumnType("decimal(18, 6)");
 
                 entity.HasOne(d => d.Categoria)
                     .WithMany(p => p.Producto)
