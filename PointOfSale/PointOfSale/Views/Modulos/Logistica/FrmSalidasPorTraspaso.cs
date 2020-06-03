@@ -439,23 +439,33 @@ namespace PointOfSale.Views.Modulos.Logistica
             {
 
                 //**************MOVIMIENTO DE INVENTARIO****************//
-                //var movInv = new MovInv();
-                //movInv.ConceptoMovsInvId = traspaso.TipoDocId;
-                //movInv.Referencia = traspaso.TraspasoId;
-                //movInv.Referenciap = p.TraspasopId;
-                //movInv.Es = "S";
-                //movInv.Afectacion = movInv.Es.Equals("E") ? 1 : -1;
-                //movInv.ProductoId = p.ProductoId;
-                //movInv.Cantidad = p.Cantidad;
-                //producto = productoController.SelectOne(p.ProductoId);
-                //movInv.Costo = producto == null ? 0 : producto.PrecioCompra;
-                //movInv.PrecioVta = producto == null ? 0 : producto.Precio1;
-                //movInv.Stock = producto == null ? 0 : producto.Stock;
-                //movInv.CreatedAt = DateTime.Now;
-                //movInv.CreatedBy = Ambiente.LoggedUser.UsuarioId;
-                //movInv.EstacionId = Ambiente.Estacion.EstacionId;
-                //movInv.IsDeleted = false;
-                //Ambiente.CancelaProceso = !movInvController.InsertOne(movInv);
+                //**************MOVIMIENTO DE INVENTARIO****************//
+                var movInv = new MovInv();
+                movInv.FechaOperacion = DateTime.Now;
+                movInv.ConceptoMovsInvId = traspaso.TipoDocId;
+                movInv.ProductoId = p.ProductoId;
+                movInv.CreatedBy = Ambiente.LoggedUser.UsuarioId;
+                movInv.ProveedorId = sucursalO.SucursalId.ToString();
+                movInv.ClienteId = sucursalD.SucursalId.ToString();
+                movInv.EstacionId = Ambiente.Estacion.EstacionId;
+                movInv.ReferenciaId = traspaso.TraspasoId;
+                movInv.ReferenciapId = p.TraspasopId;
+                movInv.Es = "S";
+                movInv.Cantidad = p.Cantidad;
+                producto = productoController.SelectOne(p.ProductoId);
+                movInv.UltimoCosto = producto.UltimoCosto;
+                movInv.Costopp = producto.Costopp;
+                movInv.Valor = p.Cantidad * producto.Costopp;
+                movInv.StockAlMomento = producto.Stock == 0 ? 0 : producto.Stock + p.Cantidad;
+                movInv.PrecioVta = producto.Precio1;
+                movInv.Afectacion = movInv.Es.Equals("E") ? 1 : -1;
+                movInv.IsDeleted = false;
+                movInv.TieneLote = p.NoLote == null ? false : true;
+                movInv.NoLote = movInv.TieneLote == true ? p.NoLote : "";
+                movInv.Caducidad = movInv.TieneLote == true ? (DateTime)p.Caducidad : DateTime.Now;
+                movInv.CreatedAt = DateTime.Now;
+                Ambiente.CancelaProceso = !movInvController.InsertOne(movInv);
+
 
             }
         }

@@ -373,22 +373,30 @@ namespace PointOfSale.Views.Modulos.Logistica
 
                 //**************MOVIMIENTO DE INVENTARIO****************//
                 var movInv = new MovInv();
-                //movInv.ConceptoMovsInvId = conceptoMovInv.ConceptoMovInvId;
-                //movInv.Referencia = devolucion.DevolucionId;
-                //movInv.Referenciap = p.DevolucionpId;
-                //movInv.Es = conceptoMovInv.Es;
-                //movInv.Afectacion = conceptoMovInv.Afectacion;
-                //movInv.ProductoId = p.ProductoId;
-                //movInv.Cantidad = p.Cantidad;
-                //producto = productoController.SelectOne(p.ProductoId);
-                //movInv.Costo = producto == null ? 0 : producto.PrecioCompra;
-                //movInv.PrecioVta = producto == null ? 0 : producto.Precio1;
-                //movInv.Stock = producto == null ? 0 : producto.Stock;
-                //movInv.CreatedAt = DateTime.Now;
-                //movInv.CreatedBy = Ambiente.LoggedUser.UsuarioId;
-                //movInv.EstacionId = Ambiente.Estacion.EstacionId;
-                //movInv.IsDeleted = false;
-                //Ambiente.CancelaProceso = !movInvController.InsertOne(movInv);
+                movInv.FechaOperacion = DateTime.Now;
+                movInv.ConceptoMovsInvId = conceptoMovInv.ConceptoMovInvId;
+                movInv.ProductoId = p.ProductoId;
+                movInv.CreatedBy = Ambiente.LoggedUser.UsuarioId;
+                movInv.ProveedorId = proveedor.ProveedorId == null ? "" : proveedor.ProveedorId;
+                movInv.ClienteId = "";
+                movInv.EstacionId = Ambiente.Estacion.EstacionId;
+                movInv.ReferenciaId = devolucion.DevolucionId;
+                movInv.ReferenciapId = p.DevolucionpId;
+                movInv.Es = conceptoMovInv.Es;
+                movInv.Cantidad = p.Cantidad;
+                producto = productoController.SelectOne(p.ProductoId);
+                movInv.UltimoCosto = p.PrecioCompra;
+                movInv.Costopp = producto.Costopp;
+                movInv.Valor = p.Cantidad * producto.Costopp;
+                movInv.StockAlMomento = producto.Stock == 0 ? 0 : producto.Stock + p.Cantidad;
+                movInv.PrecioVta = producto.Precio1;
+                movInv.Afectacion = movInv.Es.Equals("E") ? 1 : -1;
+                movInv.IsDeleted = false;
+                movInv.TieneLote = p.NoLote == null ? false : true;
+                movInv.NoLote = movInv.TieneLote == true ? p.NoLote : "";
+                movInv.Caducidad = movInv.TieneLote == true ? (DateTime)p.Caducidad : DateTime.Now;
+                movInv.CreatedAt = DateTime.Now;
+                Ambiente.CancelaProceso = !movInvController.InsertOne(movInv);
 
             }
         }

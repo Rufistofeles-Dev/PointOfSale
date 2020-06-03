@@ -192,6 +192,34 @@ namespace PointOfSale.Views.Modulos.Logistica
             foreach (var p in partidas)
             {
                 //**************MOVIMIENTO DE INVENTARIO****************//
+
+                //**************MOVIMIENTO DE INVENTARIO****************//
+                var movInv = new MovInv();
+                movInv.FechaOperacion = DateTime.Now;
+                movInv.ConceptoMovsInvId = traspaso.TipoDocId;
+                movInv.ProductoId = p.ProductoId;
+                movInv.CreatedBy = Ambiente.LoggedUser.UsuarioId;
+                movInv.ProveedorId ="";
+                movInv.ClienteId = "";
+                movInv.EstacionId = Ambiente.Estacion.EstacionId;
+                movInv.ReferenciaId = traspaso.TraspasoId;
+                movInv.ReferenciapId = p.TraspasopId;
+                movInv.Es = "E";
+                movInv.Cantidad = p.Cantidad;
+                producto = productoController.SelectOne(p.ProductoId);
+                movInv.UltimoCosto = producto.PrecioCompra;
+                movInv.Costopp = producto.Costopp;
+                movInv.Valor = p.Cantidad * producto.Costopp;
+                movInv.StockAlMomento = producto.Stock == 0 ? 0 : producto.Stock - p.Cantidad;
+                movInv.PrecioVta = producto.Precio1;
+                movInv.Afectacion = movInv.Es.Equals("E") ? 1 : -1;
+                movInv.IsDeleted = false;
+                movInv.TieneLote = p.LoteId == null ? false : true;
+                movInv.NoLote = movInv.TieneLote == true ? p.NoLote : "";
+                movInv.Caducidad = movInv.TieneLote == true ? (DateTime)p.Caducidad : DateTime.Now;
+                movInv.CreatedAt = DateTime.Now;
+                Ambiente.CancelaProceso = !movInvController.InsertOne(movInv);
+
                 //var movInv = new MovInv();
                 //movInv.ConceptoMovsInvId = traspaso.TipoDocId;
                 //movInv.Referencia = traspaso.TraspasoId;

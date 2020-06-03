@@ -352,7 +352,7 @@ namespace PointOfSale.Views.Modulos.Logistica
                                 AfectaLotes();
                                 AfectaMovsInv();
                                 AfectaStock();
-                                
+
                                 if (!Ambiente.CancelaProceso)
                                 {
 
@@ -401,25 +401,31 @@ namespace PointOfSale.Views.Modulos.Logistica
 
                 //**************MOVIMIENTO DE INVENTARIO****************//
                 var movInv = new MovInv();
-                //movInv.ConceptoMovsInvId = p.Diferencia > 0 ? "AIN" : "DIN";
-                //movInv.Referencia = inventario.InventarioId;
-                //movInv.Referenciap = p.InventariopId;
-                //movInv.Es = p.Diferencia > 0 ? "E" : "S";
-                //movInv.Afectacion = movInv.Es.Equals("E") ? 1 : -1;
-                //movInv.ProductoId = p.ProductoId;
-                //movInv.Cantidad = p.Diferencia;
-                //producto = productoController.SelectOne(p.ProductoId);
-                //movInv.Costo = producto == null ? 0 : producto.PrecioCompra;
-                //movInv.PrecioVta = producto == null ? 0 : producto.Precio1;
-                //movInv.Stock = producto == null ? 0 : producto.Stock ;
-                //movInv.CreatedAt = DateTime.Now;
-                //movInv.CreatedBy = Ambiente.LoggedUser.UsuarioId;
-                //movInv.EstacionId = Ambiente.Estacion.EstacionId;
-                //movInv.IsDeleted = false;
-                //Ambiente.CancelaProceso = !movInvController.InsertOne(movInv);
-
-              
-
+                movInv.FechaOperacion = DateTime.Now;
+                movInv.ConceptoMovsInvId = p.Diferencia > 0 ? "AIN" : "DIN";
+                movInv.ProductoId = p.ProductoId;
+                movInv.CreatedBy = Ambiente.LoggedUser.UsuarioId;
+                movInv.ProveedorId = "";
+                movInv.ClienteId = "";
+                movInv.EstacionId = Ambiente.Estacion.EstacionId;
+                movInv.ReferenciaId = inventario.InventarioId;
+                movInv.ReferenciapId = p.InventariopId;
+                movInv.Es = p.Diferencia > 0 ? "E" : "S";
+                movInv.Cantidad = p.Diferencia;
+                producto = productoController.SelectOne(p.ProductoId);
+                movInv.UltimoCosto = producto.PrecioCompra;
+                movInv.Costopp = producto.Costopp;
+                movInv.Valor = p.Diferencia * producto.Costopp;
+                movInv.StockAlMomento = producto.Stock;
+                movInv.PrecioVta = producto.Precio1;
+                movInv.Afectacion = movInv.Es.Equals("E") ? 1 : -1;
+                movInv.IsDeleted = false;
+                movInv.TieneLote = p.LoteId == null ? false : true;
+                lote = loteController.SelectOne((int)p.LoteId);
+                movInv.NoLote = movInv.TieneLote == true ? lote.NoLote : "";
+                movInv.Caducidad = movInv.TieneLote == true ? lote.Caducidad : DateTime.Now;
+                movInv.CreatedAt = DateTime.Now;
+                Ambiente.CancelaProceso = !movInvController.InsertOne(movInv);
             }
         }
         private void AfectaStock()

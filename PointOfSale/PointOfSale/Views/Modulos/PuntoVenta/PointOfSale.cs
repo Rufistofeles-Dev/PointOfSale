@@ -543,22 +543,31 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
 
                 //**************MOVIMIENTO DE INVENTARIO****************//
                 var movInv = new MovInv();
-                //movInv.ConceptoMovsInvId = venta.TipoDocId;
-                //movInv.Referencia = venta.VentaId;
-                //movInv.Referenciap = p.VentapId;
-                //movInv.Es = "S";
-                //movInv.Afectacion = movInv.Es.Equals("E") ? 1 : -1;
-                //movInv.ProductoId = p.ProductoId;
-                //movInv.Cantidad = p.Cantidad;
-                //producto = productoController.SelectOne(p.ProductoId);
-                //movInv.Costo = producto == null ? 0 : producto.PrecioCompra;
-                //movInv.PrecioVta = p.Precio;
-                //movInv.Stock = producto == null ? 0 : producto.Stock;
-                //movInv.CreatedAt = DateTime.Now;
-                //movInv.CreatedBy = Ambiente.LoggedUser.UsuarioId;
-                //movInv.EstacionId = Ambiente.Estacion.EstacionId;
-                //movInv.IsDeleted = false;
-                //Ambiente.CancelaProceso = !movInvController.InsertOne(movInv);
+                movInv.FechaOperacion = DateTime.Now;
+                movInv.ConceptoMovsInvId = venta.TipoDocId;
+                movInv.ProductoId = p.ProductoId;
+                movInv.CreatedBy = Ambiente.LoggedUser.UsuarioId;
+                movInv.ProveedorId = "";
+                movInv.ClienteId = cliente == null ? "SYS" : cliente.ClienteId;
+                movInv.EstacionId = Ambiente.Estacion.EstacionId;
+                movInv.ReferenciaId = venta.VentaId;
+                movInv.ReferenciapId = p.VentapId;
+                movInv.Es = "S";
+                movInv.Cantidad = p.Cantidad;
+                producto = productoController.SelectOne(p.ProductoId);
+                movInv.UltimoCosto = producto.PrecioCompra;
+                movInv.Costopp = producto.Costopp;
+                movInv.Valor = p.Cantidad * producto.Costopp;
+                movInv.StockAlMomento = producto.Stock;
+                movInv.PrecioVta = producto.Precio1;
+                movInv.Afectacion = movInv.Es.Equals("E") ? 1 : -1;
+                movInv.IsDeleted = false;
+                movInv.TieneLote = p.LoteId == null ? false : true;
+                movInv.NoLote = movInv.TieneLote == true ? p.NoLote : "";
+                movInv.Caducidad = movInv.TieneLote == true ? (DateTime)p.Caducidad : DateTime.Now;
+                movInv.CreatedAt = DateTime.Now;
+                Ambiente.CancelaProceso = !movInvController.InsertOne(movInv);
+
             }
         }
         private void AfectaFlujo(FrmCobroRapido form)

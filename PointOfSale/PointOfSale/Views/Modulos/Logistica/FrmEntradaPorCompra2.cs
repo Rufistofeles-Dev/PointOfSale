@@ -749,7 +749,6 @@ namespace PointOfSale.Views.Modulos.Logistica
 
         private void ActualizaPrecios()
         {
-            foreach (var pa in partidas)
                 foreach (var pr in productosActualizados)
                     productoController.Update(pr);
         }
