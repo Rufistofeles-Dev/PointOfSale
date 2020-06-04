@@ -698,26 +698,14 @@ namespace PointOfSale.Views.Modulos.Logistica
 
                         if (Ambiente.InformeCompra != null)
                         {
+
                             Ambiente.stiReport = new StiReport();
                             Ambiente.stiReport.LoadPackedReportFromString(Ambiente.InformeCompra.Codigo);
-
-                            Ambiente.DbDym = (StiSqlDatabase)Ambiente.stiReport.Dictionary.Databases["Dym"];
-                            Ambiente.DbDym.ConnectionString = Ambiente.Conexion.StandardSecurityConnectionString();
-
-
                             Ambiente.stiReport.Dictionary.Variables["CompraId"].ValueObject = compra.CompraId;
-
-
-                            //Fill dictionary
-                            var file = empresa.DirectorioReportes + "COMPRA " + compra.CompraId + ".PDF";
-
-
-
-
-
+                            Ambiente.S1 = empresa.DirectorioReportes + "COMPRA " + compra.CompraId + ".PDF";
                             Ambiente.stiReport.Render(false);
-                            Ambiente.stiReport.ExportDocument(StiExportFormat.Pdf, file);
-                            Process.Start(file);
+                            Ambiente.stiReport.ExportDocument(StiExportFormat.Pdf, Ambiente.S1);
+                            Process.Start(Ambiente.S1);
                         }
 
 
@@ -749,8 +737,8 @@ namespace PointOfSale.Views.Modulos.Logistica
 
         private void ActualizaPrecios()
         {
-                foreach (var pr in productosActualizados)
-                    productoController.Update(pr);
+            foreach (var pr in productosActualizados)
+                productoController.Update(pr);
         }
 
         private void GuardaCambioPrecios()
@@ -828,7 +816,7 @@ namespace PointOfSale.Views.Modulos.Logistica
                 movInv.UltimoCosto = p.PrecioCompra;
                 movInv.Costopp = producto.Costopp;
                 movInv.Valor = p.Cantidad * p.PrecioCompra;
-                movInv.StockAlMomento = producto.Stock == 0 ? 0 : producto.Stock - p.Cantidad;
+                movInv.StockAlMomento = producto.Stock;
                 movInv.PrecioVta = producto.Precio1;
                 movInv.Afectacion = movInv.Es.Equals("E") ? 1 : -1;
                 movInv.IsDeleted = false;

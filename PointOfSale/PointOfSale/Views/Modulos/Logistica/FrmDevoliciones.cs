@@ -377,7 +377,7 @@ namespace PointOfSale.Views.Modulos.Logistica
                 movInv.ConceptoMovsInvId = conceptoMovInv.ConceptoMovInvId;
                 movInv.ProductoId = p.ProductoId;
                 movInv.CreatedBy = Ambiente.LoggedUser.UsuarioId;
-                movInv.ProveedorId = proveedor.ProveedorId == null ? "" : proveedor.ProveedorId;
+                movInv.ProveedorId = proveedor == null ? "" : proveedor.ProveedorId;
                 movInv.ClienteId = "";
                 movInv.EstacionId = Ambiente.Estacion.EstacionId;
                 movInv.ReferenciaId = devolucion.DevolucionId;
@@ -394,6 +394,7 @@ namespace PointOfSale.Views.Modulos.Logistica
                 movInv.IsDeleted = false;
                 movInv.TieneLote = p.NoLote == null ? false : true;
                 movInv.NoLote = movInv.TieneLote == true ? p.NoLote : "";
+
                 movInv.Caducidad = movInv.TieneLote == true ? (DateTime)p.Caducidad : DateTime.Now;
                 movInv.CreatedAt = DateTime.Now;
                 Ambiente.CancelaProceso = !movInvController.InsertOne(movInv);
@@ -727,6 +728,11 @@ namespace PointOfSale.Views.Modulos.Logistica
         private void Malla_MouseLeave(object sender, EventArgs e)
         {
             sobreGrid = false;
+        }
+
+        private void FrmDevoliciones_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

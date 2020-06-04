@@ -216,6 +216,7 @@ namespace PointOfSale.Views.Modulos.Logistica
                 movInv.IsDeleted = false;
                 movInv.TieneLote = p.LoteId == null ? false : true;
                 movInv.NoLote = movInv.TieneLote == true ? p.NoLote : "";
+
                 movInv.Caducidad = movInv.TieneLote == true ? (DateTime)p.Caducidad : DateTime.Now;
                 movInv.CreatedAt = DateTime.Now;
                 Ambiente.CancelaProceso = !movInvController.InsertOne(movInv);

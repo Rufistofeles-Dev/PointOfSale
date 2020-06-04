@@ -394,7 +394,7 @@ namespace PointOfSale.Views.Modulos.Logistica
                 traspaso.SucursalDestinoId = sucursalD.SucursalId;
                 traspaso.SucursalDestinoName = sucursalD.Nombre;
                 traspaso.SerieDestino = sucursalD.Serie;
-                traspaso.TipoDocId = "TRA";
+                traspaso.TipoDocId = "STR";
                 traspaso.Enviado = true;
                 if (pendiente)
                     traspaso.EstadoDocId = "PEN";
@@ -416,7 +416,7 @@ namespace PointOfSale.Views.Modulos.Logistica
 
                         //Generar el Excel
                         if (!pendiente)
-                            EnviarTraspaso(ChkMandarCat.Checked);
+                             EnviarTraspaso(ChkMandarCat.Checked);
 
                         Ambiente.Mensaje("Proceso concluido con éxito");
                         ResetPDT();

@@ -50,6 +50,16 @@
             this.label8 = new System.Windows.Forms.Label();
             this.TxtLote = new System.Windows.Forms.TextBox();
             this.Malla = new System.Windows.Forms.DataGridView();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.TxtDescrip = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -64,16 +74,6 @@
             this.label25 = new System.Windows.Forms.Label();
             this.TxtSubtotal = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NCantidad)).BeginInit();
@@ -362,6 +362,74 @@
             this.Malla.MouseEnter += new System.EventHandler(this.Malla_MouseEnter);
             this.Malla.MouseLeave += new System.EventHandler(this.Malla_MouseLeave);
             // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "PRODUCTO";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 150;
+            // 
+            // Column18
+            // 
+            this.Column18.HeaderText = "STOCK";
+            this.Column18.Name = "Column18";
+            this.Column18.ReadOnly = true;
+            this.Column18.Width = 50;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "CANT.";
+            this.Column7.Name = "Column7";
+            this.Column7.Width = 50;
+            // 
+            // Column19
+            // 
+            this.Column19.HeaderText = "PRECIO";
+            this.Column19.Name = "Column19";
+            this.Column19.ReadOnly = true;
+            this.Column19.Width = 80;
+            // 
+            // Column11
+            // 
+            this.Column11.FillWeight = 50F;
+            this.Column11.HeaderText = "IMP.1";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.Width = 50;
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "IMP.2";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            this.Column12.Width = 50;
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "SUBTOTAL";
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "TOTAL";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column20
+            // 
+            this.Column20.HeaderText = "LOTE";
+            this.Column20.Name = "Column20";
+            this.Column20.ReadOnly = true;
+            this.Column20.Width = 50;
+            // 
+            // Column21
+            // 
+            this.Column21.HeaderText = "CADUCIDAD";
+            this.Column21.Name = "Column21";
+            this.Column21.ReadOnly = true;
+            this.Column21.Width = 80;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -528,74 +596,6 @@
             this.label10.TabIndex = 228;
             this.label10.Text = "SUB-TOTAL";
             // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "PRODUCTO";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 150;
-            // 
-            // Column18
-            // 
-            this.Column18.HeaderText = "STOCK";
-            this.Column18.Name = "Column18";
-            this.Column18.ReadOnly = true;
-            this.Column18.Width = 50;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "CANT.";
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 50;
-            // 
-            // Column19
-            // 
-            this.Column19.HeaderText = "PRECIO";
-            this.Column19.Name = "Column19";
-            this.Column19.ReadOnly = true;
-            this.Column19.Width = 80;
-            // 
-            // Column11
-            // 
-            this.Column11.FillWeight = 50F;
-            this.Column11.HeaderText = "IMP.1";
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            this.Column11.Width = 50;
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "IMP.2";
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            this.Column12.Width = 50;
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "SUBTOTAL";
-            this.Column13.Name = "Column13";
-            this.Column13.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "TOTAL";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column20
-            // 
-            this.Column20.HeaderText = "LOTE";
-            this.Column20.Name = "Column20";
-            this.Column20.ReadOnly = true;
-            this.Column20.Width = 50;
-            // 
-            // Column21
-            // 
-            this.Column21.HeaderText = "CADUCIDAD";
-            this.Column21.Name = "Column21";
-            this.Column21.ReadOnly = true;
-            this.Column21.Width = 80;
-            // 
             // FrmDevoliciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -609,6 +609,7 @@
             this.Name = "FrmDevoliciones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmDevoliciones";
+            this.Load += new System.EventHandler(this.FrmDevoliciones_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

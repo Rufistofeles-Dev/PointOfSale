@@ -97,7 +97,7 @@ namespace PointOfSale.Views.Modulos.Logistica
             partida.ExistenciaTeorica = producto.Stock;
             partida.ExistenciaFisica = NCantidad.Value;
             partida.Descripcion = producto.Descripcion;
-            partida.Costo = producto.PrecioCompra;
+            partida.Costo = producto.Costopp;
             partida.MovInvId = null;
             if (lote == null)
                 partida.LoteId = null;
@@ -189,7 +189,7 @@ namespace PointOfSale.Views.Modulos.Logistica
             {
                 if (partidas.Count > 0)
                 {
-                    if (partidas[rowIndex].ExistenciaFisica > 1)
+                    if (partidas[rowIndex].ExistenciaFisica >= 1)
                     {
                         partidas[rowIndex].ExistenciaFisica--;
                         Malla.Rows[rowIndex].Cells[2].Value = partidas[rowIndex].ExistenciaFisica;
@@ -421,7 +421,7 @@ namespace PointOfSale.Views.Modulos.Logistica
                 movInv.Afectacion = movInv.Es.Equals("E") ? 1 : -1;
                 movInv.IsDeleted = false;
                 movInv.TieneLote = p.LoteId == null ? false : true;
-                lote = loteController.SelectOne((int)p.LoteId);
+                lote = movInv.TieneLote == true ? loteController.SelectOne((int)p.LoteId) : null;
                 movInv.NoLote = movInv.TieneLote == true ? lote.NoLote : "";
                 movInv.Caducidad = movInv.TieneLote == true ? lote.Caducidad : DateTime.Now;
                 movInv.CreatedAt = DateTime.Now;

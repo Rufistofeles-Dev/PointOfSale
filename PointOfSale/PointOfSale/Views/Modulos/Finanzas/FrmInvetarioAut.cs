@@ -94,7 +94,7 @@ namespace PointOfSale.Views.Modulos.Finanzas
             {
                 if (partidas.Count > 0)
                 {
-                    if (partidas[rowIndex].ExistenciaFisica > 1)
+                    if (partidas[rowIndex].ExistenciaFisica >= 1)
                     {
                         partidas[rowIndex].ExistenciaFisica--;
                         Malla.Rows[rowIndex].Cells[3].Value = partidas[rowIndex].ExistenciaFisica;
@@ -107,10 +107,10 @@ namespace PointOfSale.Views.Modulos.Finanzas
                         else
                             partidas[rowIndex].Diferencia = partidas[rowIndex].ExistenciaFisica - partidas[rowIndex].ExistenciaTeorica;
 
-                        partidas[rowIndex].CostoParcial = partidas[rowIndex].Costo * partida.Diferencia;
+                        partidas[rowIndex].CostoParcial = partidas[rowIndex].Costo * partidas[rowIndex].Diferencia;
                     }
                     else
-                        Ambiente.Mensaje("Operación denegada, solo cantidades positivas");
+                        Ambiente.Mensaje("Operación denegada, no cantidades negativas");
                 }
             }
             catch (Exception ex)
@@ -242,7 +242,7 @@ namespace PointOfSale.Views.Modulos.Finanzas
                     else
                         partidas[rowIndex].Diferencia = partidas[rowIndex].ExistenciaFisica - partidas[rowIndex].ExistenciaTeorica;
 
-                    partidas[rowIndex].CostoParcial = partidas[rowIndex].Costo * partida.Diferencia;
+                    partidas[rowIndex].CostoParcial = partidas[rowIndex].Costo * partidas[rowIndex].Diferencia;
                 }
             }
             catch (Exception ex)
@@ -410,7 +410,7 @@ namespace PointOfSale.Views.Modulos.Finanzas
                 movInv.Afectacion = movInv.Es.Equals("E") ? 1 : -1;
                 movInv.IsDeleted = false;
                 movInv.TieneLote = p.LoteId == null ? false : true;
-                var lote = loteController.SelectOne((int)p.LoteId);
+                lote = movInv.TieneLote == true ? loteController.SelectOne((int)p.LoteId) : null;
                 movInv.NoLote = movInv.TieneLote == true ? lote.NoLote : "";
                 movInv.Caducidad = movInv.TieneLote == true ? lote.Caducidad : DateTime.Now;
                 movInv.CreatedAt = DateTime.Now;
