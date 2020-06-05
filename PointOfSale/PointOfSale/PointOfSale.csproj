@@ -419,6 +419,8 @@
     <Compile Include="Controllers\BMController.cs" />
     <Compile Include="Controllers\CambioPrecioController.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
+    <Compile Include="Controllers\CierreInventarioController.cs" />
+    <Compile Include="Controllers\CierreInventariopController.cs" />
     <Compile Include="Controllers\ClaveSatController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\CompraController.cs" />
@@ -489,6 +491,8 @@
     <Compile Include="Models\CClaveprodserv.cs" />
     <Compile Include="Models\CClaveunidad.cs" />
     <Compile Include="Models\CFormapago.cs" />
+    <Compile Include="Models\CierreInventario.cs" />
+    <Compile Include="Models\CierreInventariop.cs" />
     <Compile Include="Models\CImpuesto.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\CmetodoPago.cs" />
@@ -738,6 +742,12 @@
     </Compile>
     <Compile Include="Views\Modulos\Catalogos\FrmUsuarios.Designer.cs">
       <DependentUpon>FrmUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modulos\Config\FrmCierresInv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Modulos\Config\FrmCierresInv.Designer.cs">
+      <DependentUpon>FrmCierresInv.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Modulos\Config\FrmEmpresa.cs">
       <SubType>Form</SubType>
@@ -1022,6 +1032,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Modulos\Catalogos\FrmUsuarios.resx">
       <DependentUpon>FrmUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Modulos\Config\FrmCierresInv.resx">
+      <DependentUpon>FrmCierresInv.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Modulos\Config\FrmEmpresa.resx">
       <DependentUpon>FrmEmpresa.cs</DependentUpon>

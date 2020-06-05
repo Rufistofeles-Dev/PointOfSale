@@ -31,7 +31,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.BtnEmpresa = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BtnConfiCierresInventario = new System.Windows.Forms.Button();
             this.BtnEstaciones = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -72,15 +72,16 @@
             this.BtnEmpresa.UseVisualStyleBackColor = true;
             this.BtnEmpresa.Click += new System.EventHandler(this.BtnEmpresa_Click);
             // 
-            // button1
+            // BtnConfiCierresInventario
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(30, 141);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(133, 49);
-            this.button1.TabIndex = 244;
-            this.button1.Text = "&TRASPASOS";
-            this.button1.UseVisualStyleBackColor = true;
+            this.BtnConfiCierresInventario.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnConfiCierresInventario.Location = new System.Drawing.Point(30, 141);
+            this.BtnConfiCierresInventario.Name = "BtnConfiCierresInventario";
+            this.BtnConfiCierresInventario.Size = new System.Drawing.Size(133, 49);
+            this.BtnConfiCierresInventario.TabIndex = 244;
+            this.BtnConfiCierresInventario.Text = "&CIERRES DE INVENTARIO";
+            this.BtnConfiCierresInventario.UseVisualStyleBackColor = true;
+            this.BtnConfiCierresInventario.Click += new System.EventHandler(this.BtnConfiCierresInventario_Click);
             // 
             // BtnEstaciones
             // 
@@ -157,7 +158,7 @@
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.BtnEstaciones);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.BtnConfiCierresInventario);
             this.Controls.Add(this.BtnEmpresa);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label14);
@@ -174,7 +175,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button BtnEmpresa;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BtnConfiCierresInventario;
         private System.Windows.Forms.Button BtnEstaciones;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;

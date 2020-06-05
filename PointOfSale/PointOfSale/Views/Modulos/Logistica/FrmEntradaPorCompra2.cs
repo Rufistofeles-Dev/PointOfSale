@@ -192,6 +192,22 @@ namespace PointOfSale.Views.Modulos.Logistica
             NprecioLista.Value = descueto(NPrecioCaja.Value, NDesc1.Value);
             NImporte.Value = NCantidad.Value * NCostoU.Value;
 
+            if (producto.TieneLote)
+            {
+                TxtLote.Enabled = true;
+                TxtLote.TabStop = true;
+                DpCaducidad.Enabled = true;
+                DpCaducidad.TabStop = true;
+
+            }
+            else
+            {
+                TxtLote.Enabled = false;
+                TxtLote.TabStop = false;
+                DpCaducidad.Enabled = false;
+                DpCaducidad.TabStop = false;
+            }
+
         }
         private void CargaGridImpuestos()
         {
@@ -695,6 +711,7 @@ namespace PointOfSale.Views.Modulos.Logistica
                         ActualizaCostopp();
                         AfectaMovsInv();
                         AfectaStock();
+                        GuardaLotes();
 
                         if (Ambiente.InformeCompra != null)
                         {
@@ -721,6 +738,29 @@ namespace PointOfSale.Views.Modulos.Logistica
             }
             else
                 Ambiente.Mensaje("Sin productos.");
+        }
+
+        private void GuardaLotes()
+        {
+            foreach (var p in partidas)
+            {
+                if (!p.Lote.Equals(""))
+                {
+                    var lote = new Lote();
+                    lote.NoLote = p.Lote;
+                    lote.CompraId = p.CompraId;
+                    lote.ReferenciaInt = p.CompraId;
+                    lote.ReferenciaString = compra.TipoDocId;
+                    lote.ProductoId = p.ProductoId;
+                    lote.StockInicial = p.Cantidad;
+                    lote.StockRestante = p.Cantidad;
+                    lote.Caducidad = (DateTime)p.Caducidad;
+                    lote.CreatedBy = Ambiente.LoggedUser.UsuarioId;
+                    lote.CreatedAt = DateTime.Now;
+                    loteController.InsertOne(lote);
+                }
+
+            }
         }
 
         private void ActualizaCostopp()
@@ -832,9 +872,9 @@ namespace PointOfSale.Views.Modulos.Logistica
         {
             foreach (var p in partidas)
             {
-                var prod = productoController.SelectOne(p.ProductoId);
-                prod.Stock += p.Cantidad;
-                productoController.Update(prod);
+                producto = productoController.SelectOne(p.ProductoId);
+                producto.Stock += p.Cantidad;
+                productoController.Update(producto);
             }
         }
 

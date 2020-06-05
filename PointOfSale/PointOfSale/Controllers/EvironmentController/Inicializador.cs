@@ -177,86 +177,9 @@ namespace PointOfSale.Controllers
                         db.Add(edodocCo);
                     }
 
-                    var tipoDocCom = db.TipoDoc.FirstOrDefault(x => x.TipoDocId == "COM");
-                    if (tipoDocCom == null)
-                    {
-                        tipoDocCom = new TipoDoc();
-                        tipoDocCom.TipoDocId = "COM";
-                        tipoDocCom.Descripcion = "COMPRA";
-                        db.Add(tipoDocCom);
-                    }
+                  
 
-                    var tipoDocDvc = db.TipoDoc.FirstOrDefault(x => x.TipoDocId == "DVC");
-                    if (tipoDocDvc == null)
-                    {
-                        tipoDocDvc = new TipoDoc();
-                        tipoDocDvc.TipoDocId = "DVC";
-                        tipoDocDvc.Descripcion = "DEVOLUCIÓN SOBRE COMPRA";
-                        db.Add(tipoDocDvc);
-                    }
-
-                    var tipoDocDev = db.TipoDoc.FirstOrDefault(x => x.TipoDocId == "DVV");
-                    if (tipoDocDev == null)
-                    {
-                        tipoDocDev = new TipoDoc();
-                        tipoDocDev.TipoDocId = "DVV";
-                        tipoDocDev.Descripcion = "DEVOLUCIÓN SOBRE VENTA";
-                        db.Add(tipoDocDev);
-                    }
-
-                    var tipoDocFac = db.TipoDoc.FirstOrDefault(x => x.TipoDocId == "FAC");
-                    if (tipoDocFac == null)
-                    {
-                        tipoDocFac = new TipoDoc();
-                        tipoDocFac.TipoDocId = "FAC";
-                        tipoDocFac.Descripcion = "FACTURA";
-                        db.Add(tipoDocFac);
-                    }
-
-                    var tipoDocRem = db.TipoDoc.FirstOrDefault(x => x.TipoDocId == "REM");
-                    if (tipoDocRem == null)
-                    {
-                        tipoDocRem = new TipoDoc();
-                        tipoDocRem.TipoDocId = "REM";
-                        tipoDocRem.Descripcion = "REMISIÓN";
-                        db.Add(tipoDocRem);
-                    }
-
-                    var tipoDocTic = db.TipoDoc.FirstOrDefault(x => x.TipoDocId == "TIC");
-                    if (tipoDocTic == null)
-                    {
-                        tipoDocTic = new TipoDoc();
-                        tipoDocTic.TipoDocId = "TIC";
-                        tipoDocTic.Descripcion = "TICKET";
-                        db.Add(tipoDocTic);
-                    }
-
-                    var tipoDocNc = db.TipoDoc.FirstOrDefault(x => x.TipoDocId == "NC");
-                    if (tipoDocNc == null)
-                    {
-                        tipoDocNc = new TipoDoc();
-                        tipoDocNc.TipoDocId = "NC";
-                        tipoDocNc.Descripcion = "NOTA DE CRÉDITO";
-                        db.Add(tipoDocNc);
-                    }
-
-                    var tipoDocCxp = db.TipoDoc.FirstOrDefault(x => x.TipoDocId == "CXP");
-                    if (tipoDocCxp == null)
-                    {
-                        tipoDocCxp = new TipoDoc();
-                        tipoDocCxp.TipoDocId = "CXP";
-                        tipoDocCxp.Descripcion = "CUENTA POR PAGAR";
-                        db.Add(tipoDocCxp);
-                    }
-                    var tipoDocTra = db.TipoDoc.FirstOrDefault(x => x.TipoDocId == "TRA");
-                    if (tipoDocTra == null)
-                    {
-                        tipoDocTra = new TipoDoc();
-                        tipoDocTra.TipoDocId = "TRA";
-                        tipoDocTra.Descripcion = "TRASPASO DE MERCANCIAS";
-                        db.Add(tipoDocTra);
-                    }
-
+                  
                     var clienteSYS = db.Cliente.FirstOrDefault(x => x.ClienteId == "SYS");
                     if (clienteSYS == null)
                     {
@@ -270,6 +193,7 @@ namespace PointOfSale.Controllers
                         clienteSYS.UsoCfdiid = "G01";
                         db.Add(clienteSYS);
                     }
+
                     var proveedorSYS = db.Proveedor.FirstOrDefault(x => x.ProveedorId == "SYS");
                     if (proveedorSYS == null)
                     {

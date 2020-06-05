@@ -8,6 +8,7 @@ namespace PointOfSale.Models
         public Producto()
         {
             CambiosPrecio = new HashSet<CambiosPrecio>();
+            CierreInventariop = new HashSet<CierreInventariop>();
             Lote = new HashSet<Lote>();
             ProductoSustancia = new HashSet<ProductoSustancia>();
         }
@@ -62,6 +63,7 @@ namespace PointOfSale.Models
         public virtual Presentacion Presentacion { get; set; }
         public virtual UnidadMedida UnidadMedida { get; set; }
         public virtual ICollection<CambiosPrecio> CambiosPrecio { get; set; }
+        public virtual ICollection<CierreInventariop> CierreInventariop { get; set; }
         public virtual ICollection<Lote> Lote { get; set; }
         public virtual ICollection<ProductoSustancia> ProductoSustancia { get; set; }
     }

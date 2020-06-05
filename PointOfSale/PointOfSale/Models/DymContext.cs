@@ -34,6 +34,8 @@ namespace PointOfSale.Models
         public virtual DbSet<CUsocfdi> CUsocfdi { get; set; }
         public virtual DbSet<CambiosPrecio> CambiosPrecio { get; set; }
         public virtual DbSet<Categoria> Categoria { get; set; }
+        public virtual DbSet<CierreInventario> CierreInventario { get; set; }
+        public virtual DbSet<CierreInventariop> CierreInventariop { get; set; }
         public virtual DbSet<Cliente> Cliente { get; set; }
         public virtual DbSet<Compra> Compra { get; set; }
         public virtual DbSet<Comprap> Comprap { get; set; }
@@ -474,6 +476,74 @@ namespace PointOfSale.Models
                 entity.Property(e => e.IsDeleted).HasColumnName("isDeleted");
 
                 entity.Property(e => e.Nombre).HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<CierreInventario>(entity =>
+            {
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime");
+
+                entity.Property(e => e.CreatedBy)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.EstacionId)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.FechaFinal).HasColumnType("date");
+
+                entity.Property(e => e.FechaInicial).HasColumnType("date");
+
+                entity.Property(e => e.FechaProgramacion).HasColumnType("date");
+
+                entity.HasOne(d => d.CreatedByNavigation)
+                    .WithMany(p => p.CierreInventario)
+                    .HasForeignKey(d => d.CreatedBy)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_CierreInventarioId_Usuario");
+
+                entity.HasOne(d => d.Estacion)
+                    .WithMany(p => p.CierreInventario)
+                    .HasForeignKey(d => d.EstacionId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_CierreInventarioId_Estacion");
+            });
+
+            modelBuilder.Entity<CierreInventariop>(entity =>
+            {
+                entity.Property(e => e.Descripcion)
+                    .IsRequired()
+                    .HasMaxLength(550);
+
+                entity.Property(e => e.Entradas).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.InvInicial).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.PrevioVta).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.ProductoId)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Salidas).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.UltimoCosto).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.ValorCosto).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.ValorVenta).HasColumnType("decimal(18, 6)");
+
+                entity.HasOne(d => d.CierreInventario)
+                    .WithMany(p => p.CierreInventariop)
+                    .HasForeignKey(d => d.CierreInventarioId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_CierreInventariop_CierreInventarioId");
+
+                entity.HasOne(d => d.Producto)
+                    .WithMany(p => p.CierreInventariop)
+                    .HasForeignKey(d => d.ProductoId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_CierreInventariop_Producto");
             });
 
             modelBuilder.Entity<Cliente>(entity =>

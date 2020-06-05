@@ -29,6 +29,7 @@ namespace PointOfSale.Views.Modulos.Config
         private SustanciaController sustanciaController;
         private ProductoController productoController;
         private LoteController loteController;
+        private MovInvController movInvController;
 
         //Objetos
         private ProductoSustancia productoSustancia;
@@ -84,7 +85,7 @@ namespace PointOfSale.Views.Modulos.Config
             sustanciaController = new SustanciaController();
             productoController = new ProductoController();
             loteController = new LoteController();
-
+            movInvController = new MovInvController();
             //Objetos
             productoSustancia = null;
             productoImpuesto = null;
@@ -737,7 +738,31 @@ namespace PointOfSale.Views.Modulos.Config
 
                             }
                         }
-
+                        //**************MOVIMIENTO DE INVENTARIO****************//
+                        var movInv = new MovInv();
+                        movInv.FechaOperacion = DateTime.Now;
+                        movInv.ConceptoMovsInvId = "IIN";
+                        movInv.ProductoId = producto.ProductoId;
+                        movInv.CreatedBy = Ambiente.LoggedUser.UsuarioId;
+                        movInv.ProveedorId = "";
+                        movInv.ClienteId = "";
+                        movInv.EstacionId = Ambiente.Estacion.EstacionId;
+                        movInv.ReferenciaId = 0;
+                        movInv.ReferenciapId = 0;
+                        movInv.Es = "E";
+                        movInv.Cantidad = producto.Stock;
+                        movInv.UltimoCosto = producto.UltimoCosto;
+                        movInv.Costopp = producto.Costopp;
+                        movInv.Valor = producto.Stock * producto.UltimoCosto;
+                        movInv.StockAlMomento = 0;
+                        movInv.PrecioVta = producto.Precio1;
+                        movInv.Afectacion = movInv.Es.Equals("E") ? 1 : -1;
+                        movInv.IsDeleted = false;
+                        movInv.TieneLote = false;
+                        movInv.NoLote = "";
+                        movInv.Caducidad = DateTime.Now;
+                        movInv.CreatedAt = DateTime.Now;
+                        movInvController.InsertOne(movInv);
 
                         productoController.Update(producto);
                     }

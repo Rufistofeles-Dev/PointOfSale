@@ -53,5 +53,14 @@ namespace PointOfSale.Views.Menus
             o.MdiParent = MdiParent;
             o.Show();
         }
+
+
+
+        private void BtnConfiCierresInventario_Click(object sender, EventArgs e)
+        {
+            var o = new FrmCierresInv();
+            o.MdiParent = MdiParent;
+            o.Show();
+        }
     }
 }
