@@ -62,6 +62,7 @@ namespace PointOfSale.Views.Login
                 Ambiente.Conexion = CboEmpresa.SelectedItem as Conexion;
                 Inicializador.InicializaProdiedades();
                 Inicializador.InicializaDatabaseDefaultsValues();
+                Inicializador.ActualizaCierresInventario();
                 Ambiente.InsertaActualizacion();
                 GetLogin();
                 Close();
