@@ -21,6 +21,8 @@ namespace PointOfSale.Views.Modulos.Config
         //Controllers
         private ProductoSustanciaController productoSustanciaController;
         private ProductoImpuestoController productoImpuestoController;
+        private CierreInventarioController cierreInventarioController;
+        private CierreInventariopController cierreInventariopController;
         private MigrationTableController migrationTableController;
         private MigrationFieldController migrationFieldController;
         private PresentacionController presentacionController;
@@ -31,9 +33,12 @@ namespace PointOfSale.Views.Modulos.Config
         private LoteController loteController;
         private MovInvController movInvController;
 
+
         //Objetos
         private ProductoSustancia productoSustancia;
         private ProductoImpuesto productoImpuesto;
+        private CierreInventario cierreInventario;
+        private CierreInventariop cierreInventariop;
         private MigrationTable migrationTable;
         private MigrationField migrationField;
         private Presentacion presentacion;
@@ -76,7 +81,9 @@ namespace PointOfSale.Views.Modulos.Config
         {
             //Controllers
             productoSustanciaController = new ProductoSustanciaController();
+            cierreInventariopController = new CierreInventariopController();
             productoImpuestoController = new ProductoImpuestoController();
+            cierreInventarioController = new CierreInventarioController();
             migrationTableController = new MigrationTableController();
             migrationFieldController = new MigrationFieldController();
             presentacionController = new PresentacionController();
@@ -89,6 +96,8 @@ namespace PointOfSale.Views.Modulos.Config
             //Objetos
             productoSustancia = null;
             productoImpuesto = null;
+            cierreInventario = null;
+            cierreInventariop = null;
             migrationTable = null;
             migrationField = null;
             presentacion = null;
@@ -686,6 +695,18 @@ namespace PointOfSale.Views.Modulos.Config
                 int I = 0;
                 Ambiente.S20 = "AJUSTADO X SINCRONIZACION \n";
 
+                cierreInventario = new CierreInventario();
+                cierreInventario.FechaInicial = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                cierreInventario.FechaFinal = cierreInventario.FechaInicial.AddMonths(1).AddDays(-1);
+                cierreInventario.FechaProgramacion = cierreInventario.FechaFinal.AddDays(1);
+                cierreInventario.Etapa1Generada = true;
+                cierreInventario.Etapa2Generada = false;
+                cierreInventario.CreatedAt = DateTime.Now;
+                cierreInventario.CreatedBy = Ambiente.LoggedUser.UsuarioId;
+                cierreInventario.EstacionId = Ambiente.Estacion.EstacionId;
+                cierreInventarioController.InsertOne(cierreInventario);
+
+
                 foreach (DataRow row in dataTable.Rows)
                 {
                     Ambiente.S1 = row["producto"].ToString().Trim().ToUpper();
@@ -701,6 +722,22 @@ namespace PointOfSale.Views.Modulos.Config
                         producto.Min = Ambiente.Int1;
                         producto.Max = Ambiente.Int2;
                         producto.ValorStock = producto.Costopp * producto.Stock;
+
+                        //**********Cierre inventariop****************//
+
+                        cierreInventariop = new CierreInventariop();
+                        cierreInventariop.CierreInventarioId = cierreInventario.CierreInventarioId;
+                        cierreInventariop.ProductoId = producto.ProductoId;
+                        cierreInventariop.Descripcion = producto.Descripcion;
+                        cierreInventariop.InvInicial = producto.Stock;
+                        cierreInventariop.Entradas = 0;
+                        cierreInventariop.Salidas = 0;
+                        cierreInventariop.UltimoCosto = producto.UltimoCosto;
+                        cierreInventariop.PrevioVta = producto.Precio1;
+                        cierreInventariop.ValorCosto = 0;
+                        cierreInventariop.ValorVenta = 0;
+                        cierreInventariopController.InsertOne(cierreInventariop);
+
                         if (producto.TieneLote)
                         {
                             var lotes = loteController.SelecByProducConRestanteCeros(producto);

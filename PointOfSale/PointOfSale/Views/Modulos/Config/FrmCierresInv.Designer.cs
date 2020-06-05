@@ -45,14 +45,15 @@
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.Malla = new System.Windows.Forms.DataGridView();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.BtnAceptar = new System.Windows.Forms.Button();
+            this.BtnCancelar = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.BtnAceptar = new System.Windows.Forms.Button();
-            this.BtnCancelar = new System.Windows.Forms.Button();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -74,16 +75,16 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.groupBox1.Location = new System.Drawing.Point(0, 51);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(569, 112);
+            this.groupBox1.Size = new System.Drawing.Size(666, 112);
             this.groupBox1.TabIndex = 265;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Calendarizar un nuevo cierre de inventario";
             // 
             // BtnGenerarAnioCompleto
             // 
-            this.BtnGenerarAnioCompleto.Location = new System.Drawing.Point(11, 72);
+            this.BtnGenerarAnioCompleto.Location = new System.Drawing.Point(11, 76);
             this.BtnGenerarAnioCompleto.Name = "BtnGenerarAnioCompleto";
-            this.BtnGenerarAnioCompleto.Size = new System.Drawing.Size(546, 26);
+            this.BtnGenerarAnioCompleto.Size = new System.Drawing.Size(653, 26);
             this.BtnGenerarAnioCompleto.TabIndex = 268;
             this.BtnGenerarAnioCompleto.Text = "CALENDARIZAR CIERRES MENSUALES PARA EL AÑO ACTUAL";
             this.BtnGenerarAnioCompleto.UseVisualStyleBackColor = true;
@@ -93,7 +94,7 @@
             // 
             this.BtnAgregar.Location = new System.Drawing.Point(399, 40);
             this.BtnAgregar.Name = "BtnAgregar";
-            this.BtnAgregar.Size = new System.Drawing.Size(158, 26);
+            this.BtnAgregar.Size = new System.Drawing.Size(265, 26);
             this.BtnAgregar.TabIndex = 267;
             this.BtnAgregar.Text = "AÑADIR CIERRE ";
             this.BtnAgregar.UseVisualStyleBackColor = true;
@@ -167,7 +168,7 @@
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(569, 51);
+            this.groupBox2.Size = new System.Drawing.Size(666, 51);
             this.groupBox2.TabIndex = 266;
             this.groupBox2.TabStop = false;
             // 
@@ -189,7 +190,7 @@
             this.label14.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.label14.Location = new System.Drawing.Point(1, 34);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(566, 10);
+            this.label14.Size = new System.Drawing.Size(663, 10);
             this.label14.TabIndex = 245;
             // 
             // groupBox3
@@ -199,7 +200,7 @@
             this.groupBox3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.groupBox3.Location = new System.Drawing.Point(0, 163);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(569, 284);
+            this.groupBox3.Size = new System.Drawing.Size(666, 284);
             this.groupBox3.TabIndex = 267;
             this.groupBox3.TabStop = false;
             // 
@@ -221,7 +222,8 @@
             this.Column2,
             this.Column3,
             this.Column4,
-            this.Column5});
+            this.Column5,
+            this.Column6});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -241,9 +243,43 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.Malla.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.Malla.Size = new System.Drawing.Size(563, 265);
+            this.Malla.Size = new System.Drawing.Size(660, 265);
             this.Malla.TabIndex = 265;
             this.Malla.TabStop = false;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.BtnAceptar);
+            this.groupBox4.Controls.Add(this.BtnCancelar);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.groupBox4.Location = new System.Drawing.Point(0, 447);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(666, 56);
+            this.groupBox4.TabIndex = 268;
+            this.groupBox4.TabStop = false;
+            // 
+            // BtnAceptar
+            // 
+            this.BtnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAceptar.Location = new System.Drawing.Point(565, 11);
+            this.BtnAceptar.Name = "BtnAceptar";
+            this.BtnAceptar.Size = new System.Drawing.Size(95, 39);
+            this.BtnAceptar.TabIndex = 268;
+            this.BtnAceptar.Text = "&ACEPTAR";
+            this.BtnAceptar.UseVisualStyleBackColor = true;
+            this.BtnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);
+            // 
+            // BtnCancelar
+            // 
+            this.BtnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnCancelar.Location = new System.Drawing.Point(464, 11);
+            this.BtnCancelar.Name = "BtnCancelar";
+            this.BtnCancelar.Size = new System.Drawing.Size(95, 39);
+            this.BtnCancelar.TabIndex = 269;
+            this.BtnCancelar.Text = "SALIR";
+            this.BtnCancelar.UseVisualStyleBackColor = true;
             // 
             // Column1
             // 
@@ -277,50 +313,28 @@
             // Column5
             // 
             this.Column5.Frozen = true;
-            this.Column5.HeaderText = "GENERADO";
+            this.Column5.HeaderText = "ETAPA1";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             // 
-            // groupBox4
+            // Column6
             // 
-            this.groupBox4.Controls.Add(this.BtnAceptar);
-            this.groupBox4.Controls.Add(this.BtnCancelar);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.groupBox4.Location = new System.Drawing.Point(0, 447);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(569, 56);
-            this.groupBox4.TabIndex = 268;
-            this.groupBox4.TabStop = false;
-            // 
-            // BtnAceptar
-            // 
-            this.BtnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAceptar.Location = new System.Drawing.Point(462, 11);
-            this.BtnAceptar.Name = "BtnAceptar";
-            this.BtnAceptar.Size = new System.Drawing.Size(95, 39);
-            this.BtnAceptar.TabIndex = 268;
-            this.BtnAceptar.Text = "&ACEPTAR";
-            this.BtnAceptar.UseVisualStyleBackColor = true;
-            // 
-            // BtnCancelar
-            // 
-            this.BtnCancelar.Location = new System.Drawing.Point(361, 11);
-            this.BtnCancelar.Name = "BtnCancelar";
-            this.BtnCancelar.Size = new System.Drawing.Size(95, 39);
-            this.BtnCancelar.TabIndex = 269;
-            this.BtnCancelar.Text = "SALIR";
-            this.BtnCancelar.UseVisualStyleBackColor = true;
+            this.Column6.Frozen = true;
+            this.Column6.HeaderText = "ETAPA2";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             // 
             // FrmCierresInv
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(569, 503);
+            this.ClientSize = new System.Drawing.Size(666, 503);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
+            this.MaximumSize = new System.Drawing.Size(682, 542);
+            this.MinimumSize = new System.Drawing.Size(682, 542);
             this.Name = "FrmCierresInv";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmCierresInv";
@@ -350,13 +364,14 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView Malla;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button BtnAceptar;
+        private System.Windows.Forms.Button BtnCancelar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button BtnAceptar;
-        private System.Windows.Forms.Button BtnCancelar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
     }
 }

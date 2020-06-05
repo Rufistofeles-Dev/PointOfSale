@@ -44,7 +44,9 @@ namespace PointOfSale.Views.Modulos.Config
                 Malla.Rows[Malla.RowCount - 1].Cells[1].Value = c.FechaInicial;
                 Malla.Rows[Malla.RowCount - 1].Cells[2].Value = c.FechaFinal;
                 Malla.Rows[Malla.RowCount - 1].Cells[3].Value = c.FechaProgramacion;
-                Malla.Rows[Malla.RowCount - 1].Cells[4].Value = c.Generado;
+                Malla.Rows[Malla.RowCount - 1].Cells[4].Value = c.Etapa1Generada;
+                Malla.Rows[Malla.RowCount - 1].Cells[5].Value = c.Etapa2Generada;
+
             }
         }
 
@@ -59,7 +61,8 @@ namespace PointOfSale.Views.Modulos.Config
             cierreInventario.FechaInicial = DpFinicial.Value;
             cierreInventario.FechaFinal = DpFinicial.Value;
             cierreInventario.FechaProgramacion = DpFechaEjecucion.Value;
-            cierreInventario.Generado = false;
+            cierreInventario.Etapa1Generada = false;
+            cierreInventario.Etapa2Generada = false;
             cierreInventario.CreatedAt = DateTime.Now;
             cierreInventario.CreatedBy = Ambiente.LoggedUser.UsuarioId;
 
@@ -85,7 +88,8 @@ namespace PointOfSale.Views.Modulos.Config
                     cierreInventario.FechaInicial = new DateTime(DateTime.Now.Year, i, 1);
                     cierreInventario.FechaFinal = cierreInventario.FechaInicial.AddMonths(1).AddDays(-1);
                     cierreInventario.FechaProgramacion = cierreInventario.FechaFinal.AddDays(1);
-                    cierreInventario.Generado = false;
+                    cierreInventario.Etapa1Generada = false;
+                    cierreInventario.Etapa2Generada = false;
                     cierreInventario.CreatedAt = DateTime.Now;
                     cierreInventario.CreatedBy = Ambiente.LoggedUser.UsuarioId;
                     cierreInventario.EstacionId = Ambiente.Estacion.EstacionId;
@@ -94,6 +98,11 @@ namespace PointOfSale.Views.Modulos.Config
                 CargaMalla();
                 Ambiente.Mensaje("Proceso concluido");
             }
+        }
+
+        private void BtnAceptar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
