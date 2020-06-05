@@ -46,7 +46,6 @@ namespace PointOfSale.Views.Modulos.Config
                 Malla.Rows[Malla.RowCount - 1].Cells[3].Value = c.FechaProgramacion;
                 Malla.Rows[Malla.RowCount - 1].Cells[4].Value = c.Etapa1Generada;
                 Malla.Rows[Malla.RowCount - 1].Cells[5].Value = c.Etapa2Generada;
-
             }
         }
 

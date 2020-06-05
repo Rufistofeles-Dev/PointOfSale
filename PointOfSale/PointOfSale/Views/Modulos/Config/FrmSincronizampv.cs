@@ -722,7 +722,6 @@ namespace PointOfSale.Views.Modulos.Config
                         producto.Min = Ambiente.Int1;
                         producto.Max = Ambiente.Int2;
                         producto.ValorStock = producto.Costopp * producto.Stock;
-
                         //**********Cierre inventariop****************//
 
                         cierreInventariop = new CierreInventariop();
