@@ -9,7 +9,7 @@ namespace PointOfSale.Models
         public int LoteId { get; set; }
         public string ProductoId { get; set; }
         public int VentaId { get; set; }
-        public decimal? Cantidad { get; set; }
+        public decimal Cantidad { get; set; }
         public string NoLote { get; set; }
 
         public virtual Lote Lote { get; set; }

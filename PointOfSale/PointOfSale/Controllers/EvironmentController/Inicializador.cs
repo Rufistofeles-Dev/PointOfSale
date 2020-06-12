@@ -73,9 +73,9 @@ namespace PointOfSale.Controllers
             {
                 using (var db = new DymContext())
                 {
-                    var cpendientes = db.CierreInventario.Where(x => x.Etapa1Generada == false || x.Etapa2Generada == false).ToList();
+                    var cpendientes1 = db.CierreInventario.Where(x => x.Etapa1Generada == false).ToList();
 
-                    foreach (var c in cpendientes)
+                    foreach (var c in cpendientes1)
                     {
                         if (c.FechaInicial.Month == DateTime.Now.Month)
                         {
@@ -102,38 +102,79 @@ namespace PointOfSale.Controllers
                                 db.SaveChanges();
                             }
                         }
+                    }
 
-                        if (c.FechaProgramacion.Date == DateTime.Now.Date)
+                    var cpendientes2 = db.CierreInventario.Where(x => x.Etapa1Generada == true && x.Etapa2Generada == false).ToList();
+                    foreach (var c in cpendientes2)
+                    {
+
+                        if (c.FechaProgramacion.Date <= DateTime.Now.Date)
                         {
                             if (!c.Etapa2Generada)
                             {
+                                //****************Nuevo cierre inventario**********************
+                                var ncierreInventario = new CierreInventario();
+                                //var ini = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                                ncierreInventario.FechaInicial = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                                ncierreInventario.FechaFinal = ncierreInventario.FechaInicial.AddMonths(1).AddDays(-1);
+                                ncierreInventario.FechaProgramacion = ncierreInventario.FechaFinal.AddDays(1);
+                                ncierreInventario.Etapa1Generada = true;
+                                ncierreInventario.Etapa2Generada = false;
+                                ncierreInventario.CreatedAt = DateTime.Now;
+                                ncierreInventario.CreatedBy = "SYS";
+                                ncierreInventario.EstacionId = "SYS";
+                                db.Add(ncierreInventario);
+                                // db.SaveChanges();
+
                                 var productos = db.Producto.ToList();
+                                foreach (var pr in productos)
+                                {
+                                    var cierreInventariop = new CierreInventariop();
+                                    cierreInventariop.CierreInventarioId = ncierreInventario.CierreInventarioId;
+                                    cierreInventariop.ProductoId = pr.ProductoId;
+                                    cierreInventariop.Descripcion = pr.Descripcion;
+                                    cierreInventariop.InvInicial = pr.Stock;
+                                    cierreInventariop.Entradas = 0;
+                                    cierreInventariop.Salidas = 0;
+                                    cierreInventariop.UltimoCosto = pr.UltimoCosto;
+                                    cierreInventariop.PrevioVta = pr.Precio1;
+                                    cierreInventariop.ValorCosto = 0;
+                                    cierreInventariop.ValorVenta = 0;
+                                    db.Add(cierreInventariop);
+                                   // db.SaveChanges();
+                                }
+
+                                ////////////////////////////////////////////////////////////////
+
+
                                 Producto p;
                                 var cierreinvp = db.CierreInventariop.Where(x => x.CierreInventarioId == c.CierreInventarioId).ToList();
+                                var mosvInv = db.MovInv.Where(x => x.CreatedAt >= c.FechaInicial && x.CreatedAt <= c.FechaFinal.AddDays(1)).ToList();
                                 foreach (var cp in cierreinvp)
                                 {
                                     p = productos.FirstOrDefault(x => x.ProductoId.Equals(cp.ProductoId));
                                     if (p != null)
                                     {
-                                        cp.CierreInventarioId = c.CierreInventarioId;
-                                        cp.ProductoId = p.ProductoId;
-                                        cp.Descripcion = p.Descripcion;
-                                        cp.InvInicial = p.Stock;
-                                        cp.Entradas = db.MovInv.Where(x => x.Es.Equals("E") && !x.ConceptoMovsInvId.Equals("IIN") && x.ProductoId.Equals(p.ProductoId) && x.CreatedAt >= c.FechaInicial && x.CreatedAt <= c.FechaFinal.AddDays(1)).Sum(x => x.Cantidad);
-                                        cp.Salidas = db.MovInv.Where(x => x.Es.Equals("S") && x.ProductoId.Equals(p.ProductoId) && x.CreatedAt >= c.FechaInicial && x.CreatedAt <= c.FechaFinal.AddDays(1)).Sum(x => x.Cantidad);
+                                        cp.Entradas = mosvInv.Where(x => x.Es.Equals("E") && !x.ConceptoMovsInvId.Equals("IIN") && x.ProductoId.Equals(p.ProductoId) && x.CreatedAt >= c.FechaInicial && x.CreatedAt <= c.FechaFinal.AddDays(1)).Sum(x => x.Cantidad);
+                                        cp.Salidas = mosvInv.Where(x => x.Es.Equals("S") && x.ProductoId.Equals(p.ProductoId) && x.CreatedAt >= c.FechaInicial && x.CreatedAt <= c.FechaFinal.AddDays(1)).Sum(x => x.Cantidad);
+                                        cp.InvFinal = cp.InvInicial + cp.Entradas - cp.Salidas;
                                         cp.UltimoCosto = p.UltimoCosto;
-                                        cp.PrevioVta = p.Precio1;
-                                        cp.ValorCosto = db.MovInv.Where(x => x.Es.Equals("S") && x.ProductoId.Equals(p.ProductoId) && x.CreatedAt >= c.FechaInicial && x.CreatedAt <= c.FechaFinal.AddDays(1)).Sum(x => x.Cantidad * x.Costopp);
-                                        ///verificar que el precio de venta de mov. Inv sea el de las partidas
-                                        cp.ValorVenta = db.MovInv.Where(x => x.Es.Equals("S") && x.ProductoId.Equals(p.ProductoId) && x.CreatedAt >= c.FechaInicial && x.CreatedAt <= c.FechaFinal.AddDays(1)).Sum(x => x.Cantidad * x.PrecioVta);
+                                        cp.PrevioVta = p.Precio1; //ultimo precio venta
+                                        cp.Stock = p.Stock;
+                                        cp.ValorCosto = mosvInv.Where(x => x.Es.Equals("S") && x.ProductoId.Equals(p.ProductoId) && x.CreatedAt >= c.FechaInicial && x.CreatedAt <= c.FechaFinal.AddDays(1)).Sum(x => x.Valor);
+                                        cp.ValorVenta = mosvInv.Where(x => x.Es.Equals("S") && x.ProductoId.Equals(p.ProductoId) && x.CreatedAt >= c.FechaInicial && x.CreatedAt <= c.FechaFinal.AddDays(1)).Sum(x => x.Cantidad * x.PrecioVta);
                                         db.Update(cp);
                                     }
                                 }
                                 c.Etapa2Generada = true;
+                                db.Update(c);
                                 db.SaveChanges();
+
+
                                 MessageBox.Show("INVENTARIO DE CIERRE GENERADO");
                             }
                         }
+
                     }
                 }
             }

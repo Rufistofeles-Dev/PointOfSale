@@ -517,6 +517,8 @@ namespace PointOfSale.Models
 
                 entity.Property(e => e.Entradas).HasColumnType("decimal(18, 6)");
 
+                entity.Property(e => e.InvFinal).HasColumnType("decimal(18, 6)");
+
                 entity.Property(e => e.InvInicial).HasColumnType("decimal(18, 6)");
 
                 entity.Property(e => e.PrevioVta).HasColumnType("decimal(18, 6)");
@@ -526,6 +528,8 @@ namespace PointOfSale.Models
                     .HasMaxLength(50);
 
                 entity.Property(e => e.Salidas).HasColumnType("decimal(18, 6)");
+
+                entity.Property(e => e.Stock).HasColumnType("decimal(18, 6)");
 
                 entity.Property(e => e.UltimoCosto).HasColumnType("decimal(18, 6)");
 
@@ -1664,7 +1668,9 @@ namespace PointOfSale.Models
 
                 entity.Property(e => e.Cantidad).HasColumnType("decimal(18, 6)");
 
-                entity.Property(e => e.NoLote).HasMaxLength(50);
+                entity.Property(e => e.NoLote)
+                    .IsRequired()
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.ProductoId)
                     .IsRequired()

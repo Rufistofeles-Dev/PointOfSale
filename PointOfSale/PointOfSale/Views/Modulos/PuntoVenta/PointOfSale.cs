@@ -33,7 +33,7 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
         private ProductoController productoController;
         private ImpuestoController ImpuestoController;
         private ClienteController clienteController;
-
+        private LoteVentapController loteVentapController;
         private EmpresaController empresaController;
         private LoteController loteController;
         private MovInvController movInvController;
@@ -264,6 +264,7 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
             reporteController = new ReporteController();
             dymErrorController = new DymErrorController();
             formaPagoController = new FormaPagoController();
+            loteVentapController = new LoteVentapController();
             oCFDI = new CFDI();
             lote = null;
             TxtProductoId.Focus();
@@ -559,7 +560,7 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
                 movInv.Costopp = producto.Costopp;
                 movInv.Valor = p.Cantidad * producto.Costopp;
                 movInv.StockAlMomento = producto.Stock;
-                movInv.PrecioVta = producto.Precio1;
+                movInv.PrecioVta = p.Precio;
                 movInv.Afectacion = movInv.Es.Equals("E") ? 1 : -1;
                 movInv.IsDeleted = false;
                 movInv.TieneLote = p.LoteId == null ? false : true;
@@ -990,9 +991,11 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
             //es decir, se puede vender sin lotes, así cómo sin existencias.
             foreach (var p in partidas)
             {
-                var Lvp = new LoteVentap();
+
                 if (productoController.SelectOne(p.ProductoId).TieneLote)
                 {
+                    var Lvp = new LoteVentap();
+                    Lvp.Cantidad = 0;
                     var lotes = loteController.GetLotesDisponibilidad(p.ProductoId, p.Cantidad);
 
                     var restante = p.Cantidad;
@@ -1012,7 +1015,7 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
                             Lvp.Cantidad += restante;
                             l.StockRestante -= restante;
                             restante = 0;
-
+                          //  loteVentapController.InsertOne(Lvp);
                         }
                         else
                         {
@@ -1024,7 +1027,10 @@ namespace PointOfSale.Views.Modulos.PuntoVenta
                             restante -= l.StockRestante;
                             l.StockRestante = 0;
                         }
+                       //loteVentapController.InsertOne(Lvp);
                     }
+
+
                     loteController.UpdateRange(lotes);
                 }
             }

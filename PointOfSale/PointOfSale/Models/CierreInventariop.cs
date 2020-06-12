@@ -12,6 +12,8 @@ namespace PointOfSale.Models
         public decimal InvInicial { get; set; }
         public decimal Entradas { get; set; }
         public decimal Salidas { get; set; }
+        public decimal InvFinal { get; set; }
+        public decimal Stock { get; set; }
         public decimal UltimoCosto { get; set; }
         public decimal PrevioVta { get; set; }
         public decimal ValorCosto { get; set; }
