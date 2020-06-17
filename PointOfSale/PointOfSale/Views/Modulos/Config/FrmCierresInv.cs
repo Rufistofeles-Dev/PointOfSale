@@ -1,5 +1,6 @@
 ﻿using PointOfSale.Controllers;
 using PointOfSale.Models;
+using Stimulsoft.Report;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,7 @@ namespace PointOfSale.Views.Modulos.Config
     {
         private CierreInventarioController cierreInventarioController;
         private CierreInventariopController cierreInventariopController;
+        private InformeController informeController;
         private CierreInventario cierreInventario;
         private CierreInventariop cierreInventariop;
 
@@ -29,6 +31,7 @@ namespace PointOfSale.Views.Modulos.Config
         {
             cierreInventarioController = new CierreInventarioController();
             cierreInventariopController = new CierreInventariopController();
+            informeController = new InformeController();
             cierreInventario = null;
             cierreInventariop = null;
             CargaMalla();
@@ -51,28 +54,60 @@ namespace PointOfSale.Views.Modulos.Config
 
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
+
             Agregar();
         }
 
         private void Agregar()
         {
-            cierreInventario = new CierreInventario();
-            cierreInventario.FechaInicial = DpFinicial.Value;
-            cierreInventario.FechaFinal = DpFinicial.Value;
-            cierreInventario.FechaProgramacion = DpFechaEjecucion.Value;
-            cierreInventario.Etapa1Generada = false;
-            cierreInventario.Etapa2Generada = false;
-            cierreInventario.CreatedAt = DateTime.Now;
-            cierreInventario.CreatedBy = Ambiente.LoggedUser.UsuarioId;
 
-            if (cierreInventarioController.InsertOne(cierreInventario))
-                Ambiente.Mensaje("Proceso completado");
+            if (Ambiente.Pregunta("REALMENTE NO ES NECESARIO CREAR CIERRES MANUALES. \n El sistema generá automaticamente los cambios y arranques de periodos automaticamente. \n CREAR DE TODAS FORMAS"))
+            {
+                if (Ambiente.Pregunta("Aseguresé que conoce las implicaciones de generar periodos manualmente. CONTINUAR"))
+                {
+                    cierreInventario = new CierreInventario();
+                    cierreInventario.FechaInicial = DpFinicial.Value;
+                    cierreInventario.FechaFinal = DpFinicial.Value;
+                    cierreInventario.FechaProgramacion = DpFechaEjecucion.Value;
+                    cierreInventario.Etapa1Generada = false;
+                    cierreInventario.Etapa2Generada = false;
+                    cierreInventario.CreatedAt = DateTime.Now;
+                    cierreInventario.CreatedBy = Ambiente.LoggedUser.UsuarioId;
 
+                    if (cierreInventarioController.InsertOne(cierreInventario))
+                        Ambiente.Mensaje("Proceso completado");
+                }
+            }
         }
 
         private void BtnGenerarAnioCompleto_Click(object sender, EventArgs e)
         {
-            GenerarAnioCompleto();
+            VisualizarReporte();
+        }
+
+        private void VisualizarReporte()
+        {
+            try
+            {
+                if (Malla.RowCount == 0) return;
+
+                var Id = (int)Malla.Rows[Malla.CurrentRow.Index].Cells[0].Value;
+                if (Id != 0)
+                {
+                    Ambiente.stiReport = new StiReport();
+                    Ambiente.stiReport.LoadPackedReportFromString(Ambiente.InformeCierresInv.Codigo);
+                    Ambiente.stiReport.Dictionary.Variables["CierreInventarioId"].ValueObject = Id; ;
+                    Ambiente.stiReport.Render();
+                    Ambiente.stiReport.Show();
+                }
+                else Ambiente.Mensaje("Seleccione un informe");
+            }
+            catch (Exception ex)
+            {
+
+                Ambiente.Mensaje(ex.ToString());
+            }
+
         }
 
         private void GenerarAnioCompleto()
@@ -101,7 +136,12 @@ namespace PointOfSale.Views.Modulos.Config
 
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
+            Close();
+        }
 
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

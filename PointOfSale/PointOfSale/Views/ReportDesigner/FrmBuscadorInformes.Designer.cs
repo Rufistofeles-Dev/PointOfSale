@@ -34,12 +34,12 @@
             this.TxtNombreRep = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Malla = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.Malla)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -49,7 +49,7 @@
             // BtnSeleccionar
             // 
             this.BtnSeleccionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSeleccionar.Location = new System.Drawing.Point(506, 17);
+            this.BtnSeleccionar.Location = new System.Drawing.Point(686, 17);
             this.BtnSeleccionar.Name = "BtnSeleccionar";
             this.BtnSeleccionar.Size = new System.Drawing.Size(95, 39);
             this.BtnSeleccionar.TabIndex = 283;
@@ -60,7 +60,7 @@
             // BtnSalir
             // 
             this.BtnSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSalir.Location = new System.Drawing.Point(405, 17);
+            this.BtnSalir.Location = new System.Drawing.Point(585, 17);
             this.BtnSalir.Name = "BtnSalir";
             this.BtnSalir.Size = new System.Drawing.Size(95, 39);
             this.BtnSalir.TabIndex = 282;
@@ -77,7 +77,7 @@
             this.TxtNombreRep.ForeColor = System.Drawing.Color.Black;
             this.TxtNombreRep.Location = new System.Drawing.Point(3, 43);
             this.TxtNombreRep.Name = "TxtNombreRep";
-            this.TxtNombreRep.Size = new System.Drawing.Size(607, 24);
+            this.TxtNombreRep.Size = new System.Drawing.Size(787, 24);
             this.TxtNombreRep.TabIndex = 280;
             this.TxtNombreRep.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtNombreRep_KeyDown);
             // 
@@ -117,42 +117,10 @@
             this.Malla.Location = new System.Drawing.Point(3, 16);
             this.Malla.MultiSelect = false;
             this.Malla.Name = "Malla";
-            this.Malla.Size = new System.Drawing.Size(607, 239);
+            this.Malla.Size = new System.Drawing.Size(787, 239);
             this.Malla.TabIndex = 279;
             this.Malla.TabStop = false;
             this.Malla.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Malla_KeyDown);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.Malla);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 70);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(613, 258);
-            this.groupBox1.TabIndex = 284;
-            this.groupBox1.TabStop = false;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.TxtNombreRep);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(613, 70);
-            this.groupBox2.TabIndex = 285;
-            this.groupBox2.TabStop = false;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.BtnSeleccionar);
-            this.groupBox3.Controls.Add(this.BtnSalir);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox3.Location = new System.Drawing.Point(0, 328);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(613, 62);
-            this.groupBox3.TabIndex = 286;
-            this.groupBox3.TabStop = false;
             // 
             // Column1
             // 
@@ -179,11 +147,43 @@
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.Malla);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 70);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(793, 258);
+            this.groupBox1.TabIndex = 284;
+            this.groupBox1.TabStop = false;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.TxtNombreRep);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox2.Location = new System.Drawing.Point(0, 0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(793, 70);
+            this.groupBox2.TabIndex = 285;
+            this.groupBox2.TabStop = false;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.BtnSeleccionar);
+            this.groupBox3.Controls.Add(this.BtnSalir);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox3.Location = new System.Drawing.Point(0, 328);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(793, 62);
+            this.groupBox3.TabIndex = 286;
+            this.groupBox3.TabStop = false;
+            // 
             // FrmBuscadorInformes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(613, 390);
+            this.ClientSize = new System.Drawing.Size(793, 390);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);

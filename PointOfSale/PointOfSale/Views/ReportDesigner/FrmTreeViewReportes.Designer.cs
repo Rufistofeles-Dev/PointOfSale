@@ -31,7 +31,6 @@
             this.MyTreeView = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnProbar = new System.Windows.Forms.Button();
-            this.BtnDuplicar = new System.Windows.Forms.Button();
             this.BtnNuevo = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -60,7 +59,6 @@
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.btnProbar);
-            this.panel1.Controls.Add(this.BtnDuplicar);
             this.panel1.Controls.Add(this.BtnNuevo);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -71,30 +69,21 @@
             // 
             // btnProbar
             // 
-            this.btnProbar.Location = new System.Drawing.Point(303, 3);
+            this.btnProbar.Location = new System.Drawing.Point(229, 3);
             this.btnProbar.Name = "btnProbar";
-            this.btnProbar.Size = new System.Drawing.Size(68, 51);
+            this.btnProbar.Size = new System.Drawing.Size(93, 51);
             this.btnProbar.TabIndex = 15;
-            this.btnProbar.Text = "Probar";
+            this.btnProbar.Text = "&VER REPORTE ";
             this.btnProbar.UseVisualStyleBackColor = true;
             this.btnProbar.Click += new System.EventHandler(this.BtnProbar_Click);
             // 
-            // BtnDuplicar
-            // 
-            this.BtnDuplicar.Location = new System.Drawing.Point(377, 2);
-            this.BtnDuplicar.Name = "BtnDuplicar";
-            this.BtnDuplicar.Size = new System.Drawing.Size(68, 51);
-            this.BtnDuplicar.TabIndex = 14;
-            this.BtnDuplicar.Text = "Duplicar";
-            this.BtnDuplicar.UseVisualStyleBackColor = true;
-            // 
             // BtnNuevo
             // 
-            this.BtnNuevo.Location = new System.Drawing.Point(229, 3);
+            this.BtnNuevo.Location = new System.Drawing.Point(328, 3);
             this.BtnNuevo.Name = "BtnNuevo";
-            this.BtnNuevo.Size = new System.Drawing.Size(68, 51);
+            this.BtnNuevo.Size = new System.Drawing.Size(108, 51);
             this.BtnNuevo.TabIndex = 12;
-            this.BtnNuevo.Text = "Abrir diseñaor";
+            this.BtnNuevo.Text = "&ABRI DISEÑADOR";
             this.BtnNuevo.UseVisualStyleBackColor = true;
             this.BtnNuevo.Click += new System.EventHandler(this.BtnNuevo_Click);
             // 
@@ -196,7 +185,6 @@
         private System.Windows.Forms.TreeView MyTreeView;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button BtnDuplicar;
         private System.Windows.Forms.Button BtnNuevo;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel3;

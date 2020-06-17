@@ -17,7 +17,7 @@ namespace PointOfSale.Views.Modulos.Config
         {
             InitializeComponent();
             empresaController = new EmpresaController();
-
+            TxtNombre.Focus();
         }
 
 
@@ -60,6 +60,7 @@ namespace PointOfSale.Views.Modulos.Config
                 empresa.PassEnvioCorreos = TxtPassEmailEnvios.Text.Trim();
                 empresa.AsuntoStd = TxtAsuntoStd.Text.Trim();
                 empresa.MensajeStd = TxtMensajeStd.Text.Trim();
+                empresa.IpServer = TxtIpServer.Text.Trim();
 
 
                 if (empresa.RegimenFiscalId.Trim().Length == 0)
@@ -107,6 +108,7 @@ namespace PointOfSale.Views.Modulos.Config
                 empresa.PassEnvioCorreos = TxtPassEmailEnvios.Text.Trim();
                 empresa.AsuntoStd = TxtAsuntoStd.Text.Trim();
                 empresa.MensajeStd = TxtMensajeStd.Text.Trim();
+                empresa.IpServer = TxtIpServer.Text.Trim();
 
                 if (empresa.RegimenFiscalId.Trim().Length == 0)
                 {
@@ -158,8 +160,7 @@ namespace PointOfSale.Views.Modulos.Config
             TxtPassEmailEnvios.Text = empresa.PassEnvioCorreos;
             TxtAsuntoStd.Text = empresa.AsuntoStd;
             TxtMensajeStd.Text = empresa.MensajeStd;
-
-
+            TxtIpServer.Text = empresa.IpServer;
         }
 
         private void BtnAceptar_Click(object sender, EventArgs e)

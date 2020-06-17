@@ -63,6 +63,7 @@ namespace PointOfSale.Models
         public string AsuntoStd { get; set; }
         public string MensajeStd { get; set; }
         public string CorreoEnvios { get; set; }
+        public string IpServer { get; set; }
 
         public virtual CRegimenfiscal RegimenFiscalNavigation { get; set; }
     }

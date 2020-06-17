@@ -235,13 +235,12 @@ namespace PointOfSale.Views.ReportDesigner
         {
             try
             {
+                if (Malla.RowCount == 0) return;
                 informe = informeController.SelectOne(Malla.Rows[Malla.CurrentRow.Index].Cells[0].Value.ToString());
                 if (informe != null)
                 {
                     stiReport = new StiReport();
                     stiReport.LoadPackedReportFromString(informe.Codigo);
-                    stiReport.Dictionary.Databases.Clear();
-                    stiReport.Dictionary.Databases.Add(new StiSqlDatabase("Dym", Ambiente.Conexion.StandardSecurityConnectionString()));
                     stiReport.Render();
                     stiReport.Show();
                 }
@@ -252,8 +251,10 @@ namespace PointOfSale.Views.ReportDesigner
 
                 Ambiente.Mensaje(ex.ToString());
             }
-            if (Malla.RowCount == 0) return;
+        }
 
+        private void BtnDuplicar_Click(object sender, EventArgs e)
+        {
 
         }
     }

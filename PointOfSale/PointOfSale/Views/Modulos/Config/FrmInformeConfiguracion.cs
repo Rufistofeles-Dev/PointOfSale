@@ -211,6 +211,7 @@ namespace PointOfSale.Views.Modulos.Config
                 informeConfiguracion.Corte = ChkCorte.Checked;
                 informeConfiguracion.DevCom = ChkDevCom.Checked;
                 informeConfiguracion.Inventario = ChkInventario.Checked;
+                informeConfiguracion.CierresInv = ChkCierreInv.Checked;
 
                 informeConfiguracion.CreatedAt = DateTime.Now;
                 informeConfiguracion.UpdatedAt = DateTime.Now;
@@ -242,6 +243,7 @@ namespace PointOfSale.Views.Modulos.Config
                 informeConfiguracion.Corte = ChkCorte.Checked;
                 informeConfiguracion.DevCom = ChkDevCom.Checked;
                 informeConfiguracion.Inventario = ChkInventario.Checked;
+                informeConfiguracion.CierresInv = ChkCierreInv.Checked;
 
                 informeConfiguracion.UpdatedAt = DateTime.Now;
                 informeConfiguracion.CreatedBy = Ambiente.LoggedUser.UsuarioId;

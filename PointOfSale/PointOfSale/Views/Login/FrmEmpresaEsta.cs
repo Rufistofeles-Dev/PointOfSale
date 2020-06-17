@@ -59,6 +59,7 @@ namespace PointOfSale.Views.Login
         {
             try
             {
+                
                 Ambiente.Conexion = CboEmpresa.SelectedItem as Conexion;
                 Inicializador.InicializaProdiedades();
                 Inicializador.InicializaDatabaseDefaultsValues();

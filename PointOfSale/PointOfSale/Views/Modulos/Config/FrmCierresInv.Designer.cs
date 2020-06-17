@@ -32,7 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.BtnGenerarAnioCompleto = new System.Windows.Forms.Button();
+            this.BtnReporte = new System.Windows.Forms.Button();
             this.BtnAgregar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,15 +45,15 @@
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.Malla = new System.Windows.Forms.DataGridView();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.BtnAceptar = new System.Windows.Forms.Button();
-            this.BtnCancelar = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.BtnAceptar = new System.Windows.Forms.Button();
+            this.BtnCancelar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -63,7 +63,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.BtnGenerarAnioCompleto);
             this.groupBox1.Controls.Add(this.BtnAgregar);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -80,15 +79,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Calendarizar un nuevo cierre de inventario";
             // 
-            // BtnGenerarAnioCompleto
+            // BtnReporte
             // 
-            this.BtnGenerarAnioCompleto.Location = new System.Drawing.Point(11, 76);
-            this.BtnGenerarAnioCompleto.Name = "BtnGenerarAnioCompleto";
-            this.BtnGenerarAnioCompleto.Size = new System.Drawing.Size(653, 26);
-            this.BtnGenerarAnioCompleto.TabIndex = 268;
-            this.BtnGenerarAnioCompleto.Text = "CALENDARIZAR CIERRES MENSUALES PARA EL AÑO ACTUAL";
-            this.BtnGenerarAnioCompleto.UseVisualStyleBackColor = true;
-            this.BtnGenerarAnioCompleto.Click += new System.EventHandler(this.BtnGenerarAnioCompleto_Click);
+            this.BtnReporte.Location = new System.Drawing.Point(379, 11);
+            this.BtnReporte.Name = "BtnReporte";
+            this.BtnReporte.Size = new System.Drawing.Size(79, 39);
+            this.BtnReporte.TabIndex = 268;
+            this.BtnReporte.Text = "&REPORTE";
+            this.BtnReporte.UseVisualStyleBackColor = true;
+            this.BtnReporte.Click += new System.EventHandler(this.BtnGenerarAnioCompleto_Click);
             // 
             // BtnAgregar
             // 
@@ -247,40 +246,6 @@
             this.Malla.TabIndex = 265;
             this.Malla.TabStop = false;
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.BtnAceptar);
-            this.groupBox4.Controls.Add(this.BtnCancelar);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.groupBox4.Location = new System.Drawing.Point(0, 447);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(666, 56);
-            this.groupBox4.TabIndex = 268;
-            this.groupBox4.TabStop = false;
-            // 
-            // BtnAceptar
-            // 
-            this.BtnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAceptar.Location = new System.Drawing.Point(565, 11);
-            this.BtnAceptar.Name = "BtnAceptar";
-            this.BtnAceptar.Size = new System.Drawing.Size(95, 39);
-            this.BtnAceptar.TabIndex = 268;
-            this.BtnAceptar.Text = "&ACEPTAR";
-            this.BtnAceptar.UseVisualStyleBackColor = true;
-            this.BtnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);
-            // 
-            // BtnCancelar
-            // 
-            this.BtnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnCancelar.Location = new System.Drawing.Point(464, 11);
-            this.BtnCancelar.Name = "BtnCancelar";
-            this.BtnCancelar.Size = new System.Drawing.Size(95, 39);
-            this.BtnCancelar.TabIndex = 269;
-            this.BtnCancelar.Text = "SALIR";
-            this.BtnCancelar.UseVisualStyleBackColor = true;
-            // 
             // Column1
             // 
             this.Column1.Frozen = true;
@@ -324,6 +289,42 @@
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.BtnReporte);
+            this.groupBox4.Controls.Add(this.BtnAceptar);
+            this.groupBox4.Controls.Add(this.BtnCancelar);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.groupBox4.Location = new System.Drawing.Point(0, 447);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(666, 56);
+            this.groupBox4.TabIndex = 268;
+            this.groupBox4.TabStop = false;
+            // 
+            // BtnAceptar
+            // 
+            this.BtnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAceptar.Location = new System.Drawing.Point(565, 11);
+            this.BtnAceptar.Name = "BtnAceptar";
+            this.BtnAceptar.Size = new System.Drawing.Size(95, 39);
+            this.BtnAceptar.TabIndex = 268;
+            this.BtnAceptar.Text = "&ACEPTAR";
+            this.BtnAceptar.UseVisualStyleBackColor = true;
+            this.BtnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);
+            // 
+            // BtnCancelar
+            // 
+            this.BtnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnCancelar.Location = new System.Drawing.Point(464, 11);
+            this.BtnCancelar.Name = "BtnCancelar";
+            this.BtnCancelar.Size = new System.Drawing.Size(95, 39);
+            this.BtnCancelar.TabIndex = 269;
+            this.BtnCancelar.Text = "SALIR";
+            this.BtnCancelar.UseVisualStyleBackColor = true;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
+            // 
             // FrmCierresInv
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -351,7 +352,7 @@
 
         #endregion
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button BtnGenerarAnioCompleto;
+        private System.Windows.Forms.Button BtnReporte;
         private System.Windows.Forms.Button BtnAgregar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;

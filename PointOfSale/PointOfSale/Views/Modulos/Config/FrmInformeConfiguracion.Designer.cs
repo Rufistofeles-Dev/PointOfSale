@@ -43,6 +43,7 @@
             this.TxtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.ChkInventario = new System.Windows.Forms.CheckBox();
             this.ChkDevCom = new System.Windows.Forms.CheckBox();
             this.ChkCorte = new System.Windows.Forms.CheckBox();
             this.ChkCompras = new System.Windows.Forms.CheckBox();
@@ -63,7 +64,7 @@
             this.BtnBorrar = new System.Windows.Forms.LinkLabel();
             this.BtnAnadir = new System.Windows.Forms.LinkLabel();
             this.TxtReporteId = new System.Windows.Forms.TextBox();
-            this.ChkInventario = new System.Windows.Forms.CheckBox();
+            this.ChkCierreInv = new System.Windows.Forms.CheckBox();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -238,6 +239,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.ChkCierreInv);
             this.panel2.Controls.Add(this.ChkInventario);
             this.panel2.Controls.Add(this.ChkDevCom);
             this.panel2.Controls.Add(this.ChkCorte);
@@ -261,6 +263,18 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(467, 418);
             this.panel2.TabIndex = 1;
+            // 
+            // ChkInventario
+            // 
+            this.ChkInventario.AutoSize = true;
+            this.ChkInventario.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.ChkInventario.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ChkInventario.Location = new System.Drawing.Point(244, 266);
+            this.ChkInventario.Name = "ChkInventario";
+            this.ChkInventario.Size = new System.Drawing.Size(211, 22);
+            this.ChkInventario.TabIndex = 272;
+            this.ChkInventario.Text = "Imprime formato inventarios";
+            this.ChkInventario.UseVisualStyleBackColor = true;
             // 
             // ChkDevCom
             // 
@@ -502,17 +516,17 @@
             this.TxtReporteId.Size = new System.Drawing.Size(104, 26);
             this.TxtReporteId.TabIndex = 251;
             // 
-            // ChkInventario
+            // ChkCierreInv
             // 
-            this.ChkInventario.AutoSize = true;
-            this.ChkInventario.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.ChkInventario.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ChkInventario.Location = new System.Drawing.Point(244, 266);
-            this.ChkInventario.Name = "ChkInventario";
-            this.ChkInventario.Size = new System.Drawing.Size(211, 22);
-            this.ChkInventario.TabIndex = 272;
-            this.ChkInventario.Text = "Imprime formato inventarios";
-            this.ChkInventario.UseVisualStyleBackColor = true;
+            this.ChkCierreInv.AutoSize = true;
+            this.ChkCierreInv.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.ChkCierreInv.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ChkCierreInv.Location = new System.Drawing.Point(20, 294);
+            this.ChkCierreInv.Name = "ChkCierreInv";
+            this.ChkCierreInv.Size = new System.Drawing.Size(212, 22);
+            this.ChkCierreInv.TabIndex = 273;
+            this.ChkCierreInv.Text = "Imprime formato cierrres inv";
+            this.ChkCierreInv.UseVisualStyleBackColor = true;
             // 
             // FrmInformeConfiguracion
             // 
@@ -581,5 +595,6 @@
         private System.Windows.Forms.CheckBox ChkCorte;
         private System.Windows.Forms.CheckBox ChkDevCom;
         private System.Windows.Forms.CheckBox ChkInventario;
+        private System.Windows.Forms.CheckBox ChkCierreInv;
     }
 }

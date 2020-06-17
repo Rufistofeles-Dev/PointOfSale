@@ -1203,6 +1203,8 @@ namespace PointOfSale.Models
 
                 entity.Property(e => e.FormatoVentasXpuntos).HasMaxLength(250);
 
+                entity.Property(e => e.IpServer).HasMaxLength(50);
+
                 entity.Property(e => e.IsDeleted).HasDefaultValueSql("((0))");
 
                 entity.Property(e => e.MensajeStd).HasMaxLength(250);

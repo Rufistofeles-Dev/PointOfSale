@@ -18,6 +18,7 @@ namespace PointOfSale.Models
         public string UpdatedBy { get; set; }
         public DateTime UpdatedAt { get; set; }
         public bool Inventario { get; set; }
+        public bool CierresInv { get; set; }
 
         public virtual Informe Informe { get; set; }
     }

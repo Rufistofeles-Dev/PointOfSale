@@ -1,4 +1,5 @@
-﻿using PointOfSale.Models;
+﻿using DYM.Views;
+using PointOfSale.Models;
 using Stimulsoft.Report;
 using Stimulsoft.Report.Dictionary;
 using System;
@@ -57,8 +58,7 @@ namespace PointOfSale.Controllers
                 Ambiente.ImageList.Images.Add("reports16", Properties.Resources.reports);
                 Ambiente.ImageList.Images.Add("folder16", Properties.Resources.Folder);
                 Ambiente.ImageList.Images.Add("openfolder16", Properties.Resources.FolderOpen);
-                Ambiente.ServerImgAccesible = Ambiente.CheckServerRutas();
-
+                Ambiente.ServerImgAccesible = Ambiente.PingHost(Ambiente.Empresa.IpServer);
             }
             catch (Exception e)
             {
@@ -112,6 +112,14 @@ namespace PointOfSale.Controllers
                         {
                             if (!c.Etapa2Generada)
                             {
+                                MessageBox.Show("EL SISTEMA INICÍO EL MANTENIMIENTO MENSUAL \n" +
+                                    " LE SUPLICAMOS NO CIERRE EL SISTEMA, " +
+                                    " INCLUSO SI USTEN NO VE ACTIVIDAD SIMPLEMENTE ESPERE\n" +
+                                    " ESTO TOMARÁ UN PAR DE MINUTOS"
+                                    , "NO CERRAR EL SISTEMA",
+                                MessageBoxButtons.OK);
+
+
                                 //****************Nuevo cierre inventario**********************
                                 var ncierreInventario = new CierreInventario();
                                 //var ini = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
@@ -141,7 +149,7 @@ namespace PointOfSale.Controllers
                                     cierreInventariop.ValorCosto = 0;
                                     cierreInventariop.ValorVenta = 0;
                                     db.Add(cierreInventariop);
-                                   // db.SaveChanges();
+                                    // db.SaveChanges();
                                 }
 
                                 ////////////////////////////////////////////////////////////////
@@ -373,10 +381,9 @@ namespace PointOfSale.Controllers
                         stiReport.Dictionary.Databases.Add(new StiSqlDatabase("Dym", Ambiente.Conexion.StandardSecurityConnectionString()));
                         informe.Codigo = stiReport.SavePackedReportToString();
                         db.Update(informe);
-                        db.SaveChanges();
                     }
                     /*******************************************************/
-
+                  
 
                     Ambiente.InformeTicket = db.Informe.FirstOrDefault(x => x.InformeId.Equals(
                                              db.InformeConfiguracion.Where(y => y.Ticket == true)
@@ -402,24 +409,31 @@ namespace PointOfSale.Controllers
                                            db.InformeConfiguracion.Where(y => y.Inventario == true)
                                            .FirstOrDefault().InformeId));
 
+                    Ambiente.InformeCierresInv = db.Informe.FirstOrDefault(x => x.InformeId.Equals(
+                                          db.InformeConfiguracion.Where(y => y.CierresInv == true)
+                                          .FirstOrDefault().InformeId));
+
 
                     if (Ambiente.InformeTicket == null)
-                        Ambiente.Mensaje("!Advertencia! El formato de ticket no existe, esto causará problemas");
+                        Ambiente.Mensaje("!Advertencia! El formato  o regla  de impresión de ticket no existe, esto causará problemas");
 
                     if (Ambiente.InformeFactura == null)
-                        Ambiente.Mensaje("!Advertencia! El formato de factura no existe, esto causará problemas");
+                        Ambiente.Mensaje("!Advertencia! El formato o regla  de impresión de factura no existe, esto causará problemas");
 
                     if (Ambiente.InformeCompra == null)
-                        Ambiente.Mensaje("!Advertencia! El formato de compra no existe, esto causará problemas");
+                        Ambiente.Mensaje("!Advertencia! El formato o regla  de impresión  de compra no existe, esto causará problemas");
 
                     if (Ambiente.InformeDevCom == null)
-                        Ambiente.Mensaje("!Advertencia! El formato de devcom no existe, esto causará problemas");
+                        Ambiente.Mensaje("!Advertencia! El formato o regla  de impresión  de devcom no existe, esto causará problemas");
 
                     if (Ambiente.InformeCorte == null)
-                        Ambiente.Mensaje("!Advertencia! El formato de corte no existe, esto causará problemas");
+                        Ambiente.Mensaje("!Advertencia! El formato o regla  de impresión  de corte no existe, esto causará problemas");
 
                     if (Ambiente.InformeInvetarios == null)
-                        Ambiente.Mensaje("!Advertencia! El formato de inventarios no existe, esto causará problemas");
+                        Ambiente.Mensaje("!Advertencia! El formato o regla  de impresión  de inventarios no existe, esto causará problemas");
+
+                    if (Ambiente.InformeCierresInv == null)
+                        Ambiente.Mensaje("!Advertencia! El formato o regla  de impresión  de InformeCierresInv no existe, esto causará problemas");
 
 
                     db.SaveChanges();

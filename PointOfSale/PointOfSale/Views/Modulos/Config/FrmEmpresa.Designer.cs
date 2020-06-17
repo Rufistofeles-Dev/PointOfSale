@@ -117,6 +117,8 @@
             this.label28 = new System.Windows.Forms.Label();
             this.TxtSmtpClient = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.TxtIpServer = new System.Windows.Forms.TextBox();
             this.tabPage5.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -205,6 +207,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.TxtIpServer);
+            this.tabPage3.Controls.Add(this.label33);
             this.tabPage3.Controls.Add(this.TxtDirectorioInformesInvetarios);
             this.tabPage3.Controls.Add(this.label17);
             this.tabPage3.Controls.Add(this.BtnInvetarios);
@@ -1197,6 +1201,29 @@
             this.label24.TabIndex = 349;
             this.label24.Text = "SMTP CLIENT";
             // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label33.Location = new System.Drawing.Point(361, 309);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(284, 18);
+            this.label33.TabIndex = 399;
+            this.label33.Text = "DIRECCIÓN IP DEL SERVIDOR  DE APP";
+            // 
+            // TxtIpServer
+            // 
+            this.TxtIpServer.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtIpServer.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtIpServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.TxtIpServer.ForeColor = System.Drawing.Color.Black;
+            this.TxtIpServer.Location = new System.Drawing.Point(360, 330);
+            this.TxtIpServer.Name = "TxtIpServer";
+            this.TxtIpServer.Size = new System.Drawing.Size(284, 24);
+            this.TxtIpServer.TabIndex = 398;
+            this.TxtIpServer.TabStop = false;
+            // 
             // FrmEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1317,5 +1344,7 @@
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.TextBox TxtPassEmailEnvios;
         private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TextBox TxtIpServer;
+        private System.Windows.Forms.Label label33;
     }
 }

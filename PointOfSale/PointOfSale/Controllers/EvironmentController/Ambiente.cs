@@ -22,6 +22,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
+using System.Net.NetworkInformation;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -102,6 +103,7 @@ namespace PointOfSale.Controllers
         public static Informe InformeDevCom { get; internal set; }
         public static bool BoolValue { get; internal set; }
         public static Informe InformeInvetarios { get; internal set; }
+        public static Informe InformeCierresInv { get; internal set; }
 
         private static Reporte reporte;
         private static List<Parametro> ReportParams;
@@ -1818,6 +1820,30 @@ namespace PointOfSale.Controllers
         }
 
 
+        public static bool PingHost(string nameOrAddress)
+        {
+            bool pingable = false;
+            Ping pinger = null;
 
+            try
+            {
+                pinger = new Ping();
+                PingReply reply = pinger.Send(nameOrAddress);
+                pingable = reply.Status == IPStatus.Success;
+            }
+            catch (PingException)
+            {
+                // Discard PingExceptions and return false;
+            }
+            finally
+            {
+                if (pinger != null)
+                {
+                    pinger.Dispose();
+                }
+            }
+
+            return pingable;
+        }
     }
 }
